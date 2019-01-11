@@ -10,14 +10,14 @@ using System.Windows;
 namespace FirstFloor.ModernUI
 {
     /// <summary>
-    /// Provides various common helper methods.
+    /// 包含辅助方法用于获取和设置当前进程的DPI感知。提供各种通用帮助器方法
     /// </summary>
     public static class ModernUIHelper
     {
         private static bool? isInDesignMode;
 
         /// <summary>
-        /// Determines whether the current code is executed in a design time environment such as Visual Studio or Blend.
+        ///确定当前代码是在Visual Studio或Blend等设计时环境中执行
         /// </summary>
         public static bool IsInDesignMode
         {
@@ -31,10 +31,10 @@ namespace FirstFloor.ModernUI
         }
 
         /// <summary>
-        /// Gets the DPI awareness of the current process.
+        /// 获取当前进程的DPI感知
         /// </summary>
         /// <returns>
-        /// The DPI awareness of the current process
+        /// DPI对当前进程的感知
         /// </returns>
         /// <exception cref="System.ComponentModel.Win32Exception"></exception>
         public static ProcessDpiAwareness GetDpiAwareness()
@@ -53,16 +53,16 @@ namespace FirstFloor.ModernUI
 
             if (OSVersionHelper.IsWindowsVistaOrGreater)
             {
-                // use older Win32 API to query system DPI awareness
+                // 使用旧的win32 api查询系统dpi感知
                 return NativeMethods.IsProcessDPIAware() ? ProcessDpiAwareness.SystemDpiAware : ProcessDpiAwareness.DpiUnaware;
             }
 
-            // assume WPF default
+            // 假设WPF默认
             return ProcessDpiAwareness.SystemDpiAware;
         }
 
         /// <summary>
-        /// Attempts to set the DPI awareness of this process to PerMonitorDpiAware
+        /// 尝试将此过程的dpi意识设置为permonitorpiaware Attempts to set the DPI awareness of this process to PerMonitorDpiAware
         /// </summary>
         /// <returns>A value indicating whether the DPI awareness has been set to PerMonitorDpiAware.</returns>
         /// <remarks>
@@ -87,11 +87,11 @@ namespace FirstFloor.ModernUI
                     return NativeMethods.SetProcessDpiAwareness(ProcessDpiAwareness.PerMonitorDpiAware) == NativeMethods.S_OK;
                 }
 
-                // use older Win32 API to set the awareness to SystemDpiAware
+                // 使用旧的Win32 API将感知设置为SystemDPiaware
                 return NativeMethods.SetProcessDPIAware() == NativeMethods.S_OK;
             }
 
-            // return true if per monitor was already enabled
+            // 如果已启用监视器，则返回true
             return awareness == ProcessDpiAwareness.PerMonitorDpiAware;
         }
     }
