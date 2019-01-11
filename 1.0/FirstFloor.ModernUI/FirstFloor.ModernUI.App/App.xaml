@@ -5,6 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!--字典的引用顺序也是有规则的，如果B字典引用A字典，那么A字典应该排在首位-->
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.xaml" />
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.Light.xaml" />
             </ResourceDictionary.MergedDictionaries>

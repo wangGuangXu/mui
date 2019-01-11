@@ -50,3 +50,5 @@ See some [screenshots](https://github.com/firstfloorsoftware/mui/wiki/Screenshot
 * ModernProgressRing styles taken from https://github.com/nigel-sampson/spinkit-xaml
 * Modern button icons in sample app taken from http://modernuiicons.com/
 
+## 改造
+* 1.汉化，直接改项目Shared中的默认Resources.resx实现，也可额外专门添加资源文件
