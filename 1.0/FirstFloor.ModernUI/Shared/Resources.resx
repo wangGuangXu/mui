@@ -118,54 +118,54 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Back" xml:space="preserve">
-    <value>Back</value>
+    <value>后退</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Close</value>
+    <value>关闭</value>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>Maximize</value>
+    <value>最大化</value>
   </data>
   <data name="Minimize" xml:space="preserve">
-    <value>Minimize</value>
+    <value>最小化</value>
   </data>
   <data name="NavigateLink" xml:space="preserve">
-    <value>Navigate link</value>
+    <value>导航链接</value>
   </data>
   <data name="NavigationFailed" xml:space="preserve">
-    <value>Navigation failed</value>
+    <value>导航失败</value>
   </data>
   <data name="NavigationFailedFrameNotFound" xml:space="preserve">
-    <value>Unable to navigate to {0}, could not find a ModernFrame target '{1}'</value>
+    <value>无法定位到 {0}, 找不到现代框架目标 '{1}'</value>
   </data>
   <data name="NavigationFailedSourceNotSpecified" xml:space="preserve">
-    <value>Unable to navigate to {0}, no source specified</value>
+    <value>无法导航到 {0}, 没有指定源</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>No</value>
+    <value>否</value>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>OK</value>
+    <value>确定</value>
   </data>
   <data name="Restore" xml:space="preserve">
-    <value>Restore</value>
+    <value>恢复</value>
   </data>
   <data name="UIThreadRequired" xml:space="preserve">
-    <value>Operation requires the UI thread</value>
+    <value>操作需要的UI线程</value>
   </data>
   <data name="UnexpectedToken" xml:space="preserve">
-    <value>Unexpected token</value>
+    <value>意外的标记</value>
   </data>
   <data name="UnknownOS" xml:space="preserve">
-    <value>Unknown operating system</value>
+    <value>未知的操作系统</value>
   </data>
   <data name="UnknownTokenType" xml:space="preserve">
-    <value>Unknown token type</value>
+    <value>未知的标记类型</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>是</value>
   </data>
 </root>
