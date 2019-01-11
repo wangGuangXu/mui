@@ -11,8 +11,7 @@ namespace FirstFloor.ModernUI.App
     /// <summary>
     /// Loads lorem ipsum content regardless the given uri.
     /// </summary>
-    public class LoremIpsumLoader
-        : DefaultContentLoader
+    public class LoremIpsumLoader: DefaultContentLoader
     {
         /// <summary>
         /// Loads the content from specified uri.
