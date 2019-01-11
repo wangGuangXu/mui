@@ -11,8 +11,7 @@ namespace FirstFloor.ModernUI.Presentation
     /// <summary>
     /// Represents a read-only observable collection of link groups.
     /// </summary>
-    public class ReadOnlyLinkGroupCollection
-        : ReadOnlyObservableCollection<LinkGroup>
+    public class ReadOnlyLinkGroupCollection: ReadOnlyObservableCollection<LinkGroup>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ReadOnlyLinkGroupCollection"/> class.

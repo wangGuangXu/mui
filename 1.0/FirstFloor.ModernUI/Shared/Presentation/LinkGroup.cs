@@ -9,8 +9,7 @@ namespace FirstFloor.ModernUI.Presentation
     /// <summary>
     /// Represents a named group of links.
     /// </summary>
-    public class LinkGroup
-        : Displayable
+    public class LinkGroup : Displayable
     {
         private string groupKey;
         private Link selectedLink;
@@ -28,7 +27,8 @@ namespace FirstFloor.ModernUI.Presentation
             get { return this.groupKey; }
             set
             {
-                if (this.groupKey != value) {
+                if (this.groupKey != value)
+                {
                     this.groupKey = value;
                     OnPropertyChanged("GroupKey");
                 }
@@ -44,7 +44,8 @@ namespace FirstFloor.ModernUI.Presentation
             get { return this.selectedLink; }
             set
             {
-                if (this.selectedLink != value) {
+                if (this.selectedLink != value)
+                {
                     this.selectedLink = value;
                     OnPropertyChanged("SelectedLink");
                 }

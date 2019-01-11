@@ -14,8 +14,7 @@ namespace FirstFloor.ModernUI.Presentation
     /// <summary>
     /// Manages the theme, font size and accent colors for a Modern UI application.
     /// </summary>
-    public class AppearanceManager
-        : NotifyPropertyChanged
+    public class AppearanceManager : NotifyPropertyChanged
     {
         /// <summary>
         /// The location of the dark theme resource dictionary.
@@ -52,7 +51,8 @@ namespace FirstFloor.ModernUI.Presentation
         {
             DarkThemeCommand = new RelayCommand(o => ThemeSource = DarkThemeSource, o => !DarkThemeSource.Equals(ThemeSource));
             LightThemeCommand = new RelayCommand(o => ThemeSource = LightThemeSource, o => !LightThemeSource.Equals(ThemeSource));
-            SetThemeCommand = new RelayCommand(o => {
+            SetThemeCommand = new RelayCommand(o => 
+            {
                 var uri = NavigationHelper.ToUri(o);
                 if (uri != null) {
                     ThemeSource = uri;
@@ -60,11 +60,14 @@ namespace FirstFloor.ModernUI.Presentation
             }, o => o is Uri || o is string);
             LargeFontSizeCommand = new RelayCommand(o => FontSize = FontSize.Large);
             SmallFontSizeCommand = new RelayCommand(o => FontSize = FontSize.Small);
-            AccentColorCommand = new RelayCommand(o => {
-                if (o is Color) {
+            AccentColorCommand = new RelayCommand(o => 
+            {
+                if (o is Color)
+                {
                     AccentColor = (Color)o;
                 }
-                else {
+                else
+                {
                     // parse color from string
                     var str = o as string;
                     if (str != null) {
@@ -95,7 +98,8 @@ namespace FirstFloor.ModernUI.Presentation
 
         private void SetThemeSource(Uri source, bool useThemeAccentColor)
         {
-            if (source == null) {
+            if (source == null)
+            {
                 throw new ArgumentNullException("source");
             }
 
@@ -105,11 +109,13 @@ namespace FirstFloor.ModernUI.Presentation
 
             // if theme defines an accent color, use it
             var accentColor = themeDict[KeyAccentColor] as Color?;
-            if (accentColor.HasValue) {
+            if (accentColor.HasValue)
+            {
                 // remove from the theme dictionary and apply globally if useThemeAccentColor is true
                 themeDict.Remove(KeyAccentColor);
 
-                if (useThemeAccentColor) {
+                if (useThemeAccentColor)
+                {
                     ApplyAccentColor(accentColor.Value);
                 }
             }
@@ -118,7 +124,8 @@ namespace FirstFloor.ModernUI.Presentation
             dictionaries.Add(themeDict);
 
             // remove old theme
-            if (oldThemeDict != null) {
+            if (oldThemeDict != null)
+            {
                 dictionaries.Remove(oldThemeDict);
             }
 
@@ -136,7 +143,8 @@ namespace FirstFloor.ModernUI.Presentation
         {
             var defaultFontSize = Application.Current.Resources[KeyDefaultFontSize] as double?;
              
-            if (defaultFontSize.HasValue) {
+            if (defaultFontSize.HasValue)
+            {
                 return defaultFontSize.Value == 12D ? FontSize.Small : FontSize.Large;
             }
 
@@ -146,7 +154,8 @@ namespace FirstFloor.ModernUI.Presentation
 
         private void SetFontSize(FontSize fontSize)
         {
-            if (GetFontSize() == fontSize) {
+            if (GetFontSize() == fontSize)
+            {
                 return;
             }
 
@@ -160,7 +169,8 @@ namespace FirstFloor.ModernUI.Presentation
         {
             var accentColor = Application.Current.Resources[KeyAccentColor] as Color?;
 
-            if (accentColor.HasValue) {
+            if (accentColor.HasValue)
+            {
                 return accentColor.Value;
             }
 
@@ -174,7 +184,8 @@ namespace FirstFloor.ModernUI.Presentation
 
             // re-apply theme to ensure brushes referencing AccentColor are updated
             var themeSource = GetThemeSource();
-            if (themeSource != null) {
+            if (themeSource != null)
+            {
                 SetThemeSource(themeSource, false);
             }
 

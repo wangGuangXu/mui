@@ -9,8 +9,7 @@ namespace FirstFloor.ModernUI.Presentation
     /// <summary>
     /// The command that relays its functionality by invoking delegates.
     /// </summary>
-    public class RelayCommand
-        : CommandBase
+    public class RelayCommand: CommandBase
     {
         private Action<object> execute;
         private Func<object, bool> canExecute;
@@ -22,13 +21,17 @@ namespace FirstFloor.ModernUI.Presentation
         /// <param name="canExecute">The can execute.</param>
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
-            if (execute == null) {
+            if (execute == null)
+            {
                 throw new ArgumentNullException("execute");
             }
-            if (canExecute == null) {
+
+            if (canExecute == null)
+            {
                 // no can execute provided, then always executable
                 canExecute = (o) => true;
             }
+
             this.execute = execute;
             this.canExecute = canExecute;
         }

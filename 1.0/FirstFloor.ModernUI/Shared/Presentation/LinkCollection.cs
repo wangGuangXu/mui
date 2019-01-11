@@ -11,8 +11,7 @@ namespace FirstFloor.ModernUI.Presentation
     /// <summary>
     /// Represents an observable collection of links.
     /// </summary>
-    public class LinkCollection
-        : ObservableCollection<Link>
+    public class LinkCollection : ObservableCollection<Link>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LinkCollection"/> class.
@@ -27,10 +26,13 @@ namespace FirstFloor.ModernUI.Presentation
         /// <param name="links">The links that are copied to this collection.</param>
         public LinkCollection(IEnumerable<Link> links)
         {
-            if (links == null) {
+            if (links == null)
+            {
                 throw new ArgumentNullException("links");
             }
-            foreach (var link in links) {
+
+            foreach (var link in links)
+            {
                 Add(link);
             }
         }

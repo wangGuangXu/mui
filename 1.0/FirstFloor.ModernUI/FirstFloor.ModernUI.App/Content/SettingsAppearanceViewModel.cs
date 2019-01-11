@@ -153,7 +153,8 @@ namespace FirstFloor.ModernUI.App.Content
             get { return this.selectedTheme; }
             set
             {
-                if (this.selectedTheme != value) {
+                if (this.selectedTheme != value)
+                {
                     this.selectedTheme = value;
                     OnPropertyChanged("SelectedTheme");
 

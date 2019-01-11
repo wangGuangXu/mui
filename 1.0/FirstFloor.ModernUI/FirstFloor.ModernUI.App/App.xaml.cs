@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Speech.Synthesis;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -21,6 +22,9 @@ namespace FirstFloor.ModernUI.App
         /// <param name="e">A <see cref="T:System.Windows.StartupEventArgs"/> that contains the event data.</param>
         protected override void OnStartup(StartupEventArgs e)
         {
+            var reader = new SpeechSynthesizer();
+            reader.SpeakAsync("现代WPFUI框架启动 ");
+
             base.OnStartup(e);
         }
     }
