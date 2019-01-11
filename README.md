@@ -51,4 +51,6 @@ See some [screenshots](https://github.com/firstfloorsoftware/mui/wiki/Screenshot
 * Modern button icons in sample app taken from http://modernuiicons.com/
 
 ## 改造
-* 1.汉化，直接改项目Shared中的默认Resources.resx实现，也可额外专门添加资源文件
+* 1.汉化
+ * 直接改项目Shared中的默认Resources.resx文件实现，（默认是英语）也可额外专门添加中文资源文件
+* 2.添加中文注释

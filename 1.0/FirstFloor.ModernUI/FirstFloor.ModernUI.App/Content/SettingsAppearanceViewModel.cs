@@ -10,10 +10,9 @@ using System.Windows.Media;
 namespace FirstFloor.ModernUI.App.Content
 {
     /// <summary>
-    /// A simple view model for configuring theme, font and accent colors.
+    /// 用于配置主题、字体、颜色的简单视图模型
     /// </summary>
-    public class SettingsAppearanceViewModel
-        : NotifyPropertyChanged
+    public class SettingsAppearanceViewModel : NotifyPropertyChanged
     {
         private const string FontSmall = "small";
         private const string FontLarge = "large";
@@ -21,8 +20,9 @@ namespace FirstFloor.ModernUI.App.Content
         private const string PaletteMetro = "metro";
         private const string PaletteWP = "windows phone";
 
-        // 9 accent colors from metro design principles
-        private Color[] metroAccentColors = new Color[]{
+        // 来自metro 设计原则的9种强调色
+        private Color[] metroAccentColors = new Color[]
+        {
             Color.FromRgb(0x33, 0x99, 0xff),   // blue
             Color.FromRgb(0x00, 0xab, 0xa9),   // teal
             Color.FromRgb(0x33, 0x99, 0x33),   // green
@@ -34,7 +34,7 @@ namespace FirstFloor.ModernUI.App.Content
             Color.FromRgb(0xa2, 0x00, 0xff),   // purple            
         };
 
-        // 20 accent colors from Windows Phone 8
+        // 来做Windwows Phone 8的20种强调色
         private Color[] wpAccentColors = new Color[]{
             Color.FromRgb(0xa4, 0xc4, 0x00),   // lime
             Color.FromRgb(0x60, 0xa9, 0x17),   // green
@@ -67,11 +67,11 @@ namespace FirstFloor.ModernUI.App.Content
 
         public SettingsAppearanceViewModel()
         {
-            // add the default themes
+            // 添加默认主题
             this.themes.Add(new Link { DisplayName = "dark", Source = AppearanceManager.DarkThemeSource });
             this.themes.Add(new Link { DisplayName = "light", Source = AppearanceManager.LightThemeSource });
 
-            // add additional themes
+            // 添加额外的主题
             this.themes.Add(new Link { DisplayName = "bing image", Source = new Uri("/ModernUIDemo;component/Assets/ModernUI.BingImage.xaml", UriKind.Relative) });
             this.themes.Add(new Link { DisplayName = "hello kitty", Source = new Uri("/ModernUIDemo;component/Assets/ModernUI.HelloKitty.xaml", UriKind.Relative) });
             this.themes.Add(new Link { DisplayName = "love", Source = new Uri("/ModernUIDemo;component/Assets/ModernUI.Love.xaml", UriKind.Relative) });
@@ -83,6 +83,9 @@ namespace FirstFloor.ModernUI.App.Content
             AppearanceManager.Current.PropertyChanged += OnAppearanceManagerPropertyChanged;
         }
 
+        /// <summary>
+        /// 同步主题和颜色
+        /// </summary>
         private void SyncThemeAndColor()
         {
             // synchronizes the selected viewmodel theme with the actual theme used by the appearance manager.
@@ -92,9 +95,15 @@ namespace FirstFloor.ModernUI.App.Content
             this.SelectedAccentColor = AppearanceManager.Current.AccentColor;
         }
 
+        /// <summary>
+        /// 外观属性改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnAppearanceManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "ThemeSource" || e.PropertyName == "AccentColor") {
+            if (e.PropertyName == "ThemeSource" || e.PropertyName == "AccentColor")
+            {
                 SyncThemeAndColor();
             }
         }
@@ -119,6 +128,9 @@ namespace FirstFloor.ModernUI.App.Content
             get { return this.selectedPalette == PaletteMetro ? this.metroAccentColors : this.wpAccentColors; }
         }
 
+        /// <summary>
+        /// 选择调色板
+        /// </summary>
         public string SelectedPalette
         {
             get { return this.selectedPalette; }
@@ -133,6 +145,9 @@ namespace FirstFloor.ModernUI.App.Content
             }
         }
 
+        /// <summary>
+        /// 选定主题
+        /// </summary>
         public Link SelectedTheme
         {
             get { return this.selectedTheme; }
@@ -148,12 +163,16 @@ namespace FirstFloor.ModernUI.App.Content
             }
         }
 
+        /// <summary>
+        /// 选定字体大小
+        /// </summary>
         public string SelectedFontSize
         {
             get { return this.selectedFontSize; }
             set
             {
-                if (this.selectedFontSize != value) {
+                if (this.selectedFontSize != value)
+                {
                     this.selectedFontSize = value;
                     OnPropertyChanged("SelectedFontSize");
 
@@ -162,12 +181,16 @@ namespace FirstFloor.ModernUI.App.Content
             }
         }
 
+        /// <summary>
+        /// 选定强调色
+        /// </summary>
         public Color SelectedAccentColor
         {
             get { return this.selectedAccentColor; }
             set
             {
-                if (this.selectedAccentColor != value) {
+                if (this.selectedAccentColor != value)
+                {
                     this.selectedAccentColor = value;
                     OnPropertyChanged("SelectedAccentColor");
 
@@ -175,5 +198,7 @@ namespace FirstFloor.ModernUI.App.Content
                 }
             }
         }
+
+
     }
 }

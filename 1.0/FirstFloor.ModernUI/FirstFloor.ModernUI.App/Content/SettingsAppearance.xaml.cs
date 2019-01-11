@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace FirstFloor.ModernUI.App.Content
 {
     /// <summary>
-    /// Interaction logic for SettingsAppearance.xaml
+    /// 设置外观的交互逻辑
     /// </summary>
     public partial class SettingsAppearance : UserControl
     {
@@ -25,7 +25,7 @@ namespace FirstFloor.ModernUI.App.Content
         {
             InitializeComponent();
 
-            // a simple view model for appearance configuration
+            // 外观配置的视图模型
             this.DataContext = new SettingsAppearanceViewModel();
         }
     }
