@@ -9,9 +9,9 @@
     <Grid Style="{StaticResource ContentRoot}">
         <mui:ModernTab SelectedSource="/Content/LoremIpsum.xaml" Layout="Tab">
             <mui:ModernTab.Links>
-                <mui:Link DisplayName="Basic" Source="/Content/LoremIpsum.xaml" />
-                <mui:Link DisplayName="Split" Source="/Content/LoremIpsumSplit.xaml" />
-                <mui:Link DisplayName="List" Source="/Content/LoremIpsumList.xaml" />
+                <mui:Link DisplayName="基础" Source="/Content/LoremIpsum.xaml" />
+                <mui:Link DisplayName="分割" Source="/Content/LoremIpsumSplit.xaml" />
+                <mui:Link DisplayName="列表" Source="/Content/LoremIpsumList.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

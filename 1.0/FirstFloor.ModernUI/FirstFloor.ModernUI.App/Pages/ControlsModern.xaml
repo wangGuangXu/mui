@@ -10,12 +10,12 @@
         <mui:ModernTab SelectedSource="/Content/ControlsModernBBCodeBlock.xaml" Layout="List">
             <mui:ModernTab.Links>
                 <mui:Link DisplayName="BBCodeBlock" Source="/Content/ControlsModernBBCodeBlock.xaml"/>
-                <mui:Link DisplayName="ModernButton" Source="/Content/ControlsModernButton.xaml" />
-                <mui:Link DisplayName="ModernDialog" Source="/Content/ControlsModernDialog.xaml" />
-                <mui:Link DisplayName="ModernFrame" Source="/Content/ControlsModernFrame.xaml" />
-                <mui:Link DisplayName="ModernMenu" Source="/Content/ControlsModernMenu.xaml" />
-                <mui:Link DisplayName="ModernProgressRing" Source="/Content/ControlsModernProgressRing.xaml" />
-                <mui:Link DisplayName="ModernWindow" Source="/Content/ControlsModernWindow.xaml" />
+                <mui:Link DisplayName="现代按钮" Source="/Content/ControlsModernButton.xaml" />
+                <mui:Link DisplayName="现代对话框" Source="/Content/ControlsModernDialog.xaml" />
+                <mui:Link DisplayName="现代框架" Source="/Content/ControlsModernFrame.xaml" />
+                <mui:Link DisplayName="现代菜单" Source="/Content/ControlsModernMenu.xaml" />
+                <mui:Link DisplayName="现代进度环" Source="/Content/ControlsModernProgressRing.xaml" />
+                <mui:Link DisplayName="现代窗体" Source="/Content/ControlsModernWindow.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

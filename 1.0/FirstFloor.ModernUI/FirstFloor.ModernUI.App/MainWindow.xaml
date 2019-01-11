@@ -28,7 +28,7 @@
                 <mui:Link DisplayName="选项卡" Source="/Pages/LayoutTab.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
-        <mui:LinkGroup DisplayName="Controls">
+        <mui:LinkGroup DisplayName="控件">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="样式" Source="/Pages/ControlsStyles.xaml" />
                 <mui:Link DisplayName="现代控制" Source="/Pages/ControlsModern.xaml" />
@@ -36,7 +36,7 @@
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="先进的">
             <mui:LinkGroup.Links>
-                <mui:Link DisplayName="DPI awareness" Source="/Pages/DpiAwareness.xaml" />
+                <mui:Link DisplayName="DPI 感知" Source="/Pages/DpiAwareness.xaml" />
                 <mui:Link DisplayName="导航" Source="/Pages/Navigation.xaml" />
                 <mui:Link DisplayName="内容加载" Source="/Pages/ContentLoader.xaml" />
             </mui:LinkGroup.Links>

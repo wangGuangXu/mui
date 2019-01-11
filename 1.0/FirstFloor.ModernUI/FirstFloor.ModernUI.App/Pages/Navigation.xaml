@@ -27,41 +27,41 @@
 
         <ScrollViewer>
             <StackPanel >
-                <mui:BBCodeBlock BBCode="Demonstrating the use of link navigators with support for loading frame content, external link navigation and command execution. A link navigator implements the [b]ILinkNavigator[/b] interface and is typically associated with a [b]BBCodeBlock[/b]. The links below are supported by the [b]FirstFloor.ModernUI.DefaultLinkNavigator[/b]." Margin="0,0,0,16" />
+                <mui:BBCodeBlock BBCode="演示链接导航器的使用，支持加载框架内容, 外部链接导航和命令执行. 链接导航器实现 [b]ILinkNavigator[/b] 接口，并且通常与一个 [b]BBCodeBlock[/b].关联 支持下的链接 [b]FirstFloor.ModernUI.DefaultLinkNavigator[/b]." Margin="0,0,0,16" />
 
-                <TextBlock Text="CONTENT NAVIGATION" Style="{StaticResource Heading2}" />
-                <mui:BBCodeBlock xml:space="preserve">» navigate to the [url=/Pages/Introduction.xaml]introduction page[/url]
-» navigate to [url=http://www.google.com]http://www.google.com[/url] in the default browser
-» send an email to [url=mailto:foo@test.com?subject=This%20is%20the%20subject&amp;body=This%20is%20the%20body]foo@test.com[/url]
+                <TextBlock Text="内容导航" Style="{StaticResource Heading2}" />
+                <mui:BBCodeBlock xml:space="preserve">» 导航到 [url=/Pages/Introduction.xaml]介绍页面[/url]
+» 导航到[url=http://www.google.com]http://www.google.com[/url] 在默认浏览器中
+» 发送邮件到 [url=mailto:foo@test.com?subject=This%20is%20the%20subject&amp;body=This%20is%20the%20body]foo@test.com[/url]
                 </mui:BBCodeBlock>
-                <TextBlock Text="BUILTIN COMMANDS" Style="{StaticResource Heading2}" />
-                <mui:BBCodeBlock xml:space="preserve">» set the theme to [url=cmd://darktheme]dark[/url], [url=cmd://lighttheme]light[/url] or use a [url=cmd://settheme|/ModernUIDemo;component/Assets/ModernUI.HelloKitty.xaml]custom theme[/url]
-» set the font size to [url=cmd://largefontsize]large[/url] or [url=cmd://smallfontsize]small[/url]
-» change the accent color to [url=cmd://accentcolor|#ff4500]orange[/url], [url=cmd://accentcolor|#339933]green[/url] or whatever [url=cmd://accentcolor|#9a0213]color you like[/url]
-» navigate to the previous page using the [url=cmd://browseback]browse back[/url] command
+                <TextBlock Text="内置命令" Style="{StaticResource Heading2}" />
+                <mui:BBCodeBlock xml:space="preserve">» 设置主题为 [url=cmd://darktheme]dark[/url], [url=cmd://lighttheme]light[/url] 或使用 [url=cmd://settheme|/ModernUIDemo;component/Assets/ModernUI.HelloKitty.xaml]自定义主题[/url]
+» 设置字体为 [url=cmd://largefontsize]大的[/url] 或 [url=cmd://smallfontsize]小的[/url]
+» 改变强调颜色 [url=cmd://accentcolor|#ff4500]orange[/url], [url=cmd://accentcolor|#339933]green[/url] 或者什么[url=cmd://accentcolor|#9a0213]你喜欢的颜色[/url]
+» 导航到上一个页面 [url=cmd://browseback]浏览上一个[/url] 命令
                 </mui:BBCodeBlock>
-                <TextBlock Text="CUSTOM COMMANDS" Style="{StaticResource Heading2}" />
-                <mui:BBCodeBlock xml:space="preserve">» show a [url=cmd://msgbox]message box[/url]
-» a command that cannot execute, resulting in a [url=cmd://disabled]disabled hyperlink[/url]
-» passing a parameter to a [url=cmd://parameter|my%20parameter]command[/url]
+                <TextBlock Text="自定义命令" Style="{StaticResource Heading2}" />
+                <mui:BBCodeBlock xml:space="preserve">» 显示一个 [url=cmd://msgbox]消息框[/url]
+» 无法执行的命令导致 [url=cmd://disabled]禁用的链接[/url]
+» 将参数传递给 [url=cmd://parameter|my%20parameter]命令[/url]
                     
-Visit the [url=https://github.com/firstfloorsoftware/mui/wiki]online documentation[/url] to learn more about [b]ILinkNavigator[/b].
+参观 [url=https://github.com/firstfloorsoftware/mui/wiki]在线文档[/url]了解更多信息[b]ILinkNavigator[/b].
                 </mui:BBCodeBlock>
-                <TextBlock Text="NAVIGATELINK ROUTED COMMAND" Style="{StaticResource Heading2}" />
-                <mui:BBCodeBlock xml:space="preserve">The [b]LinkCommands.NavigateLink[/b] routed command adds support for link navigation to any control that supports commanding, not just BBCodeBlock. The routed command is implemented by ModernWindow, which uses the ModernWindow.LinkNavigator to perform the actual navigation.
+                <TextBlock Text="导航链接路由命令" Style="{StaticResource Heading2}" />
+                <mui:BBCodeBlock xml:space="preserve">The [b]LinkCommands.NavigateLink[/b] 路由命令 将对链接导航支持添加到任何支持命令的控件中，而不仅仅是 BBCodeBlock. 路由命令由ModernWindow实现,它使用ModernWindow.LinkNavigator执行实际的导航
                 </mui:BBCodeBlock>
                 
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
                     <Button Content="introduction" Margin="0,0,4,0"
                             Command="mui:LinkCommands.NavigateLink"
                             CommandParameter="/Pages/Introduction.xaml"/>
-                    <Button Content="google" Margin="0,0,4,0"
+                    <Button Content="谷歌" Margin="0,0,4,0"
                             Command="mui:LinkCommands.NavigateLink"
                             CommandParameter="http://www.google.com"/>
-                    <Button Content="dark theme" Margin="0,0,4,0"
+                    <Button Content="暗主题" Margin="0,0,4,0"
                             Command="mui:LinkCommands.NavigateLink"
                             CommandParameter="cmd://darktheme" />
-                    <Button Content="custom theme" Margin="0,0,4,0"
+                    <Button Content="自定义主题" Margin="0,0,4,0"
                             Command="mui:LinkCommands.NavigateLink"
                             CommandParameter="cmd://settheme|/ModernUIDemo;component/Assets/ModernUI.HelloKitty.xaml" />
                 </StackPanel>

@@ -9,12 +9,12 @@
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
             <StackPanel >
-                <TextBlock Text="DPI AWARENESS" Style="{StaticResource Heading1}" Margin="0,0,0,8"/>
+                <TextBlock Text="DPI 感知" Style="{StaticResource Heading1}" Margin="0,0,0,8"/>
                 <mui:BBCodeBlock Margin="0,0,0,32" xml:space="preserve">Windows 8.1 gives developers new functionality to create desktop applications that are per-monitor DPI-aware. MUI automatically enables per-monitor DPI awareness when supported by the host OS. When enabled a window is scaled across monitors of different DPIs.
                     
 MUI's implementation of per-monitor DPI awareness is largely based on the MSDN article [url=http://msdn.microsoft.com/en-us/library/windows/desktop/ee308410(v=vs.85).aspx]Developing a Per-Monitor DPI-Aware WPF Application[/url].</mui:BBCodeBlock>
 
-                <TextBlock Text="DPI INFORMATION" Style="{StaticResource Heading2}"/>
+                <TextBlock Text="DPI 信息" Style="{StaticResource Heading2}"/>
                 <mui:BBCodeBlock BBCode="{Binding DpiAwareMessage}" Margin="0,0,0,16" />
                 <Grid>
                     <Grid.Resources>
@@ -34,13 +34,13 @@ MUI's implementation of per-monitor DPI awareness is largely based on the MSDN a
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="WPF rendering DPI:" />
+                    <TextBlock Text="WPF 渲染 DPI:" />
                     <TextBlock Grid.Column="1" Text="{Binding WpfDpi}" Style="{StaticResource RightAlign}" />
-                    <TextBlock Grid.Row="1" Text="Current monitor DPI:" />
+                    <TextBlock Grid.Row="1" Text="当前监控 DPI:" />
                     <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding MonitorDpi}" Style="{StaticResource RightAlign}" />
-                    <TextBlock Grid.Row="2" Text="Layout scale:" />
+                    <TextBlock Grid.Row="2" Text="布局比例:" />
                     <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding LayoutScale}" Style="{StaticResource RightAlign}" />
-                    <TextBlock Grid.Row="3" Text="Window size:" />
+                    <TextBlock Grid.Row="3" Text="窗口大小:" />
                     <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding WindowSize}" Style="{StaticResource RightAlign}" />
                 </Grid>
             </StackPanel>

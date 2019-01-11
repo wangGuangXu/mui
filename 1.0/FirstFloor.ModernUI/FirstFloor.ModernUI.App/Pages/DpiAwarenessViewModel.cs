@@ -10,8 +10,10 @@ using System.Windows;
 
 namespace FirstFloor.ModernUI.App.Pages
 {
-    public class DpiAwarenessViewModel
-            : NotifyPropertyChanged
+    /// <summary>
+    /// DPI 感知视图模型
+    /// </summary>
+    public class DpiAwarenessViewModel: NotifyPropertyChanged
     {
         private DpiAwareWindow wnd;
 

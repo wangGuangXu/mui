@@ -9,14 +9,14 @@
     <Grid Style="{StaticResource ContentRoot}">
         <mui:ModernTab SelectedSource="/Content/ControlsStylesButton.xaml" Layout="List">
             <mui:ModernTab.Links>
-                <mui:Link DisplayName="Button" Source="/Content/ControlsStylesButton.xaml" />
-                <mui:Link DisplayName="DataGrid" Source="/Content/ControlsStylesDataGrid.xaml" />
-                <mui:Link DisplayName="Date" Source="/Content/ControlsStylesDate.xaml" />
-                <mui:Link DisplayName="ItemsControl" Source="/Content/ControlsStylesItemsControl.xaml"/>
-                <mui:Link DisplayName="ProgressBar" Source="/Content/ControlsStylesProgressBar.xaml"/>
-                <mui:Link DisplayName="Slider" Source="/Content/ControlsStylesSlider.xaml"/>
-                <mui:Link DisplayName="Text" Source="/Content/ControlsStylesText.xaml" />
-                <mui:Link DisplayName="Sample form" Source="/Content/ControlsStylesSampleForm.xaml" />
+                <mui:Link DisplayName="按钮" Source="/Content/ControlsStylesButton.xaml" />
+                <mui:Link DisplayName="数据表格" Source="/Content/ControlsStylesDataGrid.xaml" />
+                <mui:Link DisplayName="日期" Source="/Content/ControlsStylesDate.xaml" />
+                <mui:Link DisplayName="项控件" Source="/Content/ControlsStylesItemsControl.xaml"/>
+                <mui:Link DisplayName="进度条" Source="/Content/ControlsStylesProgressBar.xaml"/>
+                <mui:Link DisplayName="滑块" Source="/Content/ControlsStylesSlider.xaml"/>
+                <mui:Link DisplayName="文本" Source="/Content/ControlsStylesText.xaml" />
+                <mui:Link DisplayName="简单表单" Source="/Content/ControlsStylesSampleForm.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

@@ -10,8 +10,8 @@
     <Grid Style="{StaticResource ContentRoot}">
         <mui:ModernTab SelectedSource="/Content/ContentLoaderIntro.xaml" Layout="Tab">
             <mui:ModernTab.Links>
-                <mui:Link DisplayName="INTRO" Source="/Content/ContentLoaderIntro.xaml" />
-                <mui:Link DisplayName="IMAGES" Source="/Content/ContentLoaderImages.xaml" />
+                <mui:Link DisplayName="介绍" Source="/Content/ContentLoaderIntro.xaml" />
+                <mui:Link DisplayName="图片" Source="/Content/ContentLoaderImages.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>
