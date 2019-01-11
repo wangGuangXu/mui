@@ -6,15 +6,15 @@ A set of controls and styles converting your WPF application into a great lookin
 [![NuGet](https://img.shields.io/nuget/dt/ModernUI.WPF.svg)](http://nuget.org/packages/ModernUI.WPF)
 [![Stars](https://img.shields.io/github/stars/firstfloorsoftware/mui.svg)](https://github.com/firstfloorsoftware/mui/stargazers)
 
-## Demo
-Check out the **MUI demo app** included in the [MUI release](https://github.com/firstfloorsoftware/mui/releases). The app demonstrates most features of the MUI framework. The [full source](https://github.com/firstfloorsoftware/mui/tree/master/1.0/FirstFloor.ModernUI/FirstFloor.ModernUI.App) of the demo app is included in the source code of this project.
+## 演示
+Check out the **MUI 演示 app** included in the [MUI release](https://github.com/firstfloorsoftware/mui/releases). The app demonstrates most features of the MUI framework. The [full source](https://github.com/firstfloorsoftware/mui/tree/master/1.0/FirstFloor.ModernUI/FirstFloor.ModernUI.App) of the demo app is included in the source code of this project.
 
-## Documentation
+## 文档
 See some [screenshots](https://github.com/firstfloorsoftware/mui/wiki/Screenshots) to get an idea of what Modern UI for WPF is all about. And visit the [wiki](https://github.com/firstfloorsoftware/mui/wiki) to learn how to incorporate Modern UI for WPF into your application.
 
 ![](http://firstfloorsoftware.com/media/github/mui/mui.intro.png)
 
-## Features
+## 特点
 * Appearance, configurable at runtime
   * Dark, light and custom themes
   * Accent color
@@ -43,7 +43,7 @@ See some [screenshots](https://github.com/firstfloorsoftware/mui/wiki/Screenshot
   * Visual Studio 2012, 2013 and 2015 project and item templates for creating ModernUI apps as fast and smooth as possible
   * Read more and download the extension containing the templates from the [Visual Studio Gallery](http://visualstudiogallery.msdn.microsoft.com/7a4362a7-fe5d-4f9d-bc7b-0c0dc272fe31)
 
-## Acknowledgements
+## 确认
 * [WPF Shell Integration Library](http://archive.msdn.microsoft.com/WPFShell)
 * Adapted the TransitioningContentControl from [WPF Toolkit](http://wpf.codeplex.com/)
 * Adapted the Windows Phone [RelativeAnimatingContentControl](http://msdn.microsoft.com/en-us/library/gg442303(v=vs.92).aspx) for custom indeterminate ProgressBar styling
