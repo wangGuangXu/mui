@@ -10,7 +10,7 @@
 Check out the **MUI 演示 app** 包括在 [MUI release](https://github.com/firstfloorsoftware/mui/releases). 该应用程序演示了MUI框架的大部分功能。这个[full source](https://github.com/firstfloorsoftware/mui/tree/master/1.0/FirstFloor.ModernUI/FirstFloor.ModernUI.App) 这个项目的源代码中包含了演示应用程序的。
 
 ## 文档
-看到一些 [screenshots](https://github.com/firstfloorsoftware/mui/wiki/Screenshots) 了解WPF的现代用户界面。并参观 [wiki](https://github.com/firstfloorsoftware/mui/wiki)了解如何将WPF的现代UI合并到应用程序中。
+看到一些 [屏幕截图](https://github.com/firstfloorsoftware/mui/wiki/Screenshots) 了解WPF的现代用户界面。并参观 [wiki](https://github.com/firstfloorsoftware/mui/wiki)了解如何将WPF的现代UI合并到应用程序中。
 
 ![](http://firstfloorsoftware.com/media/github/mui/mui.intro.png)
 
