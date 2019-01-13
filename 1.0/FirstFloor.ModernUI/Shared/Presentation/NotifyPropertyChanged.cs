@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI.Presentation
 {
     /// <summary>
-    /// The base implementation of the INotifyPropertyChanged contract.
+    /// 通知客户端属性更改实现
     /// </summary>
     public abstract class NotifyPropertyChanged : INotifyPropertyChanged
     {
@@ -19,9 +20,9 @@ namespace FirstFloor.ModernUI.Presentation
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// Raises the PropertyChanged event.
+        /// 引发属性改变事件.（需要硬编码）
         /// </summary>
-        /// <param name="propertyName">Name of the property.</param>
+        /// <param name="propertyName">属性名称</param>
         protected virtual void OnPropertyChanged(string propertyName)
         {
             var handler = this.PropertyChanged;
@@ -30,6 +31,18 @@ namespace FirstFloor.ModernUI.Presentation
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        /// <summary>
+        /// 属性值变化时发生(避免硬编码)  //OnPropertyChanged(()=>this.Stocks);
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="propertyExpression">属性表达式</param>
+        protected virtual void OnPropertyChanged<T>(Expression<Func<T>> propertyExpression)
+        {
+            var propertyName = (propertyExpression.Body as MemberExpression).Member.Name;
+            this.OnPropertyChanged(propertyName);
+        }
+
 
 #if !NET4
         /// <summary>
