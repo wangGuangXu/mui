@@ -151,7 +151,7 @@
     <value>确定</value>
   </data>
   <data name="Restore" xml:space="preserve">
-    <value>恢复</value>
+    <value>向下还原</value>
   </data>
   <data name="UIThreadRequired" xml:space="preserve">
     <value>操作需要的UI线程</value>
