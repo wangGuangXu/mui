@@ -34,8 +34,9 @@ namespace FirstFloor.ModernUI.App.Content
             Color.FromRgb(0xa2, 0x00, 0xff),   // purple            
         };
 
-        // 来做Windwows Phone 8的20种强调色
-        private Color[] wpAccentColors = new Color[]{
+        // 来自Windwows Phone 8的20种强调色
+        private Color[] wpAccentColors = new Color[]
+        {
             Color.FromRgb(0xa4, 0xc4, 0x00),   // lime
             Color.FromRgb(0x60, 0xa9, 0x17),   // green
             Color.FromRgb(0x00, 0x8a, 0x00),   // emerald
@@ -108,21 +109,33 @@ namespace FirstFloor.ModernUI.App.Content
             }
         }
 
+        /// <summary>
+        /// 主题列表
+        /// </summary>
         public LinkCollection Themes
         {
             get { return this.themes; }
         }
 
+        /// <summary>
+        /// 字体大小集合
+        /// </summary>
         public string[] FontSizes
         {
             get { return new string[] { FontSmall, FontLarge }; }
         }
 
+        /// <summary>
+        /// 调色板列表
+        /// </summary>
         public string[] Palettes
         {
             get { return new string[] { PaletteMetro, PaletteWP }; }
         }
 
+        /// <summary>
+        /// 强调色
+        /// </summary>
         public Color[] AccentColors
         {
             get { return this.selectedPalette == PaletteMetro ? this.metroAccentColors : this.wpAccentColors; }
@@ -138,7 +151,7 @@ namespace FirstFloor.ModernUI.App.Content
             {
                 if (this.selectedPalette != value) {
                     this.selectedPalette = value;
-                    OnPropertyChanged("AccentColors");
+                    OnPropertyChanged(() => this.AccentColors);
 
                     this.SelectedAccentColor = this.AccentColors.FirstOrDefault();
                 }
@@ -146,7 +159,7 @@ namespace FirstFloor.ModernUI.App.Content
         }
 
         /// <summary>
-        /// 选定主题
+        /// 选择主题
         /// </summary>
         public Link SelectedTheme
         {
@@ -156,7 +169,7 @@ namespace FirstFloor.ModernUI.App.Content
                 if (this.selectedTheme != value)
                 {
                     this.selectedTheme = value;
-                    OnPropertyChanged("SelectedTheme");
+                    OnPropertyChanged(() => this.SelectedTheme);
 
                     // and update the actual theme
                     AppearanceManager.Current.ThemeSource = value.Source;
@@ -175,7 +188,7 @@ namespace FirstFloor.ModernUI.App.Content
                 if (this.selectedFontSize != value)
                 {
                     this.selectedFontSize = value;
-                    OnPropertyChanged("SelectedFontSize");
+                    OnPropertyChanged(() => this.SelectedFontSize);
 
                     AppearanceManager.Current.FontSize = value == FontLarge ? FontSize.Large : FontSize.Small;
                 }
@@ -193,7 +206,7 @@ namespace FirstFloor.ModernUI.App.Content
                 if (this.selectedAccentColor != value)
                 {
                     this.selectedAccentColor = value;
-                    OnPropertyChanged("SelectedAccentColor");
+                    OnPropertyChanged(() => this.SelectedAccentColor);
 
                     AppearanceManager.Current.AccentColor = value;
                 }

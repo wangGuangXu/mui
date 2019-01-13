@@ -54,8 +54,10 @@ namespace FirstFloor.ModernUI.App
         {
             var client = new HttpClient();
             var result = await client.GetAsync("http://www.bing.com/hpimagearchive.aspx?format=xml&idx=0&n=2&mbl=1&mkt=en-ww");
-            if (result.IsSuccessStatusCode) {
-                using (var stream = await result.Content.ReadAsStreamAsync()) {
+            if (result.IsSuccessStatusCode)
+            {
+                using (var stream = await result.Content.ReadAsStreamAsync())
+                {
                     var doc = XDocument.Load(stream);
 
                     var url = (string)doc.XPathSelectElement("/images/image/url");
