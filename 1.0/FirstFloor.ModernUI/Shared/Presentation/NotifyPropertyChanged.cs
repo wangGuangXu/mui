@@ -33,7 +33,7 @@ namespace FirstFloor.ModernUI.Presentation
         }
 
         /// <summary>
-        /// 属性值变化时发生(避免硬编码)  //OnPropertyChanged(()=>this.Stocks);
+        /// 属性值变化时发生(避免硬编码,并且可避免属性名称写错)  //OnPropertyChanged(()=>this.Stocks);
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="propertyExpression">属性表达式</param>
