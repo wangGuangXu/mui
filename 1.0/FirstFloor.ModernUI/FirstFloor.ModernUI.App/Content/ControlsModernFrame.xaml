@@ -9,7 +9,7 @@
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <StackPanel>
-                <TextBlock Text="MODERNFRAME" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+                <TextBlock Text="现代框架" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
 
                 <Border BorderBrush="{DynamicResource ButtonBorder}" BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,16">
                     <mui:ModernFrame x:Name="Frame" Source="/Content/ModernFrame/Sample.xaml" 
@@ -21,15 +21,15 @@
                 </Border>
 
                 <TextBlock Margin="0,0,0,16">
-                    <Run Text="Source:" />
+                    <Run Text="来源:" />
                     <Run Text="{Binding Source, ElementName=Frame}" FontWeight="Bold" />
                 </TextBlock>
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                    <Button Content="back" Command="NavigationCommands.BrowseBack" CommandTarget="{Binding ElementName=Frame}"/>
-                    <Button Content="refresh" Command="NavigationCommands.Refresh" CommandTarget="{Binding ElementName=Frame}" Margin="8,0,0,0"/>
-                    <Button Content="error" Command="NavigationCommands.GoToPage" CommandParameter="/Content/ModernFrame/ErrorSample.xaml" CommandTarget="{Binding ElementName=Frame}" Margin="8,0,0,0"/>
-                    <Button Content="cancellable" Command="NavigationCommands.GoToPage" CommandParameter="/Content/ModernFrame/CancelNavigateSample.xaml" CommandTarget="{Binding ElementName=Frame}" Margin="8,0,0,0"/>
+                    <Button Content="后退" Command="NavigationCommands.BrowseBack" CommandTarget="{Binding ElementName=Frame}"/>
+                    <Button Content="刷新" Command="NavigationCommands.Refresh" CommandTarget="{Binding ElementName=Frame}" Margin="8,0,0,0"/>
+                    <Button Content="错误" Command="NavigationCommands.GoToPage" CommandParameter="/Content/ModernFrame/ErrorSample.xaml" CommandTarget="{Binding ElementName=Frame}" Margin="8,0,0,0"/>
+                    <Button Content="取消" Command="NavigationCommands.GoToPage" CommandParameter="/Content/ModernFrame/CancelNavigateSample.xaml" CommandTarget="{Binding ElementName=Frame}" Margin="8,0,0,0"/>
                     <Button Content="fragment" Command="NavigationCommands.GoToPage" CommandParameter="/Content/ModernFrame/CancelNavigateSample.xaml#somevalue" CommandTarget="{Binding ElementName=Frame}" Margin="8,0,0,0"/>
                 </StackPanel>
 
@@ -50,7 +50,7 @@
                 <mui:BBCodeBlock BBCode="[url=cmd://browseback||Frame]back[/url]  [url=cmd://refresh||Frame]refresh[/url]  [url=/Content/ModernFrame/ErrorSample.xaml|Frame]error[/url]  [url=/Content/ModernFrame/CancelNavigateSample.xaml|Frame]cancellable[/url]  [url=/Content/ModernFrame/CancelNavigateSample.xaml#somevalue|Frame]fragment[/url]" Margin="0,0,0,16" />
                 -->
 
-                <TextBlock Text="Events" FontWeight="Bold" Margin="0,0,0,8" />
+                <TextBlock Text="事件列表" FontWeight="Bold" Margin="0,0,0,8" />
                 <TextBox x:Name="TextEvents" Width="480" Height="200" HorizontalAlignment="Left" IsReadOnly="True" VerticalScrollBarVisibility="Auto" />
             </StackPanel>
         </ScrollViewer>

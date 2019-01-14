@@ -8,7 +8,7 @@
     <Grid>
         <StackPanel Width="240" HorizontalAlignment="Left">
             
-            <TextBlock Text="PROGRESSBAR" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+            <TextBlock Text="进度条" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
             <ProgressBar Minimum="0" Maximum="1" Height="16" IsIndeterminate="True" Margin="0,0,0,16" />
 
             <ProgressBar Minimum="0" Maximum="1" Value=".7" Height="16" IsIndeterminate="False" Margin="0,0,0,16" />

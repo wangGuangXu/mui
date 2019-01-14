@@ -6,6 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
-        <TextBlock Text="Sample content loaded in a ModernFrame"/>
+        <TextBlock Text="在现代框架中加载示例内容"/>
     </StackPanel>
 </UserControl>

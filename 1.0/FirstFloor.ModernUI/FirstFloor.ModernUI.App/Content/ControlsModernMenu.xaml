@@ -9,21 +9,21 @@
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <StackPanel HorizontalAlignment="Left">
-                <TextBlock Text="MODERNMENU" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+                <TextBlock Text="现代菜单" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
 
                 <mui:ModernMenu x:Name="Menu" Margin="0,0,0,16" SelectedSource="/link1">
                     <mui:ModernMenu.LinkGroups>
-                        <mui:LinkGroup DisplayName="group 1">
+                        <mui:LinkGroup DisplayName="分组 1">
                             <mui:LinkGroup.Links>
-                                <mui:Link DisplayName="link 1" Source="/link1" />
-                                <mui:Link DisplayName="link 2" Source="/link2" />
-                                <mui:Link DisplayName="link 3" Source="/link3" />
+                                <mui:Link DisplayName="链接 1" Source="/link1" />
+                                <mui:Link DisplayName="链接 2" Source="/link2" />
+                                <mui:Link DisplayName="链接 3" Source="/link3" />
                             </mui:LinkGroup.Links>
                         </mui:LinkGroup>
-                        <mui:LinkGroup DisplayName="group 2">
+                        <mui:LinkGroup DisplayName="分组 2">
                             <mui:LinkGroup.Links>
-                                <mui:Link DisplayName="link 4" Source="/link4" />
-                                <mui:Link DisplayName="link 5" Source="/link5" />
+                                <mui:Link DisplayName="链接 4" Source="/link4" />
+                                <mui:Link DisplayName="链接 5" Source="/link5" />
                             </mui:LinkGroup.Links>
                         </mui:LinkGroup>
                     </mui:ModernMenu.LinkGroups>
@@ -31,25 +31,25 @@
 
                 <!-- displaying the current state of the menu -->
                 <TextBlock>
-                    <Run Text="SelectedLinkGroup:" />
+                    <Run Text="选中链接组:" />
                     <Run Text="{Binding SelectedLinkGroup.DisplayName, ElementName=Menu}" FontWeight="Bold" />
                 </TextBlock>
 
                 <TextBlock>
-                    <Run Text="SelectedLink:" />
+                    <Run Text="选中链接:" />
                     <Run Text="{Binding SelectedLink.DisplayName, ElementName=Menu}" FontWeight="Bold" />
                 </TextBlock>
 
                 <TextBlock Margin="0,0,0,16">
-                    <Run Text="SelectedSource:" />
+                    <Run Text="选中源:" />
                     <Run Text="{Binding SelectedSource, ElementName=Menu}" FontWeight="Bold" />
                 </TextBlock>
 
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="AddGroup" Content="add group" />
-                    <Button x:Name="AddLink" Content="add link" Margin="8,0,0,0" />
-                    <Button x:Name="RemoveGroup" Content="remove group" Margin="8,0,0,0" />
-                    <Button x:Name="RemoveLink" Content="remove link" Margin="8,0,0,0" />
+                    <Button x:Name="AddGroup" Content="添加组" />
+                    <Button x:Name="AddLink" Content="添加链接" Margin="8,0,0,0" />
+                    <Button x:Name="RemoveGroup" Content="移除组" Margin="8,0,0,0" />
+                    <Button x:Name="RemoveLink" Content="移除链接" Margin="8,0,0,0" />
                 </StackPanel>
 
             </StackPanel>

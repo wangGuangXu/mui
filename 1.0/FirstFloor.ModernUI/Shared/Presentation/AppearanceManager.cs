@@ -12,7 +12,7 @@ using System.Windows.Media;
 namespace FirstFloor.ModernUI.Presentation
 {
     /// <summary>
-    /// Manages the theme, font size and accent colors for a Modern UI application.
+    /// 管理界面主题、字体大小和强调色
     /// </summary>
     public class AppearanceManager : NotifyPropertyChanged
     {

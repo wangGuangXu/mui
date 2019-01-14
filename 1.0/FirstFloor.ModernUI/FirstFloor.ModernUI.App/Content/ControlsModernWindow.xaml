@@ -7,20 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel HorizontalAlignment="Left">
-        <TextBlock Text="MODERNWINDOW" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
-        <mui:BBCodeBlock BBCode="Demonstrating the use of custom styles to adapt ModernWindow to your needs. Additional ModernWindow styles are defined in [b]Assets\ModernWindowStyles.xaml[/b]" Margin="0,0,0,16" />
+        <TextBlock Text="现代窗口" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+        <mui:BBCodeBlock BBCode="演示如何使用自定义样式使modern窗口适应您的需要。在[b]Assets\ModernWindow style .xaml[/b]中定义了更多的modern窗口样式" Margin="0,0,0,16" />
 
-        <CheckBox x:Name="title" Content="title" IsChecked="True" Margin="0,0,0,2" />
+        <CheckBox x:Name="title" Content="标题" IsChecked="True" Margin="0,0,0,2" />
         <CheckBox x:Name="logo" Content="logo" IsChecked="True" Margin="0,0,0,2"/>
 
         <StackPanel Margin="0,0,0,8">
-            <RadioButton x:Name="noresize" Content="no resize" Margin="0,0,0,2" />
-            <RadioButton x:Name="canminimize" Content="can minimize" Margin="0,0,0,2"/>
-            <RadioButton x:Name="canresize" Content="can resize" Margin="0,0,0,2"/>
-            <RadioButton x:Name="canresizewithgrip" Content="can resize with grip" IsChecked="True" Margin="0,0,0,2"/>
+            <RadioButton x:Name="noresize" Content="禁止调整窗口大小" Margin="0,0,0,2" />
+            <RadioButton x:Name="canminimize" Content="最小化" Margin="0,0,0,2"/>
+            <RadioButton x:Name="canresize" Content="可调整大小" Margin="0,0,0,2"/>
+            <RadioButton x:Name="canresizewithgrip" Content="用手柄调整大小" IsChecked="True" Margin="0,0,0,2"/>
         </StackPanel>
         
-        <Button Content="blank window style" Margin="0,0,0,8" HorizontalAlignment="Left" Click="BlankWindow_Click"/>
+        <Button Content="空白窗口样式" Margin="0,0,0,8" HorizontalAlignment="Left" Click="BlankWindow_Click"/>
 
     </StackPanel>
 </UserControl>

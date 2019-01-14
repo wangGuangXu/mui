@@ -8,7 +8,7 @@
     <Grid>
         <ScrollViewer>
             <StackPanel HorizontalAlignment="Left">
-                <TextBlock Text="COMBOBOX" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+                <TextBlock Text="下拉框" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
                 <ComboBox Margin="0,0,0,8" HorizontalAlignment="Left" MinWidth="100">
                     <ComboBoxItem Content="Item 1" />
                     <ComboBoxItem Content="Item 2" />
@@ -26,10 +26,10 @@
                     </ComboBox>
                     <TextBlock Text="(editable)" Margin="8,2,0,0" Foreground="{DynamicResource WindowTextReadOnly}" />
                 </StackPanel>
-                <TextBlock Text="CONTEXTMENU" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
-                <Button Content="show context menu" Click="ShowContextMenu_Click" Margin="0,0,0,32" HorizontalAlignment="Left"/>
+                <TextBlock Text="上下文菜单" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+                <Button Content="显示上下文菜单" Click="ShowContextMenu_Click" Margin="0,0,0,32" HorizontalAlignment="Left"/>
 
-                <TextBlock Text="LISTBOX" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
+                <TextBlock Text="列表框" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
                 <ListBox Margin="0,0,0,32">
                     <ListBoxItem Content="Item 1" />
                     <ListBoxItem Content="Item 2" />
@@ -37,7 +37,7 @@
                     <ListBoxItem Content="Item 4" />
                     <ListBoxItem Content="Item 5" />
                 </ListBox>
-                <TextBlock Text="LISTVIEW" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
+                <TextBlock Text="列表视图" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
                 <ListView Margin="0,0,0,16">
                     <ListViewItem Content="Item 1" />
                     <ListViewItem Content="Item 2" />
@@ -61,7 +61,7 @@
                     <ListViewItem Content="Item 5" />
                 </ListView>
 
-                <TextBlock Text="TREEVIEW" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
+                <TextBlock Text="树视图" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
                 <TreeView>
                     <TreeViewItem Header="Item 1">
                         <TreeViewItem Header="Item 1.1" />

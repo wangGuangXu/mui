@@ -9,10 +9,10 @@
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
             <StackPanel >
-                <TextBlock Text="MODERN UI FOR WPF" Style="{StaticResource Heading1}" Margin="0,0,0,8"/>
-                <mui:BBCodeBlock BBCode="[b]Modern UI for WPF[/b], a set of controls and styles converting your WPF application into a great looking Modern UI app.&#13;&#10;&#13;&#10;This open source project is a spin-off of [url=http://xamlspy.com]XAML Spy[/url], the visual runtime inspector for Silverlight, Windows Phone, Windows Store and WPF.&#13;&#10;&#13;&#10;See the [url=https://github.com/firstfloorsoftware/mui/wiki]online documentation[/url] to learn more about how to incorporate [b]Modern UI for WPF[/b] into your applications." Margin="0,0,0,32" />
-                <TextBlock Text="APPEARANCE" Style="{StaticResource Heading2}" />
-                <mui:BBCodeBlock BBCode="The appearance of Modern UI styled windows can be changed on the fly. Make sure you visit the [url=/Pages/Settings.xaml]settings[/url] to adapt the appearance to your preference." Margin="0,0,0,32"/>
+                <TextBlock Text="WPF的现代用户界面" Style="{StaticResource Heading1}" Margin="0,0,0,8"/>
+                <mui:BBCodeBlock BBCode="这个开源项目是[url=http://xamlspy.com]XAML Spy[/url]的派生，它是Silverlight、Windows Phone的可视化运行时检查器，Windows Store和WPF. ;参见[url=https://github.com/firstfloorsoftware/mui/wiki]在线文档[/url]了解更多关于如何将[b]用于WPF[/b]的现代UI集成到应用程序中的信息。" Margin="0,0,0,32" />
+                <TextBlock Text="外观" Style="{StaticResource Heading2}" />
+                <mui:BBCodeBlock BBCode="现代用户界面风格的窗口的外观可以随时更改。请确保访问[url=/pages/settings.xaml]settings[/url]以使外观符合您的偏好。" Margin="0,0,0,32"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

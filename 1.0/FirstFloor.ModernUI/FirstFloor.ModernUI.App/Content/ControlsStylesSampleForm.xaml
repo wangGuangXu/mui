@@ -11,8 +11,8 @@
         <StackPanel MinWidth="200">
 
 
-            <TextBlock Text="SAMPLE FORM" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
-            <mui:BBCodeBlock BBCode="A sample form demonstrating various controls with support for validation and focus visualization." Margin="0,0,0,16"/>
+            <TextBlock Text="简单表单" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+            <mui:BBCodeBlock BBCode="演示各种控件并支持验证和焦点可视化的示例表单。" Margin="0,0,0,16"/>
 
             <!-- actual form starts here -->
             <StackPanel x:Name="Form" Orientation="Vertical">
@@ -48,30 +48,30 @@
                     <TextBox x:Name="TextLastName" Width="150" Text="{Binding LastName, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="Gender" Target="{Binding ElementName=RadioGendeMale}"/>
+                    <Label Content="性别" Target="{Binding ElementName=RadioGendeMale}"/>
                     <RadioButton x:Name="RadioGendeMale">
-                        <TextBlock>Male</TextBlock>
+                        <TextBlock>男性</TextBlock>
                     </RadioButton>
-                    <RadioButton Content="Female" Margin="8,0,0,0" />
+                    <RadioButton Content="女性" Margin="8,0,0,0" />
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="Birth date" Target="{Binding ElementName=DateBirth}" />
+                    <Label Content="出生日期" Target="{Binding ElementName=DateBirth}" />
                     <DatePicker x:Name="DateBirth" />
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="Address" Target="{Binding ElementName=TextAddress}"/>
+                    <Label Content="地址" Target="{Binding ElementName=TextAddress}"/>
                     <TextBox x:Name="TextAddress" Width="150" />
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="City" Target="{Binding ElementName=TextCity}"/>
+                    <Label Content="城市" Target="{Binding ElementName=TextCity}"/>
                     <TextBox x:Name="TextCity" Width="150" />
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="State" Target="{Binding ElementName=ComboState}"/>
+                    <Label Content="状态" Target="{Binding ElementName=ComboState}"/>
                     <ComboBox x:Name="ComboState" Width="150">
                         <ComboBoxItem>Alabama</ComboBoxItem>
-                        <ComboBoxItem>Alaska</ComboBoxItem>
-                        <ComboBoxItem>Arizona</ComboBoxItem>
+                        <ComboBoxItem>阿拉斯加州</ComboBoxItem>
+                        <ComboBoxItem>亚利桑那州</ComboBoxItem>
                         <ComboBoxItem>Arkansas</ComboBoxItem>
                         <ComboBoxItem>California</ComboBoxItem>
                         <ComboBoxItem>Colorado</ComboBoxItem>
@@ -122,7 +122,7 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="Zip code" Target="{Binding ElementName=TextZipCode}"/>
+                    <Label Content="邮政编码" Target="{Binding ElementName=TextZipCode}"/>
                     <TextBox x:Name="TextZipCode" Width="150" />
                 </StackPanel>
                 <StackPanel >
@@ -132,7 +132,7 @@
                     </CheckBox>
                 </StackPanel>
 
-                <Button Content="Submit" Margin="100,16,0,0" HorizontalAlignment="Left" />
+                <Button Content="提交" Margin="100,16,0,0" HorizontalAlignment="Left" />
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

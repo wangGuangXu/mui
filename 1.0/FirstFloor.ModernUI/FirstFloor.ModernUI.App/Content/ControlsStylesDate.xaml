@@ -8,7 +8,7 @@
     <Grid>
         <ScrollViewer>
             <StackPanel HorizontalAlignment="Left">
-                <TextBlock Text="CALENDAR" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
+                <TextBlock Text="日历" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
                 <StackPanel Orientation="Horizontal">
                     <Calendar Margin="0,0,8,0">
                         <Calendar.BlackoutDates>
@@ -18,7 +18,7 @@
                     <Calendar Margin="0,0,0,32" IsEnabled="False" />
                 </StackPanel>
 
-                <TextBlock Text="DATEPICKER" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+                <TextBlock Text="日期选择器" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
                 <StackPanel HorizontalAlignment="Left">
                     <DatePicker Margin="0,0,0,8" />
                     <DatePicker IsEnabled="False" />

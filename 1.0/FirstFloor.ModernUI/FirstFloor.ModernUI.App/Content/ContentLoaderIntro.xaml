@@ -8,10 +8,10 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <ScrollViewer>
         <StackPanel MinWidth="200">
-            <mui:BBCodeBlock BBCode="The [b]IContentLoader[/b] interface provides an abstraction layer for loading content pages in a [b]ModernFrame[/b]. The default implementation [b]DefaultContentLoader[/b] supports local XAML content only. Implement your own content loader and you can load content pages from any source." Margin="0,0,0,16" />
-            <TextBlock Text="FLICKR IMAGES" Style="{StaticResource Heading2}" />
-            <mui:BBCodeBlock BBCode="Demonstrating the flexibility of [b]IContentLoader[/b] by dynamically loading and displaying web images in a [b]ModernFrame[/b]. The images originate from the [url=http://www.flickr.com/explore/interesting/]Flickr interestingness list[/url]. A custom [b]FlickrImageLoader[/b] implements [b]IContentLoader[/b] and loads the image collection from the web using the REST protocol and ensures the image results are properly loaded in a ModernFrame instance. See the [url=/Content/ContentLoaderImages.xaml]demo in action[/url]." Margin="0,0,0,16"/>
-            <mui:BBCodeBlock BBCode="Visit the [url=https://github.com/firstfloorsoftware/mui/wiki]online documentation[/url] to learn more about [b]IContentLoader[/b]." Margin="0,0,0,16" />
+            <mui:BBCodeBlock BBCode="[b]IContentLoader[/b]接口提供了一个抽象层，用于在[b]modernframe[/b]中加载内容页。默认实现[b]DefaultContentLoader[/b]仅支持本地XAML内容。实现自己的内容加载器，您可以从任何源加载内容页。" Margin="0,0,0,16" />
+            <TextBlock Text="图片分享" Style="{StaticResource Heading2}" />
+            <mui:BBCodeBlock BBCode="通过在[b]modernframe[/b]中动态加载和显示Web图像，演示[b]IContentLoader[/b]的灵活性。图片来源于[url=http://www.flickr.com/explore/interest/]flickr interestingness list[/url]。自定义[b]FlickRimageLoader[/b]实现[b]IContentLoader[/b]并使用REST协议从Web加载图像集合，并确保图像结果正确加载到Modernframe实例中。请参阅[url=/content/contentloaderimages.xaml]演示。" Margin="0,0,0,16"/>
+            <mui:BBCodeBlock BBCode="访问[url=https://github.com/firstfloorsoftware/mui/wiki]在线文档[/url]以了解[b]IContentLoader[/b]的更多信息。" Margin="0,0,0,16" />
         </StackPanel>
     </ScrollViewer>
 </UserControl>

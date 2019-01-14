@@ -8,25 +8,25 @@
     <Grid>
         <ScrollViewer>
             <StackPanel HorizontalAlignment="Left">
-                <TextBlock Text="TEXT STYLING" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
+                <TextBlock Text="文本造型" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
 
-                <TextBlock Text="HEADING1" Style="{StaticResource Heading1}" Margin="0,0,0,8" />
-                <TextBlock Text="HEADING2" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
-                <TextBlock Text="title" Style="{StaticResource Title}" Margin="0,0,0,8"/>
-                <TextBlock Text="Normal" Margin="0,0,0,8"/>
-                <TextBlock Text="small" Style="{StaticResource Small}" Margin="0,0,0,8"/>
-                <TextBlock Text="EMPHASIS" Style="{StaticResource Emphasis}" Margin="0,0,0,8"/>
-                <TextBlock Text="Fixed" Style="{StaticResource Fixed}" Margin="0,0,0,32"/>
+                <TextBlock Text="标题1" Style="{StaticResource Heading1}" Margin="0,0,0,8" />
+                <TextBlock Text="标题2" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
+                <TextBlock Text="标题" Style="{StaticResource Title}" Margin="0,0,0,8"/>
+                <TextBlock Text="正常的" Margin="0,0,0,8"/>
+                <TextBlock Text="小的" Style="{StaticResource Small}" Margin="0,0,0,8"/>
+                <TextBlock Text="强调" Style="{StaticResource Emphasis}" Margin="0,0,0,8"/>
+                <TextBlock Text="固定的" Style="{StaticResource Fixed}" Margin="0,0,0,32"/>
 
-                <TextBlock Text="TEXT AND PASSWORDBOX" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
-                <TextBox Text="textbox" Margin="0,0,0,8"/>
-                <TextBox Text="readonly textbox" IsReadOnly="True" Margin="0,0,0,8"/>
-                <TextBox Text="disabled textbox" IsEnabled="False" Margin="0,0,0,8"/>
+                <TextBlock Text="文本和密码框" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
+                <TextBox Text="文本框" Margin="0,0,0,8"/>
+                <TextBox Text="只读文本框" IsReadOnly="True" Margin="0,0,0,8"/>
+                <TextBox Text="禁用的文本框" IsEnabled="False" Margin="0,0,0,8"/>
                 <PasswordBox Password="12345" Margin="0,0,0,32"/>
 
-                <TextBlock Text="LABEL" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
-                <Label Content="label" Margin="0,0,0,8"/>
-                <Label Content="disabled label" IsEnabled="False" />
+                <TextBlock Text="标签" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
+                <Label Content="标签" Margin="0,0,0,8"/>
+                <Label Content="禁用标签" IsEnabled="False" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

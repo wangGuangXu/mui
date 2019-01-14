@@ -18,6 +18,6 @@
             </mui:ModernTab.ContentLoader>
         </mui:ModernTab>
         
-        <mui:BBCodeBlock Grid.Row="1" BBCode="Powered by [url=http://flickr.com]Flickr[/url]" Margin="{StaticResource StatusMargin}" Foreground="{DynamicResource WindowTextReadOnly}" />
+        <mui:BBCodeBlock Grid.Row="1" BBCode="技术支持Powered by [url=http://flickr.com]Flickr[/url]" Margin="{StaticResource StatusMargin}" Foreground="{DynamicResource WindowTextReadOnly}" />
     </Grid>
 </UserControl>

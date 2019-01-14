@@ -10,7 +10,8 @@
 
     <Style TargetType="controls:ModernDialog">
         <Setter Property="BackgroundContent" Value="{DynamicResource WindowBackgroundContent}" />
-        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <!--<Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />-->
+        <Setter Property="FontFamily" Value="微软雅黑" />
         <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
         <Setter Property="Foreground" Value="{DynamicResource WindowText}" />
         <Setter Property="MaxWidth" Value="640" />
@@ -48,7 +49,7 @@
 
                                             <!-- title -->
                                             <TextBlock DataContext="{TemplateBinding Title}" Text="{Binding Converter={StaticResource ToUpperConverter}}" 
-                                                   FontFamily="Segoe UI"
+                                                   FontFamily="微软雅黑"
                                                    FontSize="24"
                                                    TextOptions.TextFormattingMode="Ideal"
                                                    TextTrimming="CharacterEllipsis" />

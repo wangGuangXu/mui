@@ -8,12 +8,12 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <StackPanel MinWidth="200" HorizontalAlignment="Left">
-            <TextBlock Text="MODERNPROGRESSRING" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
-            <mui:BBCodeBlock BBCode="Represents a control that indicates that an operation is ongoing. The control comes with 8 built-in spinner styles, ported from [url=https://github.com/nigel-sampson/spinkit-xaml]SpinKit.Xaml[/url]." Margin="0,0,0,8" />
-            <mui:BBCodeBlock BBCode="Note: the styles automatically fill the given control size, except for [i]Wandering Cubes[/i] which is hard coded for 80 x 80." Margin="0,0,0,16" />
+            <TextBlock Text="现代正在进行时" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+            <mui:BBCodeBlock BBCode="表示指示操作正在进行的控件。该控件带有8种内置的spinner样式，可从[url=https://github.com/nigel-sampson/spinkit-xaml]SpinKit.Xaml[/url]中移植。" Margin="0,0,0,8" />
+            <mui:BBCodeBlock BBCode="注意:样式会自动填充给定的控件大小，但[i]游走的多维数据集[/i]除外，该多维数据集为80 x 80的硬编码。" Margin="0,0,0,16" />
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,32">
-                <TextBlock Text="Style:" VerticalAlignment="Center" />
+                <TextBlock Text="样式:" VerticalAlignment="Center" />
                 <ComboBox x:Name="CmbRingStyle" Margin="8,0,0,0">
                     <ComboBoxItem Content="Chasing Dots" Tag="{StaticResource ChasingDotsProgressRingStyle}" />
                     <ComboBoxItem Content="Circle (default style)" IsSelected="True" Tag="{StaticResource CircleProgressRingStyle}" />

@@ -8,23 +8,23 @@
     <Grid>
         <ScrollViewer>
             <StackPanel HorizontalAlignment="Left">
-                <TextBlock Text="BUTTON" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+                <TextBlock Text="按钮" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
                 <StackPanel HorizontalAlignment="Left" Width="140">
-                    <Button Content="standard button" Margin="0,0,0,8" />
-                    <Button Content="disabled button" IsEnabled="False" Margin="0,0,0,32" />
+                    <Button Content="标准按钮" Margin="0,0,0,8" />
+                    <Button Content="禁用按钮" IsEnabled="False" Margin="0,0,0,32" />
                 </StackPanel>
 
-                <TextBlock Text="CHECKBOX" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
-                <CheckBox Content="standard checkbox" Margin="0,0,0,4"  />
-                <CheckBox Content="three state checkbox" IsThreeState="True" Margin="0,0,0,4"  />
-                <CheckBox Content="disabled checkbox" IsEnabled="False" Margin="0,0,0,4" />
-                <CheckBox Content="disabled checked checkbox" IsChecked="True" IsEnabled="False" Margin="0,0,0,32" />
+                <TextBlock Text="复选框" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
+                <CheckBox Content="标准复选框" Margin="0,0,0,4"  />
+                <CheckBox Content="三态（3种状态）复选框" IsThreeState="True" Margin="0,0,0,4"  />
+                <CheckBox Content="禁用复选框" IsEnabled="False" Margin="0,0,0,4" />
+                <CheckBox Content="禁用并选中复选框" IsChecked="True" IsEnabled="False" Margin="0,0,0,32" />
 
-                <TextBlock Text="RADIOBUTTON" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
-                <RadioButton Content="option 1" Margin="0,0,0,4"  />
-                <RadioButton Content="option 2" Margin="0,0,0,4" />
-                <RadioButton Content="option 3, disabled" IsEnabled="False" Margin="0,0,0,4"/>
-                <RadioButton Content="another option, disabled and checked" IsEnabled="False" IsChecked="True" GroupName="Foo" />
+                <TextBlock Text="单选按钮" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
+                <RadioButton Content="选项 1" Margin="0,0,0,4"  />
+                <RadioButton Content="选项 2" Margin="0,0,0,4" />
+                <RadioButton Content="选项 3, 禁用" IsEnabled="False" Margin="0,0,0,4"/>
+                <RadioButton Content="另一个种选择，禁用并选中" IsEnabled="False" IsChecked="True" GroupName="Foo" />
             </StackPanel>
         </ScrollViewer>
     </Grid>
