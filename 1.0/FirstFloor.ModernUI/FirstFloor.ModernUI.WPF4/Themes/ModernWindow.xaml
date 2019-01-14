@@ -13,7 +13,8 @@
 
     <Style TargetType="controls:ModernWindow">
         <Setter Property="BackgroundContent" Value="{DynamicResource WindowBackgroundContent}" />
-        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <!--<Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />-->
+        <Setter Property="FontFamily" Value="微软雅黑" />
         <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
         <Setter Property="Foreground" Value="{DynamicResource WindowText}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WindowBorder}" />
@@ -62,10 +63,11 @@
                                         <!-- title -->
                                         <TextBlock Text="{TemplateBinding Title}" Margin="8,0" VerticalAlignment="Center" Style="{StaticResource ModernWindowTitle}"
                                                    DataContext="{TemplateBinding IsTitleVisible}"
+                                                    FontFamily="微软雅黑"
                                                    Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                                         <!-- title links -->
-                                        <ItemsControl Grid.Column="1" ItemsSource="{TemplateBinding TitleLinks}" Margin="0,0,24,0" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                                        <ItemsControl Grid.Column="1" ItemsSource="{TemplateBinding TitleLinks}" Margin="0,0,24,0" shell:WindowChrome.IsHitTestVisibleInChrome="True" FontFamily="微软雅黑">
                                             <ItemsControl.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <StackPanel Orientation="Horizontal" />
@@ -78,6 +80,7 @@
 
                                                         <Button Content="{Binding DisplayName}"
                                                                 Command="navigation:LinkCommands.NavigateLink"
+                                                                FontFamily="微软雅黑"
                                                                 CommandParameter="{Binding Source}"
                                                                 CommandTarget="{Binding ElementName=ContentFrame}"
                                                                 Style="{StaticResource SystemButtonLink}" />
