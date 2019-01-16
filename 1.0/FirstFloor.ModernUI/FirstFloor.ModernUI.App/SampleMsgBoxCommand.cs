@@ -10,18 +10,18 @@ using System.Windows;
 namespace FirstFloor.ModernUI.App
 {
     /// <summary>
-    /// An ICommand implementation displaying a message box.
+    /// 显示消息框的命令实现
     /// </summary>
-    public class SampleMsgBoxCommand
-        : CommandBase
+    public class SampleMsgBoxCommand: CommandBase
     {
         /// <summary>
-        /// Executes the command.
+        /// 执行命令
         /// </summary>
-        /// <param name="parameter">The parameter.</param>
+        /// <param name="parameter">命令参数</param>
         protected override void OnExecute(object parameter)
         {
-            ModernDialog.ShowMessage("A messagebox triggered by selecting a hyperlink", "Messagebox", MessageBoxButton.OK);
+            ModernDialog.ShowMessage("通过选择超链接触发的消息框", "Messagebox", MessageBoxButton.OK);
         }
+
     }
 }

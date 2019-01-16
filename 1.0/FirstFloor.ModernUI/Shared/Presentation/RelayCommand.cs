@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI.Presentation
 {
     /// <summary>
-    /// The command that relays its functionality by invoking delegates.
+    /// 通过调用委托来传递其功能的命令。
     /// </summary>
     public class RelayCommand: CommandBase
     {
@@ -15,20 +15,20 @@ namespace FirstFloor.ModernUI.Presentation
         private Func<object, bool> canExecute;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RelayCommand"/> class.
+        /// 初始化类的新实例。Initializes a new instance of the <see cref="RelayCommand"/> class.
         /// </summary>
-        /// <param name="execute">The execute.</param>
-        /// <param name="canExecute">The can execute.</param>
+        /// <param name="execute">执行</param>
+        /// <param name="canExecute">可以执行</param>
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
             if (execute == null)
             {
-                throw new ArgumentNullException("execute");
+                throw new ArgumentNullException("执行");
             }
 
             if (canExecute == null)
             {
-                // no can execute provided, then always executable
+                // 不可以执行提供的，则始终可执行 no can execute provided, then always executable
                 canExecute = (o) => true;
             }
 
@@ -37,11 +37,11 @@ namespace FirstFloor.ModernUI.Presentation
         }
 
         /// <summary>
-        /// Defines the method that determines whether the command can execute in its current state.
+        /// 检查命令是否可用的方法
         /// </summary>
-        /// <param name="parameter">Data used by the command. If the command does not require data to be passed, this object can be set to null.</param>
+        /// <param name="parameter">命令使用的数据。如果命令不需要传递数据，则可以将该对象设置为null</param>
         /// <returns>
-        /// true if this command can be executed; otherwise, false.
+        /// 如果可以执行此命令，则为true；否则为false。
         /// </returns>
         public override bool CanExecute(object parameter)
         {
@@ -49,12 +49,13 @@ namespace FirstFloor.ModernUI.Presentation
         }
 
         /// <summary>
-        /// Executes the command.
+        /// 执行命令
         /// </summary>
-        /// <param name="parameter">The parameter.</param>
+        /// <param name="parameter">命令参数</param>
         protected override void OnExecute(object parameter)
         {
             execute(parameter);
         }
+
     }
 }

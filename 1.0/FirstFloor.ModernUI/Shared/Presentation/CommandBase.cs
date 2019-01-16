@@ -8,13 +8,12 @@ using System.Windows.Input;
 namespace FirstFloor.ModernUI.Presentation
 {
     /// <summary>
-    /// The base implementation of a command.
+    /// 实现命令的基类
     /// </summary>
-    public abstract class CommandBase
-        : ICommand
+    public abstract class CommandBase : ICommand
     {
         /// <summary>
-        /// Occurs when changes occur that affect whether or not the command should execute.
+        /// 在命令可执行状态发生改变时触发
         /// </summary>
         public event EventHandler CanExecuteChanged
         {
@@ -23,7 +22,7 @@ namespace FirstFloor.ModernUI.Presentation
         }
 
         /// <summary>
-        /// Raises the <see cref="CanExecuteChanged" /> event.
+        /// 引发执行更改事件
         /// </summary>
         public void OnCanExecuteChanged()
         {
@@ -31,11 +30,11 @@ namespace FirstFloor.ModernUI.Presentation
         }
 
         /// <summary>
-        /// Defines the method that determines whether the command can execute in its current state.
+        /// 检查命令是否可用的方法
         /// </summary>
-        /// <param name="parameter">Data used by the command.  If the command does not require data to be passed, this object can be set to null.</param>
+        /// <param name="parameter">命令使用的数据。如果命令不需要传递数据，则可以将该对象设置为null。</param>
         /// <returns>
-        /// true if this command can be executed; otherwise, false.
+        /// 如果可以执行此命令，则为true；否则为false。
         /// </returns>
         public virtual bool CanExecute(object parameter)
         {
@@ -43,21 +42,22 @@ namespace FirstFloor.ModernUI.Presentation
         }
 
         /// <summary>
-        /// Defines the method to be called when the command is invoked.
+        /// 命令执行的方法 
         /// </summary>
-        /// <param name="parameter">Data used by the command.  If the command does not require data to be passed, this object can be set to null.</param>
+        /// <param name="parameter">命令使用的数据。如果命令不需要传递数据，则可以将此对象设置为空。</param>
         public void Execute(object parameter)
         {
-            if (!CanExecute(parameter)) {
+            if (!CanExecute(parameter))
+            {
                 return;
             }
             OnExecute(parameter);
         }
 
         /// <summary>
-        /// Executes the command.
+        /// 执行命令
         /// </summary>
-        /// <param name="parameter">The parameter.</param>
+        /// <param name="parameter">命令参数</param>
         protected abstract void OnExecute(object parameter);
     }
 }
