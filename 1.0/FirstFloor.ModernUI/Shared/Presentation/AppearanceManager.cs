@@ -162,7 +162,7 @@ namespace FirstFloor.ModernUI.Presentation
             Application.Current.Resources[KeyDefaultFontSize] = fontSize == FontSize.Small ? 12D : 13D;
             Application.Current.Resources[KeyFixedFontSize] = fontSize == FontSize.Small ? 10.667D : 13.333D;
 
-            OnPropertyChanged("FontSize");
+            OnPropertyChanged(()=>this.FontSize);
         }
 
         private Color GetAccentColor()
@@ -174,7 +174,7 @@ namespace FirstFloor.ModernUI.Presentation
                 return accentColor.Value;
             }
 
-            // default color: teal
+            // 默认颜色:蓝绿色
             return Color.FromArgb(0xff, 0x1b, 0xa1, 0xe2);
         }
 
@@ -193,7 +193,7 @@ namespace FirstFloor.ModernUI.Presentation
         }
 
         /// <summary>
-        /// Gets the current <see cref="AppearanceManager"/> instance.
+        /// 获取外观管理实例
         /// </summary>
         public static AppearanceManager Current
         {
