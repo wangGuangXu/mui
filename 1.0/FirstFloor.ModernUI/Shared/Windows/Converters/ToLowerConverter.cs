@@ -5,10 +5,9 @@ using System.Windows.Data;
 namespace FirstFloor.ModernUI.Windows.Converters
 {
     /// <summary>
-    /// Converts string values to lower case.
+    /// 将字符串值转换为小写
     /// </summary>
-    public class ToLowerConverter
-        : IValueConverter
+    public class ToLowerConverter : IValueConverter
     {
         /// <summary>
         /// Converts a value.
@@ -23,9 +22,9 @@ namespace FirstFloor.ModernUI.Windows.Converters
         [SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase")]
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value != null) {
+            if (value != null)
+            {
                 var strValue = value.ToString();
-
                 
                 return strValue.ToLowerInvariant();
             }

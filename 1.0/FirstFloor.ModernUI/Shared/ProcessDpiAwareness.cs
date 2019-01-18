@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI
 {
     /// <summary>
-    /// Identifies dots per inch (dpi) awareness values.
+    /// 标识每英寸点(dpi)感知值
     /// </summary>
     public enum ProcessDpiAwareness
     {
         /// <summary>
-        /// Process is not DPI aware.
+        /// 进程不知道DPI
         /// </summary>
         DpiUnaware = 0,
         /// <summary>
-        /// Process is system DPI aware (= WPF default).
+        /// 进程是系统DPI感知的（=WPF默认值）
         /// </summary>
         SystemDpiAware = 1,
         /// <summary>
-        /// Process is per monitor DPI aware (Win81+ only).
+        /// 进程按监视器DPI感知（仅限Win81+）
         /// </summary>
         PerMonitorDpiAware = 2
     }

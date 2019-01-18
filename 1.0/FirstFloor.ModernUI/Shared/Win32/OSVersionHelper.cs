@@ -11,7 +11,7 @@ namespace FirstFloor.ModernUI.Win32
     // License: The Code Project Open License
 
     /// <summary>
-    /// .NET wrapper for Version Helper functions.
+    /// . net版本帮助函数的包装器。
     /// http://msdn.microsoft.com/library/windows/desktop/dn424972.aspx
     /// </summary>
     public static class OSVersionHelper

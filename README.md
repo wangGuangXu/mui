@@ -54,3 +54,4 @@ Check out the **MUI 演示 app** 包括在 [MUI release](https://github.com/firs
 * 1.汉化
   * 直接改项目Shared中的默认Resources.resx文件实现，（默认是英语）也可额外专门添加中文资源文件
 * 2.添加中文注释及中文语音播报
+* 3.DataGrid 新增全选示例

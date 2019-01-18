@@ -8,15 +8,15 @@ using System.Windows.Media;
 namespace FirstFloor.ModernUI.Windows.Media
 {
     /// <summary>
-    /// Provides addition visual tree helper methods.
+    /// 提供附加的可视化树帮助器方法
     /// </summary>
     public static class VisualTreeHelperEx
     {
         /// <summary>
-        /// Gets specified visual state group.
+        /// 获取指定的可视状态组
         /// </summary>
-        /// <param name="dependencyObject">The dependency object.</param>
-        /// <param name="groupName">Name of the group.</param>
+        /// <param name="dependencyObject">依赖对象</param>
+        /// <param name="groupName">组名</param>
         /// <returns></returns>
         public static VisualStateGroup TryGetVisualStateGroup(this DependencyObject dependencyObject, string groupName)
         {
@@ -30,9 +30,9 @@ namespace FirstFloor.ModernUI.Windows.Media
         }
 
         /// <summary>
-        /// Gets the implementation root.
+        /// 获取实现根
         /// </summary>
-        /// <param name="dependencyObject">The dependency object.</param>
+        /// <param name="dependencyObject">依赖对象</param>
         /// <returns></returns>
         public static FrameworkElement GetImplementationRoot(this DependencyObject dependencyObject)
         {
@@ -43,21 +43,24 @@ namespace FirstFloor.ModernUI.Windows.Media
         }
 
         /// <summary>
-        /// Returns a collection of the visual ancestor elements of specified dependency object.
+        /// 返回指定依赖项对象的可视祖先元素的集合
         /// </summary>
-        /// <param name="dependencyObject">The dependency object.</param>
+        /// <param name="dependencyObject">依赖对象</param>
         /// <returns>
-        /// A collection that contains the ancestors elements.
+        /// 包含祖先元素的集合
         /// </returns>
         public static IEnumerable<DependencyObject> Ancestors(this DependencyObject dependencyObject)
         {
             var parent = dependencyObject;
-            while (true) {
+            while (true)
+            {
                 parent = GetParent(parent);
-                if (parent != null) {
+                if (parent != null)
+                {
                     yield return parent;
                 }
-                else {
+                else
+                {
                     break;
                 }
             }

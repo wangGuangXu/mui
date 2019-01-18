@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace FirstFloor.ModernUI.Win32
 {
+    /// <summary>
+    /// 矩形
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     internal struct RECT
     {

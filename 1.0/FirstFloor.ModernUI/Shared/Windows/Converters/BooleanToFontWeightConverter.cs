@@ -8,13 +8,13 @@ using System.Windows;
 namespace FirstFloor.ModernUI.Windows.Converters
 {
     /// <summary>
+    /// 将布尔值转换为字体粗细（false:正常，true:粗体）
     /// Converts a boolean value to a font weight (false: normal, true: bold)
     /// </summary>
-    public class BooleanToFontWeightConverter
-        : IValueConverter
+    public class BooleanToFontWeightConverter : IValueConverter
     {
         /// <summary>
-        /// Converts a value.
+        /// 转换值
         /// </summary>
         /// <param name="value">The value produced by the binding source.</param>
         /// <param name="targetType">The type of the binding target property.</param>
@@ -28,7 +28,8 @@ namespace FirstFloor.ModernUI.Windows.Converters
             bool inverse = (parameter as string) == "inverse";
 
             var bold = value as bool?;
-            if (bold.HasValue && bold.Value) {
+            if (bold.HasValue && bold.Value)
+            {
                 return inverse ? FontWeights.Normal : FontWeights.Bold;
             }
             return inverse ? FontWeights.Bold : FontWeights.Normal;

@@ -9,20 +9,20 @@ using System.Windows;
 namespace FirstFloor.ModernUI.Windows
 {
     /// <summary>
-    /// Loads XAML files using Application.LoadComponent.
+    /// 使用Application.LoadComponent加载XAML文件
     /// </summary>
-    public class DefaultContentLoader
-        : IContentLoader
+    public class DefaultContentLoader : IContentLoader
     {
         /// <summary>
-        /// Asynchronously loads content from specified uri.
+        /// 异步地从指定的uri加载内容
         /// </summary>
         /// <param name="uri">The content uri.</param>
-        /// <param name="cancellationToken">The token used to cancel the load content task.</param>
+        /// <param name="cancellationToken">用于取消加载内容任务的令牌.</param>
         /// <returns>The loaded content.</returns>
         public Task<object> LoadContentAsync(Uri uri, CancellationToken cancellationToken)
         {
-            if (!Application.Current.Dispatcher.CheckAccess()) {
+            if (!Application.Current.Dispatcher.CheckAccess())
+            {
                throw new InvalidOperationException(Resources.UIThreadRequired);
             }
             
@@ -32,14 +32,15 @@ namespace FirstFloor.ModernUI.Windows
         }
 
         /// <summary>
-        /// Loads the content from specified uri.
+        /// 从指定的URI加载内容
         /// </summary>
         /// <param name="uri">The content uri</param>
         /// <returns>The loaded content.</returns>
         protected virtual object LoadContent(Uri uri)
         {
             // don't do anything in design mode
-            if (ModernUIHelper.IsInDesignMode) {
+            if (ModernUIHelper.IsInDesignMode)
+            {
                 return null;
             }
             return Application.LoadComponent(uri);

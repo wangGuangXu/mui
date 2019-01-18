@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI.Windows.Navigation
 {
     /// <summary>
-    /// Identifies the types of navigation that are supported.
+    /// 标识所支持的导航类型
     /// </summary>
     public enum NavigationType
     {
         /// <summary>
-        /// Navigating to new content.
+        /// 导航到新内容
         /// </summary>
         New,
         /// <summary>
-        /// Navigating back in the back navigation history.
+        /// 在向后导航历史记录中向后导航
         /// </summary>
         Back,
         /// <summary>
-        /// Reloading the current content.
+        /// 重新加载当前内容
         /// </summary>
         Refresh
     }

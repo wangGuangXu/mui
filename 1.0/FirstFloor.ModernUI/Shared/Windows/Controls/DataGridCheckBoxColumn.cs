@@ -8,10 +8,9 @@ using System.Windows;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
-    /// A DataGrid checkbox column using default Modern UI element styles.
+    /// DataGrid复选框列使用默认的现代UI元素样式。
     /// </summary>
-    public class DataGridCheckBoxColumn
-        : System.Windows.Controls.DataGridCheckBoxColumn
+    public class DataGridCheckBoxColumn : System.Windows.Controls.DataGridCheckBoxColumn
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DataGridCheckBoxColumn"/> class.

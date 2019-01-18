@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI.Windows
 {
     /// <summary>
-    /// The contract for loading content.
+    /// 加载内容接口
     /// </summary>
     public interface IContentLoader
     {

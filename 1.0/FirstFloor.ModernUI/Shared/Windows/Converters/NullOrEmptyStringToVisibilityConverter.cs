@@ -9,10 +9,9 @@ using System.Windows;
 namespace FirstFloor.ModernUI.Windows.Converters
 {
     /// <summary>
-    /// Converts a null or empty string value to Visibility.Visible and any other value to Visibility.Collapsed
+    /// 将空或空字符串值转换为visibility.visible，将任何其他值转换为visibility.collapsed。
     /// </summary>
-    public class NullOrEmptyStringToVisibilityConverter
-        : IValueConverter
+    public class NullOrEmptyStringToVisibilityConverter : IValueConverter
     {
         /// <summary>
         /// Converts a value.

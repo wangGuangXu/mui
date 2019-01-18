@@ -7,10 +7,9 @@ using System.Windows.Data;
 namespace FirstFloor.ModernUI.Windows.Converters
 {
     /// <summary>
-    /// Converts string values to upper case.
+    /// 将字符串值转换为大写
     /// </summary>
-    public class ToUpperConverter
-        : IValueConverter
+    public class ToUpperConverter : IValueConverter
     {
         /// <summary>
         /// Converts a value.
@@ -24,7 +23,8 @@ namespace FirstFloor.ModernUI.Windows.Converters
         /// </returns>
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value != null) {
+            if (value != null)
+            {
                 var strValue = value.ToString();
 
                 return strValue.ToUpperInvariant();

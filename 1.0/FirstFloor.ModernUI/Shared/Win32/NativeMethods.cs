@@ -8,6 +8,9 @@ using System.Windows;
 
 namespace FirstFloor.ModernUI.Win32
 {
+    /// <summary>
+    /// 原生方法
+    /// </summary>
     internal class NativeMethods
     {
         public const int S_OK = 0;

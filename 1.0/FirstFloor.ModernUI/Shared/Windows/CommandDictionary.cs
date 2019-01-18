@@ -8,10 +8,9 @@ using System.Windows.Input;
 namespace FirstFloor.ModernUI.Windows
 {
     /// <summary>
-    /// Represents a collection of commands keyed by a uri.
+    /// 表示uri键入的命令集合
     /// </summary>
-    public class CommandDictionary
-        : Dictionary<Uri, ICommand>
+    public class CommandDictionary: Dictionary<Uri, ICommand>
     {
     }
 }

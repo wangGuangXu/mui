@@ -9,10 +9,9 @@ using System.Windows;
 namespace FirstFloor.ModernUI.Windows.Converters
 {
     /// <summary>
-    /// Converts a null value to Visibility.Visible and any other value to Visibility.Collapsed
+    /// 将空值转换为visibility.visible，将任何其他值转换为visibility.collapsed。
     /// </summary>
-    public class NullToVisibilityConverter
-        : IValueConverter
+    public class NullToVisibilityConverter : IValueConverter
     {
         /// <summary>
         /// Converts a value.
@@ -29,10 +28,12 @@ namespace FirstFloor.ModernUI.Windows.Converters
             var flag = value == null;
             var inverse = (parameter as string) == "inverse";
 
-            if (inverse) {
+            if (inverse)
+            {
                 return (flag ? Visibility.Collapsed : Visibility.Visible);
             }
-            else {
+            else
+            {
                 return (flag ? Visibility.Visible : Visibility.Collapsed);
             }
         }
