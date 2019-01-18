@@ -8,6 +8,15 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
+    <!--<UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/DataGrid.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>-->
+    
     <Grid>
         <Grid.Resources>
             <!--Create list of enumeration values-->
@@ -22,6 +31,18 @@
             <TextBlock DockPanel.Dock="Top" Text="数据表格" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
             <DataGrid Name="DG1" ItemsSource="{Binding}" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
+                    <DataGridCheckBoxColumn Binding="{Binding IsSelected}" 
+                                            ElementStyle="{StaticResource DataGridCheckBoxStyle}"
+                                            EditingElementStyle="{StaticResource DataGridEditingCheckBoxStyle}"  >
+                        <DataGridCheckBoxColumn.Header>
+                            <!--填充以允许命中测试通过进行排序-->
+                            <Border Background="Transparent" Padding="14 0 0 0" HorizontalAlignment="Left" Width="30">
+                                <CheckBox HorizontalAlignment="Center"
+                                          DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext}"
+                                          IsChecked="{Binding IsAllItems3Selected}" />
+                            </Border>
+                        </DataGridCheckBoxColumn.Header>
+                    </DataGridCheckBoxColumn>
                     <mui:DataGridTextColumn Header="名字"  Binding="{Binding FirstName}"/>
                     <mui:DataGridTextColumn Header="姓" Binding="{Binding LastName}" />
                     <mui:DataGridTextColumn Header="邮箱" Binding="{Binding Email}"/>
