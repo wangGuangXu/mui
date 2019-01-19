@@ -55,3 +55,5 @@ Check out the **MUI 演示 app** 包括在 [MUI release](https://github.com/firs
   * 直接改项目Shared中的默认Resources.resx文件实现，（默认是英语）也可额外专门添加中文资源文件
 * 2.添加中文注释及中文语音播报
 * 3.DataGrid 新增全选示例
+* 4.新增分页用户控件，并添加分页示例。
+    * 需要引用Binaries\System.Windows.Interactivity.dll 并且目前只支持项目是4.5的程序

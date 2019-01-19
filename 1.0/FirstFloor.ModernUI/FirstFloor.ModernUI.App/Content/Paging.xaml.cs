@@ -147,6 +147,7 @@ namespace FirstFloor.ModernUI.App.Content
         }
         #endregion
 
+        #region 按钮点击事件
         /// <summary>
         /// 触发首页事件
         /// </summary>
@@ -164,7 +165,7 @@ namespace FirstFloor.ModernUI.App.Content
         /// <param name="e"></param>
         private void PreviousPageButton_Click(object sender, RoutedEventArgs e)
         {
-            RaiseEvent(new RoutedEventArgs(previousPageEvent,this));
+            RaiseEvent(new RoutedEventArgs(previousPageEvent, this));
         }
 
         /// <summary>
@@ -174,7 +175,7 @@ namespace FirstFloor.ModernUI.App.Content
         /// <param name="e"></param>
         private void NextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            RaiseEvent(new RoutedEventArgs(nextPageEvent,this));
+            RaiseEvent(new RoutedEventArgs(nextPageEvent, this));
         }
 
         /// <summary>
@@ -185,6 +186,7 @@ namespace FirstFloor.ModernUI.App.Content
         private void LastPageButton_Click(object sender, RoutedEventArgs e)
         {
             RaiseEvent(new RoutedEventArgs(lastPageEvent, this));
-        }
+        } 
+        #endregion
     }
 }
