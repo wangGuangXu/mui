@@ -148,6 +148,7 @@ namespace FirstFloor.ModernUI.App.Content
         #endregion
 
         #region 按钮点击事件
+
         /// <summary>
         /// 触发首页事件
         /// </summary>
@@ -186,7 +187,8 @@ namespace FirstFloor.ModernUI.App.Content
         private void LastPageButton_Click(object sender, RoutedEventArgs e)
         {
             RaiseEvent(new RoutedEventArgs(lastPageEvent, this));
-        } 
+        }
+
         #endregion
     }
 }
