@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:FirstFloor.ModernUI.App.Content"
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="220">
     
+    <!--分页控件-->
     <Grid >
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
             <Button x:Name="FirstPageButton" Margin="5,5,0,0" Click="FirstPageButton_Click">

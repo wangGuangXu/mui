@@ -12,56 +12,33 @@ namespace FirstFloor.ModernUI.App.Content
     public class DataGridVieweModel : NotifyPropertyChanged
     {
         #region 命令
-        private ICommand firstPageCommand;
-        private ICommand previousPageCommand;
-        private ICommand nextPageCommand;
-        private ICommand lastPageCommand;
 
-        public ICommand FirstPageCommand
-        {
-            get { return firstPageCommand; }
-            set { firstPageCommand = value; }
-        }
-
-        public ICommand PreviousPageCommand
-        {
-            get
-            {
-                return previousPageCommand;
-            }
-            set
-            {
-                previousPageCommand = value;
-            }
-        }
-
-        public ICommand NextPageCommand
-        {
-            get
-            {
-                return nextPageCommand;
-            }
-            set
-            {
-                nextPageCommand = value;
-            }
-        }
-
-        public ICommand LastPageCommand
-        {
-            get
-            {
-                return lastPageCommand;
-            }
-            set
-            {
-                lastPageCommand = value;
-            }
-        }
+        /// <summary>
+        /// 首页命令
+        /// </summary>
+        public ICommand FirstPageCommand { get; set; }
+        /// <summary>
+        /// 上页命令
+        /// </summary>
+        public ICommand PreviousPageCommand { get; set; }
+        /// <summary>
+        /// 下页命令
+        /// </summary>
+        public ICommand NextPageCommand { get; set; }
+        /// <summary>
+        /// 末页命令
+        /// </summary>
+        public ICommand LastPageCommand { get; set; }
 
         #endregion
 
+        #region 依赖属性
         private int _pageSize;
+        private int _currentPage;
+        private int _totalPage;
+        private List<Customer> _source;
+        private ObservableCollection<Customer> customers;
+
         /// <summary>
         /// 每页显示数量
         /// </summary>
@@ -81,9 +58,6 @@ namespace FirstFloor.ModernUI.App.Content
             }
         }
 
-        private int _currentPage;
-        private int _totalPage;
-
         /// <summary>
         /// 当前页
         /// </summary>
@@ -99,6 +73,7 @@ namespace FirstFloor.ModernUI.App.Content
                 }
             }
         }
+
         /// <summary>
         /// 总页数
         /// </summary>
@@ -112,8 +87,9 @@ namespace FirstFloor.ModernUI.App.Content
             }
         }
 
-        private ObservableCollection<Customer> customers;
-
+        /// <summary>
+        /// 客户列表
+        /// </summary>
         public ObservableCollection<Customer> Customers
         {
             get { return customers; }
@@ -126,14 +102,15 @@ namespace FirstFloor.ModernUI.App.Content
             }
         }
 
-        private List<Customer> _source;
+        #endregion
 
         public DataGridVieweModel()
         {
             CurrentPage = 1;
+            PageSize = 2;
+
             _source = GetDatas();
             
-            PageSize = 2;
             TotalPage = (_source.Count % PageSize) > 0 ? (_source.Count / PageSize) + 1 : _source.Count / PageSize;
 
             List<Customer> result = _source.Take(20).ToList();
@@ -146,6 +123,11 @@ namespace FirstFloor.ModernUI.App.Content
             LastPageCommand = new RelayCommand((o) => { LastPageAction(); });
         }
 
+        #region 方法
+
+        /// <summary>
+        /// 首页
+        /// </summary>
         private void FirstPageAction()
         {
             CurrentPage = 1;
@@ -156,6 +138,9 @@ namespace FirstFloor.ModernUI.App.Content
             Customers = new ObservableCollection<Customer>(result);
         }
 
+        /// <summary>
+        /// 上页
+        /// </summary>
         private void PreviousPageAction()
         {
             if (CurrentPage == 1)
@@ -180,7 +165,9 @@ namespace FirstFloor.ModernUI.App.Content
             CurrentPage--;
         }
 
-
+        /// <summary>
+        /// 下页
+        /// </summary>
         private void NextPageAction()
         {
             if (CurrentPage == TotalPage)
@@ -195,6 +182,9 @@ namespace FirstFloor.ModernUI.App.Content
             CurrentPage++;
         }
 
+        /// <summary>
+        /// 末页
+        /// </summary>
         private void LastPageAction()
         {
             CurrentPage = TotalPage;
@@ -207,6 +197,10 @@ namespace FirstFloor.ModernUI.App.Content
             Customers = new ObservableCollection<Customer>(result);
         }
 
+        /// <summary>
+        /// 获取客户列表
+        /// </summary>
+        /// <returns></returns>
         private List<Customer> GetDatas()
         {
             var customers = new List<Customer>
@@ -226,6 +220,25 @@ namespace FirstFloor.ModernUI.App.Content
 
             return customers;
         }
+
+        private ObservableCollection<Customer> GetData()
+        {
+            var customers = new ObservableCollection<Customer>();
+            customers.Add(new Customer { FirstName = "Orlando", LastName = "Gee", Email = "orlando0@adventure-works.com", IsMember = true, Status = OrderStatus.New });
+            customers.Add(new Customer { FirstName = "Keith", LastName = "Harris", Email = "keith0@adventure-works.com", IsMember = true, Status = OrderStatus.Received });
+            customers.Add(new Customer { FirstName = "Donna", LastName = "Carreras", Email = "donna0@adventure-works.com", IsMember = false, Status = OrderStatus.None });
+            customers.Add(new Customer { FirstName = "Janet", LastName = "Gates", Email = "janet0@adventure-works.com", IsMember = true, Status = OrderStatus.Shipped });
+            customers.Add(new Customer { FirstName = "Lucy", LastName = "Harrington", Email = "lucy0@adventure-works.com", IsMember = false, Status = OrderStatus.New });
+            customers.Add(new Customer { FirstName = "Rosmarie", LastName = "Carroll", Email = "rosmarie0@adventure-works.com", IsMember = true, Status = OrderStatus.Processing });
+            customers.Add(new Customer { FirstName = "Dominic", LastName = "Gash", Email = "dominic0@adventure-works.com", IsMember = true, Status = OrderStatus.Received });
+            customers.Add(new Customer { FirstName = "Kathleen", LastName = "Garza", Email = "kathleen0@adventure-works.com", IsMember = false, Status = OrderStatus.None });
+            customers.Add(new Customer { FirstName = "Katherine", LastName = "Harding", Email = "katherine0@adventure-works.com", IsMember = true, Status = OrderStatus.Shipped });
+            customers.Add(new Customer { FirstName = "Johnny", LastName = "Caprio", Email = "johnny0@adventure-works.com", IsMember = false, Status = OrderStatus.Processing });
+
+            return customers;
+        }
+
+        #endregion
 
     }
 }

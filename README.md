@@ -56,4 +56,4 @@ Check out the **MUI 演示 app** 包括在 [MUI release](https://github.com/firs
 * 2.添加中文注释及中文语音播报
 * 3.DataGrid 新增全选示例
 * 4.新增分页用户控件，并添加分页示例。
-    * 需要引用Binaries\System.Windows.Interactivity.dll 并且目前只支持项目是4.5的程序
+    * 需要引用Binaries\net45\System.Windows.Interactivity.dll (根据框架选择具体版本的程序集)
