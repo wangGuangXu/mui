@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Presentation;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace FirstFloor.ModernUI.App.Content
     public enum OrderStatus { None, New, Processing, Shipped, Received };
     public class Customer
     {
+        public string Code { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -33,14 +35,17 @@ namespace FirstFloor.ModernUI.App.Content
     /// </summary>
     public partial class ControlsStylesDataGrid : UserControl
     {
+
+
         public ControlsStylesDataGrid()
         {
             InitializeComponent();
 
-            ObservableCollection<Customer> custdata = GetData();
+            DataContext = new DataGridVieweModel();
+            //ObservableCollection<Customer> custdata = GetData();
 
             //Bind the DataGrid to the customer data
-            DG1.DataContext = custdata;
+            //DG1.DataContext = custdata;
         }
 
         private ObservableCollection<Customer> GetData()

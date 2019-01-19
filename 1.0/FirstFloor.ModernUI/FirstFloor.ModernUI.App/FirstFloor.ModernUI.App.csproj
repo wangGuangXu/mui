@@ -67,6 +67,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Speech" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Binaries\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -119,6 +123,7 @@
     <Compile Include="Content\ControlsStylesDate.xaml.cs">
       <DependentUpon>ControlsStylesDate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\DataGridVieweModel.cs" />
     <Compile Include="Content\ModernFrame\CancelNavigateSample.xaml.cs">
       <DependentUpon>CancelNavigateSample.xaml</DependentUpon>
     </Compile>
@@ -132,6 +137,10 @@
       <DependentUpon>DpiAwareness.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DpiAwarenessViewModel.cs" />
+    <Compile Include="Content\Paging.xaml.cs">
+      <DependentUpon>Paging.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\PagingViewModel.cs" />
     <Compile Include="SampleFormViewModel.cs" />
     <Compile Include="FlickrImageLoader.cs" />
     <Compile Include="LoremIpsumLoader.cs" />
@@ -460,6 +469,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Content\SettingsAppearance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\Paging.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
