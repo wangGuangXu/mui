@@ -13,10 +13,9 @@ using System.Windows.Media;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
-    /// A window instance that is capable of per-monitor DPI awareness when supported.
+    /// 一个窗口实例，当支持时，它能够对每个监视器进行DPI感知
     /// </summary>
-    public abstract class DpiAwareWindow
-        : Window
+    public abstract class DpiAwareWindow : Window
     {
         /// <summary>
         /// Occurs when the system or monitor DPI for this window has changed.

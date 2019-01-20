@@ -137,9 +137,6 @@
       <DependentUpon>DpiAwareness.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DpiAwarenessViewModel.cs" />
-    <Compile Include="Content\Paging.xaml.cs">
-      <DependentUpon>Paging.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SampleFormViewModel.cs" />
     <Compile Include="FlickrImageLoader.cs" />
     <Compile Include="LoremIpsumLoader.cs" />
@@ -468,10 +465,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Content\SettingsAppearance.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Content\Paging.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,6 +7,7 @@
              xmlns:core="clr-namespace:System;assembly=mscorlib"
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              xmlns:local="clr-namespace:FirstFloor.ModernUI.App.Content"
+             xmlns:locals="clr-namespace:FirstFloor.ModernUI.UserControls;assembly=FirstFloor.ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
@@ -23,7 +24,7 @@
         <DockPanel >
             <TextBlock DockPanel.Dock="Top" Text="数据表格" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
             
-            <local:Paging DockPanel.Dock="Bottom" 
+            <locals:Paging DockPanel.Dock="Bottom" 
                           TotalPage="{Binding TotalPage }" 
                           CurrentPage="{Binding CurrentPage,Mode=TwoWay}"
                           HorizontalAlignment="Left"  >
@@ -43,7 +44,7 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
                 
-            </local:Paging>
+            </locals:Paging>
             <DataGrid Name="DG1" ItemsSource="{Binding Customers}" AutoGenerateColumns="False" CanUserAddRows="False" >
                 <DataGrid.Columns>
                     <!--全选-->

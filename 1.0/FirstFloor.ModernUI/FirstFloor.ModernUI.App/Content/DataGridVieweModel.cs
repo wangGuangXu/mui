@@ -134,7 +134,6 @@ namespace FirstFloor.ModernUI.App.Content
 
             var result = _source.Take(PageSize).ToList();
 
-            Customers.Clear();
             Customers = new ObservableCollection<Customer>(result);
         }
 
@@ -159,9 +158,7 @@ namespace FirstFloor.ModernUI.App.Content
                 result = _source.Skip((CurrentPage - 2) * _pageSize).Take(_pageSize).ToList();
             }
 
-            Customers.Clear();
             Customers = new ObservableCollection<Customer>(result);
-
             CurrentPage--;
         }
 
@@ -178,7 +175,6 @@ namespace FirstFloor.ModernUI.App.Content
             List<Customer> result = _source.Skip(CurrentPage * PageSize).Take(PageSize).ToList();
 
             Customers = new ObservableCollection<Customer>(result);
-
             CurrentPage++;
         }
 

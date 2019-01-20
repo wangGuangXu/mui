@@ -15,13 +15,12 @@ using System.Windows.Media.Animation;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
-    /// Represents a Modern UI styled window.
+    /// 表示一个现代UI样式的窗口
     /// </summary>
-    public class ModernWindow
-        : DpiAwareWindow
+    public class ModernWindow  : DpiAwareWindow
     {
         /// <summary>
-        /// Identifies the BackgroundContent dependency property.
+        /// 标识背景内容依赖项属性.
         /// </summary>
         public static readonly DependencyProperty BackgroundContentProperty = DependencyProperty.Register("BackgroundContent", typeof(object), typeof(ModernWindow));
         /// <summary>
@@ -62,11 +61,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             this.DefaultStyleKey = typeof(ModernWindow);
 
-            // create empty collections
+            // 创建空集合
             SetCurrentValue(MenuLinkGroupsProperty, new LinkGroupCollection());
             SetCurrentValue(TitleLinksProperty, new LinkCollection());
 
-            // associate window commands with this instance
+            // 将窗口命令与此实例关联
 #if NET4
             this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.CloseWindowCommand, OnCloseWindow));
             this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.MaximizeWindowCommand, OnMaximizeWindow, OnCanResizeWindow));
@@ -78,15 +77,15 @@ namespace FirstFloor.ModernUI.Windows.Controls
             this.CommandBindings.Add(new CommandBinding(SystemCommands.MinimizeWindowCommand, OnMinimizeWindow, OnCanMinimizeWindow));
             this.CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, OnRestoreWindow, OnCanResizeWindow));
 #endif
-            // associate navigate link command with this instance
+            // 将导航链接命令与此实例关联
             this.CommandBindings.Add(new CommandBinding(LinkCommands.NavigateLink, OnNavigateLink, OnCanNavigateLink));
 
-            // listen for theme changes
+            // 监听主题改变事件
             AppearanceManager.Current.PropertyChanged += OnAppearanceManagerPropertyChanged;
         }
 
         /// <summary>
-        /// Raises the System.Windows.Window.Closed event.
+        /// 引发 System.Windows.Window.Closed 事件.
         /// </summary>
         /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
@@ -98,7 +97,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// When overridden in a derived class, is invoked whenever application code or internal processes call System.Windows.FrameworkElement.ApplyTemplate().
+        /// 在派生类中重写时，在应用程序代码或内部进程调用System.Windows.FrameworkElement.ApplyTemplate()时调用。
         /// </summary>
         public override void OnApplyTemplate()
         {
@@ -117,7 +116,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         private void OnAppearanceManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            // start background animation if theme has changed
+            // 如果主题已更改，则启动背景动画
             if (e.PropertyName == "ThemeSource" && this.backgroundAnimation != null) {
                 this.backgroundAnimation.Begin();
             }
@@ -125,17 +124,19 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         private void OnCanNavigateLink(object sender, CanExecuteRoutedEventArgs e)
         {
-            // true by default
+            // 默认为True
             e.CanExecute = true;
 
-            if (this.LinkNavigator != null && this.LinkNavigator.Commands != null) {
-                // in case of command uri, check if ICommand.CanExecute is true
+            if (this.LinkNavigator != null && this.LinkNavigator.Commands != null)
+            {
+                // 如果是命令uri，请检查icommand.canexecute是否为true
                 Uri uri;
                 string parameter;
                 string targetName;
 
-                // TODO: CanNavigate is invoked a lot, which means a lot of parsing. need improvements??
-                if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out uri, out parameter, out targetName)) {
+                // Todo: cannavigate被大量调用，这意味着需要大量解析。需要改进??
+                if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out uri, out parameter, out targetName))
+                {
                     ICommand command;
                     if (this.LinkNavigator.Commands.TryGetValue(uri, out command)) {
                         e.CanExecute = command.CanExecute(parameter);
@@ -146,7 +147,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         private void OnNavigateLink(object sender, ExecutedRoutedEventArgs e)
         {
-            if (this.LinkNavigator != null) {
+            if (this.LinkNavigator != null)
+            {
                  Uri uri;
                 string parameter;
                 string targetName;
@@ -204,7 +206,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets or sets the background content of this window instance.
+        /// 获取或设置此窗口实例的背景内容
         /// </summary>
         public object BackgroundContent
         {
@@ -213,7 +215,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets or sets the collection of link groups shown in the window's menu.
+        /// 获取或设置窗口菜单中显示的链接组的集合
         /// </summary>
         public LinkGroupCollection MenuLinkGroups
         {
@@ -222,7 +224,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets or sets the collection of links that appear in the menu in the title area of the window.
+        /// 获取或设置出现在窗口标题区域的菜单中的链接集合.
         /// </summary>
         public LinkCollection TitleLinks
         {
@@ -231,7 +233,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the window title is visible in the UI.
+        /// 获取或设置一个值，该值指示窗口标题在UI中是否可见
         /// </summary>
         public bool IsTitleVisible
         {
@@ -240,7 +242,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets or sets the path data for the logo displayed in the title area of the window.
+        /// 获取或设置窗口标题区域中显示的标志的路径数据.
         /// </summary>
         public Geometry LogoData
         {

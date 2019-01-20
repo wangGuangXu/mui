@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FirstFloor.ModernUI.App.Content
+namespace FirstFloor.ModernUI.UserControls
 {
     /// <summary>
     /// 分页控件交互逻辑
@@ -95,6 +95,9 @@ namespace FirstFloor.ModernUI.App.Content
 
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Paging()
         {
             InitializeComponent();
