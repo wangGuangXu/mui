@@ -11,7 +11,7 @@ using System.Windows;
 namespace FirstFloor.ModernUI.Windows.Navigation
 {
     /// <summary>
-    /// Provides helper function for navigation.
+    /// 为导航提供帮助程序功能 Provides helper function for navigation.
     /// </summary>
     public static class NavigationHelper
     {
@@ -99,11 +99,13 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         {
             fragment = null;
 
-            if (uri != null) {
+            if (uri != null)
+            {
                 var value = uri.OriginalString;
 
                 var i = value.IndexOf('#');
-                if (i != -1) {
+                if (i != -1)
+                {
                     fragment = value.Substring(i + 1);
                     uri = new Uri(value.Substring(0, i), uri.IsAbsoluteUri ? UriKind.Absolute : UriKind.Relative);
                 }
@@ -120,9 +122,11 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         public static Uri ToUri(object value)
         {
             var uri = value as Uri;
-            if (uri == null) {
+            if (uri == null)
+            {
                 var uriString = value as string;
-                if (uriString == null || !Uri.TryCreate(uriString, UriKind.RelativeOrAbsolute, out uri)) {
+                if (uriString == null || !Uri.TryCreate(uriString, UriKind.RelativeOrAbsolute, out uri))
+                {
                     return null; // no valid uri found
                 }
             }

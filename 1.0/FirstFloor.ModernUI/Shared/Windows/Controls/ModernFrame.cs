@@ -14,10 +14,9 @@ using System.Windows.Input;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
-    /// A simple content frame implementation with navigation support.
+    /// 一个简单的带有导航支持的内容框架实现 A simple content frame implementation with navigation support.
     /// </summary>
-    public class ModernFrame
-        : ContentControl
+    public class ModernFrame : ContentControl
     {
         /// <summary>
         /// Identifies the KeepAlive attached dependency property.
@@ -57,10 +56,13 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         public event EventHandler<NavigationEventArgs> Navigated;
         /// <summary>
-        /// Occurs when navigation has failed.
+        /// 导航失败时发生 Occurs when navigation has failed.
         /// </summary>
         public event EventHandler<NavigationFailedEventArgs> NavigationFailed;
 
+        /// <summary>
+        /// 历史访问记录
+        /// </summary>
         private Stack<Uri> history = new Stack<Uri>();
         private Dictionary<Uri, object> contentCache = new Dictionary<Uri, object>();
 #if NET4
@@ -101,7 +103,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         private static void OnContentLoaderChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue == null) {
+            if (e.NewValue == null)
+            {
                 // null values for content loader not allowed
                 throw new ArgumentNullException("ContentLoader");
             }
@@ -194,25 +197,31 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
             object newContent = null;
 
-            if (newValue != null) {
+            if (newValue != null)
+            {
                 // content is cached on uri without fragment
                 var newValueNoFragment = NavigationHelper.RemoveFragment(newValue);
 
-                if (navigationType == NavigationType.Refresh || !this.contentCache.TryGetValue(newValueNoFragment, out newContent)) {
+                if (navigationType == NavigationType.Refresh || !this.contentCache.TryGetValue(newValueNoFragment, out newContent))
+                {
                     var localTokenSource = new CancellationTokenSource();
                     this.tokenSource = localTokenSource;
                     // load the content (asynchronous!)
                     var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
                     var task = this.ContentLoader.LoadContentAsync(newValue, this.tokenSource.Token);
 
-                    task.ContinueWith(t => {
+                    task.ContinueWith(t => 
+                    {
                         try {
-                            if (t.IsCanceled || localTokenSource.IsCancellationRequested) {
-                                Debug.WriteLine("Cancelled navigation to '{0}'", newValue);
+                            if (t.IsCanceled || localTokenSource.IsCancellationRequested)
+                            {
+                                Debug.WriteLine("取消导航 Cancelled navigation to '{0}'", newValue);
                             }
-                            else if (t.IsFaulted) {
+                            else if (t.IsFaulted)
+                            {
                                 // raise failed event
-                                var failedArgs = new NavigationFailedEventArgs {
+                                var failedArgs = new NavigationFailedEventArgs
+                                {
                                     Frame = this,
                                     Source = newValue,
                                     Error = t.Exception.InnerException,
@@ -226,7 +235,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
                                 SetContent(newValue, navigationType, newContent, true);
                             }
-                            else {
+                            else
+                            {
                                 newContent = t.Result;
                                 if (ShouldKeepContentAlive(newContent)) {
                                     // keep the new content in memory
@@ -236,9 +246,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
                                 SetContent(newValue, navigationType, newContent, false);
                             }
                         }
-                        finally {
+                        finally
+                        {
                             // clear global tokenSource to avoid a Cancel on a disposed object
-                            if (this.tokenSource == localTokenSource) {
+                            if (this.tokenSource == localTokenSource)
+                            {
                                 this.tokenSource = null;
                             }
 
@@ -254,16 +266,25 @@ namespace FirstFloor.ModernUI.Windows.Controls
             SetContent(newValue, navigationType, newContent, false);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newSource"></param>
+        /// <param name="navigationType"></param>
+        /// <param name="newContent"></param>
+        /// <param name="contentIsError"></param>
         private void SetContent(Uri newSource, NavigationType navigationType, object newContent, bool contentIsError)
         {
             var oldContent = this.Content as IContent;
 
-            // assign content
+            // 分配内容 assign content
             this.Content = newContent;
 
-            // do not raise navigated event when error
-            if (!contentIsError) {
-                var args = new NavigationEventArgs {
+            // 错误时不引发导航事件 do not raise navigated event when error
+            if (!contentIsError)
+            {
+                var args = new NavigationEventArgs
+                {
                     Frame = this,
                     Source = newSource,
                     Content = newContent,
@@ -276,7 +297,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
             // set IsLoadingContent to false
             SetValue(IsLoadingContentPropertyKey, false);
 
-            if (!contentIsError) {
+            if (!contentIsError)
+            {
                 // and raise optional fragment navigation events
                 string fragment;
                 NavigationHelper.RemoveFragment(newSource, out fragment);
@@ -367,6 +389,10 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 导航失败时
+        /// </summary>
+        /// <param name="e"></param>
         private void OnNavigationFailed(NavigationFailedEventArgs e)
         {
             if (NavigationFailed != null){
@@ -393,21 +419,24 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private void OnCanBrowseBack(object sender, CanExecuteRoutedEventArgs e)
         {
             // only enable browse back for source frame, do not bubble
-            if (HandleRoutedEvent(e)) {
+            if (HandleRoutedEvent(e))
+            {
                 e.CanExecute = this.history.Count > 0;
             }
         }
 
         private void OnCanCopy(object sender, CanExecuteRoutedEventArgs e)
         {
-            if (HandleRoutedEvent(e)) {
+            if (HandleRoutedEvent(e))
+            {
                 e.CanExecute = this.Content != null;
             }
         }
 
         private void OnCanGoToPage(object sender, CanExecuteRoutedEventArgs e)
         {
-            if (HandleRoutedEvent(e)) {
+            if (HandleRoutedEvent(e))
+            {
                 e.CanExecute = e.Parameter is String || e.Parameter is Uri;
             }
         }
@@ -421,7 +450,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         private void OnBrowseBack(object target, ExecutedRoutedEventArgs e)
         {
-            if (this.history.Count > 0) {
+            if (this.history.Count > 0)
+            {
                 var oldValue = this.Source;
                 var newValue = this.history.Peek();     // do not remove just yet, navigation may be cancelled
 

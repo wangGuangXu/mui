@@ -28,20 +28,24 @@ namespace FirstFloor.ModernUI.App.Content
             LoadImageLinks();
         }
 
+        /// <summary>
+        /// 添加图片链接列表
+        /// </summary>
         private async void LoadImageLinks()
         {
             var loader = (FlickrImageLoader)Tab.ContentLoader;
 
             try {
-                // load image links and assign to tab list
+                // 加载图像链接并分配到选项卡列表
                 this.Tab.Links = await loader.GetInterestingnessListAsync();
 
-                // select first link
+                // 选择第一个链接
                 this.Tab.SelectedSource = this.Tab.Links.Select(l => l.Source).FirstOrDefault();
             }
             catch (Exception e) {
                 ModernDialog.ShowMessage(e.Message, "Failure", MessageBoxButton.OK);
             }
         }
+
     }
 }

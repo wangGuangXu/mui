@@ -10,8 +10,7 @@ namespace FirstFloor.ModernUI.Windows.Navigation
     /// <summary>
     /// Defines the base navigation event arguments.
     /// </summary>
-    public abstract class NavigationBaseEventArgs
-        : EventArgs
+    public abstract class NavigationBaseEventArgs : EventArgs
     {
         /// <summary>
         /// Gets the frame that raised this event.

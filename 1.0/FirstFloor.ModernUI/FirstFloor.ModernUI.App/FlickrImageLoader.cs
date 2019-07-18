@@ -29,22 +29,26 @@ namespace FirstFloor.ModernUI.App
         /// <returns></returns>
         public async Task<LinkCollection> GetInterestingnessListAsync()
         {
-            if (apiKey == null) {
-                throw new InvalidOperationException("You need to specify a Flickr API key. Unfortunately the key cannot be distributed with the source code. Get your own from [url=http://www.flickr.com/services/api/misc.api_keys.html]http://www.flickr.com/services/api/misc.api_keys.html[/url].");
-            }
+            //if (apiKey == null) {
+            //    throw new InvalidOperationException("You need to specify a Flickr API key. Unfortunately the key cannot be distributed with the source code. Get your own from [url=http://www.flickr.com/services/api/misc.api_keys.html]http://www.flickr.com/services/api/misc.api_keys.html[/url].");
+            //}
 
+            //https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key={0}&per_page={1}
             const int count = 50;       // limit the number of images to 50
-            var listUri = string.Format(CultureInfo.InvariantCulture, "https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key={0}&per_page={1}", apiKey, count);
+            var listUri = @"https://cn.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=5";
             var client = new HttpClient();
             var result = await client.GetAsync(listUri);
             result.EnsureSuccessStatusCode();
-            using (var stream = await result.Content.ReadAsStreamAsync()) {
+            using (var stream = await result.Content.ReadAsStreamAsync())
+            {
                 var doc = XDocument.Load(stream);
+
 
                 return new LinkCollection(from p in doc.Descendants("photo")
                                           let title = (string)p.Attribute("title")
                                           orderby title
-                                          select new Link {
+                                          select new Link
+                                          {
                                               DisplayName = string.IsNullOrWhiteSpace(title) ? "[untitled]" : title,
                                               Source = new Uri(string.Format(CultureInfo.InvariantCulture, "http://farm{0}.static.flickr.com/{1}/{2}_{3}.jpg", (string)p.Attribute("farm"), (string)p.Attribute("server"), (string)p.Attribute("id"), (string)p.Attribute("secret")), UriKind.Absolute)
                                           });

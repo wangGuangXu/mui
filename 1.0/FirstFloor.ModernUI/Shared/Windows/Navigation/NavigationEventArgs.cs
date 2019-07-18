@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI.Windows.Navigation
 {
     /// <summary>
-    /// Provides data for frame navigation events.
+    /// 为框架导航事件提供数据 Provides data for frame navigation events.
     /// </summary>
-    public class NavigationEventArgs
-        : NavigationBaseEventArgs
+    public class NavigationEventArgs: NavigationBaseEventArgs
     {
         /// <summary>
         /// Gets a value that indicates the type of navigation that is occurring.
