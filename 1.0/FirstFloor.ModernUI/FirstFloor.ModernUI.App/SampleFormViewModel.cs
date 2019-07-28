@@ -48,7 +48,7 @@ namespace FirstFloor.ModernUI.App
             get
             {
                 if (columnName == "FirstName") {
-                    return string.IsNullOrEmpty(this.firstName) ? "Required value" : null;
+                    return string.IsNullOrEmpty(this.firstName) ? "Required value2" : null;
                 }
                 if (columnName == "LastName") {
                     return string.IsNullOrEmpty(this.lastName) ? "Required value" : null;

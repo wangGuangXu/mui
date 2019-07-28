@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace FirstFloor.ModernUI.Presentation
 {
@@ -11,13 +12,13 @@ namespace FirstFloor.ModernUI.Presentation
     /// </summary>
     public class RelayCommand: CommandBase
     {
-        private Action<object> execute;
-        private Func<object, bool> canExecute;
+        private readonly Action<object> execute;
+        private readonly Func<object, bool> canExecute;
 
         /// <summary>
-        /// 初始化类的新实例。Initializes a new instance of the <see cref="RelayCommand"/> class.
+        /// 初始化RelayCommand类的新实例
         /// </summary>
-        /// <param name="execute">执行</param>
+        /// <param name="execute">执行无参委托</param>
         /// <param name="canExecute">可以执行</param>
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {

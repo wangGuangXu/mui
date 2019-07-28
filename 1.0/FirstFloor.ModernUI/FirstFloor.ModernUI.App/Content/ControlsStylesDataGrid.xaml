@@ -27,7 +27,7 @@
             <locals:Paging DockPanel.Dock="Bottom" 
                           TotalPage="{Binding TotalPage }" 
                           CurrentPage="{Binding CurrentPage,Mode=TwoWay}"
-                          HorizontalAlignment="Left"  >
+                          HorizontalAlignment="Center"  >
                 
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="FirstPage">
