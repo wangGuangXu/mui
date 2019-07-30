@@ -9,8 +9,7 @@ namespace FirstFloor.ModernUI.Presentation
     /// <summary>
     /// Represents a displayable link.
     /// </summary>
-    public class Link
-        : Displayable
+    public class Link : Displayable
     {
         private Uri source;
 

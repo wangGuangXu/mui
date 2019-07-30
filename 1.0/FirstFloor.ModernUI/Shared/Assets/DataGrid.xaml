@@ -19,6 +19,7 @@
         <Setter Property="BorderThickness" Value="0" />
     </Style>
 
+    <!--数据表格列标题演示者-->
     <Style x:Key="{x:Type DataGridColumnHeadersPresenter}" TargetType="{x:Type DataGridColumnHeadersPresenter}">
         <Setter Property="Template">
             <Setter.Value>
@@ -32,7 +33,7 @@
         </Setter>
     </Style>
 
-
+    <!--列标题夹持器样式-->
     <Style x:Key="ColumnHeaderGripperStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Width" Value="8"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -46,7 +47,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
+    <!--行标题夹持器样式-->
     <Style x:Key="RowHeaderGripperStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Height" Value="8"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -61,9 +63,10 @@
         </Setter>
     </Style>
 
+    <!--列浮动标题样式-->
     <Style x:Key="ColumnFloatingHeaderStyle" TargetType="{x:Type Control}">
         <Setter Property="Opacity" Value="0.6"></Setter>
-        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Control}">
@@ -80,6 +83,7 @@
         </Setter>
     </Style>
 
+    <!--列标题放置分隔符样式-->
     <Style x:Key="ColumnHeaderDropSeparatorStyle" TargetType="{x:Type Separator}">
         <Setter Property="Background" Value="{DynamicResource DataGridDropSeparator}" />
         <Setter Property="Template">
@@ -95,6 +99,7 @@
         </Setter>
     </Style>
 
+    <!--数据表格行-->
     <Style x:Key="{x:Type DataGridRow}" TargetType="{x:Type DataGridRow}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="SnapsToDevicePixels" Value="true"/>
@@ -140,6 +145,14 @@
                     </Border>
                     
                     <ControlTemplate.Triggers>
+                        <!--隔行换色-->
+                        <!--<Trigger Property="AlternationIndex" Value="0" >
+                            <Setter Property="Background" Value="#e7e7e7" />
+                        </Trigger>
+                        <Trigger Property="AlternationIndex" Value="1" >
+                            <Setter Property="Background" Value="#f2f2f2" />
+                        </Trigger>-->
+                        
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{DynamicResource DataGridCellBackgroundHover}" />
                         </Trigger>
@@ -150,6 +163,7 @@
         </Setter>
     </Style>
 
+    <!--数据表格单元表示程序-->
     <Style x:Key="{x:Type DataGridCellsPresenter}" TargetType="{x:Type DataGridCellsPresenter}">
         <Setter Property="Template">
             <Setter.Value>
@@ -160,11 +174,12 @@
         </Setter>
     </Style>
 
+    <!--数据表格单元-->
     <Style x:Key="{x:Type DataGridCell}" TargetType="{x:Type DataGridCell}">
         <Setter Property="Background" Value="{DynamicResource DataGridCellBackground}" />
         <Setter Property="Foreground" Value="{DynamicResource DataGridCellForeground}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Padding" Value="5,1" />
+        <Setter Property="Padding" Value="1,1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
@@ -190,16 +205,23 @@
         </Style.Triggers>
     </Style>
 
+    <!--数据表格列标题-->
     <Style x:Key="{x:Type DataGridColumnHeader}" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Background" Value="{DynamicResource DataGridHeaderBackground}" />
         <Setter Property="Foreground" Value="{DynamicResource DataGridHeaderForeground}" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderThickness" Value="0,0,1,1" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
-        <Setter Property="Padding" Value="4,3,4,3"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0,3,0,3"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <!--色刷，Opacity：透明度-->
+                <SolidColorBrush Color="#333" Opacity="0.1"></SolidColorBrush>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
@@ -266,12 +288,13 @@
 
     </Style>
 
+    <!--数据表格行标题左侧列宽度-->
     <Style x:Key="{x:Type DataGridRowHeader}" TargetType="{x:Type DataGridRowHeader}">
         <Setter Property="Background" Value="{DynamicResource DataGridHeaderBackground}" />
         <Setter Property="Foreground" Value="{DynamicResource DataGridHeaderForeground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource DataGridGridLines}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
-        <Setter Property="Width" Value="16"/>
+        <Setter Property="Width" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
@@ -282,7 +305,7 @@
                                 Padding ="{TemplateBinding Padding}">
 
                             <StackPanel Orientation="Horizontal">
-                                <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                                <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
                                 <Control SnapsToDevicePixels="false"
                                          Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=(Validation.HasError), Converter={StaticResource BooleanToVisibilityConverter}}"
                                          Template="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=ValidationErrorTemplate}" />
@@ -315,6 +338,7 @@
         </Style.Triggers>
     </Style>
 
+    <!--数据表格-->
     <Style x:Key="{x:Type DataGrid}" TargetType="{x:Type DataGrid}">
         <Setter Property="Background" Value="{DynamicResource DataGridBackground}"/>
         <Setter Property="Foreground" Value="{DynamicResource DataGridForeground}"/>
@@ -328,6 +352,7 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="GridLinesVisibility" Value="All"/>
 
         <Setter Property="Template">
             <Setter.Value>

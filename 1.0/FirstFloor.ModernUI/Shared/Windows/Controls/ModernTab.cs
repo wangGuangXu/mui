@@ -10,10 +10,10 @@ using System.Windows.Controls;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
+    /// 表示包含在屏幕上共享同一空间的多个页面的控件
     /// Represents a control that contains multiple pages that share the same space on screen.
     /// </summary>
-    public class ModernTab
-        : Control
+    public class ModernTab: Control
     {
         /// <summary>
         /// Identifies the ContentLoader dependency property.

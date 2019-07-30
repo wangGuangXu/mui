@@ -11,16 +11,18 @@ using System.Windows.Input;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
+    /// 表示现代用户界面样式的对话框窗口
     /// Represents a Modern UI styled dialog window.
     /// </summary>
-    public class ModernDialog
-        : DpiAwareWindow
+    public class ModernDialog : DpiAwareWindow
     {
         /// <summary>
+        /// 标识背景内容依赖属性
         /// Identifies the BackgroundContent dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundContentProperty = DependencyProperty.Register("BackgroundContent", typeof(object), typeof(ModernDialog));
         /// <summary>
+        /// 标识按钮组依赖属性
         /// Identifies the Buttons dependency property.
         /// </summary>
         public static readonly DependencyProperty ButtonsProperty = DependencyProperty.Register("Buttons", typeof(IEnumerable<Button>), typeof(ModernDialog));
@@ -43,19 +45,23 @@ namespace FirstFloor.ModernUI.Windows.Controls
             this.DefaultStyleKey = typeof(ModernDialog);
             this.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
-            this.closeCommand = new RelayCommand(o => {
+            this.closeCommand = new RelayCommand(o => 
+            {
                 var result = o as MessageBoxResult?;
                 if (result.HasValue) {
                     this.messageBoxResult = result.Value;
 
                     // sets the Window.DialogResult as well
-                    if (result.Value == MessageBoxResult.OK || result.Value == MessageBoxResult.Yes) {
+                    if (result.Value == MessageBoxResult.OK || result.Value == MessageBoxResult.Yes)
+                    {
                         this.DialogResult = true;
                     }
-                    else if (result.Value == MessageBoxResult.Cancel || result.Value == MessageBoxResult.No){
+                    else if (result.Value == MessageBoxResult.Cancel || result.Value == MessageBoxResult.No)
+                    {
                         this.DialogResult = false;
                     }
-                    else{
+                    else
+                    {
                         this.DialogResult = null;
                     }
                 }
@@ -201,7 +207,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <returns></returns>
         public static MessageBoxResult ShowMessage(string text, string title, MessageBoxButton button, Window owner = null)
         {
-            var dlg = new ModernDialog {
+            var dlg = new ModernDialog
+            {
                 Title = title,
                 Content = new BBCodeBlock { BBCode = text, Margin = new Thickness(0, 0, 0, 8) },
                 MinHeight = 0,
@@ -209,7 +216,9 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 MaxHeight = 480,
                 MaxWidth = 640,
             };
-            if (owner != null) {
+
+            if (owner != null)
+            {
                 dlg.Owner = owner;
             }
 

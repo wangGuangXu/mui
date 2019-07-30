@@ -45,19 +45,44 @@
                 </i:Interaction.Triggers>
                 
             </locals:Paging>
-            <DataGrid Name="DG1" ItemsSource="{Binding Customers}" AutoGenerateColumns="False" CanUserAddRows="False" >
+            
+            <DataGrid Name="DG1" ItemsSource="{Binding Customers}" AutoGenerateColumns="False" CanUserAddRows="False" AlternationCount="2" >
                 <DataGrid.Columns>
                     <!--全选-->
-                    <DataGridCheckBoxColumn Binding="{Binding IsSelected}" ElementStyle="{StaticResource DataGridCheckBoxStyle}"
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.Header>
+                            <CheckBox Margin="6,0,-14,0"  IsChecked="{Binding DataContext.IsSelectAll,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=1 }}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.SelectAllCommand ,RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=1 }}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Margin="10,0,-10,0" IsChecked="{Binding IsSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding SelectCommand,RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=1 }}" CommandParameter="{Binding Entity.ID}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </CheckBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <!--<DataGridCheckBoxColumn Binding="{Binding IsSelected}" ElementStyle="{StaticResource DataGridCheckBoxStyle}"
                                             EditingElementStyle="{StaticResource DataGridEditingCheckBoxStyle}"  >
                         <DataGridCheckBoxColumn.Header>
-                            <!--填充以允许命中测试通过进行排序-->
-                            <Border Background="Transparent" Padding="14 0 0 0" HorizontalAlignment="Left" Width="30">
+                            --><!--填充以允许命中测试通过进行排序-->
+                            <!--<Border Background="Transparent" Margin="3 0 -14 0" HorizontalAlignment="Right" Width="30">--><!--
                                 <CheckBox HorizontalAlignment="Center" DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}},Path=DataContext}"
-                                          IsChecked="{Binding IsAllItems3Selected}" />
-                            </Border>
+                                          IsChecked="{Binding IsAllItemsSelected}" />
+                            --><!--</Border>--><!--
                         </DataGridCheckBoxColumn.Header>
-                    </DataGridCheckBoxColumn>
+                    </DataGridCheckBoxColumn>-->
                     
                     <mui:DataGridTextColumn Header="序号"  Binding="{Binding Code}"/>
                     <mui:DataGridTextColumn Header="名字"  Binding="{Binding FirstName}"/>
