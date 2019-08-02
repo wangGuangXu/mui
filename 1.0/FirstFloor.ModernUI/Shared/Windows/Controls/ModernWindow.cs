@@ -105,10 +105,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
             // retrieve BackgroundAnimation storyboard
             var border = GetTemplateChild("WindowBorder") as Border;
-            if (border != null) {
+            if (border != null)
+            {
                 this.backgroundAnimation = border.Resources["BackgroundAnimation"] as Storyboard;
 
-                if (this.backgroundAnimation != null) {
+                if (this.backgroundAnimation != null)
+                {
                     this.backgroundAnimation.Begin();
                 }
             }
@@ -122,6 +124,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 打开链接
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCanNavigateLink(object sender, CanExecuteRoutedEventArgs e)
         {
             // 默认为True
@@ -145,17 +152,25 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnNavigateLink(object sender, ExecutedRoutedEventArgs e)
         {
-            if (this.LinkNavigator != null)
+            if (this.LinkNavigator == null)
             {
-                 Uri uri;
-                string parameter;
-                string targetName;
+                return;
+            }
 
-                if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out uri, out parameter, out targetName)) {
-                    this.LinkNavigator.Navigate(uri, e.Source as FrameworkElement, parameter);
-                }
+            Uri uri;
+            string parameter;
+            string targetName;
+
+            if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out uri, out parameter, out targetName))
+            {
+                this.LinkNavigator.Navigate(uri, e.Source as FrameworkElement, parameter);
             }
         }
 
@@ -251,6 +266,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取或设置当前内容的源uri。
         /// Gets or sets the source uri of the current content.
         /// </summary>
         public Uri ContentSource
@@ -260,6 +276,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取或设置内容加载器
         /// Gets or sets the content loader.
         /// </summary>
         public IContentLoader ContentLoader
@@ -269,6 +286,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取或设置链接导航器
         /// Gets or sets the link navigator.
         /// </summary>
         /// <value>The link navigator.</value>

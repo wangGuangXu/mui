@@ -29,29 +29,36 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         public const string FrameParent = "_parent";
 
         /// <summary>
+        /// 查找在指定上下文中使用给定名称标识的框架
         /// Finds the frame identified with given name in the specified context.
         /// </summary>
-        /// <param name="name">The frame name.</param>
-        /// <param name="context">The framework element providing the context for finding a frame.</param>
-        /// <returns>The frame or null if the frame could not be found.</returns>
+        /// <param name="name">框架名字 The frame name.</param>
+        /// <param name="context">提供查找框架上下文的框架元素 The framework element providing the context for finding a frame.</param>
+        /// <returns>如果找不到该框架，则为空 The frame or null if the frame could not be found.</returns>
         public static ModernFrame FindFrame(string name, FrameworkElement context)
         {
-            if (context == null) {
+            if (context == null)
+            {
                 throw new ArgumentNullException("context");
             }
 
             // collect all ancestor frames
             var frames = context.AncestorsAndSelf().OfType<ModernFrame>().ToArray();
 
-            if (name == null || name == FrameSelf) {
+            if (name == null || name == FrameSelf)
+            {
                 // find first ancestor frame
                 return frames.FirstOrDefault();
             }
-            if (name == FrameParent) {
+
+            if (name == FrameParent)
+            {
                 // find parent frame
                 return frames.Skip(1).FirstOrDefault();
             }
-            if (name == FrameTop) {
+
+            if (name == FrameTop)
+            {
                 // find top-most frame
                 return frames.LastOrDefault();
             }
@@ -59,16 +66,20 @@ namespace FirstFloor.ModernUI.Windows.Navigation
             // find ancestor frame having a name matching the target
             var frame = frames.FirstOrDefault(f => f.Name == name);
 
-            if (frame == null) {
+            if (frame == null)
+            {
                 // find frame in context scope
                 frame = context.FindName(name) as ModernFrame;
 
-                if (frame == null) {
+                if (frame == null)
+                {
                     // find frame in scope of ancestor frame content
                     var parent = frames.FirstOrDefault();
-                    if (parent != null && parent.Content != null) {
+                    if (parent != null && parent.Content != null)
+                    {
                         var content = parent.Content as FrameworkElement;
-                        if (content != null) {
+                        if (content != null)
+                        {
                             frame = content.FindName(name) as ModernFrame;
                         }
                     }
@@ -115,6 +126,7 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         }
 
         /// <summary>
+        /// 尝试将指定的值转换为uri。可以接受uri或字符串输入
         /// Tries to cast specified value to a uri. Either a uri or string input is accepted.
         /// </summary>
         /// <param name="value"></param>

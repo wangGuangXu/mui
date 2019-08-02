@@ -27,7 +27,7 @@
                         <DataTemplate DataType="{x:Type sys:Exception}">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                 <StackPanel>
-                                    <TextBlock Text="NAVIGATION FAILED" Style="{StaticResource Heading1}" />
+                                    <TextBlock Text="导航失败" Style="{StaticResource Heading1}" />
                                     <TextBlock Text="{Binding Message}" FontWeight="Bold" Foreground="#e51400" Margin="0,0,0,8" />
                                     <TextBlock Text="Source" FontWeight="Bold" />
                                     <TextBlock Text="{Binding Source, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=controls:ModernFrame}}" Margin="0,0,0,8"/>

@@ -5,14 +5,19 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FirstFloor.ModernUI.App
 {
-    public class SampleFormViewModel
-        : NotifyPropertyChanged, IDataErrorInfo
+    public class SampleFormViewModel : NotifyPropertyChanged, IDataErrorInfo
     {
         private string firstName = "John";
         private string lastName;
+
+        public SampleFormViewModel()
+        {
+            //Application.Current.MainWindow.
+        }
 
         public string FirstName
         {

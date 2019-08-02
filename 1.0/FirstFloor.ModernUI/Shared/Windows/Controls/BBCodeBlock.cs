@@ -21,8 +21,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
     /// A lighweight control for displaying small amounts of rich formatted BBCode content.
     /// </summary>
     [ContentProperty("BBCode")]
-    public class BBCodeBlock
-        : TextBlock
+    public class BBCodeBlock : TextBlock
     {
         /// <summary>
         /// Identifies the BBCode dependency property.
@@ -83,15 +82,19 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
             this.Inlines.Clear();
 
-            if (!string.IsNullOrWhiteSpace(bbcode)) {
+            if (!string.IsNullOrWhiteSpace(bbcode))
+            {
                 Inline inline;
-                try {
-                    var parser = new BBCodeParser(bbcode, this) {
+                try
+                {
+                    var parser = new BBCodeParser(bbcode, this)
+                    {
                         Commands = this.LinkNavigator.Commands
                     };
                     inline = parser.Parse();
                 }
-                catch (Exception) {
+                catch (Exception)
+                {
                     // parsing failed, display BBCode value as-is
                     inline = new Run { Text = bbcode };
                 }
@@ -103,11 +106,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private void OnRequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             try {
-                // perform navigation using the link navigator
+                // 使用链接导航器执行导航 perform navigation using the link navigator
                 this.LinkNavigator.Navigate(e.Uri, this, e.Target);
             }
             catch (Exception error) {
-                // display navigation failures
+                // 显示导航失败 display navigation failures
                 ModernDialog.ShowMessage(error.Message, ModernUI.Resources.NavigationFailed, MessageBoxButton.OK);
             }
         }

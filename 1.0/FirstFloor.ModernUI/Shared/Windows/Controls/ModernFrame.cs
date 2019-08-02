@@ -36,7 +36,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         public static readonly DependencyProperty IsLoadingContentProperty = IsLoadingContentPropertyKey.DependencyProperty;
         /// <summary>
-        /// Identifies the Source dependency property.
+        /// 标识源依赖项属性 Identifies the Source dependency property.
         /// </summary>
         public static readonly DependencyProperty SourceProperty = DependencyProperty.Register("Source", typeof(Uri), typeof(ModernFrame), new PropertyMetadata(OnSourceChanged));
 

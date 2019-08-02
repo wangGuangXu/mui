@@ -11,6 +11,7 @@ using System.Windows.Input;
 namespace FirstFloor.ModernUI.Windows.Navigation
 {
     /// <summary>
+    /// 默认链接导航器，支持加载框架内容、使用默认浏览器的外部链接导航和命令执行
     /// The default link navigator with support for loading frame content, external link navigation using the default browser and command execution.
     /// </summary>
     public class DefaultLinkNavigator : ILinkNavigator
@@ -110,5 +111,7 @@ namespace FirstFloor.ModernUI.Windows.Navigation
                 frame.Source = uri;
             }
         }
+
+
     }
 }

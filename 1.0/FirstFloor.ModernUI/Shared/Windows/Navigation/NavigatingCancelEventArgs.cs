@@ -12,8 +12,7 @@ namespace FirstFloor.ModernUI.Windows.Navigation
     /// <summary>
     /// Provides data for the <see cref="IContent.OnNavigatingFrom" /> method and the <see cref="ModernFrame.Navigating"/> event.
     /// </summary>
-    public class NavigatingCancelEventArgs
-        : NavigationBaseEventArgs
+    public class NavigatingCancelEventArgs : NavigationBaseEventArgs
     {
         /// <summary>
         /// Gets a value indicating whether the frame performing the navigation is a parent frame or the frame itself.

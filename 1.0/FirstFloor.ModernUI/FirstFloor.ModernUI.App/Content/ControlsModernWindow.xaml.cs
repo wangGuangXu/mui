@@ -30,9 +30,9 @@ namespace FirstFloor.ModernUI.App.Content
         {
             // create a blank modern window with lorem content
             // the BlankWindow ModernWindow styles is found in the mui assembly at Assets/ModernWindowStyles.xaml
-
+            //BlankWindow
             var wnd = new ModernWindow {
-                Style = (Style)App.Current.Resources["BlankWindow"],
+                Style = (Style)App.Current.Resources["BlankTwoWindow"],
                 Title = "ModernWindow",
                 IsTitleVisible = true == this.title.IsChecked,
                 Content = new LoremIpsum(),
