@@ -19,10 +19,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
     public class ModernFrame : ContentControl
     {
         /// <summary>
+        /// 标识保活附件依赖属性
         /// Identifies the KeepAlive attached dependency property.
         /// </summary>
         public static readonly DependencyProperty KeepAliveProperty = DependencyProperty.RegisterAttached("KeepAlive", typeof(bool?), typeof(ModernFrame), new PropertyMetadata(null));
         /// <summary>
+        /// 标识保活内容附件依赖属性
         /// Identifies the KeepContentAlive dependency property.
         /// </summary>
         public static readonly DependencyProperty KeepContentAliveProperty = DependencyProperty.Register("KeepContentAlive", typeof(bool), typeof(ModernFrame), new PropertyMetadata(true, OnKeepContentAliveChanged));
@@ -524,6 +526,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取一个值，该值指示是否在现代化框架实例中保持指定对象的活动状态
         /// Gets a value indicating whether to keep specified object alive in a ModernFrame instance.
         /// </summary>
         /// <param name="o">The target dependency object.</param>
@@ -537,6 +540,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 设置一个值，该值指示是否在现代化框架实例中保持指定对象的活动状态
         /// Sets a value indicating whether to keep specified object alive in a ModernFrame instance.
         /// </summary>
         /// <param name="o">The target dependency object.</param>

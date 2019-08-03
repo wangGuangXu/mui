@@ -63,6 +63,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             SystemEvents.DisplaySettingsChanged -= OnSystemEventsDisplaySettingsChanged;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSystemEventsDisplaySettingsChanged(object sender, EventArgs e)
         {
             if (this.source != null && this.WindowState == WindowState.Minimized) {
@@ -70,6 +75,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSourceInitialized(object sender, EventArgs e)
         {
             this.source = (HwndSource)HwndSource.FromVisual(this);
@@ -86,6 +96,15 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hwnd"></param>
+        /// <param name="msg"></param>
+        /// <param name="wParam"></param>
+        /// <param name="lParam"></param>
+        /// <param name="handled"></param>
+        /// <returns></returns>
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             if (msg == NativeMethods.WM_DPICHANGED) {
@@ -123,28 +142,44 @@ namespace FirstFloor.ModernUI.Windows.Controls
             return IntPtr.Zero;
         }
         
+        /// <summary>
+        /// 更新布局变换
+        /// </summary>
         private void UpdateLayoutTransform()
         {
-            if (this.isPerMonitorDpiAware) {
-                var root = (FrameworkElement)this.GetVisualChild(0);
-                if (root != null) {
-                    if (this.dpiInfo.ScaleX != 1 || this.dpiInfo.ScaleY != 1) {
-                        root.LayoutTransform = new ScaleTransform(this.dpiInfo.ScaleX, this.dpiInfo.ScaleY);
-                    }
-                    else {
-                        root.LayoutTransform = null;
-                    }
-                }
+            if (this.isPerMonitorDpiAware==false) {
+                return;
+            }
+
+            var root = (FrameworkElement)this.GetVisualChild(0);
+            if (root == null)
+            {
+                return;
+            }
+
+            if (this.dpiInfo.ScaleX != 1 || this.dpiInfo.ScaleY != 1)
+            {
+                root.LayoutTransform = new ScaleTransform(this.dpiInfo.ScaleX, this.dpiInfo.ScaleY);
+            }
+            else
+            {
+                root.LayoutTransform = null;
             }
         }
 
+        /// <summary>
+        /// 更新窗口大小
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         private void UpdateWindowSize(double width, double height)
         {
             // determine relative scalex and scaley
             var relScaleX = width / this.Width;
             var relScaleY = height / this.Height;
 
-            if (relScaleX != 1 || relScaleY != 1) {
+            if (relScaleX != 1 || relScaleY != 1)
+            {
                 // adjust window size constraints as well
                 this.MinWidth *= relScaleX;
                 this.MaxWidth *= relScaleX;
@@ -157,11 +192,13 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 刷新当前监视器DPI设置，并相应地更新窗口大小和布局比例
         /// Refreshes the current monitor DPI settings and update the window size and layout scale accordingly.
         /// </summary>
         protected void RefreshMonitorDpi()
         {
-            if (!this.isPerMonitorDpiAware) {
+            if (!this.isPerMonitorDpiAware)
+            {
                 return;
             }
 
@@ -170,10 +207,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
             uint xDpi = 96;
             uint yDpi = 96;
-            if (NativeMethods.GetDpiForMonitor(monitor, (int)MonitorDpiType.EffectiveDpi, ref xDpi, ref yDpi) != NativeMethods.S_OK) {
+            if (NativeMethods.GetDpiForMonitor(monitor, (int)MonitorDpiType.EffectiveDpi, ref xDpi, ref yDpi) != NativeMethods.S_OK)
+            {
                 xDpi = 96;
                 yDpi = 96;
             }
+
             // vector contains the change of the old to new DPI
             var dpiVector = this.dpiInfo.UpdateMonitorDpi(xDpi, yDpi);
 
@@ -195,5 +234,6 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 handler(this, e);
             }
         }
+
     }
 }

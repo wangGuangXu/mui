@@ -51,8 +51,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// Identifies the LinkNavigator dependency property.
         /// </summary>
         public static DependencyProperty LinkNavigatorProperty = DependencyProperty.Register("LinkNavigator", typeof(ILinkNavigator), typeof(ModernWindow), new PropertyMetadata(new DefaultLinkNavigator()));
-
+        /// <summary>
+        /// 关闭窗口附加属性
+        /// </summary>
+        public static readonly DependencyProperty DialogResultProperty = DependencyProperty.Register("DialogResult", typeof(bool), typeof(ModernWindow), new PropertyMetadata(DialogResultChanged));
         private Storyboard backgroundAnimation;
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ModernWindow"/> class.
@@ -92,7 +96,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             base.OnClosed(e);
 
-            // detach event handler
+            // 分离事件处理程序 detach event handler
             AppearanceManager.Current.PropertyChanged -= OnAppearanceManagerPropertyChanged;
         }
 
@@ -220,6 +224,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
 #endif
         }
 
+
+
         /// <summary>
         /// 获取或设置此窗口实例的背景内容
         /// </summary>
@@ -295,5 +301,48 @@ namespace FirstFloor.ModernUI.Windows.Controls
             get { return (ILinkNavigator)GetValue(LinkNavigatorProperty); }
             set { SetValue(LinkNavigatorProperty, value); }
         }
+
+        /// <summary>
+        /// 获取窗口关闭值
+        /// </summary>
+        /// <param name="o">目标依赖对象.</param>
+        /// <returns></returns>
+        public static bool? GetDialogResult(DependencyObject o)
+        {
+            if (o == null)
+            {
+                throw new ArgumentNullException("o");
+            }
+            return (bool?)o.GetValue(DialogResultProperty);
+        }
+
+        /// <summary>
+        /// 设置窗口关闭值
+        /// </summary>
+        /// <param name="o">目标依赖对象.</param>
+        /// <param name="value"></param>
+        public static void SetDialogResult(DependencyObject o, bool? value)
+        {
+            if (o == null)
+            {
+                throw new ArgumentNullException("o");
+            }
+            o.SetValue(DialogResultProperty, value);
+        }
+
+        /// <summary>
+        /// 值改变事件
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="e"></param>
+        private static void DialogResultChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var window = d as Window;
+            if (window != null)
+            {
+                window.DialogResult = e.NewValue as bool?;
+            }
+        }
+
     }
 }
