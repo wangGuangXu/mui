@@ -83,7 +83,8 @@ namespace FirstFloor.ModernUI.Windows.Navigation
                 {
                     command.Execute(parameter);
                 }
-                else {
+                else
+                {
                     // do nothing
                 }
             }
@@ -111,7 +112,6 @@ namespace FirstFloor.ModernUI.Windows.Navigation
                 frame.Source = uri;
             }
         }
-
 
     }
 }

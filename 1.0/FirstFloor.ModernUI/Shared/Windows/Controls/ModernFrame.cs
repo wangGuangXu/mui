@@ -24,16 +24,19 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         public static readonly DependencyProperty KeepAliveProperty = DependencyProperty.RegisterAttached("KeepAlive", typeof(bool?), typeof(ModernFrame), new PropertyMetadata(null));
         /// <summary>
-        /// 标识保活内容附件依赖属性
+        /// 标识保活内容依赖属性 注意默认是保活，会导致也没内容切换链接后不能及时刷新。
         /// Identifies the KeepContentAlive dependency property.
         /// </summary>
         public static readonly DependencyProperty KeepContentAliveProperty = DependencyProperty.Register("KeepContentAlive", typeof(bool), typeof(ModernFrame), new PropertyMetadata(true, OnKeepContentAliveChanged));
+
         /// <summary>
+        /// 标识内容加载器依赖属性
         /// Identifies the ContentLoader dependency property.
         /// </summary>
         public static readonly DependencyProperty ContentLoaderProperty = DependencyProperty.Register("ContentLoader", typeof(IContentLoader), typeof(ModernFrame), new PropertyMetadata(new DefaultContentLoader(), OnContentLoaderChanged));
         private static readonly DependencyPropertyKey IsLoadingContentPropertyKey = DependencyProperty.RegisterReadOnly("IsLoadingContent", typeof(bool), typeof(ModernFrame), new PropertyMetadata(false));
         /// <summary>
+        /// 标识正在加载内容依赖项属性
         /// Identifies the IsLoadingContent dependency property.
         /// </summary>
         public static readonly DependencyProperty IsLoadingContentProperty = IsLoadingContentPropertyKey.DependencyProperty;
@@ -43,17 +46,21 @@ namespace FirstFloor.ModernUI.Windows.Controls
         public static readonly DependencyProperty SourceProperty = DependencyProperty.Register("Source", typeof(Uri), typeof(ModernFrame), new PropertyMetadata(OnSourceChanged));
 
         /// <summary>
+        /// 当导航到内容片段开始时
         /// Occurs when navigation to a content fragment begins.
         /// </summary>
         public event EventHandler<FragmentNavigationEventArgs> FragmentNavigation;
         /// <summary>
+        /// 当请求新的导航时发生
         /// Occurs when a new navigation is requested.
         /// </summary>
         /// <remarks>
+        /// 导航事件在父框架导航时也会引发。这允许取消父导航
         /// The navigating event is also raised when a parent frame is navigating. This allows for cancelling parent navigation.
         /// </remarks>
         public event EventHandler<NavigatingCancelEventArgs> Navigating;
         /// <summary>
+        /// 导航到新内容完成时发生
         /// Occurs when navigation to new content has completed.
         /// </summary>
         public event EventHandler<NavigationEventArgs> Navigated;
@@ -83,7 +90,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             this.DefaultStyleKey = typeof(ModernFrame);
 
-            // associate application and navigation commands with this instance
+            // 将应用程序和导航命令与此实例关联 associate application and navigation commands with this instance
             this.CommandBindings.Add(new CommandBinding(NavigationCommands.BrowseBack, OnBrowseBack, OnCanBrowseBack));
             this.CommandBindings.Add(new CommandBinding(NavigationCommands.GoToPage, OnGoToPage, OnCanGoToPage));
             this.CommandBindings.Add(new CommandBinding(NavigationCommands.Refresh, OnRefresh, OnCanRefresh));
@@ -375,7 +382,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 content.OnFragmentNavigation(e);
             }
 
-            // raise the FragmentNavigation event
+            // 引发碎片导航事件 raise the FragmentNavigation event
             if (FragmentNavigation != null)
             {
                 FragmentNavigation(this, e);
