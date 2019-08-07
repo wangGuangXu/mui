@@ -16,15 +16,15 @@ namespace FirstFloor.ModernUI.Windows.Navigation
     public static class NavigationHelper
     {
         /// <summary>
-        /// Identifies the current frame.
+        /// 标识当前框架 Identifies the current frame.
         /// </summary>
         public const string FrameSelf = "_self";
         /// <summary>
-        /// Identifies the top frame.
+        /// 标识头部框架 Identifies the top frame.
         /// </summary>
         public const string FrameTop = "_top";
         /// <summary>
-        /// Identifies the parent of the current frame.
+        /// 标识当前框架的父框架 Identifies the parent of the current frame.
         /// </summary>
         public const string FrameParent = "_parent";
 

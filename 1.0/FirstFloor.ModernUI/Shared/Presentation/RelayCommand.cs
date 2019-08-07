@@ -16,7 +16,7 @@ namespace FirstFloor.ModernUI.Presentation
         private readonly Func<object, bool> canExecute;
 
         /// <summary>
-        /// 初始化RelayCommand类的新实例
+        /// 初始化中转命令类的新实例
         /// </summary>
         /// <param name="execute">执行无参委托</param>
         /// <param name="canExecute">可以执行</param>
@@ -33,7 +33,9 @@ namespace FirstFloor.ModernUI.Presentation
                 canExecute = (o) => true;
             }
 
+            //Execute”中我们放的是希望动作发生时实际执行的逻辑代码
             this.execute = execute;
+            //CanExecute”中我们放的是验证逻辑来决定“Execute”代码是否应该执行
             this.canExecute = canExecute;
         }
 

@@ -68,36 +68,43 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             UpdateSelection();
 
-            // raise SelectedSourceChanged event
+            // 引发选择源改变事件 raise SelectedSourceChanged event
             var handler = this.SelectedSourceChanged;
             if (handler != null) {
                 handler(this, new SourceEventArgs(newValue));
             }
         }
 
+        /// <summary>
+        /// 更新选择
+        /// </summary>
         private void UpdateSelection()
         {
-            if (this.linkList == null || this.Links == null) {
+            if (this.linkList == null || this.Links == null)
+            {
                 return;
             }
 
-            // sync list selection with current source
+            // 将列表选择与当前源同步 sync list selection with current source
             this.linkList.SelectedItem = this.Links.FirstOrDefault(l => l.Source == this.SelectedSource);
         }
 
         /// <summary>
+        /// 当在派生类中重写时，每当应用程序代码或内部进程调用系统窗口时都会调用框架元素应用模板
         /// When overridden in a derived class, is invoked whenever application code or internal processes call System.Windows.FrameworkElement.ApplyTemplate().
         /// </summary>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            if (this.linkList != null) {
+            if (this.linkList != null)
+            {
                 this.linkList.SelectionChanged -= OnLinkListSelectionChanged;
             }
 
             this.linkList = GetTemplateChild("LinkList") as ListBox;
-            if (this.linkList != null) {
+            if (this.linkList != null)
+            {
                 this.linkList.SelectionChanged += OnLinkListSelectionChanged;
             }
 
@@ -107,12 +114,15 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private void OnLinkListSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var link = this.linkList.SelectedItem as Link;
-            if (link != null && link.Source != this.SelectedSource) {
+            if (link != null && link.Source != this.SelectedSource)
+            {
                 SetCurrentValue(SelectedSourceProperty, link.Source);
+                e.Handled = true;
             }
         }
 
         /// <summary>
+        /// 获取或设置内容加载器
         /// Gets or sets the content loader.
         /// </summary>
         public IContentLoader ContentLoader
@@ -122,6 +132,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取或设置一个值，该值指示应如何呈现选项卡
         /// Gets or sets a value indicating how the tab should be rendered.
         /// </summary>
         public TabLayout Layout
@@ -131,6 +142,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取或设置定义此选项卡中可用内容的链接集合
         /// Gets or sets the collection of links that define the available content in this tab.
         /// </summary>
         public LinkCollection Links
@@ -140,6 +152,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取或设置布局设置为列表时列表的宽度
         /// Gets or sets the width of the list when Layout is set to List.
         /// </summary>
         /// <value>
@@ -152,6 +165,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取或设置所选链接的源URI。
         /// Gets or sets the source URI of the selected link.
         /// </summary>
         /// <value>The source URI of the selected link.</value>

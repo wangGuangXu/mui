@@ -119,29 +119,34 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         private void OnSourceChanged(Uri oldValue, Uri newValue)
         {
-            // if resetting source or old source equals new, don't do anything
-            if (this.isResetSource || newValue != null && newValue.Equals(oldValue)) {
+            // 如果重置源或旧源等于新建，则不要执行任何操作 if resetting source or old source equals new, don't do anything
+            if (this.isResetSource || newValue != null && newValue.Equals(oldValue))
+            {
                 return;
             }
 
-            // handle fragment navigation
+            // 处理片段导航 handle fragment navigation
             string newFragment = null;
             var oldValueNoFragment = NavigationHelper.RemoveFragment(oldValue);
             var newValueNoFragment = NavigationHelper.RemoveFragment(newValue, out newFragment);
 
-            if (newValueNoFragment != null && newValueNoFragment.Equals(oldValueNoFragment)) {
-                // fragment navigation
-                var args = new FragmentNavigationEventArgs {
+            if (newValueNoFragment != null && newValueNoFragment.Equals(oldValueNoFragment))
+            {
+                // 片段进行导航 fragment navigation
+                var args = new FragmentNavigationEventArgs
+                {
                     Fragment = newFragment
                 };
 
                 OnFragmentNavigation(this.Content as IContent, args);
             }
-            else {
+            else
+            {
                 var navType = this.isNavigatingHistory ? NavigationType.Back : NavigationType.New;
 
-                // only invoke CanNavigate for new navigation
-                if (!this.isNavigatingHistory && !CanNavigate(oldValue, newValue, navType)) {
+                // 只有调用才能导航新的导航 only invoke CanNavigate for new navigation
+                if (!this.isNavigatingHistory && !CanNavigate(oldValue, newValue, navType))
+                {
                     return;
                 }
 
@@ -149,24 +154,36 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="oldValue"></param>
+        /// <param name="newValue"></param>
+        /// <param name="navigationType"></param>
+        /// <returns></returns>
         private bool CanNavigate(Uri oldValue, Uri newValue, NavigationType navigationType)
         {
-            var cancelArgs = new NavigatingCancelEventArgs {
+            var cancelArgs = new NavigatingCancelEventArgs
+            {
                 Frame = this,
                 Source = newValue,
                 IsParentFrameNavigating = true,
                 NavigationType = navigationType,
                 Cancel = false,
             };
+
             OnNavigating(this.Content as IContent, cancelArgs);
 
-            // check if navigation cancelled
-            if (cancelArgs.Cancel) {
-                Debug.WriteLine("Cancelled navigation from '{0}' to '{1}'", oldValue, newValue);
+            // 检查是否取消导航 check if navigation cancelled
+            if (cancelArgs.Cancel)
+            {
+                Debug.WriteLine("取消导航 '{0}' 到 '{1}'", oldValue, newValue);
 
-                if (this.Source != oldValue) {
-                    // enqueue the operation to reset the source back to the old value
-                    Dispatcher.BeginInvoke((Action)(() => {
+                if (this.Source != oldValue)
+                {
+                    // 加入操作队列，将源重置为旧值 enqueue the operation to reset the source back to the old value
+                    Dispatcher.BeginInvoke((Action)(() => 
+                    {
                         this.isResetSource = true;
                         SetCurrentValue(SourceProperty, oldValue);
                         this.isResetSource = false;
@@ -180,20 +197,22 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         private void Navigate(Uri oldValue, Uri newValue, NavigationType navigationType)
         {
-            Debug.WriteLine("Navigating from '{0}' to '{1}'", oldValue, newValue);
+            Debug.WriteLine("从导航 '{0}' 到 '{1}'", oldValue, newValue);
 
-            // set IsLoadingContent state
+            // 设置正在加载内容状态 set IsLoadingContent state
             SetValue(IsLoadingContentPropertyKey, true);
 
-            // cancel previous load content task (if any)
-            // note: no need for thread synchronization, this code always executes on the UI thread
-            if (this.tokenSource != null) {
+            // 取消以前的加载内容任务(如果有的话) cancel previous load content task (if any)
+            // 注意:不需要线程同步，这段代码总是在UI线程上执行 note: no need for thread synchronization, this code always executes on the UI thread
+            if (this.tokenSource != null)
+            {
                 this.tokenSource.Cancel();
                 this.tokenSource = null;
             }
 
-            // push previous source onto the history stack (only for new navigation types)
-            if (oldValue != null && navigationType == NavigationType.New) {
+            // 将以前的源代码推入历史堆栈(仅用于新的导航类型) push previous source onto the history stack (only for new navigation types)
+            if (oldValue != null && navigationType == NavigationType.New)
+            {
                 this.history.Push(oldValue);
             }
 
@@ -201,14 +220,15 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
             if (newValue != null)
             {
-                // content is cached on uri without fragment
+                // 内容缓存在没有片段的URI上 content is cached on uri without fragment
                 var newValueNoFragment = NavigationHelper.RemoveFragment(newValue);
 
                 if (navigationType == NavigationType.Refresh || !this.contentCache.TryGetValue(newValueNoFragment, out newContent))
                 {
                     var localTokenSource = new CancellationTokenSource();
                     this.tokenSource = localTokenSource;
-                    // load the content (asynchronous!)
+
+                    // 加载内容（异步！） load the content (asynchronous!)
                     var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
                     var task = this.ContentLoader.LoadContentAsync(newValue, this.tokenSource.Token);
 
@@ -221,7 +241,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
                             }
                             else if (t.IsFaulted)
                             {
-                                // raise failed event
+                                // 引发失败事件 raise failed event
                                 var failedArgs = new NavigationFailedEventArgs
                                 {
                                     Frame = this,
@@ -232,7 +252,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
                                 OnNavigationFailed(failedArgs);
 
-                                // if not handled, show error as content
+                                // 如果未处理，则将错误显示为内容 if not handled, show error as content
                                 newContent = failedArgs.Handled ? null : failedArgs.Error;
 
                                 SetContent(newValue, navigationType, newContent, true);
@@ -240,23 +260,23 @@ namespace FirstFloor.ModernUI.Windows.Controls
                             else
                             {
                                 newContent = t.Result;
-                                if (ShouldKeepContentAlive(newContent)) {
-                                    // keep the new content in memory
+                                if (ShouldKeepContentAlive(newContent))
+                                {
+                                    // 将新内容保存在内存中 keep the new content in memory
                                     this.contentCache[newValueNoFragment] = newContent;
                                 }
-
                                 SetContent(newValue, navigationType, newContent, false);
                             }
                         }
                         finally
                         {
-                            // clear global tokenSource to avoid a Cancel on a disposed object
+                            // 清除全局标记源以避免取消释放的对象 clear global tokenSource to avoid a Cancel on a disposed object
                             if (this.tokenSource == localTokenSource)
                             {
                                 this.tokenSource = null;
                             }
 
-                            // and dispose of the local tokensource
+                            // 并处理本地令牌源 and dispose of the local tokensource
                             localTokenSource.Dispose();
                         }
                     }, scheduler);
@@ -264,7 +284,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 }
             }
 
-            // newValue is null or newContent was found in the cache
+            // 新值为null或缓存中找到了新内容 newValue is null or newContent was found in the cache
             SetContent(newValue, navigationType, newContent, false);
         }
 
@@ -319,24 +339,29 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private IEnumerable<ModernFrame> GetChildFrames()
         {
             var refs = this.childFrames.ToArray();
-            foreach (var r in refs) {
+            foreach (var r in refs)
+            {
                 var valid = false;
                 ModernFrame frame;
 
 #if NET4
-                if (r.IsAlive) {
+                if (r.IsAlive)
+                {
                     frame = (ModernFrame)r.Target;
 #else
-                if (r.TryGetTarget(out frame)) {
+                if (r.TryGetTarget(out frame)) 
+                    {
 #endif
                     // check if frame is still an actual child (not the case when child is removed, but not yet garbage collected)
-                    if (NavigationHelper.FindFrame(null, frame) == this) {
+                    if (NavigationHelper.FindFrame(null, frame) == this)
+                    {
                         valid = true;
                         yield return frame;
                     }
                 }
 
-                if (!valid) {
+                if (!valid)
+                {
                     this.childFrames.Remove(r);
                 }
             }
@@ -345,32 +370,42 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private void OnFragmentNavigation(IContent content, FragmentNavigationEventArgs e)
         {
             // invoke optional IContent.OnFragmentNavigation
-            if (content != null) {
+            if (content != null)
+            {
                 content.OnFragmentNavigation(e);
             }
 
             // raise the FragmentNavigation event
-            if (FragmentNavigation != null) {
+            if (FragmentNavigation != null)
+            {
                 FragmentNavigation(this, e);
             }
         }
 
+        /// <summary>
+        /// 在导航
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="e"></param>
         private void OnNavigating(IContent content, NavigatingCancelEventArgs e)
         {
-            // first invoke child frame navigation events
-            foreach (var f in GetChildFrames()) {
+            // 首先调用子框架导航事件 first invoke child frame navigation events
+            foreach (var f in GetChildFrames())
+            {
                 f.OnNavigating(f.Content as IContent, e);
             }
 
             e.IsParentFrameNavigating = e.Frame != this;
 
-            // invoke IContent.OnNavigating (only if content implements IContent)
-            if (content != null) {
+            // 调用IContent.OnNavigation(仅当内容实现IContent时) invoke IContent.OnNavigating (only if content implements IContent)
+            if (content != null)
+            {
                 content.OnNavigatingFrom(e);
             }
 
-            // raise the Navigating event
-            if (Navigating != null) {
+            // 引发导航事件 raise the Navigating event
+            if (Navigating != null)
+            {
                 Navigating(this, e);
             }
         }
@@ -378,15 +413,19 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private void OnNavigated(IContent oldContent, IContent newContent, NavigationEventArgs e)
         {
             // invoke IContent.OnNavigatedFrom and OnNavigatedTo
-            if (oldContent != null) {
+            if (oldContent != null)
+            {
                 oldContent.OnNavigatedFrom(e);
             }
-            if (newContent != null) {
+
+            if (newContent != null)
+            {
                 newContent.OnNavigatedTo(e);
             }
 
-            // raise the Navigated event
-            if (Navigated != null) {
+            // 引发导航事件 raise the Navigated event
+            if (Navigated != null)
+            {
                 Navigated(this, e);
             }
         }
@@ -397,13 +436,14 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <param name="e"></param>
         private void OnNavigationFailed(NavigationFailedEventArgs e)
         {
-            if (NavigationFailed != null){
+            if (NavigationFailed != null)
+            {
                 NavigationFailed(this, e);
             }
         }
 
         /// <summary>
-        /// Determines whether the routed event args should be handled.
+        /// 确定是否应处理路由事件参数 Determines whether the routed event args should be handled.
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
@@ -412,7 +452,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             var originalSource = args.OriginalSource as DependencyObject;
 
-            if (originalSource == null) {
+            if (originalSource == null)
+            {
                 return false;
             }
             return originalSource.AncestorsAndSelf().OfType<ModernFrame>().FirstOrDefault() == this;
@@ -420,7 +461,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         private void OnCanBrowseBack(object sender, CanExecuteRoutedEventArgs e)
         {
-            // only enable browse back for source frame, do not bubble
+            // 只启用浏览后退框，不要冒泡 only enable browse back for source frame, do not bubble
             if (HandleRoutedEvent(e))
             {
                 e.CanExecute = this.history.Count > 0;
@@ -445,57 +486,83 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         private void OnCanRefresh(object sender, CanExecuteRoutedEventArgs e)
         {
-            if (HandleRoutedEvent(e)) {
+            if (HandleRoutedEvent(e))
+            {
                 e.CanExecute = this.Source != null;
             }
         }
 
+        /// <summary>
+        /// 浏览后退
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="e"></param>
         private void OnBrowseBack(object target, ExecutedRoutedEventArgs e)
         {
-            if (this.history.Count > 0)
+            if (this.history.Count <1)
             {
-                var oldValue = this.Source;
-                var newValue = this.history.Peek();     // do not remove just yet, navigation may be cancelled
+                return;
+            }
 
-                if (CanNavigate(oldValue, newValue, NavigationType.Back)) {
-                    this.isNavigatingHistory = true;
-                    SetCurrentValue(SourceProperty, this.history.Pop());
-                    this.isNavigatingHistory = false;
-                }
+            var oldValue = this.Source;
+            var newValue = this.history.Peek();     // 还没有删除，导航可能会被取消 do not remove just yet, navigation may be cancelled
+
+            if (CanNavigate(oldValue, newValue, NavigationType.Back))
+            {
+                this.isNavigatingHistory = true;
+                SetCurrentValue(SourceProperty, this.history.Pop());
+                this.isNavigatingHistory = false;
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="e"></param>
         private void OnGoToPage(object target, ExecutedRoutedEventArgs e)
         {
             var newValue = NavigationHelper.ToUri(e.Parameter);
             SetCurrentValue(SourceProperty, newValue);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="e"></param>
         private void OnRefresh(object target, ExecutedRoutedEventArgs e)
         {
-            if (CanNavigate(this.Source, this.Source, NavigationType.Refresh)) {
+            if (CanNavigate(this.Source, this.Source, NavigationType.Refresh))
+            {
                 Navigate(this.Source, this.Source, NavigationType.Refresh);
             }
         }
 
         private void OnCopy(object target, ExecutedRoutedEventArgs e)
         {
-            // copies the string representation of the current content to the clipboard
+            // 将当前内容的字符串表示形式复制到剪贴板 copies the string representation of the current content to the clipboard
             Clipboard.SetText(this.Content.ToString());
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             var parent = NavigationHelper.FindFrame(NavigationHelper.FrameParent, this);
-            if (parent != null) {
+            if (parent != null)
+            {
                 parent.RegisterChildFrame(this);
             }
         }
 
+        /// <summary>
+        /// 注册子框架
+        /// </summary>
+        /// <param name="frame"></param>
         private void RegisterChildFrame(ModernFrame frame)
         {
-            // do not register existing frame
-            if (!GetChildFrames().Contains(frame)) {
+            // 不注册现有框架 do not register existing frame
+            if (!GetChildFrames().Contains(frame))
+            {
 #if NET4
                 var r = new WeakReference(frame);
 #else
@@ -506,6 +573,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 确定是否应保持指定内容为活动内容
         /// Determines whether the specified content should be kept alive.
         /// </summary>
         /// <param name="content"></param>
@@ -513,11 +581,13 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private bool ShouldKeepContentAlive(object content)
         {
             var o = content as DependencyObject;
-            if (o != null) {
+            if (o != null)
+            {
                 var result = GetKeepAlive(o);
 
                 // if a value exists for given content, use it
-                if (result.HasValue) {
+                if (result.HasValue)
+                {
                     return result.Value;
                 }
             }
@@ -533,7 +603,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <returns>Whether to keep the object alive. Null to leave the decision to the ModernFrame.</returns>
         public static bool? GetKeepAlive(DependencyObject o)
         {
-            if (o == null) {
+            if (o == null)
+            {
                 throw new ArgumentNullException("o");
             }
             return (bool?)o.GetValue(KeepAliveProperty);
@@ -547,13 +618,15 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <param name="value">Whether to keep the object alive. Null to leave the decision to the ModernFrame.</param>
         public static void SetKeepAlive(DependencyObject o, bool? value)
         {
-            if (o == null) {
+            if (o == null)
+            {
                 throw new ArgumentNullException("o");
             }
             o.SetValue(KeepAliveProperty, value);
         }
 
         /// <summary>
+        /// 获取或设置是否应将内容保存在内存中
         /// Gets or sets a value whether content should be kept in memory.
         /// </summary>
         public bool KeepContentAlive
@@ -563,6 +636,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取或设置内容加载器
         /// Gets or sets the content loader.
         /// </summary>
         public IContentLoader ContentLoader

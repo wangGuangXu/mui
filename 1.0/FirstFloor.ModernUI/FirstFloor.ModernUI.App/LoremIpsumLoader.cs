@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI.App
 {
     /// <summary>
+    /// 加载lorem ipsum内容，而不管给定的uri是什么
     /// Loads lorem ipsum content regardless the given uri.
     /// </summary>
     public class LoremIpsumLoader: DefaultContentLoader

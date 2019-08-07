@@ -16,8 +16,8 @@
                 <mui:Link DisplayName="排版 4" Source="/4" />
                 <mui:Link DisplayName="排版 5" Source="/5"/>
             </mui:ModernTab.Links>
-            
-            <!-- ensures new LoremIpsum content is loaded for each uri -->
+
+            <!-- 确保为每个uri加载新的LoremIpsum内容 ensures new LoremIpsum content is loaded for each uri -->
             <mui:ModernTab.ContentLoader>
                 <app:LoremIpsumLoader />
             </mui:ModernTab.ContentLoader>

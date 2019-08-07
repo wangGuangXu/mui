@@ -39,6 +39,7 @@ namespace FirstFloor.ModernUI.UserControls
             get { return (string)GetValue(CurrentPageProperty); }
             set { SetValue(CurrentPageProperty, value); }
         }
+
         /// <summary>
         /// 总页数
         /// </summary>

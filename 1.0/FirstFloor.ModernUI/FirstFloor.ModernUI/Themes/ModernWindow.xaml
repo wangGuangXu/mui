@@ -46,10 +46,10 @@
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
 
-                                    <!-- window background content -->
+                                    <!-- 窗口背景内容 window background content -->
                                     <ContentControl Grid.RowSpan="5" Content="{TemplateBinding BackgroundContent}" />
 
-                                    <!-- title bar -->
+                                    <!-- 标题栏 title bar -->
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -58,12 +58,12 @@
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
 
-                                        <!-- title -->
+                                        <!-- 标题 title -->
                                         <TextBlock Text="{TemplateBinding Title}" Margin="8,0" VerticalAlignment="Center" Style="{StaticResource ModernWindowTitle}"
                                                    DataContext="{TemplateBinding IsTitleVisible}"
                                                    Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                                        <!-- title links -->
+                                        <!-- 标题链接 title links -->
                                         <ItemsControl Grid.Column="1" ItemsSource="{TemplateBinding TitleLinks}" Margin="0,0,24,0" WindowChrome.IsHitTestVisibleInChrome="True" >
                                             <ItemsControl.ItemsPanel>
                                                 <ItemsPanelTemplate>
@@ -90,14 +90,14 @@
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
 
-                                        <!-- logo (visible only when LogoData is not null) -->
+                                        <!-- logo(只有当LogoData不为空时才可见) logo (visible only when LogoData is not null) -->
                                         <Border Grid.Column="2" Background="{DynamicResource Accent}" Width="36" Height="36" Margin="8,0"
                                                 DataContext="{TemplateBinding LogoData}"
                                                 Visibility="{Binding Converter={StaticResource NullToVisibilityConverter}, ConverterParameter=inverse}">
                                             <Path Data="{Binding}" Stretch="Fill" Fill="White" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                         </Border>
 
-                                        <!-- window system buttons-->
+                                        <!-- 窗口系统按钮 window system buttons-->
                                         <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Top" WindowChrome.IsHitTestVisibleInChrome="True">
                                             <Button Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}" ToolTip="{x:Static modernui:Resources.Minimize}" Style="{StaticResource SystemButton}">
                                                 <Button.Content>
@@ -138,29 +138,29 @@
 
                                     <Grid Grid.Row="1">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="42" />
+                                            <ColumnDefinition Width="12" />
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <!-- back button -->
-                                        <controls:ModernButton Margin="8,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                        <!-- 后退按钮 back button -->
+                                        <!--<controls:ModernButton Margin="8,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
                                                                EllipseDiameter="24" IconWidth="12" IconHeight="12"
                                                                IconData="F1 M 33,22L 33,26L 19.75,26L 27,33L 20.5,33L 11,24L 20.5,15L 27,15L 19.75,22L 33,22 Z"
                                                                Command="NavigationCommands.BrowseBack"
                                                                CommandTarget="{Binding ElementName=ContentFrame}" 
                                                                ToolTip="{x:Static modernui:Resources.Back}"
-                                                               WindowChrome.IsHitTestVisibleInChrome="True" />
+                                                               WindowChrome.IsHitTestVisibleInChrome="True" />-->
 
-                                        <!-- main menu -->
+                                        <!-- 主菜单 main menu -->
                                         <controls:ModernMenu Grid.Column="1"
                                                              SelectedSource="{Binding Source, ElementName=ContentFrame, Mode=TwoWay}"
                                                              LinkGroups="{TemplateBinding MenuLinkGroups}" />
                                     </Grid>
 
-                                    <!-- content frame -->
+                                    <!-- 内容框架 content frame -->
                                     <controls:ModernFrame x:Name="ContentFrame" Grid.Row="3" Grid.RowSpan="2" Margin="42,8,16,16" Source="{Binding ContentSource, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ContentLoader="{TemplateBinding ContentLoader}"/>
 
-                                    <!-- resize grip -->
+                                    <!-- 调整控制 resize grip -->
                                     <Grid Grid.Row="2" x:Name="ResizeGrip" Background="Transparent" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Bottom" WindowChrome.ResizeGripDirection="BottomRight">
                                         <Path Width="12" Height="12" Margin="1" 
                                               Stroke="{DynamicResource WindowText}"

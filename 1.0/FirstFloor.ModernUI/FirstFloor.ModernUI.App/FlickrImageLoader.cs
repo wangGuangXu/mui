@@ -16,10 +16,10 @@ using System.Xml.Linq;
 namespace FirstFloor.ModernUI.App
 {
     /// <summary>
+    /// 从Flickr加载图像内容。
     /// Loads image content from Flickr.
     /// </summary>
-    public class FlickrImageLoader
-        : IContentLoader
+    public class FlickrImageLoader : IContentLoader
     {
         private const string apiKey = null;           // your flickr API key here
 
@@ -70,7 +70,8 @@ namespace FirstFloor.ModernUI.App
             // raise exception is result is not ok
             result.EnsureSuccessStatusCode();
 
-            using (var stream = await result.Content.ReadAsStreamAsync()) {
+            using (var stream = await result.Content.ReadAsStreamAsync())
+            {
                 var bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;

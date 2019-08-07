@@ -25,8 +25,8 @@ namespace FirstFloor.ModernUI.Windows
             {
                throw new InvalidOperationException(Resources.UIThreadRequired);
             }
-            
-            // scheduler ensures LoadContent is executed on the current UI thread
+
+            // 调度程序确保LoadContent在当前UI线程上执行 scheduler ensures LoadContent is executed on the current UI thread
             var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
             return Task.Factory.StartNew(() => LoadContent(uri), cancellationToken, TaskCreationOptions.None, scheduler);
         }
