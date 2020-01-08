@@ -85,7 +85,7 @@
                     </DataGridCheckBoxColumn>-->
                     
                     <mui:DataGridTextColumn Header="序号"  Binding="{Binding Code}"/>
-                    <mui:DataGridTextColumn Header="名字"  Binding="{Binding FirstName}"/>
+                    <mui:DataGridTextColumn Header="名字"  Binding="{Binding FirstName}" Width="50"/>
                     <mui:DataGridTextColumn Header="姓" Binding="{Binding LastName}" />
                     <mui:DataGridTextColumn Header="邮箱" Binding="{Binding Email}"/>
                     <mui:DataGridCheckBoxColumn Header="成员" Binding="{Binding IsMember}" />

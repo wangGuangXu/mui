@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI.Windows
 {
     /// <summary>
+    /// 定义在ModernFrame中加载的内容的可选协定
     /// Defines the optional contract for content loaded in a ModernFrame.
     /// </summary>
     public interface IContent

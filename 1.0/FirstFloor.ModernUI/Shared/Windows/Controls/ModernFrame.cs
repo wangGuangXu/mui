@@ -374,6 +374,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="e"></param>
         private void OnFragmentNavigation(IContent content, FragmentNavigationEventArgs e)
         {
             // invoke optional IContent.OnFragmentNavigation

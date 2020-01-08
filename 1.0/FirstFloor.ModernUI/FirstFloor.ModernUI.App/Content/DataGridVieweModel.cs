@@ -201,7 +201,7 @@ namespace FirstFloor.ModernUI.App.Content
         {
             var customers = new List<Customer>
             {
-                new Customer { Code = "1001", FirstName = "王", LastName = "光旭", Email = "orlando0@adventure-works.com", IsMember = true, Status = OrderStatus.New },
+                new Customer { Code = "1001", FirstName = "王健康的接口附近的会计数据都快来发生纠纷离开了九分裤劳动节放假劳动竞赛风口浪尖疯狂<br>夺金六块腹肌砥砺奋进大家都看见多了几分考虑到数据法律框架来看待缴费圣诞节的解放路会计分录收到了两地分居来得及法律的解放路", LastName = "光旭", Email = "orlando0@adventure-works.com", IsMember = true, Status = OrderStatus.New },
                 new Customer { Code = "1002", FirstName = "Keith", LastName = "Harris", Email = "keith0@adventure-works.com", IsMember = true, Status = OrderStatus.Received },
                 new Customer { Code = "1003", FirstName = "Donna", LastName = "Carreras", Email = "donna0@adventure-works.com", IsMember = false, Status = OrderStatus.None },
                 new Customer { Code = "1004", FirstName = "Janet", LastName = "Gates", Email = "janet0@adventure-works.com", IsMember = true, Status = OrderStatus.Shipped },
