@@ -76,6 +76,14 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="isDefault"></param>
+        /// <param name="isCancel"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
         private Button CreateCloseDialogButton(string content, bool isDefault, bool isCancel, MessageBoxResult result)
         {
             return new Button {

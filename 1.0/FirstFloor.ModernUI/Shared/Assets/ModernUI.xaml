@@ -50,7 +50,7 @@
     <Thickness x:Key="HeaderMargin">0,-28,44,0</Thickness>
 
     <Thickness x:Key="SplitLeft">0,0,0,0</Thickness>
-    <Thickness x:Key="SplitRight">16,0,0,0</Thickness>
+    <Thickness x:Key="SplitRight">0,0,0,0</Thickness>
     
     <!--Title bar-->
     

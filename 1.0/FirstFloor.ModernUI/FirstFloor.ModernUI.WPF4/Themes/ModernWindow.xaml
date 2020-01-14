@@ -65,7 +65,7 @@
                                                    Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                                         <!-- title links -->
-                                        <ItemsControl Grid.Column="1" ItemsSource="{TemplateBinding TitleLinks}" Margin="0,0,24,0" shell:WindowChrome.IsHitTestVisibleInChrome="True" FontFamily="微软雅黑">
+                                        <ItemsControl Grid.Column="1" ItemsSource="{TemplateBinding TitleLinks}" Margin="0,0,24,0" shell:WindowChrome.IsHitTestVisibleInChrome="True" >
                                             <ItemsControl.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <StackPanel Orientation="Horizontal" />

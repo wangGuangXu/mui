@@ -5,7 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style TargetType="controls:ModernButton">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -43,6 +43,7 @@
                                        Foreground="{TemplateBinding Foreground}"
                                        Margin="4,-1,0,0"
                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
                         </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>

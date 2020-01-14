@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -11,7 +12,7 @@
                 <TextBlock Text="按钮" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
                 <StackPanel HorizontalAlignment="Left" Width="140">
                     <Button Content="标准按钮" Margin="0,0,0,8" />
-                    <Button Content="禁用按钮" IsEnabled="False" Margin="0,0,0,32" />
+                    <Button Content="禁用按钮" IsEnabled="False" Margin="0,0,0,12"  />
                 </StackPanel>
 
                 <TextBlock Text="复选框" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
