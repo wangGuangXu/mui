@@ -30,13 +30,13 @@
                             <Border BorderBrush="{DynamicResource WindowBorder}" BorderThickness="1">
                                 <AdornerDecorator>
                                     <Grid>
-                                        <!-- window background content -->
+                                        <!-- 窗口背景内容 window background content -->
                                         <ContentControl Content="{TemplateBinding BackgroundContent}" />
 
-                                        <!-- top blob -->
-                                        <Canvas>
+                                        <!-- 顶部斑点 top blob -->
+                                        <!--<Canvas>
                                             <Rectangle Fill="{DynamicResource Accent}" Canvas.Top="18" Canvas.Left="24" Width="100" Height="6" />
-                                        </Canvas>
+                                        </Canvas>-->
 
                                         <Grid Margin="24">
                                             <Grid.RowDefinitions>
@@ -45,17 +45,17 @@
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
 
-                                            <!-- title -->
+                                            <!-- 标题 title -->
                                             <TextBlock DataContext="{TemplateBinding Title}" Text="{Binding Converter={StaticResource ToUpperConverter}}" 
-                                                   FontFamily="Segoe UI"
-                                                   FontSize="24"
+                                                   FontFamily="{DynamicResource DefaultFontFamily}"
+                                                   FontSize="14" 
                                                    TextOptions.TextFormattingMode="Ideal"
                                                    TextTrimming="CharacterEllipsis" />
 
-                                            <!-- content -->
-                                            <controls:TransitioningContentControl Grid.Row="1" Margin="0,20" Content="{TemplateBinding Content}" />
+                                            <!-- 内容 content -->
+                                            <controls:TransitioningContentControl Grid.Row="1" Margin="10,10" Content="{TemplateBinding Content}" />
 
-                                            <!-- buttons -->
+                                            <!-- 按钮组 buttons -->
                                             <ItemsControl Grid.Row="2" ItemsSource="{TemplateBinding Buttons}" HorizontalAlignment="Right">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>

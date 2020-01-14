@@ -13,13 +13,12 @@
 
     <Style TargetType="controls:ModernWindow">
         <Setter Property="BackgroundContent" Value="{DynamicResource WindowBackgroundContent}" />
-        <!--<Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />-->
-        <Setter Property="FontFamily" Value="微软雅黑" />
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
         <Setter Property="Foreground" Value="{DynamicResource WindowText}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WindowBorder}" />
-        <Setter Property="Width" Value="800" />
-        <Setter Property="Height" Value="640" />
+        <Setter Property="Width" Value="650" />
+        <Setter Property="Height" Value="450" />
         <Setter Property="MinWidth" Value="320" />
         <Setter Property="MinHeight" Value="320" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
@@ -63,7 +62,6 @@
                                         <!-- title -->
                                         <TextBlock Text="{TemplateBinding Title}" Margin="8,0" VerticalAlignment="Center" Style="{StaticResource ModernWindowTitle}"
                                                    DataContext="{TemplateBinding IsTitleVisible}"
-                                                    FontFamily="微软雅黑"
                                                    Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                                         <!-- title links -->
@@ -80,7 +78,6 @@
 
                                                         <Button Content="{Binding DisplayName}"
                                                                 Command="navigation:LinkCommands.NavigateLink"
-                                                                FontFamily="微软雅黑"
                                                                 CommandParameter="{Binding Source}"
                                                                 CommandTarget="{Binding ElementName=ContentFrame}"
                                                                 Style="{StaticResource SystemButtonLink}" />

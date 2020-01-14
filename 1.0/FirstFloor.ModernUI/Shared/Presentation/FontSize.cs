@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI.Presentation
 {
     /// <summary>
-    /// Identifies the available font size.
+    /// 标识可用的字体大小 Identifies the available font size.
     /// </summary>
     public enum FontSize
     {

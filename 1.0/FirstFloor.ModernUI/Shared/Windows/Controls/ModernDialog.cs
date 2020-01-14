@@ -38,7 +38,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private MessageBoxResult messageBoxResult = MessageBoxResult.None;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModernDialog"/> class.
+        /// 初始化类的新实例 Initializes a new instance of the <see cref="ModernDialog"/> class.
         /// </summary>
         public ModernDialog()
         {
@@ -51,7 +51,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 if (result.HasValue) {
                     this.messageBoxResult = result.Value;
 
-                    // sets the Window.DialogResult as well
+                    // 同时设置窗口对话框结果 sets the Window.DialogResult as well
                     if (result.Value == MessageBoxResult.OK || result.Value == MessageBoxResult.Yes)
                     {
                         this.DialogResult = true;
@@ -70,7 +70,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
             this.Buttons = new Button[] { this.CloseButton };
 
-            // set the default owner to the app main window (if possible)
+            // 将默认所有者设置为应用程序主窗口（如果可能） set the default owner to the app main window (if possible)
             if (Application.Current != null && Application.Current.MainWindow != this) {
                 this.Owner = Application.Current.MainWindow;
             }

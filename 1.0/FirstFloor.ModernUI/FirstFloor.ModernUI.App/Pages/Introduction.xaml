@@ -10,9 +10,11 @@
         <ScrollViewer>
             <StackPanel >
                 <TextBlock Text="WPF的现代用户界面" Style="{StaticResource Heading1}" Margin="0,0,0,8"/>
-                <mui:BBCodeBlock BBCode="这个开源项目是[url=http://xamlspy.com]XAML Spy[/url]的派生，它是Silverlight、Windows Phone的可视化运行时检查器，Windows Store和WPF. ;参见[url=https://github.com/firstfloorsoftware/mui/wiki]在线文档[/url]了解更多关于如何将[b]用于WPF[/b]的现代UI集成到应用程序中的信息。" Margin="0,0,0,32" />
+                <mui:BBCodeBlock BBCode="这个开源项目是[url=http://xamlspy.com]XAML Spy[/url]的派生，它是Silverlight、Windows Phone的可视化运行时检查器，Windows Store和WPF.
+ ;参见[url=https://github.com/firstfloorsoftware/mui/wiki]在线文档[/url]了解更多关于如何将[b]用于WPF[/b]的现代UI集成到应用程序中的信息。" Margin="0,0,0,32" />
                 <TextBlock Text="外观" Style="{StaticResource Heading2}" />
                 <mui:BBCodeBlock BBCode="现代用户界面风格的窗口的外观可以随时更改。请确保访问[url=/pages/settings.xaml]settings[/url]以使外观符合您的偏好。" Margin="0,0,0,32"/>
+
             </StackPanel>
         </ScrollViewer>
     </Grid>

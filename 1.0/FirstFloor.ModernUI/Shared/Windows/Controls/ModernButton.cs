@@ -10,29 +10,28 @@ using System.Windows.Media;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
-    /// Adds icon content to a standard button.
+    /// 将图标内容添加到标准按钮 Adds icon content to a standard button.
     /// </summary>
-    public class ModernButton
-        : Button
+    public class ModernButton : Button
     {
         /// <summary>
-        /// Identifies the EllipseDiameter property.
+        /// 标识椭圆直径属性 Identifies the EllipseDiameter property.
         /// </summary>
         public static readonly DependencyProperty EllipseDiameterProperty = DependencyProperty.Register("EllipseDiameter", typeof(double), typeof(ModernButton), new PropertyMetadata(22D));
         /// <summary>
-        /// Identifies the EllipseStrokeThickness property.
+        /// 标识椭圆笔划厚度属性 Identifies the EllipseStrokeThickness property.
         /// </summary>
         public static readonly DependencyProperty EllipseStrokeThicknessProperty = DependencyProperty.Register("EllipseStrokeThickness", typeof(double), typeof(ModernButton), new PropertyMetadata(1D));
         /// <summary>
-        /// Identifies the IconData property.
+        /// 标识图标数据属性 Identifies the IconData property.
         /// </summary>
         public static readonly DependencyProperty IconDataProperty = DependencyProperty.Register("IconData", typeof(Geometry), typeof(ModernButton));
         /// <summary>
-        /// Identifies the IconHeight property.
+        /// 标识图标高度属性 Identifies the IconHeight property.
         /// </summary>
         public static readonly DependencyProperty IconHeightProperty = DependencyProperty.Register("IconHeight", typeof(double), typeof(ModernButton), new PropertyMetadata(12D));
         /// <summary>
-        /// Identifies the IconWidth property.
+        /// 标识图标宽度属性 Identifies the IconWidth property.
         /// </summary>
         public static readonly DependencyProperty IconWidthProperty = DependencyProperty.Register("IconWidth", typeof(double), typeof(ModernButton), new PropertyMetadata(12D));
 
@@ -97,5 +96,6 @@ namespace FirstFloor.ModernUI.Windows.Controls
             get { return (double)GetValue(IconWidthProperty); }
             set { SetValue(IconWidthProperty, value); }
         }
+
     }
 }

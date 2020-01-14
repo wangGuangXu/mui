@@ -20,18 +20,18 @@
         </Grid.Resources>
         <Separator></Separator>
 
-        <!-- use the root margin if you want to use the entire available space -->
+        <!-- 如果要使用整个可用空间，请使用根边距 use the root margin if you want to use the entire available space -->
         <Grid Margin="{StaticResource RootMargin}">
             <Rectangle  />
             <TextBlock Text="root" />
         </Grid>
 
-        <!-- the default page root, no margin settings required -->
+        <!-- 默认页根，不需要边距设置 the default page root, no margin settings required -->
         <Grid>
             <Rectangle Grid.RowSpan="2" />
             <TextBlock Text="page" />
 
-            <!-- content root for additional spacing -->
+            <!-- 内容根以增加间距 content root for additional spacing -->
             <Grid Margin="{StaticResource ContentMargin}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -40,13 +40,13 @@
                 <Rectangle />
                 <TextBlock Text="content" />
 
-                <!-- optional header -->
+                <!-- 可选头部 optional header -->
                 <Grid Margin="{StaticResource HeaderMargin}" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <Rectangle />
                     <TextBlock Text="header" />
                 </Grid>
 
-                <!-- optional status -->
+                <!-- 可选状态 optional status -->
                 <Grid Grid.Row="1" Margin="{StaticResource StatusMargin}" >
                     <Rectangle />
                     <TextBlock Text="status" />

@@ -30,7 +30,7 @@ namespace FirstFloor.ModernUI.App.Content
         private void CommonDialog_Click(object sender, RoutedEventArgs e)
         {
             var dlg = new ModernDialog {
-                Title = "Common dialog",
+                Title = "公共对话框Common dialog",
                 Content = new LoremIpsum()
             };
             dlg.Buttons = new Button[] { dlg.OkButton, dlg.CancelButton};

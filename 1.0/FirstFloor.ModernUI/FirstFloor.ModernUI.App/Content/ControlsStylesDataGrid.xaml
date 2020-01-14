@@ -93,7 +93,6 @@
                 </DataGrid.Columns>
             </DataGrid>
             
-            
         </DockPanel>
     </Grid>
 </UserControl>

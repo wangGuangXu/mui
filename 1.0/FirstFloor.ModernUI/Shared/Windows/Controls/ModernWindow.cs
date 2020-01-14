@@ -107,7 +107,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             base.OnApplyTemplate();
 
-            // retrieve BackgroundAnimation storyboard
+            // 检索背景动画故事板 retrieve BackgroundAnimation storyboard
             var border = GetTemplateChild("WindowBorder") as Border;
             if (border != null)
             {
@@ -223,8 +223,6 @@ namespace FirstFloor.ModernUI.Windows.Controls
             SystemCommands.RestoreWindow(this);
 #endif
         }
-
-
 
         /// <summary>
         /// 获取或设置此窗口实例的背景内容

@@ -107,7 +107,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <returns></returns>
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            if (msg == NativeMethods.WM_DPICHANGED) {
+            if (msg == NativeMethods.WM_DPICHANGED)
+            {
                 // Marshal the value in the lParam into a Rect.
                 var newDisplayRect = (RECT)Marshal.PtrToStructure(lParam, typeof(RECT));
 
@@ -127,13 +128,14 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 var dpiX = (double)(wParam.ToInt32() >> 16);
                 var dpiY = (double)(wParam.ToInt32() & 0x0000FFFF);
 
-                if (oldDpiX != dpiX || oldDpiY != dpiY) {
+                if (oldDpiX != dpiX || oldDpiY != dpiY)
+                {
                     this.dpiInfo.UpdateMonitorDpi(dpiX, dpiY);
 
-                    // update layout scale
+                    // 更新布局比例 update layout scale
                     UpdateLayoutTransform();
 
-                    // raise DpiChanged event
+                    // 引发DPI改变事件 raise DpiChanged event
                     OnDpiChanged(EventArgs.Empty);
                 }
 
@@ -147,7 +149,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         private void UpdateLayoutTransform()
         {
-            if (this.isPerMonitorDpiAware==false) {
+            if (this.isPerMonitorDpiAware==false)
+            {
                 return;
             }
 
@@ -174,7 +177,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <param name="height"></param>
         private void UpdateWindowSize(double width, double height)
         {
-            // determine relative scalex and scaley
+            // 确定相对scalex和scaley determine relative scalex and scaley
             var relScaleX = width / this.Width;
             var relScaleY = height / this.Height;
 

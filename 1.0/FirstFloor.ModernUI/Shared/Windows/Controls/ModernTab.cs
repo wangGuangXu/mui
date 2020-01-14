@@ -16,28 +16,28 @@ namespace FirstFloor.ModernUI.Windows.Controls
     public class ModernTab: Control
     {
         /// <summary>
-        /// Identifies the ContentLoader dependency property.
+        /// 标识内容加载器依赖项属性 Identifies the ContentLoader dependency property.
         /// </summary>
         public static readonly DependencyProperty ContentLoaderProperty = DependencyProperty.Register("ContentLoader", typeof(IContentLoader), typeof(ModernTab), new PropertyMetadata(new DefaultContentLoader()));
         /// <summary>
-        /// Identifies the Layout dependency property.
+        /// 标识布局依赖项属性 Identifies the Layout dependency property.
         /// </summary>
         public static readonly DependencyProperty LayoutProperty = DependencyProperty.Register("Layout", typeof(TabLayout), typeof(ModernTab), new PropertyMetadata(TabLayout.Tab));
         /// <summary>
-        /// Identifies the ListWidth dependency property.
+        /// 标识列表宽度依赖项属性 Identifies the ListWidth dependency property.
         /// </summary>
         public static readonly DependencyProperty ListWidthProperty = DependencyProperty.Register("ListWidth", typeof(GridLength), typeof(ModernTab), new PropertyMetadata(new GridLength(170)));
         /// <summary>
-        /// Identifies the Links dependency property.
+        /// 标识链接依赖项属性 Identifies the Links dependency property.
         /// </summary>
         public static readonly DependencyProperty LinksProperty = DependencyProperty.Register("Links", typeof(LinkCollection), typeof(ModernTab), new PropertyMetadata(OnLinksChanged));
         /// <summary>
-        /// Identifies the SelectedSource dependency property.
+        /// 标识选定的源依赖项属性. Identifies the SelectedSource dependency property
         /// </summary>
         public static readonly DependencyProperty SelectedSourceProperty = DependencyProperty.Register("SelectedSource", typeof(Uri), typeof(ModernTab), new PropertyMetadata(OnSelectedSourceChanged));
 
         /// <summary>
-        /// Occurs when the selected source has changed.
+        /// 当所选源发生更改时发生 Occurs when the selected source has changed.
         /// </summary>
         public event EventHandler<SourceEventArgs> SelectedSourceChanged;
 
@@ -111,6 +111,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             UpdateSelection();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnLinkListSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var link = this.linkList.SelectedItem as Link;
@@ -122,8 +127,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 获取或设置内容加载器
-        /// Gets or sets the content loader.
+        /// 获取或设置内容加载器 Gets or sets the content loader
         /// </summary>
         public IContentLoader ContentLoader
         {
@@ -132,8 +136,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 获取或设置一个值，该值指示应如何呈现选项卡
-        /// Gets or sets a value indicating how the tab should be rendered.
+        /// 获取或设置一个值，该值指示应如何呈现选项卡 Gets or sets a value indicating how the tab should be rendered
         /// </summary>
         public TabLayout Layout
         {
@@ -142,8 +145,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 获取或设置定义此选项卡中可用内容的链接集合
-        /// Gets or sets the collection of links that define the available content in this tab.
+        /// 获取或设置定义此选项卡中可用内容的链接集合 Gets or sets the collection of links that define the available content in this tab.
         /// </summary>
         public LinkCollection Links
         {
@@ -152,8 +154,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 获取或设置布局设置为列表时列表的宽度
-        /// Gets or sets the width of the list when Layout is set to List.
+        /// 获取或设置布局设置为列表时的宽度 Gets or sets the width of the list when Layout is set to List
         /// </summary>
         /// <value>
         /// The width of the list.
@@ -165,8 +166,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 获取或设置所选链接的源URI。
-        /// Gets or sets the source URI of the selected link.
+        /// 获取或设置所选链接的源URI。Gets or sets the source URI of the selected link
         /// </summary>
         /// <value>The source URI of the selected link.</value>
         public Uri SelectedSource

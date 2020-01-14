@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,14 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FirstFloor.ModernUI.App.Content
+namespace FirstFloor.ModernUI.App
 {
     /// <summary>
-    /// Interaction logic for LoremIpsum.xaml
+    /// Interaction logic for ModernWindow1.xaml
     /// </summary>
-    public partial class LoremIpsum : UserControl
+    public partial class ModernWindow1 : ModernWindow
     {
-        public LoremIpsum()
+        public ModernWindow1()
         {
             InitializeComponent();
         }

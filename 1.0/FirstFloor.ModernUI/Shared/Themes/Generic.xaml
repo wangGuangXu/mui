@@ -2,8 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:FirstFloor.ModernUI.Windows.Controls"
                     xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell">
-    
+    <!--通用样式-->
     <ResourceDictionary.MergedDictionaries>
+        <!--<ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/Icon.xaml" />-->
+        <!--<ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/FButton.xaml" />-->
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/BBCodeBlock.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernButton.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernToggleButton.xaml" />
@@ -14,6 +16,7 @@
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernTab.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernWindow.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/TransitioningContentControl.xaml" />
+        
     </ResourceDictionary.MergedDictionaries>
  
 </ResourceDictionary>

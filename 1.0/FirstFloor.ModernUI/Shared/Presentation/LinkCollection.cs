@@ -9,7 +9,7 @@ using System.Windows.Input;
 namespace FirstFloor.ModernUI.Presentation
 {
     /// <summary>
-    /// Represents an observable collection of links.
+    /// 表示链接的可观察集合 Represents an observable collection of links.
     /// </summary>
     public class LinkCollection : ObservableCollection<Link>
     {

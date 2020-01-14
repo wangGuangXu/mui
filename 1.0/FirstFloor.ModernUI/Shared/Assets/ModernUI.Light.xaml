@@ -131,4 +131,20 @@
     <SolidColorBrush x:Key="SystemButtonForegroundIsPressed" Color="#919191" />
 
     <Rectangle x:Key="WindowBackgroundContent" x:Shared="false" Height="96" Fill="{StaticResource WindowHeaderGradient}" VerticalAlignment="Top"/>
+
+    <!--FButton 开始-->
+    <!--<SolidColorBrush x:Key="TextForeground" Color="White"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonBackground" Color="#1D4A9A"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonForeground" Color="White"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonMouseOverBackground" Color="Orange"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonMouseOverForeground" Color="White"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonPressedBackground" Color="DarkOrange"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonPressedForeground" Color="White"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="MouseOverForeground" Color="Orange"></SolidColorBrush>
+    <SolidColorBrush x:Key="PressedForeground" Color="DarkOrange"></SolidColorBrush>
+    <SolidColorBrush x:Key="LinkForeground" Color="#0816BB"></SolidColorBrush>
+    <SolidColorBrush x:Key="WindowBackground" Color="#007ACB"></SolidColorBrush>-->
+    <!--FButton 结束-->
+    
 </ResourceDictionary>
