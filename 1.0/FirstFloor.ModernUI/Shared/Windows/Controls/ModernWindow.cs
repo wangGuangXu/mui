@@ -53,6 +53,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         public static DependencyProperty LinkNavigatorProperty = DependencyProperty.Register("LinkNavigator", typeof(ILinkNavigator), typeof(ModernWindow), new PropertyMetadata(new DefaultLinkNavigator()));
         /// <summary>
         /// 关闭窗口附加属性
+        /// Window窗体的DialogResult属性不是依赖属性，所以没法绑定，所以此处添加附加属性解决此问题。
         /// </summary>
         public static readonly DependencyProperty DialogResultProperty = DependencyProperty.Register("DialogResult", typeof(bool), typeof(ModernWindow), new PropertyMetadata(DialogResultChanged));
         private Storyboard backgroundAnimation;

@@ -64,4 +64,5 @@
     <Style x:Key="ContentRoot" TargetType="FrameworkElement">
         <Setter Property="Margin" Value="{StaticResource ContentMargin}" />
     </Style>
+
 </ResourceDictionary>

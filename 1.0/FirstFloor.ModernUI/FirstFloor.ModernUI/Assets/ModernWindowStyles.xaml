@@ -11,7 +11,8 @@
 
     <!-- 附加窗口样式 additional ModernWindow styles -->
 
-    <!-- Resource key 'EmptyWindow' is considered obsolete, use 'BlankWindow' instead (see below). EmptyWindow resource is kept here for backwards compatibility. -->
+    <!-- 资源键“EmptyWindow”被视为已过时，请改用“BlankWindow”（请参见下文）。为了向后兼容，此处保留了空窗口资源
+    Resource key 'EmptyWindow' is considered obsolete, use 'BlankWindow' instead (see below). EmptyWindow resource is kept here for backwards compatibility. -->
 
     <!-- 空白窗口样式，没有后退按钮，菜单和标题链接 blank window style, no backbutton, menu and title links -->
     <Style x:Key="EmptyWindow" TargetType="controls:ModernWindow" BasedOn="{StaticResource {x:Type controls:ModernWindow}}" >
@@ -271,10 +272,12 @@
         </Setter>
     </Style>
 
+
     <!-- Same as 'EmptyWindow', but a better resource name -->
     <Style x:Key="BlankWindow" TargetType="controls:ModernWindow" BasedOn="{StaticResource EmptyWindow}" />
     
     <!-- 不带最大化和最小化并且不允许调整窗口大小的空白窗口样式 -->
     <Style x:Key="BlankTwoWindow" TargetType="controls:ModernWindow" BasedOn="{StaticResource EmptyTwoWindow}" />
+
 
 </ResourceDictionary>

@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <Color x:Key="WindowBackgroundColor">#ffffff</Color>
 
@@ -146,5 +147,22 @@
     <SolidColorBrush x:Key="LinkForeground" Color="#0816BB"></SolidColorBrush>
     <SolidColorBrush x:Key="WindowBackground" Color="#007ACB"></SolidColorBrush>-->
     <!--FButton 结束-->
+
+
+    <!--水印文本框开始-->
+    <!--水印文本框透明度--><!--
+    <sys:Double x:Key="WatermarkOpacity">0.4</sys:Double>
+    --><!--TextBox默认Label颜色--><!--
+    <SolidColorBrush x:Key="TextLabelBackground" Color="{DynamicResource AccentColor}"></SolidColorBrush>
+    --><!--输入框--><!--
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="#999C9F"></SolidColorBrush>
+    <SolidColorBrush x:Key="MouseOverBorderBrush" Color="#F6D1D1"></SolidColorBrush>
+    <SolidColorBrush x:Key="FocusBorderBrush" Color="{DynamicResource AccentColor}"></SolidColorBrush>
+    --><!--输入组件--><!--
+    <SolidColorBrush x:Key="TextForeground" Color="Black"></SolidColorBrush>
+    <SolidColorBrush x:Key="TextBackground" Color="#0D234B"></SolidColorBrush>
+    <SolidColorBrush x:Key="TextSelectionBrush" Color="#8F8787"></SolidColorBrush>
+    --><!--水印文本框结束-->
+    
     
 </ResourceDictionary>
