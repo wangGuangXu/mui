@@ -14,14 +14,14 @@ namespace FirstFloor.ModernUI.Windows.Converters
     public class BooleanToVisibilityConverter  : IValueConverter
     {
         /// <summary>
-        /// Converts a value.
+        /// 转换值
         /// </summary>
         /// <param name="value">绑定源产生的值</param>
         /// <param name="targetType">绑定目标属性的类型</param>
         /// <param name="parameter">要使用的转换器参数</param>
         /// <param name="culture">在转换器中使用的区域性</param>
         /// <returns>
-        /// A converted value. If the method returns null, the valid null value is used.
+        /// 转换后的值。如果方法返回空值，则使用有效的空值
         /// </returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

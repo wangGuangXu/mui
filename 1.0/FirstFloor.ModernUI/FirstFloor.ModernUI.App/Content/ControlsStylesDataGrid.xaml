@@ -10,7 +10,7 @@
              xmlns:locals="clr-namespace:FirstFloor.ModernUI.UserControls;assembly=FirstFloor.ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
     <Grid>
         <Grid.Resources>
             <!--Create list of enumeration values-->
@@ -20,15 +20,15 @@
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
         </Grid.Resources>
-        
+
         <DockPanel >
             <TextBlock DockPanel.Dock="Top" Text="数据表格" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
-            
+
             <locals:Paging DockPanel.Dock="Bottom" 
                           TotalPage="{Binding TotalPage }" 
                           CurrentPage="{Binding CurrentPage,Mode=TwoWay}"
                           HorizontalAlignment="Center"  >
-                
+
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="FirstPage">
                         <i:InvokeCommandAction Command="{Binding FirstPageCommand}" />
@@ -43,9 +43,9 @@
                         <i:InvokeCommandAction Command="{Binding LastPageCommand}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                
+
             </locals:Paging>
-            
+
             <DataGrid Name="DG1" ItemsSource="{Binding Customers}" AutoGenerateColumns="False" CanUserAddRows="False" AlternationCount="2" >
                 <DataGrid.Columns>
                     <!--全选-->
@@ -76,14 +76,18 @@
                     <!--<DataGridCheckBoxColumn Binding="{Binding IsSelected}" ElementStyle="{StaticResource DataGridCheckBoxStyle}"
                                             EditingElementStyle="{StaticResource DataGridEditingCheckBoxStyle}"  >
                         <DataGridCheckBoxColumn.Header>
-                            --><!--填充以允许命中测试通过进行排序-->
-                            <!--<Border Background="Transparent" Margin="3 0 -14 0" HorizontalAlignment="Right" Width="30">--><!--
+                            -->
+                    <!--填充以允许命中测试通过进行排序-->
+                    <!--<Border Background="Transparent" Margin="3 0 -14 0" HorizontalAlignment="Right" Width="30">-->
+                    <!--
                                 <CheckBox HorizontalAlignment="Center" DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}},Path=DataContext}"
                                           IsChecked="{Binding IsAllItemsSelected}" />
-                            --><!--</Border>--><!--
+                            -->
+                    <!--</Border>-->
+                    <!--
                         </DataGridCheckBoxColumn.Header>
                     </DataGridCheckBoxColumn>-->
-                    
+
                     <mui:DataGridTextColumn Header="序号"  Binding="{Binding Code}"/>
                     <mui:DataGridTextColumn Header="名字"  Binding="{Binding FirstName}" Width="50"/>
                     <mui:DataGridTextColumn Header="姓" Binding="{Binding LastName}" />
@@ -92,7 +96,7 @@
                     <mui:DataGridComboBoxColumn Header="订单状态" SelectedItemBinding="{Binding Status}" ItemsSource="{Binding Source={StaticResource myEnum}}" />
                 </DataGrid.Columns>
             </DataGrid>
-            
+
         </DockPanel>
     </Grid>
 </UserControl>

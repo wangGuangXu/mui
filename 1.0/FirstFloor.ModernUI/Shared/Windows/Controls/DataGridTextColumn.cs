@@ -8,10 +8,10 @@ using System.Windows;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
+    /// 使用默认现代UI元素样式的DataGrid文本列
     /// A DataGrid text column using default Modern UI element styles.
     /// </summary>
-    public class DataGridTextColumn
-        : System.Windows.Controls.DataGridTextColumn
+    public class DataGridTextColumn : System.Windows.Controls.DataGridTextColumn
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DataGridTextColumn"/> class.

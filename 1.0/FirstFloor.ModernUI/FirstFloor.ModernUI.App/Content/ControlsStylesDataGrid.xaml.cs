@@ -28,8 +28,6 @@ namespace FirstFloor.ModernUI.App.Content
         public bool IsMember { get; set; }
         public OrderStatus Status { get; set; }
     }
-
-
     /// <summary>
     /// Interaction logic for ControlsStylesDataGrid.xaml
     /// </summary>
@@ -38,8 +36,9 @@ namespace FirstFloor.ModernUI.App.Content
         public ControlsStylesDataGrid()
         {
             InitializeComponent();
-
             DataContext = new DataGridVieweModel();
+            //生成行号
+            DG1.LoadingRow += (object sender, DataGridRowEventArgs e)=> { e.Row.Header = e.Row.GetIndex() + 1; };
         }
     }
 }

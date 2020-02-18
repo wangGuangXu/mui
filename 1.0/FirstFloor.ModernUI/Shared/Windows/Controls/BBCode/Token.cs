@@ -5,11 +5,13 @@ using System.Globalization;
 namespace FirstFloor.ModernUI.Windows.Controls.BBCode
 {
     /// <summary>
+    /// 表示单个令牌 
     /// Represents a single token.
     /// </summary>
     internal class Token
     {
         /// <summary>
+        /// 表示标记输入结束的标记
         /// Represents the token that marks the end of the input.
         /// </summary>
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]     // token is immutable
