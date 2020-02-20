@@ -48,7 +48,9 @@ namespace FirstFloor.ModernUI.App.Content
             else if (true == yesno.IsChecked) btn = MessageBoxButton.YesNo;
             else if (true == yesnocancel.IsChecked) btn = MessageBoxButton.YesNoCancel;
 
-            var result = ModernDialog.ShowMessage("This is a simple Modern UI styled message dialog. Do you like it?", "Message Dialog", btn);
+
+            //你好吗 
+            var result = ModernDialog.ShowMessage("你喜欢吗?", "消息对话框", btn);
 
             this.msgboxResult.Text = result.ToString();
         }

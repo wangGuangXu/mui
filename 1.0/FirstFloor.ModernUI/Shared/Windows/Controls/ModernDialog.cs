@@ -17,12 +17,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
     public class ModernDialog : DpiAwareWindow
     {
         /// <summary>
-        /// 标识背景内容依赖属性
+        /// 背景内容依赖属性
         /// Identifies the BackgroundContent dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundContentProperty = DependencyProperty.Register("BackgroundContent", typeof(object), typeof(ModernDialog));
         /// <summary>
-        /// 标识按钮组依赖属性
+        /// 按钮组依赖属性
         /// Identifies the Buttons dependency property.
         /// </summary>
         public static readonly DependencyProperty ButtonsProperty = DependencyProperty.Register("Buttons", typeof(IEnumerable<Button>), typeof(ModernDialog));
@@ -48,7 +48,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
             this.closeCommand = new RelayCommand(o => 
             {
                 var result = o as MessageBoxResult?;
-                if (result.HasValue) {
+                if (result.HasValue) 
+                {
                     this.messageBoxResult = result.Value;
 
                     // 同时设置窗口对话框结果 sets the Window.DialogResult as well
@@ -86,7 +87,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <returns></returns>
         private Button CreateCloseDialogButton(string content, bool isDefault, bool isCancel, MessageBoxResult result)
         {
-            return new Button {
+            return new Button 
+            {
                 Content = content,
                 Command = this.CloseCommand,
                 CommandParameter = result,
@@ -113,7 +115,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             get
             {
-                if (this.okButton == null) {
+                if (this.okButton == null) 
+                {
                     this.okButton = CreateCloseDialogButton(FirstFloor.ModernUI.Resources.Ok, true, false, MessageBoxResult.OK);
                 }
                 return this.okButton;
@@ -218,12 +221,17 @@ namespace FirstFloor.ModernUI.Windows.Controls
             var dlg = new ModernDialog
             {
                 Title = title,
-                Content = new BBCodeBlock { BBCode = text, Margin = new Thickness(0, 0, 0, 8) },
-                MinHeight = 0,
-                MinWidth = 0,
-                MaxHeight = 480,
-                MaxWidth = 640,
+                Content = new BBCodeBlock { BBCode = text, Margin = new Thickness(0, 0, 0, 8), FontSize=14 },
             };
+            //var dlg = new ModernDialog
+            //{
+            //    Title = title,
+            //    Content = new BBCodeBlock { BBCode = text, Margin = new Thickness(0, 0, 0, 8) },
+            //    MinHeight = 0,
+            //    MinWidth = 0,
+            //    MaxHeight = 480,
+            //    MaxWidth = 640,
+            //};
 
             if (owner != null)
             {

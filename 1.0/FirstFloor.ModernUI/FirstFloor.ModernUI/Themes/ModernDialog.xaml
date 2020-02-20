@@ -14,8 +14,8 @@
         <Setter Property="Foreground" Value="{DynamicResource WindowText}" />
         <Setter Property="MaxWidth" Value="640" />
         <Setter Property="MaxHeight" Value="640" />
-        <Setter Property="MinWidth" Value="240" />
-        <Setter Property="MinHeight" Value="240" />
+        <Setter Property="MinWidth" Value="400" />
+        <Setter Property="MinHeight" Value="150" />
         <Setter Property="ShowInTaskbar" Value="False" />
         <Setter Property="ResizeMode" Value="NoResize" />
         <Setter Property="SizeToContent" Value="WidthAndHeight" />
@@ -38,7 +38,7 @@
                                             <Rectangle Fill="{DynamicResource Accent}" Canvas.Top="18" Canvas.Left="24" Width="100" Height="6" />
                                         </Canvas>-->
 
-                                        <Grid Margin="24">
+                                        <Grid Margin="16,10,16,14">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="*" />
@@ -48,12 +48,10 @@
                                             <!-- 标题 title -->
                                             <TextBlock DataContext="{TemplateBinding Title}" Text="{Binding Converter={StaticResource ToUpperConverter}}" 
                                                    FontFamily="{DynamicResource DefaultFontFamily}"
-                                                   FontSize="14" 
-                                                   TextOptions.TextFormattingMode="Ideal"
-                                                   TextTrimming="CharacterEllipsis" />
-
+                                                   FontSize="18" TextOptions.TextFormattingMode="Ideal"  TextTrimming="CharacterEllipsis" />
+                                            
                                             <!-- 内容 content -->
-                                            <controls:TransitioningContentControl Grid.Row="1" Margin="10,10" Content="{TemplateBinding Content}" />
+                                            <controls:TransitioningContentControl Grid.Row="1" Margin="10,10" Content="{TemplateBinding Content}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
 
                                             <!-- 按钮组 buttons -->
                                             <ItemsControl Grid.Row="2" ItemsSource="{TemplateBinding Buttons}" HorizontalAlignment="Right">
