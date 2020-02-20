@@ -88,11 +88,12 @@ namespace FirstFloor.ModernUI.Presentation
         private Uri GetThemeSource()
         {
             var dict = GetThemeDictionary();
-            if (dict != null) {
+            if (dict != null) 
+            {
                 return dict.Source;
             }
 
-            // could not determine the theme dictionary
+            // 无法确定主题词典
             return null;
         }
 

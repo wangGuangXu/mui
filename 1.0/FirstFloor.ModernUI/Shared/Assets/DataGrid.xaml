@@ -143,12 +143,12 @@
                     
                     <ControlTemplate.Triggers>
                         <!--隔行换色-->
-                        <Trigger Property="AlternationIndex" Value="0" >
+                        <!--<Trigger Property="AlternationIndex" Value="0" >
                             <Setter Property="Background" Value="#e7e7e7" />
                         </Trigger>
                         <Trigger Property="AlternationIndex" Value="1" >
                             <Setter Property="Background" Value="#f2f2f2" />
-                        </Trigger>
+                        </Trigger>-->
                         
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{DynamicResource DataGridCellBackgroundHover}" />

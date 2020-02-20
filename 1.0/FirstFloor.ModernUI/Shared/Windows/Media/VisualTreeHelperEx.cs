@@ -21,7 +21,8 @@ namespace FirstFloor.ModernUI.Windows.Media
         public static VisualStateGroup TryGetVisualStateGroup(this DependencyObject dependencyObject, string groupName)
         {
             FrameworkElement root = GetImplementationRoot(dependencyObject);
-            if (root == null) {
+            if (root == null) 
+            {
                 return null;
             }
             return (from @group in VisualStateManager.GetVisualStateGroups(root).OfType<VisualStateGroup>()
@@ -36,7 +37,8 @@ namespace FirstFloor.ModernUI.Windows.Media
         /// <returns></returns>
         public static FrameworkElement GetImplementationRoot(this DependencyObject dependencyObject)
         {
-            if (1 != VisualTreeHelper.GetChildrenCount(dependencyObject)) {
+            if (1 != VisualTreeHelper.GetChildrenCount(dependencyObject)) 
+            {
                 return null;
             }
             return (VisualTreeHelper.GetChild(dependencyObject, 0) as FrameworkElement);
@@ -75,16 +77,20 @@ namespace FirstFloor.ModernUI.Windows.Media
         /// </returns>
         public static IEnumerable<DependencyObject> AncestorsAndSelf(this DependencyObject dependencyObject)
         {
-            if (dependencyObject == null) {
+            if (dependencyObject == null) 
+            {
                 throw new ArgumentNullException("dependencyObject");
             }
 
             var parent = dependencyObject;
-            while (true) {
-                if (parent != null) {
+            while (true) 
+            {
+                if (parent != null) 
+                {
                     yield return parent;
                 }
-                else {
+                else 
+                {
                     break;
                 }
                 parent = GetParent(parent);
@@ -98,21 +104,22 @@ namespace FirstFloor.ModernUI.Windows.Media
         /// <returns>The parent object or null if there is no parent.</returns>
         public static DependencyObject GetParent(this DependencyObject dependencyObject)
         {
-            if (dependencyObject == null) {
+            if (dependencyObject == null) 
+            {
                 throw new ArgumentNullException("dependencyObject");
             }
 
             var ce = dependencyObject as ContentElement;
-            if (ce != null) {
+            if (ce != null) 
+            {
                 var parent = ContentOperations.GetParent(ce);
-                if (parent != null) {
+                if (parent != null) 
+                {
                     return parent;
                 }
-
                 var fce = ce as FrameworkContentElement;
                 return fce != null ? fce.Parent : null;
             }
-
             return VisualTreeHelper.GetParent(dependencyObject);
         }
     }
