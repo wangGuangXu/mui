@@ -18,12 +18,15 @@ namespace FirstFloor.ModernUI.Windows.Controls
     public abstract class DpiAwareWindow : Window
     {
         /// <summary>
-        /// Occurs when the system or monitor DPI for this window has changed.
+        /// 当此窗口的系统或监视器DPI更改时发生 Occurs when the system or monitor DPI for this window has changed.
         /// </summary>
         public event EventHandler DpiChanged;
 
         private HwndSource source;
         private DpiInformation dpiInfo;
+        /// <summary>
+        /// 每个监视器的Dpi是否知道
+        /// </summary>
         private bool isPerMonitorDpiAware;
 
         /// <summary>
@@ -33,10 +36,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             this.SourceInitialized += OnSourceInitialized;
 
-            // WM_DPICHANGED is not send when window is minimized, do listen to global display setting changes
+            // 窗口最小化时不发送WM_DPICHANGED，请侦听全局显示设置更改
+            //WM_DPICHANGED is not send when window is minimized, do listen to global display setting changes
             SystemEvents.DisplaySettingsChanged += OnSystemEventsDisplaySettingsChanged;
 
-            // try to set per-monitor dpi awareness, before the window is displayed
+            //在显示窗口之前，尝试设置每个监视器的dpi感知 try to set per-monitor dpi awareness, before the window is displayed
             this.isPerMonitorDpiAware = ModernUIHelper.TrySetPerMonitorDpiAware();
         }
 
@@ -52,14 +56,14 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Raises the System.Windows.Window.Closed event.
+        /// 引发System.Windows.Window.Closed事件 Raises the System.Windows.Window.Closed event.
         /// </summary>
         /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
 
-            // detach global event handlers
+            // 分离全局事件处理程序 detach global event handlers
             SystemEvents.DisplaySettingsChanged -= OnSystemEventsDisplaySettingsChanged;
         }
 
@@ -70,26 +74,32 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <param name="e"></param>
         private void OnSystemEventsDisplaySettingsChanged(object sender, EventArgs e)
         {
-            if (this.source != null && this.WindowState == WindowState.Minimized) {
+            if (this.source != null && this.WindowState == WindowState.Minimized) 
+            {
                 RefreshMonitorDpi();
             }
         }
 
         /// <summary>
-        /// 
+        /// 源初始化
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OnSourceInitialized(object sender, EventArgs e)
         {
             this.source = (HwndSource)HwndSource.FromVisual(this);
+            if (this.source==null)
+            {
+                return;
+            }
 
-            // calculate the DPI used by WPF; this is the same as the system DPI
-            var matrix = source.CompositionTarget.TransformToDevice;
+            // 计算WPF使用的DPI；这与系统DPI相同 calculate the DPI used by WPF; this is the same as the system DPI
+            var matrix = this.source.CompositionTarget.TransformToDevice;
 
             this.dpiInfo = new DpiInformation(96D * matrix.M11, 96D * matrix.M22);
 
-            if (this.isPerMonitorDpiAware) {
+            if (this.isPerMonitorDpiAware) 
+            {
                 this.source.AddHook(WndProc);
 
                 RefreshMonitorDpi();
@@ -109,10 +119,10 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             if (msg == NativeMethods.WM_DPICHANGED)
             {
-                // Marshal the value in the lParam into a Rect.
+                // 将lParam中的值封送到Rect(矩形结构)中 Marshal the value in the lParam into a Rect.
                 var newDisplayRect = (RECT)Marshal.PtrToStructure(lParam, typeof(RECT));
 
-                // Set the Window's position & size.
+                // 设置窗口的位置和大小 Set the Window's position & size.
                 var matrix = this.source.CompositionTarget.TransformFromDevice;
                 var ul = matrix.Transform(new Vector(newDisplayRect.left, newDisplayRect.top));
                 var hw = matrix.Transform(new Vector(newDisplayRect.right - newDisplayRect.left, newDisplayRect.bottom - newDisplayRect.top));
@@ -120,11 +130,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 this.Top = ul.Y;
                 UpdateWindowSize(hw.X, hw.Y);
 
-                // Remember the current DPI settings.
+                // 记住当前的DPI设置 Remember the current DPI settings.
                 var oldDpiX = this.dpiInfo.MonitorDpiX;
                 var oldDpiY = this.dpiInfo.MonitorDpiY;
 
-                // Get the new DPI settings from wParam
+                // 从wParam获取新的DPI设置 Get the new DPI settings from wParam
                 var dpiX = (double)(wParam.ToInt32() >> 16);
                 var dpiY = (double)(wParam.ToInt32() & 0x0000FFFF);
 
@@ -183,7 +193,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
             if (relScaleX != 1 || relScaleY != 1)
             {
-                // adjust window size constraints as well
+                // 调整窗口大小约束 adjust window size constraints as well
                 this.MinWidth *= relScaleX;
                 this.MaxWidth *= relScaleX;
                 this.MinHeight *= relScaleY;
@@ -233,7 +243,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
         protected virtual void OnDpiChanged(EventArgs e)
         {
             var handler = this.DpiChanged;
-            if (handler != null) {
+            if (handler != null) 
+            {
                 handler(this, e);
             }
         }

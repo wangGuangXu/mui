@@ -124,13 +124,14 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets the Cancel button.
+        /// 获取“取消”按钮.
         /// </summary>
         public Button CancelButton
         {
             get
             {
-                if (this.cancelButton == null) {
+                if (this.cancelButton == null) 
+                {
                     this.cancelButton = CreateCloseDialogButton(FirstFloor.ModernUI.Resources.Cancel, false, true, MessageBoxResult.Cancel);
                 }
                 return this.cancelButton;
@@ -144,7 +145,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             get
             {
-                if (this.yesButton == null) {
+                if (this.yesButton == null) 
+                {
                     this.yesButton = CreateCloseDialogButton(FirstFloor.ModernUI.Resources.Yes, true, false, MessageBoxResult.Yes);
                 }
                 return this.yesButton;
