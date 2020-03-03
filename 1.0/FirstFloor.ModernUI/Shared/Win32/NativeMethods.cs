@@ -18,7 +18,7 @@ namespace FirstFloor.ModernUI.Win32
         /// </summary>
         public const int S_OK = 0;
         /// <summary>
-        /// 已更改
+        /// DPI已更改
         /// </summary>
         public const int WM_DPICHANGED = 0x02E0;
         /// <summary>

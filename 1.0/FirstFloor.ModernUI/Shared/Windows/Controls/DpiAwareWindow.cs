@@ -21,7 +21,9 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// 当此窗口的系统或监视器DPI更改时发生 Occurs when the system or monitor DPI for this window has changed.
         /// </summary>
         public event EventHandler DpiChanged;
-
+        /// <summary>
+        /// 窗口句柄源
+        /// </summary>
         private HwndSource source;
         private DpiInformation dpiInfo;
         /// <summary>
@@ -88,13 +90,9 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private void OnSourceInitialized(object sender, EventArgs e)
         {
             this.source = (HwndSource)HwndSource.FromVisual(this);
-            if (this.source==null)
-            {
-                return;
-            }
 
             // 计算WPF使用的DPI；这与系统DPI相同 calculate the DPI used by WPF; this is the same as the system DPI
-            var matrix = this.source.CompositionTarget.TransformToDevice;
+            var matrix = source.CompositionTarget.TransformToDevice;
 
             this.dpiInfo = new DpiInformation(96D * matrix.M11, 96D * matrix.M22);
 

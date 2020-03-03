@@ -336,10 +336,9 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <param name="e"></param>
         private static void DialogResultChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var window = d as Window;
-            if (window != null)
+            if (d is Window window)
             {
-                window.DialogResult = e.NewValue as bool?;
+                window.DialogResult = true;
             }
         }
 
