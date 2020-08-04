@@ -43,26 +43,28 @@
 
     <sys:Double x:Key="SmallFontSize">11</sys:Double>
 
-    <!-- layout margins -->
-    <Thickness x:Key="RootMargin">-42,-8,-16,-16</Thickness>
-    <Thickness x:Key="ContentMargin">16,28,16,16</Thickness>
-    <Thickness x:Key="StatusMargin">-40,16,-16,0</Thickness>
+    <!-- 布局外边距 layout margins -->
+    <Thickness x:Key="RootMargin">-40,-2,-14,-14</Thickness>
+    <Thickness x:Key="ContentMargin">16,8,16,16</Thickness>
+    <Thickness x:Key="StatusMargin">0,6,-16,-14</Thickness>
     <Thickness x:Key="HeaderMargin">0,-28,44,0</Thickness>
 
     <Thickness x:Key="SplitLeft">0,0,0,0</Thickness>
     <Thickness x:Key="SplitRight">0,0,0,0</Thickness>
     
     <!--Title bar-->
-    
     <!--右上角关闭系统按钮 Close system button-->
     <sys:Double x:Key="CloseButtonWidth">32</sys:Double>
-
     <!--右上角系统按钮 System Button-->
-    <sys:Double x:Key="SystemButtonHeight">24</sys:Double>
+    <sys:Double x:Key="SystemButtonHeight">32</sys:Double>
     <sys:Double x:Key="SystemButtonWidth">32</sys:Double>
         
     <Style x:Key="ContentRoot" TargetType="FrameworkElement">
         <Setter Property="Margin" Value="{StaticResource ContentMargin}" />
+    </Style>
+
+    <Style x:Key="Root" TargetType="FrameworkElement">
+        <Setter Property="Margin" Value="{StaticResource RootMargin}" />
     </Style>
 
 </ResourceDictionary>

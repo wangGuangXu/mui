@@ -162,7 +162,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 可以导航
         /// </summary>
         /// <param name="oldValue"></param>
         /// <param name="newValue"></param>
@@ -202,6 +202,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
             return true;
         }
 
+        /// <summary>
+        /// 导航
+        /// </summary>
+        /// <param name="oldValue"></param>
+        /// <param name="newValue"></param>
+        /// <param name="navigationType"></param>
         private void Navigate(Uri oldValue, Uri newValue, NavigationType navigationType)
         {
             Debug.WriteLine("从导航 '{0}' 到 '{1}'", oldValue, newValue);
@@ -241,7 +247,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
                     task.ContinueWith(t => 
                     {
-                        try {
+                        try 
+                        {
                             if (t.IsCanceled || localTokenSource.IsCancellationRequested)
                             {
                                 Debug.WriteLine("取消导航 Cancelled navigation to '{0}'", newValue);
@@ -342,7 +349,10 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
-
+        /// <summary>
+        /// 获取子框架集合
+        /// </summary>
+        /// <returns></returns>
         private IEnumerable<ModernFrame> GetChildFrames()
         {
             var refs = this.childFrames.ToArray();
@@ -422,6 +432,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="oldContent"></param>
+        /// <param name="newContent"></param>
+        /// <param name="e"></param>
         private void OnNavigated(IContent oldContent, IContent newContent, NavigationEventArgs e)
         {
             // invoke IContent.OnNavigatedFrom and OnNavigatedTo
@@ -471,6 +487,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             return originalSource.AncestorsAndSelf().OfType<ModernFrame>().FirstOrDefault() == this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCanBrowseBack(object sender, CanExecuteRoutedEventArgs e)
         {
             // 只启用浏览后退框，不要冒泡 only enable browse back for source frame, do not bubble
@@ -480,6 +501,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCanCopy(object sender, CanExecuteRoutedEventArgs e)
         {
             if (HandleRoutedEvent(e))
@@ -488,6 +514,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCanGoToPage(object sender, CanExecuteRoutedEventArgs e)
         {
             if (HandleRoutedEvent(e))
@@ -496,6 +527,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCanRefresh(object sender, CanExecuteRoutedEventArgs e)
         {
             if (HandleRoutedEvent(e))
@@ -551,12 +587,22 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="e"></param>
         private void OnCopy(object target, ExecutedRoutedEventArgs e)
         {
             // 将当前内容的字符串表示形式复制到剪贴板 copies the string representation of the current content to the clipboard
             Clipboard.SetText(this.Content.ToString());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             var parent = NavigationHelper.FindFrame(NavigationHelper.FrameParent, this);

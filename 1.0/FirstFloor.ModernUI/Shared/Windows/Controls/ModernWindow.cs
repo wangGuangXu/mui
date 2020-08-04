@@ -24,31 +24,31 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         public static readonly DependencyProperty BackgroundContentProperty = DependencyProperty.Register("BackgroundContent", typeof(object), typeof(ModernWindow));
         /// <summary>
-        /// Identifies the MenuLinkGroups dependency property.
+        /// 标识菜单链接组依赖属性 Identifies the MenuLinkGroups dependency property.
         /// </summary>
         public static readonly DependencyProperty MenuLinkGroupsProperty = DependencyProperty.Register("MenuLinkGroups", typeof(LinkGroupCollection), typeof(ModernWindow));
         /// <summary>
-        /// Identifies the TitleLinks dependency property.
+        /// 标识标题链接组依赖属性 Identifies the TitleLinks dependency property.
         /// </summary>
         public static readonly DependencyProperty TitleLinksProperty = DependencyProperty.Register("TitleLinks", typeof(LinkCollection), typeof(ModernWindow));
         /// <summary>
-        /// Identifies the IsTitleVisible dependency property.
+        /// 标识标题是否可见依赖属性 Identifies the IsTitleVisible dependency property.
         /// </summary>
         public static readonly DependencyProperty IsTitleVisibleProperty = DependencyProperty.Register("IsTitleVisible", typeof(bool), typeof(ModernWindow), new PropertyMetadata(false));
         /// <summary>
-        /// Identifies the LogoData dependency property.
+        /// 标识Logo数据依赖属性 Identifies the LogoData dependency property.
         /// </summary>
         public static readonly DependencyProperty LogoDataProperty = DependencyProperty.Register("LogoData", typeof(Geometry), typeof(ModernWindow));
         /// <summary>
-        /// Defines the ContentSource dependency property.
+        /// 定义ContentSource依赖项属性 Defines the ContentSource dependency property.
         /// </summary>
         public static readonly DependencyProperty ContentSourceProperty = DependencyProperty.Register("ContentSource", typeof(Uri), typeof(ModernWindow));
         /// <summary>
-        /// Identifies the ContentLoader dependency property.
+        /// 标识内容来源依赖项属性 Identifies the ContentLoader dependency property.
         /// </summary>
         public static readonly DependencyProperty ContentLoaderProperty = DependencyProperty.Register("ContentLoader", typeof(IContentLoader), typeof(ModernWindow), new PropertyMetadata(new DefaultContentLoader()));
         /// <summary>
-        /// Identifies the LinkNavigator dependency property.
+        /// 标识链接导航器依赖项属性 Identifies the LinkNavigator dependency property.
         /// </summary>
         public static DependencyProperty LinkNavigatorProperty = DependencyProperty.Register("LinkNavigator", typeof(ILinkNavigator), typeof(ModernWindow), new PropertyMetadata(new DefaultLinkNavigator()));
         /// <summary>
@@ -56,8 +56,10 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// Window窗体的DialogResult属性不是依赖属性，所以没法绑定，所以此处添加附加属性解决此问题。
         /// </summary>
         public static readonly DependencyProperty DialogResultProperty = DependencyProperty.Register("DialogResult", typeof(bool), typeof(ModernWindow), new PropertyMetadata(DialogResultChanged));
+        /// <summary>
+        /// 背景动画
+        /// </summary>
         private Storyboard backgroundAnimation;
-
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ModernWindow"/> class.
@@ -121,6 +123,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 外观管理属性更改事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnAppearanceManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // 如果主题已更改，则启动背景动画
@@ -169,11 +176,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 return;
             }
 
-            Uri uri;
-            string parameter;
-            string targetName;
-
-            if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out uri, out parameter, out targetName))
+            if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out Uri uri, out string parameter, out string targetName))
             {
                 this.LinkNavigator.Navigate(uri, e.Source as FrameworkElement, parameter);
             }

@@ -88,7 +88,8 @@ namespace FirstFloor.ModernUI.Windows.Navigation
                     // do nothing
                 }
             }
-            else if (uri.IsAbsoluteUri && this.externalSchemes != null && this.externalSchemes.Any(s => uri.Scheme.Equals(s, StringComparison.OrdinalIgnoreCase))) {
+            else if (uri.IsAbsoluteUri && this.externalSchemes != null && this.externalSchemes.Any(s => uri.Scheme.Equals(s, StringComparison.OrdinalIgnoreCase))) 
+            {
                 // uri is external, load in default browser
                 Process.Start(uri.AbsoluteUri);
                 return;
@@ -108,7 +109,7 @@ namespace FirstFloor.ModernUI.Windows.Navigation
                     throw new ArgumentException(string.Format(CultureInfo.CurrentUICulture, ModernUI.Resources.NavigationFailedFrameNotFound, uri, parameter));
                 }
 
-                // delegate navigation to the frame
+                // 委派导航到框架 delegate navigation to the frame
                 frame.Source = uri;
             }
         }
