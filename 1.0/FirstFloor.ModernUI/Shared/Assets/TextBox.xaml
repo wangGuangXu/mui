@@ -31,7 +31,7 @@
                         <Popup Name="popup" AllowsTransparency="True" Placement="Right"  >
                             <Border x:Name="errorBorder" Background="#FFdc000c" Opacity="0" CornerRadius="0" IsHitTestVisible="False" MinHeight="26" >
                                 <TextBlock Text="{Binding ElementName=adorner,
-                                        Path=AdornedElement.(Validation.Errors)[0].ErrorContent }"
+                                        Path=AdornedElement.(Validation.Errors).CurrentItem.ErrorContent }"
                                         Foreground="White" Margin="8,2,8,3" TextWrapping="Wrap" VerticalAlignment="Center"/>
                             </Border>
                         </Popup>
@@ -43,7 +43,8 @@
                                 <Binding ElementName="adorner" Path="AdornedElement.IsKeyboardFocused" />
                             </DataTrigger.Binding>
                             <DataTrigger.Setters>
-                                <Setter Property="IsOpen" TargetName="popup" Value="true"/>
+                                <Setter Property="IsOpen" TargetName="popup" Value="true"  />
+                                
                             </DataTrigger.Setters>
                             <DataTrigger.EnterActions>
                                 <!--淡入故事板-->
