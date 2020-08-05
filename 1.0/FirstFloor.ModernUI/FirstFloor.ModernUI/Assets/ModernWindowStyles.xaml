@@ -320,7 +320,7 @@
         </Setter>
     </Style>
 
-    <!--主界面布局样式-->
+    <!--系统主界面布局样式-->
     <Style x:Key="MainWindowSytle" TargetType="controls:ModernWindow" BasedOn="{StaticResource {x:Type controls:ModernWindow}}">
         <Setter Property="BackgroundContent" Value="{DynamicResource WindowBackgroundContent}" />
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
