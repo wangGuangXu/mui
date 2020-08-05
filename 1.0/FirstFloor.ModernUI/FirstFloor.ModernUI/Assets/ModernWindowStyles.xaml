@@ -356,7 +356,7 @@
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="30" />
-                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
 
                                     <!-- 窗口背景内容 window background content -->
@@ -471,7 +471,7 @@
                                     </Grid>
 
                                     <!-- 内容框架 content frame -->
-                                    <controls:ModernFrame x:Name="ContentFrame" Grid.Row="2" Grid.RowSpan="2" Margin="42,8,16,16" Source="{Binding ContentSource, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ContentLoader="{TemplateBinding ContentLoader}"/>
+                                    <controls:ModernFrame x:Name="ContentFrame" Grid.Row="2" Grid.RowSpan="2" Margin="42,8,16,31" Source="{Binding ContentSource, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ContentLoader="{TemplateBinding ContentLoader}"/>
 
                                     <!--状态栏-->
                                     <Grid Grid.Row="3"   >
@@ -481,24 +481,33 @@
                                                     <ItemsPanelTemplate>
                                                         <Grid>
                                                             <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="100" />
-                                                                <ColumnDefinition Width="Auto" />
+                                                                <ColumnDefinition Width="150" />
+                                                                <ColumnDefinition Width="auto" />
+                                                                <ColumnDefinition Width="150" />
+                                                                <ColumnDefinition Width="auto" />
                                                                 <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="100" />
+                                                                <ColumnDefinition Width="auto" />
+                                                                <ColumnDefinition Width="150" />
                                                             </Grid.ColumnDefinitions>
                                                         </Grid>
                                                     </ItemsPanelTemplate>
                                                 </StatusBar.ItemsPanel>
-                                                <StatusBarItem>
-                                                    <TextBlock Name="lblCursorPosition" Text="192.168.0.1" />
+                                                <StatusBarItem Margin="5,0" Grid.Column="0"  >
+                                                    <TextBlock x:Name="txtUser" Text="{Binding StatusUser,RelativeSource={RelativeSource TemplatedParent },Mode=TwoWay}" />
                                                 </StatusBarItem>
-                                                <Separator Grid.Column="1" />
+                                                <Separator Grid.Column="1"  />
+
                                                 <StatusBarItem Grid.Column="2">
+                                                    <TextBlock x:Name="txtNetWork" Text="{Binding StatusNetWork,RelativeSource={RelativeSource TemplatedParent },Mode=TwoWay}" />
+                                                </StatusBarItem>
+                                                <Separator Grid.Column="3"/>
+
+                                                <StatusBarItem Grid.Column="4">
                                                     <TextBlock Text="c:\path\of\current\file.txt" />
                                                 </StatusBarItem>
-                                                <Separator Grid.Column="3" />
-                                                <StatusBarItem Grid.Column="4">
+                                                <Separator Grid.Column="5"   />
+
+                                                <StatusBarItem Grid.Column="6" >
                                                     <ProgressBar Value="50" Width="90" Height="16" />
                                                 </StatusBarItem>
                                             </StatusBar>

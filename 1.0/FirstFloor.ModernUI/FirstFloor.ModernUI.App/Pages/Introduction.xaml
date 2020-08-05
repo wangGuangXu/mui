@@ -6,7 +6,7 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Style="{StaticResource Root}">
+    <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
             <StackPanel >
                 <TextBlock Text="WPF的现代用户界面" Style="{StaticResource Heading1}" Margin="0,0,0,8"/>

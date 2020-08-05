@@ -12,19 +12,39 @@ using FirstFloor.ModernUI.Windows.Navigation;
 namespace FirstFloor.ModernUI.Windows.Controls.BBCode
 {
     /// <summary>
-    /// Represents the BBCode parser.
+    /// 代表BBCode解析器 Represents the BBCode parser.
     /// </summary>
-    internal class BBCodeParser
-        : Parser<Span>
+    internal class BBCodeParser: Parser<Span>
     {
-        // supporting a basic set of BBCode tags
+        // 支持一组基本的BBCode标签 supporting a basic set of BBCode tags
+        /// <summary>
+        /// 加粗标签
+        /// </summary>
         private const string TagBold = "b";
+        /// <summary>
+        /// 强调色标签
+        /// </summary>
         private const string TagColor = "color";
+        /// <summary>
+        /// 斜体标签
+        /// </summary>
         private const string TagItalic = "i";
+        /// <summary>
+        /// 字体大小标签
+        /// </summary>
         private const string TagSize = "size";
+        /// <summary>
+        /// 下划线标签
+        /// </summary>
         private const string TagUnderline = "u";
+        /// <summary>
+        /// 地址标签
+        /// </summary>
         private const string TagUrl = "url";
 
+        /// <summary>
+        /// 解析上下文
+        /// </summary>
         class ParseContext
         {
             public ParseContext(Span parent)
@@ -71,70 +91,93 @@ namespace FirstFloor.ModernUI.Windows.Controls.BBCode
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="source">The framework source element this parser operates in.</param>
-        public BBCodeParser(string value, FrameworkElement source)
-            : base(new BBCodeLexer(value))
+        public BBCodeParser(string value, FrameworkElement source) : base(new BBCodeLexer(value))
         {
-            if (source == null) {
+            if (source == null) 
+            {
                 throw new ArgumentNullException("source");
             }
             this.source = source;
         }
 
         /// <summary>
+        /// 获取或设置可用的可导航命令
         /// Gets or sets the available navigable commands.
         /// </summary>
         public CommandDictionary Commands { get; set; }
 
+        /// <summary>
+        /// 解析标签
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <param name="start"></param>
+        /// <param name="context"></param>
         private void ParseTag(string tag, bool start, ParseContext context)
         {
-            if (tag == TagBold) {
+            if (tag == TagBold) 
+            {
                 context.FontWeight = null;
-                if (start) {
+                if (start) 
+                {
                     context.FontWeight = FontWeights.Bold;
                 }
             }
-            else if (tag == TagColor) {
-                if (start) {
+            else if (tag == TagColor) 
+            {
+                if (start) 
+                {
                     Token token = LA(1);
-                    if (token.TokenType == BBCodeLexer.TokenAttribute) {
+                    if (token.TokenType == BBCodeLexer.TokenAttribute) 
+                    {
                         var color = (Color)ColorConverter.ConvertFromString(token.Value);
                         context.Foreground = new SolidColorBrush(color);
 
                         Consume();
                     }
                 }
-                else {
+                else 
+                {
                     context.Foreground = null;
                 }
             }
-            else if (tag == TagItalic) {
-                if (start) {
+            else if (tag == TagItalic) 
+            {
+                if (start) 
+                {
                     context.FontStyle = FontStyles.Italic;
                 }
-                else {
+                else 
+                {
                     context.FontStyle = null;
                 }
             }
-            else if (tag == TagSize) {
-                if (start) {
+            else if (tag == TagSize) 
+            {
+                if (start) 
+                {
                     Token token = LA(1);
-                    if (token.TokenType == BBCodeLexer.TokenAttribute) {
+                    if (token.TokenType == BBCodeLexer.TokenAttribute) 
+                    {
                         context.FontSize = Convert.ToDouble(token.Value);
 
                         Consume();
                     }
                 }
-                else {
+                else 
+                {
                     context.FontSize = null;
                 }
             }
-            else if (tag == TagUnderline) {
+            else if (tag == TagUnderline) 
+            {
                 context.TextDecorations = start ? TextDecorations.Underline : null;
             }
-            else if (tag == TagUrl) {
+            else if (tag == TagUrl) 
+            {
                 if (start) {
                     Token token = LA(1);
-                    if (token.TokenType == BBCodeLexer.TokenAttribute) {
+                    if (token.TokenType == BBCodeLexer.TokenAttribute) 
+                    {
                         context.NavigateUri = token.Value;
                         Consume();
                     }
@@ -145,40 +188,52 @@ namespace FirstFloor.ModernUI.Windows.Controls.BBCode
             }
         }
 
+        /// <summary>
+        /// 解析
+        /// </summary>
+        /// <param name="span"></param>
         private void Parse(Span span)
         {
             var context = new ParseContext(span);
 
-            while (true) {
+            while (true) 
+            {
                 Token token = LA(1);
                 Consume();
 
-                if (token.TokenType == BBCodeLexer.TokenStartTag) {
+                if (token.TokenType == BBCodeLexer.TokenStartTag) 
+                {
                     ParseTag(token.Value, true, context);
                 }
-                else if (token.TokenType == BBCodeLexer.TokenEndTag) {
+                else if (token.TokenType == BBCodeLexer.TokenEndTag) 
+                {
                     ParseTag(token.Value, false, context);
                 }
-                else if (token.TokenType == BBCodeLexer.TokenText) {
+                else if (token.TokenType == BBCodeLexer.TokenText) 
+                {
                     var parent = span;
                     Uri uri;
                     string parameter = null;
                     string targetName = null;
 
                     // parse uri value for optional parameter and/or target, eg [url=cmd://foo|parameter|target]
-                    if (NavigationHelper.TryParseUriWithParameters(context.NavigateUri, out uri, out parameter, out targetName)) {
+                    if (NavigationHelper.TryParseUriWithParameters(context.NavigateUri, out uri, out parameter, out targetName)) 
+                    {
                         var link = new Hyperlink();
 
-                        // assign ICommand instance if available, otherwise set NavigateUri
+                        // 分配ICommand实例（如果可用），否则设置NavigateUri assign ICommand instance if available, otherwise set NavigateUri
                         ICommand command;
-                        if (this.Commands != null && this.Commands.TryGetValue(uri, out command)) {
+                        if (this.Commands != null && this.Commands.TryGetValue(uri, out command)) 
+                        {
                             link.Command = command;
                             link.CommandParameter = parameter;
-                            if (targetName != null) {
+                            if (targetName != null) 
+                            {
                                 link.CommandTarget = this.source.FindName(targetName) as IInputElement;
                             }
                         }
-                        else {
+                        else 
+                        {
                             link.NavigateUri = uri;
                             link.TargetName = parameter;
                         }
@@ -188,23 +243,27 @@ namespace FirstFloor.ModernUI.Windows.Controls.BBCode
                     var run = context.CreateRun(token.Value);
                     parent.Inlines.Add(run);
                 }
-                else if (token.TokenType == BBCodeLexer.TokenLineBreak) {
+                else if (token.TokenType == BBCodeLexer.TokenLineBreak) 
+                {
                     span.Inlines.Add(new LineBreak());
                 }
-                else if (token.TokenType == BBCodeLexer.TokenAttribute) {
+                else if (token.TokenType == BBCodeLexer.TokenAttribute) 
+                {
                     throw new ParseException(Resources.UnexpectedToken);
                 }
-                else if (token.TokenType == BBCodeLexer.TokenEnd) {
+                else if (token.TokenType == BBCodeLexer.TokenEnd) 
+                {
                     break;
                 }
-                else {
+                else 
+                {
                     throw new ParseException(Resources.UnknownTokenType);
                 }
             }
         }
 
         /// <summary>
-        /// Parses the text and returns a Span containing the parsed result.
+        /// 分析文本并返回包含分析结果的范围 Parses the text and returns a Span containing the parsed result.
         /// </summary>
         /// <returns></returns>
         public override Span Parse()

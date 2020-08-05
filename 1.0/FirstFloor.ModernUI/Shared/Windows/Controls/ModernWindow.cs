@@ -19,6 +19,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
     /// </summary>
     public class ModernWindow  : DpiAwareWindow
     {
+        #region 依赖属性
         /// <summary>
         /// 标识背景内容依赖项属性.
         /// </summary>
@@ -56,178 +57,23 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// Window窗体的DialogResult属性不是依赖属性，所以没法绑定，所以此处添加附加属性解决此问题。
         /// </summary>
         public static readonly DependencyProperty DialogResultProperty = DependencyProperty.Register("DialogResult", typeof(bool), typeof(ModernWindow), new PropertyMetadata(DialogResultChanged));
+
+        /// <summary>
+        /// 状态栏用户
+        /// </summary>
+        public static readonly DependencyProperty StatusUserProperty = DependencyProperty.Register("StatusUser", typeof(string), typeof(ModernWindow), new PropertyMetadata(""));
+        /// <summary>
+        /// 状态栏网络
+        /// </summary>
+        public static readonly DependencyProperty StatusNetWorkProperty = DependencyProperty.Register("StatusNetWork", typeof(string), typeof(ModernWindow));
+
         /// <summary>
         /// 背景动画
         /// </summary>
-        private Storyboard backgroundAnimation;
+        private Storyboard backgroundAnimation; 
+        #endregion
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ModernWindow"/> class.
-        /// </summary>
-        public ModernWindow()
-        {
-            this.DefaultStyleKey = typeof(ModernWindow);
-
-            // 创建空集合
-            SetCurrentValue(MenuLinkGroupsProperty, new LinkGroupCollection());
-            SetCurrentValue(TitleLinksProperty, new LinkCollection());
-
-            // 将窗口命令与此实例关联
-#if NET4
-            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.CloseWindowCommand, OnCloseWindow));
-            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.MaximizeWindowCommand, OnMaximizeWindow, OnCanResizeWindow));
-            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.MinimizeWindowCommand, OnMinimizeWindow, OnCanMinimizeWindow));
-            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.RestoreWindowCommand, OnRestoreWindow, OnCanResizeWindow));
-#else
-            this.CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, OnCloseWindow));
-            this.CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, OnMaximizeWindow, OnCanResizeWindow));
-            this.CommandBindings.Add(new CommandBinding(SystemCommands.MinimizeWindowCommand, OnMinimizeWindow, OnCanMinimizeWindow));
-            this.CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, OnRestoreWindow, OnCanResizeWindow));
-#endif
-            // 将导航链接命令与此实例关联
-            this.CommandBindings.Add(new CommandBinding(LinkCommands.NavigateLink, OnNavigateLink, OnCanNavigateLink));
-
-            // 监听主题改变事件
-            AppearanceManager.Current.PropertyChanged += OnAppearanceManagerPropertyChanged;
-        }
-
-        /// <summary>
-        /// 引发 System.Windows.Window.Closed 事件.
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-
-            // 分离事件处理程序 detach event handler
-            AppearanceManager.Current.PropertyChanged -= OnAppearanceManagerPropertyChanged;
-        }
-
-        /// <summary>
-        /// 在派生类中重写时，在应用程序代码或内部进程调用System.Windows.FrameworkElement.ApplyTemplate()时调用。
-        /// </summary>
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-
-            // 检索背景动画故事板 retrieve BackgroundAnimation storyboard
-            var border = GetTemplateChild("WindowBorder") as Border;
-            if (border != null)
-            {
-                this.backgroundAnimation = border.Resources["BackgroundAnimation"] as Storyboard;
-
-                if (this.backgroundAnimation != null)
-                {
-                    this.backgroundAnimation.Begin();
-                }
-            }
-        }
-
-        /// <summary>
-        /// 外观管理属性更改事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnAppearanceManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            // 如果主题已更改，则启动背景动画
-            if (e.PropertyName == "ThemeSource" && this.backgroundAnimation != null) {
-                this.backgroundAnimation.Begin();
-            }
-        }
-
-        /// <summary>
-        /// 打开链接
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnCanNavigateLink(object sender, CanExecuteRoutedEventArgs e)
-        {
-            // 默认为True
-            e.CanExecute = true;
-
-            if (this.LinkNavigator != null && this.LinkNavigator.Commands != null)
-            {
-                // 如果是命令uri，请检查icommand.canexecute是否为true
-                Uri uri;
-                string parameter;
-                string targetName;
-
-                // Todo: cannavigate被大量调用，这意味着需要大量解析。需要改进??
-                if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out uri, out parameter, out targetName))
-                {
-                    ICommand command;
-                    if (this.LinkNavigator.Commands.TryGetValue(uri, out command)) {
-                        e.CanExecute = command.CanExecute(parameter);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnNavigateLink(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (this.LinkNavigator == null)
-            {
-                return;
-            }
-
-            if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out Uri uri, out string parameter, out string targetName))
-            {
-                this.LinkNavigator.Navigate(uri, e.Source as FrameworkElement, parameter);
-            }
-        }
-
-        private void OnCanResizeWindow(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = this.ResizeMode == ResizeMode.CanResize || this.ResizeMode == ResizeMode.CanResizeWithGrip;
-        }
-
-        private void OnCanMinimizeWindow(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = this.ResizeMode != ResizeMode.NoResize;
-        }
-
-        private void OnCloseWindow(object target, ExecutedRoutedEventArgs e)
-        {
-#if NET4
-            Microsoft.Windows.Shell.SystemCommands.CloseWindow(this);
-#else
-            SystemCommands.CloseWindow(this);
-#endif
-        }
-
-        private void OnMaximizeWindow(object target, ExecutedRoutedEventArgs e)
-        {
-#if NET4
-            Microsoft.Windows.Shell.SystemCommands.MaximizeWindow(this);
-#else
-            SystemCommands.MaximizeWindow(this);
-#endif
-        }
-
-        private void OnMinimizeWindow(object target, ExecutedRoutedEventArgs e)
-        {
-#if NET4
-            Microsoft.Windows.Shell.SystemCommands.MinimizeWindow(this);
-#else
-            SystemCommands.MinimizeWindow(this);
-#endif
-        }
-
-        private void OnRestoreWindow(object target, ExecutedRoutedEventArgs e)
-        {
-#if NET4
-            Microsoft.Windows.Shell.SystemCommands.RestoreWindow(this);
-#else
-            SystemCommands.RestoreWindow(this);
-#endif
-        }
-
+        #region 属性
         /// <summary>
         /// 获取或设置此窗口实例的背景内容
         /// </summary>
@@ -305,6 +151,195 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 状态栏用户
+        /// </summary>
+        public string StatusUser
+        {
+            get { return (string)GetValue(StatusUserProperty); }
+            set { SetValue(StatusUserProperty, value); }
+        }
+
+        /// <summary>
+        /// 状态栏网络
+        /// </summary>
+        public string StatusNetWork
+        {
+            get { return (string)GetValue(StatusNetWorkProperty); }
+            set { SetValue(StatusNetWorkProperty, value); }
+        } 
+        #endregion
+
+        /// <summary>
+        /// 初始化示例
+        /// </summary>
+        public ModernWindow()
+        {
+            this.DefaultStyleKey = typeof(ModernWindow);
+
+            // 创建空集合
+            SetCurrentValue(MenuLinkGroupsProperty, new LinkGroupCollection());
+            SetCurrentValue(TitleLinksProperty, new LinkCollection());
+
+            // 将窗口命令与此实例关联
+#if NET4
+            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.CloseWindowCommand, OnCloseWindow));
+            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.MaximizeWindowCommand, OnMaximizeWindow, OnCanResizeWindow));
+            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.MinimizeWindowCommand, OnMinimizeWindow, OnCanMinimizeWindow));
+            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.RestoreWindowCommand, OnRestoreWindow, OnCanResizeWindow));
+#else
+            this.CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, OnCloseWindow));
+            this.CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, OnMaximizeWindow, OnCanResizeWindow));
+            this.CommandBindings.Add(new CommandBinding(SystemCommands.MinimizeWindowCommand, OnMinimizeWindow, OnCanMinimizeWindow));
+            this.CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, OnRestoreWindow, OnCanResizeWindow));
+#endif
+            // 将导航链接命令与此实例关联
+            this.CommandBindings.Add(new CommandBinding(LinkCommands.NavigateLink, OnNavigateLink, OnCanNavigateLink));
+
+            // 监听主题改变事件
+            AppearanceManager.Current.PropertyChanged += OnAppearanceManagerPropertyChanged;
+        }
+
+        #region 方法
+        /// <summary>
+        /// 引发 System.Windows.Window.Closed 事件.
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            // 分离事件处理程序 detach event handler
+            AppearanceManager.Current.PropertyChanged -= OnAppearanceManagerPropertyChanged;
+        }
+
+        /// <summary>
+        /// 在派生类中重写时，在应用程序代码或内部进程调用System.Windows.FrameworkElement.ApplyTemplate()时调用。
+        /// </summary>
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            // 检索背景动画故事板 retrieve BackgroundAnimation storyboard
+            var border = GetTemplateChild("WindowBorder") as Border;
+            if (border != null)
+            {
+                this.backgroundAnimation = border.Resources["BackgroundAnimation"] as Storyboard;
+
+                if (this.backgroundAnimation != null)
+                {
+                    this.backgroundAnimation.Begin();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 外观管理属性更改事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnAppearanceManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            // 如果主题已更改，则启动背景动画
+            if (e.PropertyName == "ThemeSource" && this.backgroundAnimation != null)
+            {
+                this.backgroundAnimation.Begin();
+            }
+        }
+
+        /// <summary>
+        /// 打开链接
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnCanNavigateLink(object sender, CanExecuteRoutedEventArgs e)
+        {
+            // 默认为True
+            e.CanExecute = true;
+
+            if (this.LinkNavigator != null && this.LinkNavigator.Commands != null)
+            {
+                // 如果是命令uri，请检查icommand.canexecute是否为true
+                Uri uri;
+                string parameter;
+                string targetName;
+
+                // Todo: cannavigate被大量调用，这意味着需要大量解析。需要改进??
+                if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out uri, out parameter, out targetName))
+                {
+                    ICommand command;
+                    if (this.LinkNavigator.Commands.TryGetValue(uri, out command))
+                    {
+                        e.CanExecute = command.CanExecute(parameter);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnNavigateLink(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (this.LinkNavigator == null)
+            {
+                return;
+            }
+
+            if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out Uri uri, out string parameter, out string targetName))
+            {
+                this.LinkNavigator.Navigate(uri, e.Source as FrameworkElement, parameter);
+            }
+        }
+
+        private void OnCanResizeWindow(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = this.ResizeMode == ResizeMode.CanResize || this.ResizeMode == ResizeMode.CanResizeWithGrip;
+        }
+
+        private void OnCanMinimizeWindow(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = this.ResizeMode != ResizeMode.NoResize;
+        }
+
+        private void OnCloseWindow(object target, ExecutedRoutedEventArgs e)
+        {
+#if NET4
+            Microsoft.Windows.Shell.SystemCommands.CloseWindow(this);
+#else
+            SystemCommands.CloseWindow(this);
+#endif
+        }
+
+        private void OnMaximizeWindow(object target, ExecutedRoutedEventArgs e)
+        {
+#if NET4
+            Microsoft.Windows.Shell.SystemCommands.MaximizeWindow(this);
+#else
+            SystemCommands.MaximizeWindow(this);
+#endif
+        }
+
+        private void OnMinimizeWindow(object target, ExecutedRoutedEventArgs e)
+        {
+#if NET4
+            Microsoft.Windows.Shell.SystemCommands.MinimizeWindow(this);
+#else
+            SystemCommands.MinimizeWindow(this);
+#endif
+        }
+
+        private void OnRestoreWindow(object target, ExecutedRoutedEventArgs e)
+        {
+#if NET4
+            Microsoft.Windows.Shell.SystemCommands.RestoreWindow(this);
+#else
+            SystemCommands.RestoreWindow(this);
+#endif
+        }
+
+        /// <summary>
         /// 获取窗口关闭值
         /// </summary>
         /// <param name="o">目标依赖对象.</param>
@@ -343,7 +378,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
             {
                 window.DialogResult = true;
             }
-        }
+        } 
+        #endregion
 
     }
 }

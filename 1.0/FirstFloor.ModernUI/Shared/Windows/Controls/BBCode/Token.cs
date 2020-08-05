@@ -14,7 +14,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.BBCode
         /// 表示标记输入结束的标记
         /// Represents the token that marks the end of the input.
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]     // token is immutable
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]     // 令牌是不可变的 token is immutable
         public static readonly Token End = new Token(string.Empty, Lexer.TokenEnd);
 
         private string value;

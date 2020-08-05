@@ -12,17 +12,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Controls.Primitives;
+using System.Net;
 
 namespace FirstFloor.ModernUI.App
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// 主窗体视图逻辑
     /// </summary>
     public partial class MainWindow : ModernWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+
+            this.StatusUser = "当前用户：超级管理员";
+            this.StatusNetWork = "网络："+Dns.GetHostName();
         }
     }
 }

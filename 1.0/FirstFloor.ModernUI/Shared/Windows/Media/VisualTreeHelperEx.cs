@@ -69,6 +69,7 @@ namespace FirstFloor.ModernUI.Windows.Media
         }
 
         /// <summary>
+        /// 返回包含指定对象和指定对象的祖先的可视元素的集合
         /// Returns a collection of visual elements that contain specified object, and the ancestors of specified object.
         /// </summary>
         /// <param name="dependencyObject">The dependency object.</param>
@@ -98,7 +99,7 @@ namespace FirstFloor.ModernUI.Windows.Media
         }
 
         /// <summary>
-        /// Gets the parent for specified dependency object.
+        /// 获取指定依赖项对象的父级 Gets the parent for specified dependency object.
         /// </summary>
         /// <param name="dependencyObject">The dependency object</param>
         /// <returns>The parent object or null if there is no parent.</returns>
@@ -106,7 +107,7 @@ namespace FirstFloor.ModernUI.Windows.Media
         {
             if (dependencyObject == null) 
             {
-                throw new ArgumentNullException("dependencyObject");
+                throw new ArgumentNullException("依赖对象 dependencyObject");
             }
 
             var ce = dependencyObject as ContentElement;
@@ -121,6 +122,46 @@ namespace FirstFloor.ModernUI.Windows.Media
                 return fce != null ? fce.Parent : null;
             }
             return VisualTreeHelper.GetParent(dependencyObject);
+        }
+
+        /// <summary>
+        /// WPF 获取控件模板中的控件
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="parent"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public static T GetVisualChild<T>(DependencyObject parent, Func<T, bool> predicate) where T : Visual
+        {
+            int numVisuals = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < numVisuals; i++)
+            {
+                DependencyObject v = (DependencyObject)VisualTreeHelper.GetChild(parent, i);
+                T child = v as T;
+                if (child == null)
+                {
+                    child = GetVisualChild<T>(v, predicate);
+                    if (child != null)
+                    {
+                        return child;
+                    }
+                }
+                else
+                {
+                    if (predicate(child))
+                    {
+                        return child;
+                    }
+                }
+            }
+            return null;
+
+            //用法：dg是控件名称
+            //CheckBox chb = GetVisualChild<CheckBox>(DG, v => v.Name == "cbbSelALL");
+            //if (null != chb)
+            //{
+            //    chb.IsChecked = false;
+            //}
         }
     }
 }

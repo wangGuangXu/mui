@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace FirstFloor.ModernUI.Windows.Controls.BBCode
 {
     /// <summary>
+    /// 提供基本的词法分析功能
     /// Provides basic lexer functionality.
     /// </summary>
     internal abstract class Lexer
@@ -74,6 +75,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.BBCode
         }
 
         /// <summary>
+        /// 向前看
         /// Performs a look-ahead.
         /// </summary>
         /// <param name="count">The number of characters to look ahead.</param>
@@ -84,6 +86,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.BBCode
         }
 
         /// <summary>
+        /// 标记当前位置
         /// Marks the current position.
         /// </summary>
         protected void Mark()
@@ -102,6 +105,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.BBCode
         }
 
         /// <summary>
+        /// 消耗下一个角色
         /// Consumes the next character.
         /// </summary>
         protected void Consume()
@@ -110,6 +114,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.BBCode
         }
 
         /// <summary>
+        /// 确定当前字符是否在给定范围内
         /// Determines whether the current character is in given range.
         /// </summary>
         /// <param name="first">The first.</param>
@@ -136,7 +141,8 @@ namespace FirstFloor.ModernUI.Windows.Controls.BBCode
                 return false;
             }
             char la = LA(1);
-            for (int i = 0; i < value.Length; i++) {
+            for (int i = 0; i < value.Length; i++) 
+            {
                 if (la == value[i]) {
                     return true;
                 }
@@ -146,6 +152,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.BBCode
         }
 
         /// <summary>
+        /// 与指定字符匹配
         /// Matches the specified character.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -168,7 +175,8 @@ namespace FirstFloor.ModernUI.Windows.Controls.BBCode
         protected void Match(char value, int minOccurs, int maxOccurs)
         {
             int i = 0;
-            while (LA(1) == value) {
+            while (LA(1) == value) 
+            {
                 Consume();
                 i++;
             }
