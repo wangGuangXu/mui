@@ -13,10 +13,12 @@ namespace FirstFloor.ModernUI.Windows.Navigation
     public class NavigationEventArgs: NavigationBaseEventArgs
     {
         /// <summary>
+        /// 获取一个值，该值指示正在发生的导航类型
         /// Gets a value that indicates the type of navigation that is occurring.
         /// </summary>
         public NavigationType NavigationType { get; internal set; }
         /// <summary>
+        /// 获取要导航到的目标的内容
         /// Gets the content of the target being navigated to.
         /// </summary>
         public object Content { get; internal set; }

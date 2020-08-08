@@ -42,38 +42,35 @@ namespace FirstFloor.ModernUI.Windows.Navigation
                 throw new ArgumentNullException("context");
             }
 
-            // collect all ancestor frames
+            // 收集所有祖先框架 collect all ancestor frames
             var frames = context.AncestorsAndSelf().OfType<ModernFrame>().ToArray();
-
             if (name == null || name == FrameSelf)
             {
-                // find first ancestor frame
+                // 查找第一个祖先框架 find first ancestor frame
                 return frames.FirstOrDefault();
             }
 
             if (name == FrameParent)
             {
-                // find parent frame
+                //查找父框架 find parent frame
                 return frames.Skip(1).FirstOrDefault();
             }
 
             if (name == FrameTop)
             {
-                // find top-most frame
+                // 查找最上面的框架 find top-most frame
                 return frames.LastOrDefault();
             }
 
-            // find ancestor frame having a name matching the target
+            // 查找名称与目标匹配的祖先框架 find ancestor frame having a name matching the target
             var frame = frames.FirstOrDefault(f => f.Name == name);
-
             if (frame == null)
             {
-                // find frame in context scope
+                // 在上下文范围内查找框架 find frame in context scope
                 frame = context.FindName(name) as ModernFrame;
-
                 if (frame == null)
                 {
-                    // find frame in scope of ancestor frame content
+                    // 在祖先框架内容范围内查找框架 find frame in scope of ancestor frame content
                     var parent = frames.FirstOrDefault();
                     if (parent != null && parent.Content != null)
                     {
@@ -90,6 +87,7 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         }
 
         /// <summary>
+        /// 从指定的uri中移除片段并传回
         /// Removes the fragment from specified uri and return it.
         /// </summary>
         /// <param name="uri">The uri</param>
@@ -101,6 +99,7 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         }
 
         /// <summary>
+        /// 从指定的uri中移除片段，并返回不包含片段和片段本身的uri
         /// Removes the fragment from specified uri and returns the uri without the fragment and the fragment itself.
         /// </summary>
         /// <param name="uri">The uri.</param>
@@ -146,6 +145,7 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         }
 
         /// <summary>
+        /// 尝试使用给定值中的参数分析uri
         /// Tries to parse a uri with parameters from given value.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -159,7 +159,8 @@ namespace FirstFloor.ModernUI.Windows.Navigation
             parameter = null;
             targetName = null;
 
-            if (uri == null) {
+            if (uri == null) 
+            {
                 var valueString = value as string;
                 return TryParseUriWithParameters(valueString, out uri, out parameter, out targetName);
             }
@@ -168,12 +169,13 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         }
 
         /// <summary>
+        /// 尝试使用给定字符串值中的参数分析uri
         /// Tries to parse a uri with parameters from given string value.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="uri">The URI.</param>
         /// <param name="parameter">The parameter.</param>
-        /// <param name="targetName">Name of the target.</param>
+        /// <param name="targetName">目标的名称 Name of the target.</param>
         /// <returns></returns>
         public static bool TryParseUriWithParameters(string value, out Uri uri, out string parameter, out string targetName)
         {
@@ -185,15 +187,17 @@ namespace FirstFloor.ModernUI.Windows.Navigation
                 return false;
             }
 
-            // parse uri value for optional parameter and/or target, eg 'cmd://foo|parameter|target'
+            // 分析可选参数和/或目标的uri值 parse uri value for optional parameter and/or target, eg 'cmd://foo|parameter|target'
             string uriString = value;
             var parts = uriString.Split(new char[] { '|' }, 3);
-            if (parts.Length == 3) {
+            if (parts.Length == 3) 
+            {
                 uriString = parts[0];
                 parameter = Uri.UnescapeDataString(parts[1]);
                 targetName = Uri.UnescapeDataString(parts[2]);
             }
-            else if (parts.Length == 2) {
+            else if (parts.Length == 2) 
+            {
                 uriString = parts[0];
                 parameter = Uri.UnescapeDataString(parts[1]);
             }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI.Windows.Navigation
 {
     /// <summary>
-    /// 标识所支持的导航类型
+    /// 框架导航类型
     /// </summary>
     public enum NavigationType
     {

@@ -41,10 +41,11 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         }
 
         /// <summary>
+        /// 获取或设置外部链接导航的方案
         /// Gets or sets the schemes for external link navigation.
         /// </summary>
         /// <remarks>
-        /// Default schemes are http, https and mailto.
+        /// 默认方案是http、https和mailto Default schemes are http, https and mailto.
         /// </remarks>
         public string[] ExternalSchemes
         {
@@ -53,6 +54,7 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         }
 
         /// <summary>
+        /// 获取或设置可导航命令
         /// Gets or sets the navigable commands.
         /// </summary>
         public CommandDictionary Commands
@@ -75,9 +77,9 @@ namespace FirstFloor.ModernUI.Windows.Navigation
             }
 
             // 首先检查url是否引用命令 first check if uri refers to a command
-            ICommand command;
-            if (this.commands != null && this.commands.TryGetValue(uri, out command))
+            if (commands != null && commands.TryGetValue(uri, out ICommand command))
             {
+                // 注意：不是在BBCodeBlock上下文中执行的，Hyperlink实例设置了Command和CommandParameter 
                 // note: not executed within BBCodeBlock context, Hyperlink instance has Command and CommandParameter set
                 if (command.CanExecute(parameter))
                 {
@@ -88,17 +90,17 @@ namespace FirstFloor.ModernUI.Windows.Navigation
                     // do nothing
                 }
             }
-            else if (uri.IsAbsoluteUri && this.externalSchemes != null && this.externalSchemes.Any(s => uri.Scheme.Equals(s, StringComparison.OrdinalIgnoreCase))) 
+            else if (uri.IsAbsoluteUri && this.externalSchemes != null && this.externalSchemes.Any(s => uri.Scheme.Equals(s, StringComparison.OrdinalIgnoreCase)))
             {
-                // uri is external, load in default browser
+                // uri是外部的，在默认浏览器中加载 uri is external, load in default browser
                 Process.Start(uri.AbsoluteUri);
                 return;
             }
             else
             {
-                // perform frame navigation
+                // 执行帧导航 perform frame navigation
                 if (source == null)// source required
-                {   
+                {
                     throw new ArgumentException(string.Format(CultureInfo.CurrentUICulture, ModernUI.Resources.NavigationFailedSourceNotSpecified, uri));
                 }
 

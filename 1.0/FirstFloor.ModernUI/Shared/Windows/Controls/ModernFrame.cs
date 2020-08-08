@@ -99,14 +99,32 @@ namespace FirstFloor.ModernUI.Windows.Controls
             this.Loaded += OnLoaded;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var parent = NavigationHelper.FindFrame(NavigationHelper.FrameParent, this);
+            if (parent != null)
+            {
+                parent.RegisterChildFrame(this);
+            }
+        }
+
         private static void OnKeepContentAliveChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             ((ModernFrame)o).OnKeepContentAliveChanged((bool)e.NewValue);
         }
 
+        /// <summary>
+        /// 关于保持内容活动已更改
+        /// </summary>
+        /// <param name="keepAlive"></param>
         private void OnKeepContentAliveChanged(bool keepAlive)
         {
-            // clear content cache
+            // 清除内容缓存 clear content cache
             this.contentCache.Clear();
         }
 
@@ -114,7 +132,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             if (e.NewValue == null)
             {
-                // null values for content loader not allowed
+                // 不允许内容加载器的空值 null values for content loader not allowed
                 throw new ArgumentNullException("ContentLoader");
             }
         }
@@ -124,6 +142,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             ((ModernFrame)o).OnSourceChanged((Uri)e.OldValue, (Uri)e.NewValue);
         }
 
+        /// <summary>
+        /// 源更改事件
+        /// </summary>
+        /// <param name="oldValue"></param>
+        /// <param name="newValue"></param>
         private void OnSourceChanged(Uri oldValue, Uri newValue)
         {
             // 如果重置源或旧源等于新建，则不要执行任何操作 if resetting source or old source equals new, don't do anything
@@ -391,7 +414,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <param name="e"></param>
         private void OnFragmentNavigation(IContent content, FragmentNavigationEventArgs e)
         {
-            // invoke optional IContent.OnFragmentNavigation
+            // 调用可选IContent.on碎片导航 invoke optional IContent.OnFragmentNavigation
             if (content != null)
             {
                 content.OnFragmentNavigation(e);
@@ -479,11 +502,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private bool HandleRoutedEvent(CanExecuteRoutedEventArgs args)
         {
             var originalSource = args.OriginalSource as DependencyObject;
-
             if (originalSource == null)
             {
                 return false;
             }
+
             return originalSource.AncestorsAndSelf().OfType<ModernFrame>().FirstOrDefault() == this;
         }
 
@@ -599,20 +622,6 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnLoaded(object sender, RoutedEventArgs e)
-        {
-            var parent = NavigationHelper.FindFrame(NavigationHelper.FrameParent, this);
-            if (parent != null)
-            {
-                parent.RegisterChildFrame(this);
-            }
-        }
-
-        /// <summary>
         /// 注册子框架
         /// </summary>
         /// <param name="frame"></param>
@@ -622,6 +631,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
             if (!GetChildFrames().Contains(frame))
             {
 #if NET4
+                //若引用
                 var r = new WeakReference(frame);
 #else
                 var r = new WeakReference<ModernFrame>(frame);
@@ -643,13 +653,13 @@ namespace FirstFloor.ModernUI.Windows.Controls
             {
                 var result = GetKeepAlive(o);
 
-                // if a value exists for given content, use it
+                // 如果给定内容存在值，请使用它 if a value exists for given content, use it
                 if (result.HasValue)
                 {
                     return result.Value;
                 }
             }
-            // otherwise let the ModernFrame decide
+            // 否则就让现代框架来决定 otherwise let the ModernFrame decide
             return this.KeepContentAlive;
         }
 
@@ -712,6 +722,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取或设置当前内容的源 
         /// Gets or sets the source of the current content.
         /// </summary>
         public Uri Source

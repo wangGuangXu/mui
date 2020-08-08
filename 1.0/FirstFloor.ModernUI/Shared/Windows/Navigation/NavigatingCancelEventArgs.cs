@@ -10,6 +10,7 @@ using FirstFloor.ModernUI.Windows.Controls;
 namespace FirstFloor.ModernUI.Windows.Navigation
 {
     /// <summary>
+    /// 提供方法和事件的数据
     /// Provides data for the <see cref="IContent.OnNavigatingFrom" /> method and the <see cref="ModernFrame.Navigating"/> event.
     /// </summary>
     public class NavigatingCancelEventArgs : NavigationBaseEventArgs
