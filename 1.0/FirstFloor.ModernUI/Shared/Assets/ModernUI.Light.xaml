@@ -166,10 +166,10 @@
     <SolidColorBrush x:Key="ControlBorderBrush" Color="#999C9F"></SolidColorBrush>
     <SolidColorBrush x:Key="MouseOverBorderBrush" Color="#F6D1D1"></SolidColorBrush>
     <SolidColorBrush x:Key="FocusBorderBrush" Color="{DynamicResource AccentColor}"></SolidColorBrush>
-    --><!--输入组件--><!--
-    <SolidColorBrush x:Key="TextForeground" Color="Black"></SolidColorBrush>
+    --><!--输入组件-->
+    <!--<SolidColorBrush x:Key="TextForeground" Color="Black"></SolidColorBrush>
     <SolidColorBrush x:Key="TextBackground" Color="#0D234B"></SolidColorBrush>
-    <SolidColorBrush x:Key="TextSelectionBrush" Color="#8F8787"></SolidColorBrush>
-    --><!--水印文本框结束-->
+    <SolidColorBrush x:Key="TextSelectionBrush" Color="#8F8787"></SolidColorBrush>-->
+    <!--水印文本框结束-->
     
 </ResourceDictionary>

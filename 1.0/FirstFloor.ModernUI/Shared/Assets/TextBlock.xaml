@@ -45,4 +45,15 @@
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
     </Style>
+
+    <!--FIcon-->
+    <Style x:Key="FIcon" TargetType="TextBlock">
+        <!--<Setter Property="FontFamily" Value="pack://application:,,,/FirstFloor.ModernUI;component/Resources/#SF2015iconfont"></Setter>-->
+        <Setter Property="FontFamily" Value="/FirstFloor.ModernUI;component/#iconfont"></Setter>
+        <Setter Property="Foreground" Value="Red"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
 </ResourceDictionary>

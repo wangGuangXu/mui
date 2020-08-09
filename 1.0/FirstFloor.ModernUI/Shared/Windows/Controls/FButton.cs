@@ -14,7 +14,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
     public  class FButton : Button
     {
         /// <summary>
-        /// 
+        /// 鼠标按下背景样式
         /// </summary>
         public static readonly DependencyProperty PressedBackgroundProperty =
             DependencyProperty.Register("PressedBackground", typeof(Brush), typeof(FButton), new PropertyMetadata(Brushes.DarkBlue));
@@ -28,7 +28,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 鼠标按下前景样式（图标、文字）
         /// </summary>
         public static readonly DependencyProperty PressedForegroundProperty =
             DependencyProperty.Register("PressedForeground", typeof(Brush), typeof(FButton), new PropertyMetadata(Brushes.White));
@@ -42,7 +42,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 鼠标进入背景样式
         /// </summary>
         public static readonly DependencyProperty MouseOverBackgroundProperty =
             DependencyProperty.Register("MouseOverBackground", typeof(Brush), typeof(FButton), new PropertyMetadata(Brushes.RoyalBlue));
@@ -57,7 +57,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 鼠标进入前景样式
         /// </summary>
         public static readonly DependencyProperty MouseOverForegroundProperty =
             DependencyProperty.Register("MouseOverForeground", typeof(Brush), typeof(FButton), new PropertyMetadata(Brushes.White));
@@ -71,8 +71,9 @@ namespace FirstFloor.ModernUI.Windows.Controls
             set { SetValue(MouseOverForegroundProperty, value); }
         }
 
+
         /// <summary>
-        /// 
+        /// 按钮字体图标编码
         /// </summary>
         public static readonly DependencyProperty FIconProperty =
             DependencyProperty.Register("FIcon", typeof(string), typeof(FButton), new PropertyMetadata("\ue604"));
@@ -87,7 +88,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 按钮字体图标大小
         /// </summary>
         public static readonly DependencyProperty FIconSizeProperty =
             DependencyProperty.Register("FIconSize", typeof(int), typeof(FButton), new PropertyMetadata(20));
@@ -102,7 +103,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 字体图标间距
         /// </summary>
         public static readonly DependencyProperty FIconMarginProperty = DependencyProperty.Register(
             "FIconMargin", typeof(Thickness), typeof(FButton), new PropertyMetadata(new Thickness(0, 1, 3, 1)));
@@ -117,7 +118,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 是否启用Ficon动画
         /// </summary>
         public static readonly DependencyProperty AllowsAnimationProperty = DependencyProperty.Register(
             "AllowsAnimation", typeof(bool), typeof(FButton), new PropertyMetadata(true));
@@ -132,7 +133,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 按钮圆角大小,左上，右上，右下，左下
         /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(FButton), new PropertyMetadata(new CornerRadius(2)));
@@ -146,13 +147,13 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 内容装饰
         /// </summary>
         public static readonly DependencyProperty ContentDecorationsProperty = DependencyProperty.Register(
             "ContentDecorations", typeof(TextDecorationCollection), typeof(FButton), new PropertyMetadata(null));
 
         /// <summary>
-        /// 
+        /// 内容装饰
         /// </summary>
         public TextDecorationCollection ContentDecorations
         {
@@ -165,10 +166,31 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         public FButton()
         {
-            //DefaultStyleKeyProperty.OverrideMetadata(typeof(FButton), new FrameworkPropertyMetadata(typeof(FButton)));
-            DefaultStyleKey = typeof(FButton);
+            this.DefaultStyleKey = typeof(FButton);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum ButtonType
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            Normal,
+            /// <summary>
+            /// 
+            /// </summary>
+            Icon,
+            /// <summary>
+            /// 
+            /// </summary>
+            Text,
+            /// <summary>
+            /// 
+            /// </summary>
+            IconText
+        }
 
     }
 }

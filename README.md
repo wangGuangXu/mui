@@ -57,3 +57,14 @@ Check out the **MUI 演示 app** 包括在 [MUI release](https://github.com/firs
 * 3.DataGrid 新增全选示例
 * 4.新增分页用户控件，并添加分页示例。
     * 需要引用Binaries\net45\System.Windows.Interactivity.dll (根据框架选择具体版本的程序集)
+
+##WPF资源引用
+*     1.启动程序引用附属项目的资源
+　　[pack://application:,,,/MyProject;component/Window1.xaml]或[/MyProject;component/Window1.xaml]
+　　[pack://application:,,,/MyProject;component/Image/advancedsettings.png]或[/MyProject;component/Image/advancedsettings.png]
+
+*     2.附属项目引用启动项目的资源
+　　[pack://application:,,,/Image/system_upgrade.png]或[/Image/system_upgrade.png]
+
+*     3.引用本项目的资源
+　　[/MyProject;component/Image/user.ico]或文件的相对路径

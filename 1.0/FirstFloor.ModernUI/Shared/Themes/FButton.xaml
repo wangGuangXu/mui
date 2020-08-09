@@ -3,7 +3,7 @@
                     xmlns:controls="clr-namespace:FirstFloor.ModernUI.Windows.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/Icon.xaml" />
+        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Icon.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!--FButton模板-->
@@ -81,6 +81,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <!--默认样式-->
     <Style x:Key="DefaultFButtonStyle" TargetType="controls:FButton">
         <Setter Property="Background" Value="{StaticResource ButtonBackground}" />
         <Setter Property="Foreground" Value="{StaticResource ButtonForeground}" />

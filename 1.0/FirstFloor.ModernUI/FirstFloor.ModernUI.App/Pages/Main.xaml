@@ -42,11 +42,23 @@
         <Border Grid.Column="1" Margin="4,0,0,0" BorderBrush="{StaticResource Accent}"  BorderThickness="1,1,1,1"  Background="White"  >
         <TabControl Grid.Column="1"  BorderBrush="{StaticResource Accent}"  BorderThickness="0,1,0,0"   >
                 <mui:TabItemClose  Cursor="Hand" Header="音乐电台" Height="24"  Width="120"   >
-                    <TextBlock Text="音乐电台"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <!--<TextBlock Text="音乐电台"  VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xe615;" Style="{StaticResource FIcon}" FontSize="30" Margin="3" Foreground="Red"/>
+
+                        <mui:FButton FIcon="&#xe615;" Margin="3">系统换转</mui:FButton>
+                        <mui:FButton FIcon="&#xe615;" Margin="3" Width="140" Height="40" Background="#771C79" MouseOverBackground="#F20BA0" AllowsAnimation="True"  ></mui:FButton>
+                        <mui:FButton FIcon="&#xe615;" Margin="3" Width="140" Height="40" Background="#12B512" IsDefault="True" MouseOverBackground="#08EE08" >WindowBase</mui:FButton>
+
+                        <mui:FButton FIcon="&#xe615;" Margin="5,0,0,0" CornerRadius="16,0,0,16" AllowsAnimation="True" >Info</mui:FButton>
+                        <mui:FButton FIcon="&#xe615;" CornerRadius="0" >Question</mui:FButton>
+                        <mui:FButton FIcon="&#xe615;" CornerRadius="0" >Warining</mui:FButton>
+                        <mui:FButton FIcon="&#xe615;" CornerRadius="0,16,16,0" AllowsAnimation="True" >Error</mui:FButton>
+                    </StackPanel>
                 </mui:TabItemClose>
                 <mui:TabItemClose  Cursor="Hand" Header="Mv电台" Height="24" Width="120">
                     <TextBlock Text="Mv电台" VerticalAlignment="Center" HorizontalAlignment="Center"   />
-            </mui:TabItemClose>
+                </mui:TabItemClose>
                 <!--<TabControl.ItemTemplate>
                     <DataTemplate>
                         <mui:TabItemClose  Cursor="Hand" Header="音乐电台" Height="20"  Width="100" >
