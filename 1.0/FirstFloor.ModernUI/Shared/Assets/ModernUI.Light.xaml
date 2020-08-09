@@ -132,6 +132,7 @@
     <SolidColorBrush x:Key="SystemButtonForegroundIsPressed" Color="#919191" />
     <!--窗口背景内容-->
     <Rectangle x:Key="WindowBackgroundContent" x:Shared="false" Height="36" Fill="{StaticResource WindowHeaderGradient}" VerticalAlignment="Top"/>
+  
     <!--选项卡-->
     <SolidColorBrush x:Key="TabControlBackgound" Color="White" />
     <SolidColorBrush x:Key="TabControlForeground" Color="#555558" />

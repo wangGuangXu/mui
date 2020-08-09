@@ -39,14 +39,14 @@
             </StackPanel>
         </Border>
         
-        <!--<Border Grid.Column="1" Margin="4,0,0,0" BorderBrush="{StaticResource Accent}"  BorderThickness="1,1,1,1"  Background="White"  >-->
-        <TabControl Grid.Column="1" Margin="4,0,0,0">
-                <mui:TabItemClose  Cursor="Hand" Header="音乐电台" Height="20"  Width="100" >
+        <Border Grid.Column="1" Margin="4,0,0,0" BorderBrush="{StaticResource Accent}"  BorderThickness="1,1,1,1"  Background="White"  >
+        <TabControl Grid.Column="1"  BorderBrush="{StaticResource Accent}"  BorderThickness="0,1,0,0"   >
+                <mui:TabItemClose  Cursor="Hand" Header="音乐电台" Height="24"  Width="120"   >
                     <TextBlock Text="音乐电台"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </mui:TabItemClose>
-                <mui:TabItemClose  Cursor="Hand" Header="Mv电台" Height="20" Width="100">
-                        <TextBlock Text="Mv电台" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </mui:TabItemClose>
+                <mui:TabItemClose  Cursor="Hand" Header="Mv电台" Height="24" Width="120">
+                    <TextBlock Text="Mv电台" VerticalAlignment="Center" HorizontalAlignment="Center"   />
+            </mui:TabItemClose>
                 <!--<TabControl.ItemTemplate>
                     <DataTemplate>
                         <mui:TabItemClose  Cursor="Hand" Header="音乐电台" Height="20"  Width="100" >
@@ -57,6 +57,6 @@
                     </DataTemplate>
                 </TabControl.ItemTemplate>-->
             </TabControl>
-        <!--</Border>-->
+        </Border>
     </Grid>
 </UserControl>
