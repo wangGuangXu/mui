@@ -101,6 +101,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Assets\TabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Assets\TextBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,6 +214,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\ModernWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\RelativeAnimatingContentControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\SourceEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\TabItemClose.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\TabLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\TransitioningContentControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\BooleanToFontWeightConverter.cs" />

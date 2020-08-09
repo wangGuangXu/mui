@@ -28,27 +28,28 @@
         <ResourceDictionary Source="TextBox.xaml" />
         <ResourceDictionary Source="ToolTip.xaml" />
         <ResourceDictionary Source="TreeView.xaml" />
+      <ResourceDictionary  Source="TabControl.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <!-- 默认的强调色和笔刷 default accent colors and brushes -->
     <Color x:Key="AccentColor">#1ba1e2</Color>
     <SolidColorBrush x:Key="Accent" Color="{DynamicResource AccentColor}" />
 
-    <!-- font settings Segoe UI Arial -->
+    <!-- 默认字体 Segoe UI Arial -->
     <FontFamily x:Key="DefaultFontFamily">Microsoft YaHei</FontFamily>
     <sys:Double x:Key="DefaultFontSize">12</sys:Double>
-    <!--Consolas 13.333-->
+    <!--固定字体Consolas 13.333-->
     <FontFamily x:Key="FixedFontFamily">Microsoft YaHei</FontFamily>
     <sys:Double x:Key="FixedFontSize">13.333</sys:Double>
-
+    <!--最小字体大小-->
     <sys:Double x:Key="SmallFontSize">11</sys:Double>
 
     <!-- 布局外边距 layout margins -->
-    <Thickness x:Key="RootMargin">-40,-2,-14,-14</Thickness>
+    <Thickness x:Key="RootMargin">-32,-2,-8,4</Thickness>
     <Thickness x:Key="ContentMargin">16,8,16,16</Thickness>
     <Thickness x:Key="StatusMargin">0,6,-16,-14</Thickness>
     <Thickness x:Key="HeaderMargin">0,-28,44,0</Thickness>
-
+    <!--分割样式-->
     <Thickness x:Key="SplitLeft">0,0,0,0</Thickness>
     <Thickness x:Key="SplitRight">0,0,0,0</Thickness>
     

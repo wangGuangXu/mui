@@ -32,7 +32,7 @@ namespace FirstFloor.ModernUI.App.Content
             // the BlankWindow ModernWindow styles is found in the mui assembly at Assets/ModernWindowStyles.xaml
             //BlankWindow
             var wnd = new ModernWindow {
-                Style = (Style)App.Current.Resources["BlankTwoWindow"],
+                Style = (Style)App.Current.Resources["BlankWindow"],
                 Title = "ModernWindow",
                 IsTitleVisible = true == this.title.IsChecked,
                 Content = new LoremIpsum(),

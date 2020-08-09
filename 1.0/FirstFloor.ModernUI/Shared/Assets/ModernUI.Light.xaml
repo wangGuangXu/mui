@@ -3,7 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <Color x:Key="WindowBackgroundColor">#ffffff</Color>
-
+    <!--按钮-->
     <SolidColorBrush x:Key="ButtonBackground" Color="#ffffff" />
     <SolidColorBrush x:Key="ButtonBackgroundHover" Color="#dddddd" />
     <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{DynamicResource AccentColor}" />
@@ -14,7 +14,7 @@
     <SolidColorBrush x:Key="ButtonTextHover" Color="#333333" />
     <SolidColorBrush x:Key="ButtonTextPressed" Color="#ffffff" />
     <SolidColorBrush x:Key="ButtonTextDisabled" Color="#a1a1a1" />
-
+    <!--表格-->
     <SolidColorBrush x:Key="DataGridBackground" Color="Transparent" />
     <SolidColorBrush x:Key="DataGridForeground" Color="#333333" />
     <SolidColorBrush x:Key="DataGridCellBackground" Color="Transparent" />
@@ -33,7 +33,7 @@
     <SolidColorBrush x:Key="DataGridHeaderForegroundSelected" Color="#ffffff" />
     <SolidColorBrush x:Key="DataGridGridLines" Color="#cccccc" />
     <SolidColorBrush x:Key="DataGridDropSeparator" Color="{DynamicResource AccentColor}" />
-
+    <!--超链接-->
     <SolidColorBrush x:Key="Hyperlink" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="HyperlinkHover" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="HyperlinkDisabled" Color="#919191" />
@@ -45,7 +45,7 @@
     <SolidColorBrush x:Key="InputText" Color="#333333" />
     <SolidColorBrush x:Key="InputTextHover" Color="#333333" />
     <SolidColorBrush x:Key="InputTextDisabled" Color="#919191" />
-    
+    <!--项控件-->
     <SolidColorBrush x:Key="ItemBackgroundHover" Color="#dddddd" />
     <SolidColorBrush x:Key="ItemBackgroundSelected" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="ItemBorder" Color="#cccccc" />
@@ -58,11 +58,11 @@
     <SolidColorBrush x:Key="LinkButtonTextHover" Color="#333333" />
     <SolidColorBrush x:Key="LinkButtonTextPressed" Color="#919191" />
     <SolidColorBrush x:Key="LinkButtonTextDisabled" Color="#919191" />
-
+    <!--菜单-->
     <SolidColorBrush x:Key="MenuText" Color="#66000000" />
     <SolidColorBrush x:Key="MenuTextHover" Color="#bb000000" />
     <SolidColorBrush x:Key="MenuTextSelected" Color="#333333" />
-
+    <!--现代按钮-->
     <SolidColorBrush x:Key="ModernButtonBorder" Color="#919191" />
     <SolidColorBrush x:Key="ModernButtonBorderHover" Color="#333333" />
     <SolidColorBrush x:Key="ModernButtonBorderPressed" Color="#333333" />
@@ -75,9 +75,9 @@
     <SolidColorBrush x:Key="ModernButtonTextDisabled" Color="#a1a1a1" />
 
     <SolidColorBrush x:Key="PopupBackground" Color="#ffffff" />
-
+    <!--进度条-->
     <SolidColorBrush x:Key="ProgressBackground" Color="#dddddd" />
-
+    <!--滚动条-->
     <SolidColorBrush x:Key="ScrollBarBackground" Color="Transparent" />
     <SolidColorBrush x:Key="ScrollBarThumbBackground" Color="Transparent" />
     <SolidColorBrush x:Key="ScrollBarThumbBackgroundDragging" Color="#cccccc" />
@@ -86,9 +86,9 @@
     <SolidColorBrush x:Key="ScrollBarThumbForeground" Color="Transparent" />
     <SolidColorBrush x:Key="ScrollBarThumbForegroundDragging" Color="Transparent" />
     <SolidColorBrush x:Key="ScrollBarThumbForegroundHover" Color="Transparent" />
-    
+    <!--分割线-->
     <SolidColorBrush x:Key="SeparatorBackground" Color="#cccccc" />
-
+    <!--滑块-->
     <SolidColorBrush x:Key="SliderSelectionBackground" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="SliderSelectionBorder" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="SliderThumbBackground" Color="#ffffff" />
@@ -107,7 +107,7 @@
     <SolidColorBrush x:Key="SubMenuText" Color="#99000000" />
     <SolidColorBrush x:Key="SubMenuTextHover" Color="#66000000" />
     <SolidColorBrush x:Key="SubMenuTextSelected" Color="#333333" />
-
+    <!--窗体-->
     <SolidColorBrush x:Key="WindowBackground" Color="{StaticResource WindowBackgroundColor}" />
     <SolidColorBrush x:Key="WindowBorder" Color="{DynamicResource AccentColor}" Opacity=".5" />
     <SolidColorBrush x:Key="WindowBorderActive" Color="{DynamicResource AccentColor}" />
@@ -118,21 +118,28 @@
     </LinearGradientBrush>
     <SolidColorBrush x:Key="WindowText" Color="#333333" />
     <SolidColorBrush x:Key="WindowTextReadOnly" Color="#919191" />
-
+    <!--关闭按钮-->
     <SolidColorBrush x:Key="CloseButtonBackground" Color="{StaticResource WindowBackgroundColor}"  Opacity="0" />
     <SolidColorBrush x:Key="CloseButtonBackgroundOnMoseOver" Color="#dddddd" />
     <SolidColorBrush x:Key="CloseButtonForegroundOnMoseOver" Color="#333333" />
     <SolidColorBrush x:Key="CloseButtonBackgroundIsPressed" Color="#e51400" />
     <SolidColorBrush x:Key="CloseButtonForegroundIsPressed" Color="White" />
-
+    <!--系统关闭按钮-->
     <SolidColorBrush x:Key="SystemButtonBackground" Color="{StaticResource WindowBackgroundColor}"  Opacity="0" />
     <SolidColorBrush x:Key="SystemButtonBackgroundOnMoseOver" Color="#dddddd" />
     <SolidColorBrush x:Key="SystemButtonForegroundOnMoseOver" Color="#333333" />
     <SolidColorBrush x:Key="SystemButtonBackgroundIsPressed" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="SystemButtonForegroundIsPressed" Color="#919191" />
-
-    <Rectangle x:Key="WindowBackgroundContent" x:Shared="false" Height="96" Fill="{StaticResource WindowHeaderGradient}" VerticalAlignment="Top"/>
-
+    <!--窗口背景内容-->
+    <Rectangle x:Key="WindowBackgroundContent" x:Shared="false" Height="36" Fill="{StaticResource WindowHeaderGradient}" VerticalAlignment="Top"/>
+    <!--选项卡-->
+    <SolidColorBrush x:Key="TabControlBackgound" Color="White" />
+    <SolidColorBrush x:Key="TabControlForeground" Color="#555558" />
+    <SolidColorBrush x:Key="TabControlBackgoundSelected" Color="{DynamicResource AccentColor}" />
+    <SolidColorBrush x:Key="TabControlForegroundSelected" Color="White" />
+    <SolidColorBrush x:Key="TabControlBackgroundHover" Color="#dddddd" />
+    <SolidColorBrush x:Key="TabControlForegroundHover" Color="#333333" />
+  
     <!--FButton 开始-->
     <!--<SolidColorBrush x:Key="TextForeground" Color="White"></SolidColorBrush>
     <SolidColorBrush x:Key="ButtonBackground" Color="#1D4A9A"></SolidColorBrush>

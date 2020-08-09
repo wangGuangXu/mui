@@ -247,18 +247,22 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         private static IEnumerable<Button> GetButtons(ModernDialog owner, MessageBoxButton button)
         {
-            if (button == MessageBoxButton.OK) {
+            if (button == MessageBoxButton.OK) 
+            {
                 yield return owner.OkButton;
             }
-            else if (button == MessageBoxButton.OKCancel) {
+            else if (button == MessageBoxButton.OKCancel) 
+            {
                 yield return owner.OkButton;
                 yield return owner.CancelButton;
             }
-            else if (button == MessageBoxButton.YesNo) {
+            else if (button == MessageBoxButton.YesNo) 
+            {
                 yield return owner.YesButton;
                 yield return owner.NoButton;
             }
-            else if (button == MessageBoxButton.YesNoCancel) {
+            else if (button == MessageBoxButton.YesNoCancel) 
+            {
                 yield return owner.YesButton;
                 yield return owner.NoButton;
                 yield return owner.CancelButton;
