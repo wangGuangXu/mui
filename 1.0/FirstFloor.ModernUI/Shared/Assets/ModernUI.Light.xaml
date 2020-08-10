@@ -149,12 +149,10 @@
     <SolidColorBrush x:Key="ButtonMouseOverForeground" Color="White"></SolidColorBrush>
     <SolidColorBrush x:Key="ButtonPressedBackground" Color="DarkOrange"></SolidColorBrush>
     <SolidColorBrush x:Key="ButtonPressedForeground" Color="White"></SolidColorBrush>
-
     <SolidColorBrush x:Key="MouseOverForeground" Color="Orange"></SolidColorBrush>
     <SolidColorBrush x:Key="PressedForeground" Color="DarkOrange"></SolidColorBrush>
     <SolidColorBrush x:Key="LinkForeground" Color="#0816BB"></SolidColorBrush>
     <SolidColorBrush x:Key="WindowBackground" Color="#007ACB"></SolidColorBrush>-->
-    <!--FButton 结束-->
 
 
     <!--水印文本框开始-->
@@ -170,6 +168,5 @@
     <!--<SolidColorBrush x:Key="TextForeground" Color="Black"></SolidColorBrush>
     <SolidColorBrush x:Key="TextBackground" Color="#0D234B"></SolidColorBrush>
     <SolidColorBrush x:Key="TextSelectionBrush" Color="#8F8787"></SolidColorBrush>-->
-    <!--水印文本框结束-->
     
 </ResourceDictionary>

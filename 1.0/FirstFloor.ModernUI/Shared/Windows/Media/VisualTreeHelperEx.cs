@@ -125,6 +125,26 @@ namespace FirstFloor.ModernUI.Windows.Media
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static T FindVisualParent<T>(DependencyObject obj) where T : class
+        {
+            while (obj != null)
+            {
+                if (obj is T)
+                {
+                    return obj as T;
+                }
+
+                obj = VisualTreeHelper.GetParent(obj);
+            }
+            return null;
+        }
+
+        /// <summary>
         /// WPF 获取控件模板中的控件
         /// </summary>
         /// <typeparam name="T"></typeparam>

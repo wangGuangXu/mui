@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI.Presentation
 {
     /// <summary>
+    /// 表示可显示的链接
     /// Represents a displayable link.
     /// </summary>
     public class Link : Displayable
@@ -22,7 +23,8 @@ namespace FirstFloor.ModernUI.Presentation
             get { return this.source; }
             set
             {
-                if (this.source != value) {
+                if (this.source != value) 
+                {
                     this.source = value;
                     OnPropertyChanged("Source");
                 }

@@ -3,6 +3,11 @@
                     xmlns:modernui="clr-namespace:FirstFloor.ModernUI"
                     xmlns:controls="clr-namespace:FirstFloor.ModernUI.Windows.Controls">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Icon.xaml" />
+        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/FButton.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
     <Style TargetType="{x:Type controls:TabItemClose}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
@@ -11,7 +16,6 @@
         <Setter Property="Padding" Value="0"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Accent}"/>
         <Setter Property="BorderThickness" Value="1,1,1,1"/>
-        <!--<Setter Property="CloseIcon" Value="/Resources/Images/close.png"/>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:TabItemClose}">
@@ -25,12 +29,19 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition x:Name="_col_close" Width="20" />
                             </Grid.ColumnDefinitions>
-                            <Border Grid.ColumnSpan="2" Background="White" Opacity="0" />
-                            <TextBlock   x:Name="_txt" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"  Margin="3 0 3 0" Foreground="{DynamicResource TabControlForeground}" TextAlignment="Center" HorizontalAlignment="Center"   Text="{TemplateBinding Header}"  />
+                            <Border Grid.ColumnSpan="2" Background="Red" Opacity="0" />
+                            <TextBlock   x:Name="_txt" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"  Margin="3 0 3 0" Foreground="{DynamicResource TabControlForeground}" TextAlignment="Center" HorizontalAlignment="Center"  Text="{TemplateBinding Header}"  />
                             <Grid x:Name="_gridclose" Grid.Column="1"  >
                                 <Border x:Name="_borderbg" Background="Black" Opacity="0" />
-                                <!--<controls:ButtonEx x:Name="PART_Close_TabItem" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent" Visibility="Visible" Icon="{TemplateBinding CloseIcon}"  ButtonType="Icon" />-->
-                                    <!--<controls:FButton FIcon="&#xe615;" Margin="3"  Background="#771C79" MouseOverBackground="#F20BA0" AllowsAnimation="True"  ></controls:FButton>-->
+                                    <controls:FButton x:Name="PART_Close_TabItem" Style="{StaticResource FButtonIoncSytle}" 
+                                                      Icon="&#xe615;" 
+                                                      HorizontalAlignment="Center"  
+                                                      VerticalAlignment="Center" 
+                                                      Background="White"  
+                                                      Foreground="Black"
+                                                      ButtonType="Icon"  
+                                                      IconSize="20" 
+                                                      IconMargin="3" />
                                 </Grid>
                         </Grid>
                       </DockPanel>

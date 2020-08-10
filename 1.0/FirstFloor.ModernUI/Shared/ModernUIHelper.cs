@@ -23,7 +23,8 @@ namespace FirstFloor.ModernUI
         {
             get
             {
-                if (!isInDesignMode.HasValue) {
+                if (!isInDesignMode.HasValue) 
+                {
                     isInDesignMode = DesignerProperties.GetIsInDesignMode(new DependencyObject());
                 }
                 return isInDesignMode.Value;
@@ -62,7 +63,8 @@ namespace FirstFloor.ModernUI
         }
 
         /// <summary>
-        /// 尝试将此过程的dpi意识设置为每个监视器DPI感知 Attempts to set the DPI awareness of this process to PerMonitorDpiAware
+        /// 尝试将此过程的dpi意识设置为每个监视器DPI感知 
+        /// Attempts to set the DPI awareness of this process to PerMonitorDpiAware
         /// </summary>
         /// <returns>A value indicating whether the DPI awareness has been set to PerMonitorDpiAware.</returns>
         /// <remarks>

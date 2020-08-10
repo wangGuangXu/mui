@@ -37,19 +37,19 @@ namespace FirstFloor.ModernUI.Windows.Controls
             DependencyProperty.Register("IsCanClose", typeof(bool), typeof(TabItemClose), new PropertyMetadata(true, OnPropertyChanged));
 
         /// <summary>
-        /// 关闭图标
+        /// 按钮字体图标编码
         /// </summary>
-        public ImageSource CloseIcon
-        {
-            get { return (ImageSource)GetValue(CloseIconProperty); }
-            set { SetValue(CloseIconProperty, value); }
-        }
+        public static readonly DependencyProperty FIconProperty =
+            DependencyProperty.Register("FIcon", typeof(string), typeof(TabItemClose), new PropertyMetadata("\ue604"));
 
         /// <summary>
-        /// 关闭图标
+        /// 按钮字体图标编码
         /// </summary>
-        public static readonly DependencyProperty CloseIconProperty =
-            DependencyProperty.Register("CloseIcon", typeof(ImageSource), typeof(TabItemClose), new PropertyMetadata(null, OnPropertyChanged));
+        public string FIcon
+        {
+            get { return (string)GetValue(FIconProperty); }
+            set { SetValue(FIconProperty, value); }
+        }
 
         /// <summary>
         /// 正常背景色

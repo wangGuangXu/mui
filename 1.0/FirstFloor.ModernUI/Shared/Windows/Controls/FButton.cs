@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Windows.Media;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -8,11 +9,25 @@ using System.Windows.Media;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
-    /// FButton.xaml 的交互逻辑
+    /// 
     /// </summary>
 
     public  class FButton : Button
     {
+        /// <summary>
+        /// 按钮类型
+        /// </summary>
+        public ButtonType ButtonType
+        {
+            get { return (ButtonType)GetValue(ButtonTypeProperty); }
+            set { SetValue(ButtonTypeProperty, value); }
+        }
+        /// <summary>
+        /// 按钮类型
+        /// </summary>
+        public static readonly DependencyProperty ButtonTypeProperty =
+            DependencyProperty.Register("ButtonType", typeof(ButtonType), typeof(FButton), new PropertyMetadata(ButtonType.Normal));
+
         /// <summary>
         /// 鼠标按下背景样式
         /// </summary>
@@ -75,46 +90,46 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <summary>
         /// 按钮字体图标编码
         /// </summary>
-        public static readonly DependencyProperty FIconProperty =
-            DependencyProperty.Register("FIcon", typeof(string), typeof(FButton), new PropertyMetadata("\ue604"));
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register("Icon", typeof(string), typeof(FButton), new PropertyMetadata("\ue604"));
 
         /// <summary>
         /// 按钮字体图标编码
         /// </summary>
-        public string FIcon
+        public string Icon
         {
-            get { return (string)GetValue(FIconProperty); }
-            set { SetValue(FIconProperty, value); }
+            get { return (string)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
         }
 
         /// <summary>
         /// 按钮字体图标大小
         /// </summary>
-        public static readonly DependencyProperty FIconSizeProperty =
-            DependencyProperty.Register("FIconSize", typeof(int), typeof(FButton), new PropertyMetadata(20));
+        public static readonly DependencyProperty IconSizeProperty =
+            DependencyProperty.Register("IconSize", typeof(int), typeof(FButton), new PropertyMetadata(20));
 
         /// <summary>
         /// 按钮字体图标大小
         /// </summary>
-        public int FIconSize
+        public int IconSize
         {
-            get { return (int)GetValue(FIconSizeProperty); }
-            set { SetValue(FIconSizeProperty, value); }
+            get { return (int)GetValue(IconSizeProperty); }
+            set { SetValue(IconSizeProperty, value); }
         }
 
         /// <summary>
         /// 字体图标间距
         /// </summary>
-        public static readonly DependencyProperty FIconMarginProperty = DependencyProperty.Register(
-            "FIconMargin", typeof(Thickness), typeof(FButton), new PropertyMetadata(new Thickness(0, 1, 3, 1)));
+        public static readonly DependencyProperty IconMarginProperty = DependencyProperty.Register(
+            "IconMargin", typeof(Thickness), typeof(FButton), new PropertyMetadata(new Thickness(0, 1, 3, 1)));
 
         /// <summary>
         /// 字体图标间距
         /// </summary>
-        public Thickness FIconMargin
+        public Thickness IconMargin
         {
-            get { return (Thickness)GetValue(FIconMarginProperty); }
-            set { SetValue(FIconMarginProperty, value); }
+            get { return (Thickness)GetValue(IconMarginProperty); }
+            set { SetValue(IconMarginProperty, value); }
         }
 
         /// <summary>
@@ -170,27 +185,34 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 单击事件
         /// </summary>
-        public enum ButtonType
+        protected override void OnClick()
         {
-            /// <summary>
-            /// 
-            /// </summary>
-            Normal,
-            /// <summary>
-            /// 
-            /// </summary>
-            Icon,
-            /// <summary>
-            /// 
-            /// </summary>
-            Text,
-            /// <summary>
-            /// 
-            /// </summary>
-            IconText
+            base.OnClick();
+
+            CloseTabItem();
         }
 
+        /// <summary>
+        /// 关闭选项卡
+        /// </summary>
+        private void CloseTabItem()
+        {
+            if (string.IsNullOrEmpty(Name) || Name != "PART_Close_TabItem")
+            {
+                return;
+            }
+
+            TabItemClose itemclose = VisualTreeHelperEx.FindVisualParent<TabItemClose>(this);
+            if (itemclose == null)
+            {
+                return;
+            }
+
+            (itemclose.Parent as TabControl).Items.Remove(itemclose);
+            var args = new RoutedEventArgs(TabItemClose.CloseItemEvent, itemclose);
+            itemclose.RaiseEvent(args);
+        }
     }
 }
