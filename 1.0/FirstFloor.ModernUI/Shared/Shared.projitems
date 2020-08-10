@@ -197,7 +197,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\BBCode\Parser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\BBCode\Token.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\BBCode\TokenBuffer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\ButtonEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\ButtonType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\ControlAttachProperty.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\DataGridCheckBoxColumn.cs" />
