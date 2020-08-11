@@ -7,7 +7,20 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Style="{StaticResource Root}">
+
+    <Grid>
+        <DataGrid Name="DG1" ItemsSource="{Binding Customers}" AutoGenerateColumns="False" CanUserAddRows="False" AlternationCount="2" >
+            <DataGrid.Columns>
+                <mui:DataGridTextColumn Header="序号"  Binding="{Binding Code}"/>
+                <mui:DataGridTextColumn Header="名字"  Binding="{Binding FirstName}" Width="50"/>
+                <mui:DataGridTextColumn Header="姓" Binding="{Binding LastName}" />
+                <mui:DataGridTextColumn Header="邮箱" Binding="{Binding Email}"/>
+                <mui:DataGridCheckBoxColumn Header="成员" Binding="{Binding IsMember}" />
+                <mui:DataGridComboBoxColumn Header="订单状态" SelectedItemBinding="{Binding Status}"  />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+    <!--<Grid Style="{StaticResource Root}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"/>
             <ColumnDefinition Width="*"/>
@@ -16,9 +29,9 @@
             <StackPanel  Grid.Column="0">
                 <TextBlock Text="菜单" Style="{StaticResource Heading2}" Margin="10,0,0,8"/>
                 <ScrollViewer>
-                    <TreeView>
+                    <TreeView x:Name="trees">
                         <TreeViewItem Header="系统管理">
-                            <TreeViewItem Header="通用字典" />
+                            <TreeViewItem Header="通用字典"  />
                             <TreeViewItem Header="单据编码" />
                             <TreeViewItem Header="系统日志" />
                         </TreeViewItem>
@@ -40,9 +53,8 @@
         </Border>
         
         <Border Grid.Column="1" Margin="4,0,0,0" BorderBrush="{StaticResource Accent}"  BorderThickness="1,1,1,1"  Background="White"  >
-        <TabControl Grid.Column="1"  BorderBrush="{StaticResource Accent}"  BorderThickness="0,1,0,0"   >
+            <TabControl Grid.Column="1"  BorderBrush="{StaticResource Accent}"  BorderThickness="0,1,0,0"   >
                 <mui:TabItemClose  Cursor="Hand" Header="音乐电台" Height="24"  Width="120"   >
-                    <!--<TextBlock Text="音乐电台"  VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="&#xe615;" Style="{StaticResource FIcon}" FontSize="30"  Foreground="White"/>
 
@@ -68,7 +80,7 @@
                 <mui:TabItemClose  Cursor="Hand" Header="Mv电台" Height="24" Width="120">
                     <TextBlock Text="Mv电台" VerticalAlignment="Center" HorizontalAlignment="Center"   />
                 </mui:TabItemClose>
-                <!--<TabControl.ItemTemplate>
+                <TabControl.ItemTemplate>
                     <DataTemplate>
                         <mui:TabItemClose  Cursor="Hand" Header="音乐电台" Height="20"  Width="100" >
                             <Grid >
@@ -76,8 +88,8 @@
                             </Grid>
                         </mui:TabItemClose>
                     </DataTemplate>
-                </TabControl.ItemTemplate>-->
+                </TabControl.ItemTemplate>
             </TabControl>
         </Border>
-    </Grid>
+    </Grid>-->
 </UserControl>

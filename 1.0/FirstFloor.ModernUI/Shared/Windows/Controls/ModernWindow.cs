@@ -67,6 +67,21 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         public static readonly DependencyProperty StatusNetWorkProperty = DependencyProperty.Register("StatusNetWork", typeof(string), typeof(ModernWindow));
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public TabItemCollection TabItems
+        {
+            get { return (TabItemCollection)GetValue(TabItemsProperty); }
+            set { SetValue(TabItemsProperty, value); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly DependencyProperty TabItemsProperty = DependencyProperty.Register("TabItems", typeof(TabItemCollection), typeof(ModernWindow));
+
         /// <summary>
         /// 背景动画
         /// </summary>
@@ -179,6 +194,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
             // 创建空集合
             SetCurrentValue(MenuLinkGroupsProperty, new LinkGroupCollection());
             SetCurrentValue(TitleLinksProperty, new LinkCollection());
+            SetCurrentValue(TabItemsProperty, new TabItemCollection());
 
             // 将窗口命令与此实例关联
 #if NET4

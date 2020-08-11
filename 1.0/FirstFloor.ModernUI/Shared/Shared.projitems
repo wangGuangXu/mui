@@ -176,6 +176,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Presentation\NotifyPropertyChanged.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presentation\ReadOnlyLinkGroupCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presentation\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Presentation\TabItemCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Presentation\TabItemModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ProcessDpiAwareness.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources.Designer.cs">

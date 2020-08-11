@@ -12,10 +12,10 @@ using System.Windows.Controls;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
+    /// 表示现代UI样式窗口中的菜单
     /// Represents the menu in a Modern UI styled window.
     /// </summary>
-    public class ModernMenu
-        : Control
+    public class ModernMenu : Control
     {
         /// <summary>
         /// Defines the LinkGroups dependency property.

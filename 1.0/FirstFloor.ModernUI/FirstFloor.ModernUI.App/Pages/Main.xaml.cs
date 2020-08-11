@@ -23,6 +23,13 @@ namespace FirstFloor.ModernUI.App.Pages
         public Main()
         {
             InitializeComponent();
+
+            //this.trees.SelectedItemChanged += Trees_SelectedItemChanged;
+        }
+
+        private void Trees_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+
         }
     }
 }

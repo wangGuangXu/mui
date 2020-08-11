@@ -8,6 +8,7 @@
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Button.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Converters.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/TextBlock.xaml" />
+        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/FButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!-- 附加窗口样式 additional ModernWindow styles -->
@@ -353,7 +354,6 @@
                                 <Grid x:Name="LayoutRoot">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="30" />
                                         <RowDefinition Height="Auto" />
@@ -363,7 +363,7 @@
                                     <ContentControl Grid.RowSpan="5" Content="{TemplateBinding BackgroundContent}" />
 
                                     <!-- 标题栏 title bar -->
-                                    <Grid>
+                                    <Grid Grid.Row="0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
@@ -449,32 +449,69 @@
                                         </StackPanel>
                                     </Grid>
 
+                                    <!-- 内容框架 content frame -->
                                     <Grid Grid.Row="1">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="12" />
+                                            <ColumnDefinition Width="180"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
+                                        <Border BorderBrush="{DynamicResource Accent}" BorderThickness="1" Margin="4,1,1,1">
+                                            <StackPanel  Grid.Column="0">
+                                                <TextBlock Text="菜单" Style="{StaticResource Heading2}" Margin="10,0,0,8"/>
+                                                <ScrollViewer>
+                                                    <TreeView x:Name="trees">
+                                                        <TreeViewItem Header="系统管理">
+                                                            <TreeViewItem Header="通用字典"  />
+                                                            <TreeViewItem Header="单据编码" />
+                                                            <TreeViewItem Header="系统日志" />
+                                                        </TreeViewItem>
+                                                        <TreeViewItem Header="Item 2">
+                                                            <TreeViewItem Header="Item 2.1" />
+                                                            <TreeViewItem Header="Item 2.2" />
+                                                            <TreeViewItem Header="Item 2.3" />
+                                                        </TreeViewItem>
+                                                        <TreeViewItem Header="Item 3">
+                                                            <TreeViewItem Header="Item 3.1" />
+                                                            <TreeViewItem Header="Item 3.2" />
+                                                            <TreeViewItem Header="Item 3.3" />
+                                                        </TreeViewItem>
+                                                        <TreeViewItem Header="Item 4" />
+                                                        <TreeViewItem Header="Item 5" />
+                                                    </TreeView>
+                                                </ScrollViewer>
+                                            </StackPanel>
+                                        </Border>
 
-                                        <!-- 后退按钮 back button -->
-                                        <!--<controls:ModernButton Margin="8,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                                               EllipseDiameter="24" IconWidth="12" IconHeight="12"
-                                                               IconData="F1 M 33,22L 33,26L 19.75,26L 27,33L 20.5,33L 11,24L 20.5,15L 27,15L 19.75,22L 33,22 Z"
-                                                               Command="NavigationCommands.BrowseBack"
-                                                               CommandTarget="{Binding ElementName=ContentFrame}" 
-                                                               ToolTip="{x:Static modernui:Resources.Back}"
-                                                               WindowChrome.IsHitTestVisibleInChrome="True" />-->
-
-                                        <!-- 主菜单 main menu -->
-                                        <controls:ModernMenu Grid.Column="1"
+                                        <Border Grid.Column="1" Grid.RowSpan="2" Margin="4,0,0,0" BorderBrush="{DynamicResource Accent}"  BorderThickness="1,1,1,1"  Background="White"  >
+                                            <!--<controls:ModernMenu Grid.Column="1"
                                                              SelectedSource="{Binding Source, ElementName=ContentFrame, Mode=TwoWay}"
-                                                             LinkGroups="{TemplateBinding MenuLinkGroups}" />
-                                    </Grid>
+                                                             LinkGroups="{TemplateBinding MenuLinkGroups}" />-->
 
-                                    <!-- 内容框架 content frame -->
-                                    <controls:ModernFrame x:Name="ContentFrame" Grid.Row="2" Grid.RowSpan="2" Margin="42,8,16,31" Source="{Binding ContentSource, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ContentLoader="{TemplateBinding ContentLoader}"/>
+                                            <TabControl x:Name="tbControlTreeMenu" Grid.Column="1"  BorderBrush="{DynamicResource Accent}"  
+                                                        BorderThickness="0,1,0,0"   ItemsSource="{TemplateBinding TabItems}"  >
+                                                <!--<controls:TabItemClose  Cursor="Hand" Header="音乐电台" Height="24"  Width="120"   >
+                                                    <controls:ModernFrame x:Name="ContentFrame" Source="{Binding ContentSource, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ContentLoader="{TemplateBinding ContentLoader}"/>
+                                                </controls:TabItemClose>-->
+                                                <TabControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <!--<controls:TabItemClose  Cursor="Hand" Header="{Binding Header}" Height="24"  Width="100" >
+                                                        </controls:TabItemClose>-->
+                                                        <controls:TabItemClose  Header="{Binding Header}" Height="24"  Width="100" />
+                                                    </DataTemplate>
+                                                </TabControl.ItemTemplate>
+                                                <TabControl.ContentTemplate>
+                                                    <DataTemplate>
+                                                        <!--<controls:ModernFrame x:Name="ContentFrame"  Source="{Binding Source, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ContentLoader="{TemplateBinding ContentLoader}"/>-->
+                                                        <Frame Source="{Binding Source}" NavigationUIVisibility="Hidden" BorderThickness="0"/>
+                                                    </DataTemplate>
+                                                </TabControl.ContentTemplate>
+                                            </TabControl>
+                                        </Border>
+                                    </Grid>
+                                    <!--<controls:ModernFrame x:Name="ContentFrame" Grid.Row="1" Grid.RowSpan="2" Margin="42,8,16,31" Source="{Binding ContentSource, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ContentLoader="{TemplateBinding ContentLoader}"/>-->
 
                                     <!--状态栏-->
-                                    <Grid Grid.Row="3"   >
+                                    <Grid Grid.Row="2"   >
                                         <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,1,0,0">
                                             <StatusBar  >
                                                 <StatusBar.ItemsPanel>
@@ -495,17 +532,20 @@
                                                 <StatusBarItem Margin="5,0" Grid.Column="0"  >
                                                     <TextBlock x:Name="txtUser" Text="{Binding StatusUser,RelativeSource={RelativeSource TemplatedParent },Mode=TwoWay}" />
                                                 </StatusBarItem>
-                                                <Separator Grid.Column="1"  />
+                                                <!--<Separator Grid.Column="1"  />-->
+                                                <Line Grid.Column="1" X1=".5" Y1="3" X2=".5" Y2="12" Margin="0,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />
 
                                                 <StatusBarItem Grid.Column="2">
                                                     <TextBlock x:Name="txtNetWork" Text="{Binding StatusNetWork,RelativeSource={RelativeSource TemplatedParent },Mode=TwoWay}" />
                                                 </StatusBarItem>
-                                                <Separator Grid.Column="3"/>
-
+                                                <!--<Separator Grid.Column="3"/>-->
+                                                <Line  Grid.Column="3" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />
+                                                
                                                 <StatusBarItem Grid.Column="4">
                                                     <TextBlock Text="c:\path\of\current\file.txt" />
                                                 </StatusBarItem>
-                                                <Separator Grid.Column="5"   />
+                                                <!--<Separator Grid.Column="5"   />-->
+                                                <Line  Grid.Column="5" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />
 
                                                 <StatusBarItem Grid.Column="6" >
                                                     <ProgressBar Value="50" Width="90" Height="16" />
@@ -719,17 +759,20 @@
                                                     <TextBlock x:Name="txtUser" Text="{Binding StatusUser,RelativeSource={RelativeSource TemplatedParent },Mode=TwoWay}" />
                                                 </StatusBarItem>
                                                 <Separator Grid.Column="1"  />
+                                                <!--<Line  Grid.Column="1" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="{DynamicResource SeparatorBackground}" />-->
 
                                                 <StatusBarItem Grid.Column="2">
                                                     <TextBlock x:Name="txtNetWork" Text="{Binding StatusNetWork,RelativeSource={RelativeSource TemplatedParent },Mode=TwoWay}" />
                                                 </StatusBarItem>
                                                 <Separator Grid.Column="3"/>
+                                                <!--<Line Grid.Column="3" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="{DynamicResource SeparatorBackground}" />-->
 
                                                 <StatusBarItem Grid.Column="4">
                                                     <TextBlock Text="c:\path\of\current\file.txt" />
                                                 </StatusBarItem>
                                                 <Separator Grid.Column="5"   />
-
+                                                <!--<Line Grid.Column="5" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="{DynamicResource SeparatorBackground}" />-->
+                                                
                                                 <StatusBarItem Grid.Column="6" >
                                                     <ProgressBar Value="50" Width="90" Height="16" />
                                                 </StatusBarItem>

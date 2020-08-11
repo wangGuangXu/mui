@@ -35,7 +35,7 @@
                                     <TextBlock Text="{Binding}" Style="{StaticResource Fixed}" Margin="0,0,0,16" />
                                     <TextBlock Text="Suggestions" FontWeight="Bold" />
                                   <!--错误详细信息将显示到剪贴板-->
-                                  <controls:BBCodeBlock BBCode="[url=cmd://copy]Copy[/url] the error details to the clipboard. Try to [url=cmd://refresh]refresh[/url] this page or go [url=cmd://browseback]back[/url].">
+                                  <controls:BBCodeBlock BBCode="[url=cmd://copy]Copy[/url] 错误详细信息将显示到剪贴板. 尝试[url=cmd://refresh]refresh[/url] 本页或去 [url=cmd://browseback]back[/url].">
                                         <controls:BBCodeBlock.LinkNavigator>
                                             <nav:DefaultLinkNavigator />
                                         </controls:BBCodeBlock.LinkNavigator>

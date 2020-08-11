@@ -34,6 +34,9 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// Identifies the ContentLoader dependency property.
         /// </summary>
         public static readonly DependencyProperty ContentLoaderProperty = DependencyProperty.Register("ContentLoader", typeof(IContentLoader), typeof(ModernFrame), new PropertyMetadata(new DefaultContentLoader(), OnContentLoaderChanged));
+        /// <summary>
+        /// 
+        /// </summary>
         private static readonly DependencyPropertyKey IsLoadingContentPropertyKey = DependencyProperty.RegisterReadOnly("IsLoadingContent", typeof(bool), typeof(ModernFrame), new PropertyMetadata(false));
         /// <summary>
         /// 标识正在加载内容依赖项属性
@@ -88,6 +91,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         public ModernFrame()
         {
+            //定义控件的外观及属性的默认值
             this.DefaultStyleKey = typeof(ModernFrame);
 
             // 将应用程序和导航命令与此实例关联 associate application and navigation commands with this instance
@@ -137,6 +141,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="e"></param>
         private static void OnSourceChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             ((ModernFrame)o).OnSourceChanged((Uri)e.OldValue, (Uri)e.NewValue);
