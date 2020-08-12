@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
+using System.Windows.Input;
 
 namespace FirstFloor.ModernUI.Presentation
 {
@@ -46,6 +48,11 @@ namespace FirstFloor.ModernUI.Presentation
         /// <summary>
         /// 
         /// </summary>
+        public ICommand CloseTabCommand { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public TabItemModel()
         {
 
@@ -56,9 +63,11 @@ namespace FirstFloor.ModernUI.Presentation
         /// </summary>
         /// <param name="header"></param>
         /// <param name="url"></param>
-        public TabItemModel(string header, string url)
+        /// <param name="command"></param>
+        public TabItemModel(string header, string url,ICommand command)
         {
             this.Header = header;
+            this.CloseTabCommand = command;
             this.Source = new Uri(url, UriKind.Relative);
         }
 

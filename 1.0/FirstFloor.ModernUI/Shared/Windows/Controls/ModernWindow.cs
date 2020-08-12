@@ -1,4 +1,5 @@
 ﻿using FirstFloor.ModernUI.Presentation;
+using FirstFloor.ModernUI.Windows.Media;
 using FirstFloor.ModernUI.Windows.Navigation;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,6 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// Window窗体的DialogResult属性不是依赖属性，所以没法绑定，所以此处添加附加属性解决此问题。
         /// </summary>
         public static readonly DependencyProperty DialogResultProperty = DependencyProperty.Register("DialogResult", typeof(bool), typeof(ModernWindow), new PropertyMetadata(DialogResultChanged));
-
         /// <summary>
         /// 状态栏用户
         /// </summary>
@@ -66,26 +66,15 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// 状态栏网络
         /// </summary>
         public static readonly DependencyProperty StatusNetWorkProperty = DependencyProperty.Register("StatusNetWork", typeof(string), typeof(ModernWindow));
-
-
         /// <summary>
-        /// 
-        /// </summary>
-        public TabItemCollection TabItems
-        {
-            get { return (TabItemCollection)GetValue(TabItemsProperty); }
-            set { SetValue(TabItemsProperty, value); }
-        }
-
-        /// <summary>
-        /// 
+        /// 选项卡集合
         /// </summary>
         public static readonly DependencyProperty TabItemsProperty = DependencyProperty.Register("TabItems", typeof(TabItemCollection), typeof(ModernWindow));
-
         /// <summary>
         /// 背景动画
         /// </summary>
         private Storyboard backgroundAnimation; 
+        
         #endregion
 
         #region 属性
@@ -181,9 +170,25 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             get { return (string)GetValue(StatusNetWorkProperty); }
             set { SetValue(StatusNetWorkProperty, value); }
-        } 
+        }
+
+        /// <summary>
+        /// 选项卡集合
+        /// </summary>
+        public TabItemCollection TabItems
+        {
+            get { return (TabItemCollection)GetValue(TabItemsProperty); }
+            set { SetValue(TabItemsProperty, value); }
+        }
+
         #endregion
 
+        /// <summary>
+        /// 关闭选项卡命令
+        /// </summary>
+        public ICommand CloseTabCommand { get; set; }
+
+        #region 构造函数
         /// <summary>
         /// 初始化示例
         /// </summary>
@@ -211,9 +216,13 @@ namespace FirstFloor.ModernUI.Windows.Controls
             // 将导航链接命令与此实例关联
             this.CommandBindings.Add(new CommandBinding(LinkCommands.NavigateLink, OnNavigateLink, OnCanNavigateLink));
 
+            CloseTabCommand = new RoutedUICommand("按钮", "Button", typeof(Button));
+            this.CommandBindings.Add(new CommandBinding(CloseTabCommand, OnCloseTabItem, OnCanCloseTabItem));
+
             // 监听主题改变事件
             AppearanceManager.Current.PropertyChanged += OnAppearanceManagerPropertyChanged;
-        }
+        } 
+        #endregion
 
         #region 方法
         /// <summary>
@@ -235,17 +244,28 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             base.OnApplyTemplate();
 
+            ApplyBackgroundAnimation();
+        }
+
+        /// <summary>
+        /// 应用背景动画故事板
+        /// </summary>
+        private void ApplyBackgroundAnimation()
+        {
             // 检索背景动画故事板 retrieve BackgroundAnimation storyboard
             var border = GetTemplateChild("WindowBorder") as Border;
-            if (border != null)
+            if (border == null)
             {
-                this.backgroundAnimation = border.Resources["BackgroundAnimation"] as Storyboard;
-
-                if (this.backgroundAnimation != null)
-                {
-                    this.backgroundAnimation.Begin();
-                }
+                return;
             }
+
+            this.backgroundAnimation = border.Resources["BackgroundAnimation"] as Storyboard;
+            if (this.backgroundAnimation == null)
+            {
+                return;
+            }
+
+            this.backgroundAnimation.Begin();
         }
 
         /// <summary>
@@ -394,7 +414,56 @@ namespace FirstFloor.ModernUI.Windows.Controls
             {
                 window.DialogResult = true;
             }
-        } 
+        }
+
+        #region 关闭选项卡
+        /// <summary>
+        /// 关闭选项卡
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnCloseTabItem(object sender, RoutedEventArgs e)
+        {
+            var btn = e.OriginalSource as Button;
+            if (btn == null || btn.Tag == null)
+            {
+                return;
+            }
+
+            var tabControl = e.Source as TabControl;
+            if (tabControl == null)
+            {
+                return;
+            }
+
+            var tabItems = tabControl.ItemsSource as TabItemCollection;
+            if (tabItems == null)
+            {
+                return;
+            }
+
+            var header = btn.Tag.ToString();
+            var tabItem = tabItems.FirstOrDefault(a => a.Header == header);
+            if (tabItem == null)
+            {
+                return;
+            }
+            tabItems.Remove(tabItem);
+            tabControl.Items.Refresh();
+        }
+
+        /// <summary>
+        /// 是否可以关闭选项卡
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnCanCloseTabItem(object sender, CanExecuteRoutedEventArgs e)
+        {
+            //e.CanExecute = this.ResizeMode == ResizeMode.CanResize || this.ResizeMode == ResizeMode.CanResizeWithGrip;
+            e.CanExecute = true;
+        }
+        #endregion
+
         #endregion
 
     }

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using System.Net;
 using FirstFloor.ModernUI.Presentation;
+using FirstFloor.ModernUI.Windows.Media;
 
 namespace FirstFloor.ModernUI.App
 {
@@ -32,10 +33,10 @@ namespace FirstFloor.ModernUI.App
 
             this.TabItems = new TabItemCollection
             {
-                new TabItemModel ("通用字典",@"/Pages/Main.xaml"),
-                new TabItemModel ("数据库管理",@"/Pages/LayoutBasic.xaml"),
-                new TabItemModel ("用户管理",@"/Pages/LayoutList.xaml"),
-                new TabItemModel ("权限管理",@"/Pages/ControlsModern.xaml"),
+                new TabItemModel ("通用字典","/Pages/Main.xaml",CloseTabCommand),
+                new TabItemModel ("数据库管理","/Pages/LayoutBasic.xaml",CloseTabCommand),
+                new TabItemModel ("用户管理","/Pages/LayoutList.xaml",CloseTabCommand),
+                new TabItemModel ("权限管理","/Pages/ControlsModern.xaml",CloseTabCommand),
             };
         }
     }

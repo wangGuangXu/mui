@@ -483,32 +483,24 @@
                                         </Border>
 
                                         <Border Grid.Column="1" Grid.RowSpan="2" Margin="4,0,0,0" BorderBrush="{DynamicResource Accent}"  BorderThickness="1,1,1,1"  Background="White"  >
-                                            <!--<controls:ModernMenu Grid.Column="1"
-                                                             SelectedSource="{Binding Source, ElementName=ContentFrame, Mode=TwoWay}"
-                                                             LinkGroups="{TemplateBinding MenuLinkGroups}" />-->
-
-                                            <TabControl x:Name="tbControlTreeMenu" Grid.Column="1"  BorderBrush="{DynamicResource Accent}"  
-                                                        BorderThickness="0,1,0,0"   ItemsSource="{TemplateBinding TabItems}"  >
-                                                <!--<controls:TabItemClose  Cursor="Hand" Header="音乐电台" Height="24"  Width="120"   >
-                                                    <controls:ModernFrame x:Name="ContentFrame" Source="{Binding ContentSource, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ContentLoader="{TemplateBinding ContentLoader}"/>
-                                                </controls:TabItemClose>-->
+                                            <TabControl x:Name="tabControlMenu" Grid.Column="1"  BorderBrush="{DynamicResource Accent}"  
+                                                        BorderThickness="0,1,0,0"   ItemsSource="{TemplateBinding TabItems}" 
+                                                         SelectedIndex="0">
+                                                
                                                 <TabControl.ItemTemplate>
                                                     <DataTemplate>
-                                                        <!--<controls:TabItemClose  Cursor="Hand" Header="{Binding Header}" Height="24"  Width="100" >
-                                                        </controls:TabItemClose>-->
-                                                        <controls:TabItemClose  Header="{Binding Header}" Height="24"  Width="100" />
+                                                        <!--<controls:TabItemClose  Cursor="Hand" Header="{Binding Header}" Height="24"  Width="100"/>-->
+                                                        <TextBlock Text="{Binding Header}" Cursor="Hand" />
                                                     </DataTemplate>
                                                 </TabControl.ItemTemplate>
                                                 <TabControl.ContentTemplate>
                                                     <DataTemplate>
-                                                        <!--<controls:ModernFrame x:Name="ContentFrame"  Source="{Binding Source, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ContentLoader="{TemplateBinding ContentLoader}"/>-->
                                                         <Frame Source="{Binding Source}" NavigationUIVisibility="Hidden" BorderThickness="0"/>
                                                     </DataTemplate>
                                                 </TabControl.ContentTemplate>
                                             </TabControl>
                                         </Border>
                                     </Grid>
-                                    <!--<controls:ModernFrame x:Name="ContentFrame" Grid.Row="1" Grid.RowSpan="2" Margin="42,8,16,31" Source="{Binding ContentSource, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ContentLoader="{TemplateBinding ContentLoader}"/>-->
 
                                     <!--状态栏-->
                                     <Grid Grid.Row="2"   >

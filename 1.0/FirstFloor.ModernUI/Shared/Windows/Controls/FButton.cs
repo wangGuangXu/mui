@@ -204,7 +204,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 return;
             }
 
-            TabItemClose itemclose = VisualTreeHelperEx.FindVisualParent<TabItemClose>(this);
+            TabItem itemclose = VisualTreeHelperEx.FindVisualParent<TabItem>(this);
             if (itemclose == null)
             {
                 return;

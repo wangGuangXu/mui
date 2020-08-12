@@ -133,6 +133,7 @@
     <Compile Include="Content\ModernFrame\Sample.xaml.cs">
       <DependentUpon>Sample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainViewModel.cs" />
     <Compile Include="ModernWindow1.xaml.cs">
       <DependentUpon>ModernWindow1.xaml</DependentUpon>
     </Compile>
