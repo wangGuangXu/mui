@@ -169,6 +169,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Presentation\CommandBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presentation\Displayable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presentation\FontSize.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Presentation\TreeNode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presentation\Link.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presentation\LinkCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presentation\LinkGroup.cs" />

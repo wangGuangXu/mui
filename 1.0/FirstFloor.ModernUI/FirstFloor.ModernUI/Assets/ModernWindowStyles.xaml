@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:modernui="clr-namespace:FirstFloor.ModernUI"
                     xmlns:controls="clr-namespace:FirstFloor.ModernUI.Windows.Controls"
-                    xmlns:navigation="clr-namespace:FirstFloor.ModernUI.Windows.Navigation" >
+                    xmlns:navigation="clr-namespace:FirstFloor.ModernUI.Windows.Navigation"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" >
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Button.xaml" />
@@ -459,9 +460,23 @@
                                             <StackPanel  Grid.Column="0">
                                                 <TextBlock Text="菜单" Style="{StaticResource Heading2}" Margin="10,0,0,8"/>
                                                 <ScrollViewer>
-                                                    <TreeView x:Name="trees">
+                                                    <TreeView x:Name="trees"  ItemsSource="{Binding TreeNodes}"   >
+                                                        <TreeView.ItemTemplate>
+                                                            <HierarchicalDataTemplate  ItemsSource="{Binding Path=ChildNodes}">
+                                                                <TextBlock Text="{Binding Name}"/>
+                                                            </HierarchicalDataTemplate>
+                                                        </TreeView.ItemTemplate>
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="SelectedItemChanged">
+                                                                <i:InvokeCommandAction Command="{Binding Path=SelectedTreeItemChangedCommand}" 
+                                                                                        CommandParameter="{Binding ElementName=trees, Path=SelectedItem}"/>
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
+                                                    </TreeView>
+
+                                                    <!--<TreeView x:Name="trees"  ItemsSource="{Binding TreeNodes}" >
                                                         <TreeViewItem Header="系统管理">
-                                                            <TreeViewItem Header="通用字典"  />
+                                                            <TreeViewItem Header="通用字典" Selected=""   />
                                                             <TreeViewItem Header="单据编码" />
                                                             <TreeViewItem Header="系统日志" />
                                                         </TreeViewItem>
@@ -477,15 +492,14 @@
                                                         </TreeViewItem>
                                                         <TreeViewItem Header="Item 4" />
                                                         <TreeViewItem Header="Item 5" />
-                                                    </TreeView>
+                                                    </TreeView>-->
                                                 </ScrollViewer>
                                             </StackPanel>
                                         </Border>
 
                                         <Border Grid.Column="1" Grid.RowSpan="2" Margin="4,0,0,0" BorderBrush="{DynamicResource Accent}"  BorderThickness="1,1,1,1"  Background="White"  >
                                             <TabControl x:Name="tabControlMenu" Grid.Column="1"  BorderBrush="{DynamicResource Accent}"  
-                                                        BorderThickness="0,1,0,0"   ItemsSource="{TemplateBinding TabItems}" 
-                                                         SelectedIndex="0">
+                                                        BorderThickness="0,1,0,0"   ItemsSource="{Binding TabItems}"  SelectedItem="{Binding SelectedTabItem,Mode=TwoWay}">
                                                 
                                                 <TabControl.ItemTemplate>
                                                     <DataTemplate>
@@ -522,22 +536,23 @@
                                                     </ItemsPanelTemplate>
                                                 </StatusBar.ItemsPanel>
                                                 <StatusBarItem Margin="5,0" Grid.Column="0"  >
-                                                    <TextBlock x:Name="txtUser" Text="{Binding StatusUser,RelativeSource={RelativeSource TemplatedParent },Mode=TwoWay}" />
+                                                    <TextBlock x:Name="txtUser" Text="{Binding  StatusUser,Mode=TwoWay}" />
                                                 </StatusBarItem>
                                                 <!--<Separator Grid.Column="1"  />-->
                                                 <Line Grid.Column="1" X1=".5" Y1="3" X2=".5" Y2="12" Margin="0,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />
 
                                                 <StatusBarItem Grid.Column="2">
-                                                    <TextBlock x:Name="txtNetWork" Text="{Binding StatusNetWork,RelativeSource={RelativeSource TemplatedParent },Mode=TwoWay}" />
+                                                    <TextBlock x:Name="txtNetWork" Text="{Binding StatusNetWork,Mode=TwoWay}" />
                                                 </StatusBarItem>
                                                 <!--<Separator Grid.Column="3"/>-->
                                                 <Line  Grid.Column="3" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />
                                                 
                                                 <StatusBarItem Grid.Column="4">
-                                                    <TextBlock Text="c:\path\of\current\file.txt" />
+                                                    <!--c:\path\of\current\file.txt-->
+                                                    <TextBlock Text="{Binding CurrentTime,Mode=TwoWay}" />
                                                 </StatusBarItem>
                                                 <!--<Separator Grid.Column="5"   />-->
-                                                <Line  Grid.Column="5" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />
+                                                <Line  Grid.Column="5"  Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />
 
                                                 <StatusBarItem Grid.Column="6" >
                                                     <ProgressBar Value="50" Width="90" Height="16" />

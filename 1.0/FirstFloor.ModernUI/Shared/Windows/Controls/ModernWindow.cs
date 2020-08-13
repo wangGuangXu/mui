@@ -59,18 +59,6 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         public static readonly DependencyProperty DialogResultProperty = DependencyProperty.Register("DialogResult", typeof(bool), typeof(ModernWindow), new PropertyMetadata(DialogResultChanged));
         /// <summary>
-        /// 状态栏用户
-        /// </summary>
-        public static readonly DependencyProperty StatusUserProperty = DependencyProperty.Register("StatusUser", typeof(string), typeof(ModernWindow), new PropertyMetadata(""));
-        /// <summary>
-        /// 状态栏网络
-        /// </summary>
-        public static readonly DependencyProperty StatusNetWorkProperty = DependencyProperty.Register("StatusNetWork", typeof(string), typeof(ModernWindow));
-        /// <summary>
-        /// 选项卡集合
-        /// </summary>
-        public static readonly DependencyProperty TabItemsProperty = DependencyProperty.Register("TabItems", typeof(TabItemCollection), typeof(ModernWindow));
-        /// <summary>
         /// 背景动画
         /// </summary>
         private Storyboard backgroundAnimation; 
@@ -154,39 +142,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
             set { SetValue(LinkNavigatorProperty, value); }
         }
 
-        /// <summary>
-        /// 状态栏用户
-        /// </summary>
-        public string StatusUser
-        {
-            get { return (string)GetValue(StatusUserProperty); }
-            set { SetValue(StatusUserProperty, value); }
-        }
-
-        /// <summary>
-        /// 状态栏网络
-        /// </summary>
-        public string StatusNetWork
-        {
-            get { return (string)GetValue(StatusNetWorkProperty); }
-            set { SetValue(StatusNetWorkProperty, value); }
-        }
-
-        /// <summary>
-        /// 选项卡集合
-        /// </summary>
-        public TabItemCollection TabItems
-        {
-            get { return (TabItemCollection)GetValue(TabItemsProperty); }
-            set { SetValue(TabItemsProperty, value); }
-        }
-
         #endregion
-
-        /// <summary>
-        /// 关闭选项卡命令
-        /// </summary>
-        public ICommand CloseTabCommand { get; set; }
 
         #region 构造函数
         /// <summary>
@@ -199,7 +155,6 @@ namespace FirstFloor.ModernUI.Windows.Controls
             // 创建空集合
             SetCurrentValue(MenuLinkGroupsProperty, new LinkGroupCollection());
             SetCurrentValue(TitleLinksProperty, new LinkCollection());
-            SetCurrentValue(TabItemsProperty, new TabItemCollection());
 
             // 将窗口命令与此实例关联
 #if NET4
@@ -215,9 +170,6 @@ namespace FirstFloor.ModernUI.Windows.Controls
 #endif
             // 将导航链接命令与此实例关联
             this.CommandBindings.Add(new CommandBinding(LinkCommands.NavigateLink, OnNavigateLink, OnCanNavigateLink));
-
-            CloseTabCommand = new RoutedUICommand("按钮", "Button", typeof(Button));
-            this.CommandBindings.Add(new CommandBinding(CloseTabCommand, OnCloseTabItem, OnCanCloseTabItem));
 
             // 监听主题改变事件
             AppearanceManager.Current.PropertyChanged += OnAppearanceManagerPropertyChanged;
@@ -415,55 +367,6 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 window.DialogResult = true;
             }
         }
-
-        #region 关闭选项卡
-        /// <summary>
-        /// 关闭选项卡
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnCloseTabItem(object sender, RoutedEventArgs e)
-        {
-            var btn = e.OriginalSource as Button;
-            if (btn == null || btn.Tag == null)
-            {
-                return;
-            }
-
-            var tabControl = e.Source as TabControl;
-            if (tabControl == null)
-            {
-                return;
-            }
-
-            var tabItems = tabControl.ItemsSource as TabItemCollection;
-            if (tabItems == null)
-            {
-                return;
-            }
-
-            var header = btn.Tag.ToString();
-            var tabItem = tabItems.FirstOrDefault(a => a.Header == header);
-            if (tabItem == null)
-            {
-                return;
-            }
-            tabItems.Remove(tabItem);
-            tabControl.Items.Refresh();
-        }
-
-        /// <summary>
-        /// 是否可以关闭选项卡
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnCanCloseTabItem(object sender, CanExecuteRoutedEventArgs e)
-        {
-            //e.CanExecute = this.ResizeMode == ResizeMode.CanResize || this.ResizeMode == ResizeMode.CanResizeWithGrip;
-            e.CanExecute = true;
-        }
-        #endregion
-
         #endregion
 
     }

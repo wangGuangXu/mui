@@ -27,17 +27,7 @@ namespace FirstFloor.ModernUI.App
         public MainWindow()
         {
             InitializeComponent();
-
-            this.StatusUser = "当前用户：超级管理员";
-            this.StatusNetWork = "网络："+Dns.GetHostName();
-
-            this.TabItems = new TabItemCollection
-            {
-                new TabItemModel ("通用字典","/Pages/Main.xaml",CloseTabCommand),
-                new TabItemModel ("数据库管理","/Pages/LayoutBasic.xaml",CloseTabCommand),
-                new TabItemModel ("用户管理","/Pages/LayoutList.xaml",CloseTabCommand),
-                new TabItemModel ("权限管理","/Pages/ControlsModern.xaml",CloseTabCommand),
-            };
+            this.DataContext = new MainViewModel();
         }
     }
 }

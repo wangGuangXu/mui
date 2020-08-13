@@ -68,7 +68,7 @@ namespace FirstFloor.ModernUI.Presentation
         {
             this.Header = header;
             this.CloseTabCommand = command;
-            this.Source = new Uri(url, UriKind.Relative);
+            this.Source = new Uri(url, UriKind.RelativeOrAbsolute);
         }
 
     }
