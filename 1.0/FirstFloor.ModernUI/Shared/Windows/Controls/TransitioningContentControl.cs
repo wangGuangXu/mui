@@ -17,6 +17,7 @@ using FirstFloor.ModernUI.Windows.Media;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
+    /// 表示具有单个内容的控件，并且当该内容更改时执行转换动画
     /// Represents a control with a single piece of content and when that content 
     /// changes performs a transition animation. 
     /// </summary>

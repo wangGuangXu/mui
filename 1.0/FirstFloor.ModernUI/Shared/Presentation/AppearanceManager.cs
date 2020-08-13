@@ -77,6 +77,10 @@ namespace FirstFloor.ModernUI.Presentation
             }, o => o is Color || o is string);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private ResourceDictionary GetThemeDictionary()
         {
             // determine the current theme by looking at the app resources and return the first dictionary having the resource key 'WindowBackground' defined.
@@ -97,6 +101,11 @@ namespace FirstFloor.ModernUI.Presentation
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="useThemeAccentColor"></param>
         private void SetThemeSource(Uri source, bool useThemeAccentColor)
         {
             if (source == null)

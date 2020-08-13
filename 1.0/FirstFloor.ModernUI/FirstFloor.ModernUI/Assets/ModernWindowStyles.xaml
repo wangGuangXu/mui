@@ -519,21 +519,21 @@
                                                 <StatusBarItem Margin="5,0" Grid.Column="0"  >
                                                     <TextBlock x:Name="txtUser" Text="{Binding  StatusUser,Mode=TwoWay}" />
                                                 </StatusBarItem>
-                                                <!--<Separator Grid.Column="1"  />-->
-                                                <Line Grid.Column="1" X1=".5" Y1="3" X2=".5" Y2="12" Margin="0,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />
+                                                <Separator Grid.Column="1"  />
+                                                <!--<Line Grid.Column="1" X1=".5" Y1="3" X2=".5" Y2="12" Margin="0,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />-->
 
                                                 <StatusBarItem Grid.Column="2">
                                                     <TextBlock x:Name="txtNetWork" Text="{Binding StatusNetWork,Mode=TwoWay}" />
                                                 </StatusBarItem>
-                                                <!--<Separator Grid.Column="3"/>-->
-                                                <Line  Grid.Column="3" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />
+                                                <Separator Grid.Column="3"/>
+                                                <!--<Line  Grid.Column="3" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />-->
                                                 
                                                 <StatusBarItem Grid.Column="4">
                                                     <!--c:\path\of\current\file.txt-->
                                                     <TextBlock Text="{Binding CurrentTime,Mode=TwoWay}" />
                                                 </StatusBarItem>
-                                                <!--<Separator Grid.Column="5"   />-->
-                                                <Line  Grid.Column="5"  Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />
+                                                <Separator Grid.Column="5"   />
+                                                <!--<Line  Grid.Column="5"  Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />-->
 
                                                 <StatusBarItem Grid.Column="6" >
                                                     <ProgressBar Value="50" Width="90" Height="16" />

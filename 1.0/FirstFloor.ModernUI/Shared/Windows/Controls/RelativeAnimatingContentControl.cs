@@ -23,9 +23,9 @@ using System.Windows.Media.Animation;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
-    /// The platform does not currently support relative sized translation values. 
-    /// This primitive control walks through visual state animation storyboards
-    /// and looks for identifying values to use as percentages.
+    /// 平台当前不支持相对大小的转换值 The platform does not currently support relative sized translation values. 
+    /// 此基元控件遍历可视状态动画情节提要 This primitive control walks through visual state animation storyboards
+    /// 并查找用作百分比的标识值 and looks for identifying values to use as percentages.
     /// </summary>
     public class RelativeAnimatingContentControl : ContentControl
     {
