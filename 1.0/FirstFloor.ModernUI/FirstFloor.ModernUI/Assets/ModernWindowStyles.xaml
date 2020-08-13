@@ -322,8 +322,8 @@
         </Setter>
     </Style>
 
-    <!--系统主界面布局样式-->
-    <Style x:Key="MainWindowSytle" TargetType="controls:ModernWindow" BasedOn="{StaticResource {x:Type controls:ModernWindow}}">
+    <!--系统主界面框架布局样式-->
+    <Style x:Key="ShellWindow" TargetType="controls:ModernWindow" BasedOn="{StaticResource {x:Type controls:ModernWindow}}">
         <Setter Property="BackgroundContent" Value="{DynamicResource WindowBackgroundContent}" />
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
@@ -456,6 +456,7 @@
                                             <ColumnDefinition Width="180"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
+                                        
                                         <Border BorderBrush="{DynamicResource Accent}" BorderThickness="1" Margin="4,1,1,1">
                                             <StackPanel  Grid.Column="0">
                                                 <TextBlock Text="菜单" Style="{StaticResource Heading2}" Margin="10,0,0,8"/>
@@ -473,37 +474,17 @@
                                                             </i:EventTrigger>
                                                         </i:Interaction.Triggers>
                                                     </TreeView>
-
-                                                    <!--<TreeView x:Name="trees"  ItemsSource="{Binding TreeNodes}" >
-                                                        <TreeViewItem Header="系统管理">
-                                                            <TreeViewItem Header="通用字典" Selected=""   />
-                                                            <TreeViewItem Header="单据编码" />
-                                                            <TreeViewItem Header="系统日志" />
-                                                        </TreeViewItem>
-                                                        <TreeViewItem Header="Item 2">
-                                                            <TreeViewItem Header="Item 2.1" />
-                                                            <TreeViewItem Header="Item 2.2" />
-                                                            <TreeViewItem Header="Item 2.3" />
-                                                        </TreeViewItem>
-                                                        <TreeViewItem Header="Item 3">
-                                                            <TreeViewItem Header="Item 3.1" />
-                                                            <TreeViewItem Header="Item 3.2" />
-                                                            <TreeViewItem Header="Item 3.3" />
-                                                        </TreeViewItem>
-                                                        <TreeViewItem Header="Item 4" />
-                                                        <TreeViewItem Header="Item 5" />
-                                                    </TreeView>-->
                                                 </ScrollViewer>
                                             </StackPanel>
                                         </Border>
 
                                         <Border Grid.Column="1" Grid.RowSpan="2" Margin="4,0,0,0" BorderBrush="{DynamicResource Accent}"  BorderThickness="1,1,1,1"  Background="White"  >
                                             <TabControl x:Name="tabControlMenu" Grid.Column="1"  BorderBrush="{DynamicResource Accent}"  
-                                                        BorderThickness="0,1,0,0"   ItemsSource="{Binding TabItems}"  SelectedItem="{Binding SelectedTabItem,Mode=TwoWay}">
-                                                
+                                                        BorderThickness="0,1,0,0"   
+                                                        ItemsSource="{Binding TabItems}"  
+                                                        SelectedItem="{Binding SelectedTabItem,Mode=TwoWay}">
                                                 <TabControl.ItemTemplate>
                                                     <DataTemplate>
-                                                        <!--<controls:TabItemClose  Cursor="Hand" Header="{Binding Header}" Height="24"  Width="100"/>-->
                                                         <TextBlock Text="{Binding Header}" Cursor="Hand" />
                                                     </DataTemplate>
                                                 </TabControl.ItemTemplate>

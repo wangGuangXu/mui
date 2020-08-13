@@ -12,10 +12,11 @@ using System.Windows.Threading;
 namespace FirstFloor.ModernUI.App
 {
     /// <summary>
-    /// 
+    /// 主框架
     /// </summary>
     public class MainViewModel : NotifyPropertyChanged
     {
+        #region 属性
         private string statusUser;
         /// <summary>
         /// 状态栏登录用户信息
@@ -84,22 +85,7 @@ namespace FirstFloor.ModernUI.App
             }
         }
 
-        private TabItemModel selectedTabItem;
-        /// <summary>
-        /// 选中的选项卡
-        /// </summary>
-        public TabItemModel SelectedTabItem
-        {
-            get { return selectedTabItem; }
-            set
-            {
-                if (this.selectedTabItem != value)
-                {
-                    this.selectedTabItem = value;
-                    OnPropertyChanged("SelectedTabItem");
-                }
-            }
-        }
+        private List<TreeNode> Nodes;
 
         private List<TreeNode> treenodes = new List<TreeNode>();
         /// <summary>
@@ -118,6 +104,27 @@ namespace FirstFloor.ModernUI.App
             }
         }
 
+        private TabItemModel selectedTabItem;
+        /// <summary>
+        /// 选中的选项卡
+        /// </summary>
+        public TabItemModel SelectedTabItem
+        {
+            get { return selectedTabItem; }
+            set
+            {
+                if (this.selectedTabItem != value)
+                {
+                    this.selectedTabItem = value;
+                    OnPropertyChanged("SelectedTabItem");
+                }
+            }
+        }
+
+        private DispatcherTimer _timer;
+        #endregion
+
+        #region 命令
         /// <summary>
         /// 选项卡关闭命令
         /// </summary>
@@ -125,52 +132,37 @@ namespace FirstFloor.ModernUI.App
         /// <summary>
         /// 树选择命令
         /// </summary>
-        public ICommand SelectedTreeItemChangedCommand { get; set; }
-
-        private DispatcherTimer _timer;
+        public ICommand SelectedTreeItemChangedCommand { get; set; } 
+        #endregion
 
         public MainViewModel()
         {
+            TabItems = new TabItemCollection();
             StatusUser = "当前用户：超级管理员";
             StatusNetWork = "网络：" + Dns.GetHostName();
+            CurrentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             InputData();
-
             // Nodes是我已经获得的一组节点
-            TreeNodes = getChildNodes(0, Nodes);
+            TreeNodes = GetChildNodes(0, Nodes);
 
             CloseTabCommand = new RelayCommand(o => CloseTab(o), o => CanCloseTab(o));
-
             SelectedTreeItemChangedCommand= new RelayCommand(o => SelectedTreeItemChanged(o), o => CanSelectedTreeItemChanged(o));
-
-            TabItems = new TabItemCollection
-            {
-                new TabItemModel ("通用字典","/Pages/Main.xaml",CloseTabCommand),
-                new TabItemModel ("数据库管理","/Pages/LayoutBasic.xaml",CloseTabCommand),
-                new TabItemModel ("用户管理","/Pages/LayoutList.xaml",CloseTabCommand),
-                new TabItemModel ("权限管理","/Pages/ControlsModern.xaml",CloseTabCommand),
-            };
-
-            CurrentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            
             _timer = new DispatcherTimer();
             _timer.Tick += OnTimerTick;
             _timer.Interval = new TimeSpan(0, 0, 1);
             _timer.Start();
         }
 
+        #region 方法
         /// <summary>
         /// 关闭选项卡
         /// </summary>
         /// <param name="para"></param>
         private void CloseTab(object para)
         {
-            if (para==null)
-            {
-                return;
-            }
-
-            var header = para.ToString();
-            var tabItem = tabItems.FirstOrDefault(a => a.Header == header);
+            var tabItem = para as TabItemModel;
             if (tabItem == null)
             {
                 return;
@@ -185,7 +177,7 @@ namespace FirstFloor.ModernUI.App
         /// <returns></returns>
         private bool CanCloseTab(object para)
         {
-            return true;
+            return (para == null) ? false : true;
         }
 
         /// <summary>
@@ -205,7 +197,7 @@ namespace FirstFloor.ModernUI.App
         }
 
         /// <summary>
-        /// 是否允许添加选项卡
+        /// 根据选择的树节点判断是否可添加选项卡
         /// </summary>
         /// <param name="para"></param>
         /// <returns></returns>
@@ -230,19 +222,21 @@ namespace FirstFloor.ModernUI.App
         /// <param name="parentId"></param>
         /// <param name="nodes"></param>Name
         /// <returns></returns>
-        private List<TreeNode> getChildNodes(int parentId, List<TreeNode> nodes)
+        private List<TreeNode> GetChildNodes(int parentId, List<TreeNode> nodes)
         {
             List<TreeNode> mainNodes = nodes.Where(x => x.ParentId == parentId).ToList();
             List<TreeNode> otherNodes = nodes.Where(x => x.ParentId != parentId).ToList();
 
             foreach (TreeNode node in mainNodes)
             {
-                node.ChildNodes = getChildNodes(node.Id, otherNodes);
+                node.ChildNodes = GetChildNodes(node.Id, otherNodes);
             }
             return mainNodes;
         }
 
-        private List<TreeNode> Nodes;
+        /// <summary>
+        /// 初始化树控件数据
+        /// </summary>
         private void InputData()
         {
             Nodes = new List<TreeNode>()
@@ -269,7 +263,8 @@ namespace FirstFloor.ModernUI.App
         private void OnTimerTick(object sender, EventArgs e)
         {
             CurrentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        }
+        } 
+        #endregion
 
 
     }
