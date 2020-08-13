@@ -178,7 +178,6 @@ namespace FirstFloor.ModernUI.Presentation
         private Color GetAccentColor()
         {
             var accentColor = Application.Current.Resources[KeyAccentColor] as Color?;
-
             if (accentColor.HasValue)
             {
                 return accentColor.Value;

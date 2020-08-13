@@ -126,5 +126,13 @@
     <SolidColorBrush x:Key="SystemButtonBackgroundIsPressed" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="SystemButtonForegroundIsPressed" Color="#d1d1d1" />
 
+    <!--选项卡-->
+    <SolidColorBrush x:Key="TabControlBackgound" Color="{StaticResource WindowBackgroundColor}" />
+    <SolidColorBrush x:Key="TabControlForeground" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="TabControlBackgoundSelected" Color="{DynamicResource AccentColor}" />
+    <SolidColorBrush x:Key="TabControlForegroundSelected" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="TabControlBackgroundHover" Color="#dddddd" />
+    <SolidColorBrush x:Key="TabControlForegroundHover" Color="#333333" />
+
     <Rectangle x:Key="WindowBackgroundContent" x:Shared="false" />
 </ResourceDictionary>

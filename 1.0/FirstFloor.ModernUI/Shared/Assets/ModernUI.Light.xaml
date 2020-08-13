@@ -130,9 +130,7 @@
     <SolidColorBrush x:Key="SystemButtonForegroundOnMoseOver" Color="#333333" />
     <SolidColorBrush x:Key="SystemButtonBackgroundIsPressed" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="SystemButtonForegroundIsPressed" Color="#919191" />
-    <!--窗口背景内容-->
-    <Rectangle x:Key="WindowBackgroundContent" x:Shared="false" Height="36" Fill="{StaticResource WindowHeaderGradient}" VerticalAlignment="Top"/>
-  
+
     <!--选项卡-->
     <SolidColorBrush x:Key="TabControlBackgound" Color="White" />
     <SolidColorBrush x:Key="TabControlForeground" Color="#555558" />
@@ -140,6 +138,9 @@
     <SolidColorBrush x:Key="TabControlForegroundSelected" Color="White" />
     <SolidColorBrush x:Key="TabControlBackgroundHover" Color="#dddddd" />
     <SolidColorBrush x:Key="TabControlForegroundHover" Color="#333333" />
+  
+    <!--窗口背景内容-->
+    <Rectangle x:Key="WindowBackgroundContent" x:Shared="false" Height="36" Fill="{StaticResource WindowHeaderGradient}" VerticalAlignment="Top"/>
   
     <!--FButton 开始-->
     <!--<SolidColorBrush x:Key="TextForeground" Color="White"></SolidColorBrush>
@@ -153,7 +154,6 @@
     <SolidColorBrush x:Key="PressedForeground" Color="DarkOrange"></SolidColorBrush>
     <SolidColorBrush x:Key="LinkForeground" Color="#0816BB"></SolidColorBrush>
     <SolidColorBrush x:Key="WindowBackground" Color="#007ACB"></SolidColorBrush>-->
-
 
     <!--水印文本框开始-->
     <!--水印文本框透明度--><!--

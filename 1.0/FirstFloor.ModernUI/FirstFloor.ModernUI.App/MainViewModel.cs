@@ -1,11 +1,15 @@
 ﻿using FirstFloor.ModernUI.Presentation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 
@@ -29,7 +33,7 @@ namespace FirstFloor.ModernUI.App
                 if (this.statusUser != value)
                 {
                     this.statusUser = value;
-                    OnPropertyChanged("StatusUser");
+                    OnPropertyChanged(()=>this.StatusUser);
                 }
             }
         }
@@ -46,7 +50,7 @@ namespace FirstFloor.ModernUI.App
                 if (this.currentTime != value)
                 {
                     this.currentTime = value;
-                    OnPropertyChanged("CurrentTime");
+                    OnPropertyChanged(() => this.CurrentTime);
                 }
             }
         }
@@ -63,10 +67,29 @@ namespace FirstFloor.ModernUI.App
                 if (this.statusNetWork != value)
                 {
                     this.statusNetWork = value;
-                    OnPropertyChanged("StatusNetWork");
+                    OnPropertyChanged(() => this.StatusNetWork);
                 }
             }
         }
+
+        private string version;
+        /// <summary>
+        /// 版本号
+        /// </summary>
+        public string Version
+        {
+            get { return version; }
+            set
+            {
+                if (this.version != value)
+                {
+                    this.version = value;
+                    OnPropertyChanged(() => this.Version);
+                }
+            }
+        }
+
+
 
         private TabItemCollection tabItems;
         /// <summary>
@@ -80,7 +103,7 @@ namespace FirstFloor.ModernUI.App
                 if (this.tabItems != value)
                 {
                     this.tabItems = value;
-                    OnPropertyChanged("TabItems");
+                    OnPropertyChanged(() => this.TabItems);
                 }
             }
         }
@@ -99,7 +122,7 @@ namespace FirstFloor.ModernUI.App
                 if (this.treenodes != value)
                 {
                     this.treenodes = value;
-                    OnPropertyChanged("TreeNodes");
+                    OnPropertyChanged(() => this.TreeNodes);
                 }
             }
         }
@@ -116,7 +139,24 @@ namespace FirstFloor.ModernUI.App
                 if (this.selectedTabItem != value)
                 {
                     this.selectedTabItem = value;
-                    OnPropertyChanged("SelectedTabItem");
+                    OnPropertyChanged(() => this.SelectedTabItem);
+                }
+            }
+        }
+
+        private List<MenuItem> rightMenu;
+        /// <summary>
+        /// 右键菜单
+        /// </summary>
+        public List<MenuItem> RightMenu
+        {
+            get { return rightMenu; }
+            set
+            {
+                if (this.rightMenu != null)
+                {
+                    rightMenu = value;
+                    OnPropertyChanged(() => this.RightMenu);
                 }
             }
         }
@@ -133,6 +173,10 @@ namespace FirstFloor.ModernUI.App
         /// 树选择命令
         /// </summary>
         public ICommand SelectedTreeItemChangedCommand { get; set; } 
+        /// <summary>
+        /// 右键菜单
+        /// </summary>
+        public ICommand RightContextMenuCommand { get; set; }
         #endregion
 
         public MainViewModel()
@@ -142,6 +186,8 @@ namespace FirstFloor.ModernUI.App
             StatusNetWork = "网络：" + Dns.GetHostName();
             CurrentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
+            Version = "主程序版本：" + Assembly.GetExecutingAssembly().GetName().Version; //Application.ResourceAssembly.GetName().Version;
+
             InputData();
             // Nodes是我已经获得的一组节点
             TreeNodes = GetChildNodes(0, Nodes);
@@ -149,10 +195,10 @@ namespace FirstFloor.ModernUI.App
             CloseTabCommand = new RelayCommand(o => CloseTab(o), o => CanCloseTab(o));
             SelectedTreeItemChangedCommand= new RelayCommand(o => SelectedTreeItemChanged(o), o => CanSelectedTreeItemChanged(o));
             
-            _timer = new DispatcherTimer();
-            _timer.Tick += OnTimerTick;
-            _timer.Interval = new TimeSpan(0, 0, 1);
-            _timer.Start();
+            //_timer = new DispatcherTimer();
+            //_timer.Tick += OnTimerTick;
+            //_timer.Interval = new TimeSpan(0, 0, 1);
+            //_timer.Start();
         }
 
         #region 方法
