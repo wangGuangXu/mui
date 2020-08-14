@@ -45,6 +45,23 @@ namespace FirstFloor.ModernUI.Presentation
             }
         }
 
+        private Visibility btnStatus;
+        /// <summary>
+        /// 内容源
+        /// </summary>
+        public Visibility BtnStatus
+        {
+            get { return btnStatus; }
+            set
+            {
+                if (this.btnStatus != value)
+                {
+                    this.btnStatus = value;
+                    OnPropertyChanged(()=> BtnStatus);
+                }
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -64,10 +81,12 @@ namespace FirstFloor.ModernUI.Presentation
         /// <param name="header"></param>
         /// <param name="url"></param>
         /// <param name="command"></param>
-        public TabItemModel(string header, string url,ICommand command)
+        /// <param name="btnStatus"></param>
+        public TabItemModel(string header, string url,ICommand command,Visibility btnStatus)
         {
             this.Header = header;
             this.CloseTabCommand = command;
+            this.BtnStatus = btnStatus;
             this.Source = new Uri(url, UriKind.RelativeOrAbsolute);
         }
 

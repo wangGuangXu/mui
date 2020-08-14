@@ -183,18 +183,20 @@ namespace FirstFloor.ModernUI.App
         {
             TabItems = new TabItemCollection();
             StatusUser = "当前用户：超级管理员";
-            StatusNetWork = "网络：" + Dns.GetHostName();
+            StatusNetWork = "网络：" + GetIp();
             CurrentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
             Version = "主程序版本：" + Assembly.GetExecutingAssembly().GetName().Version; //Application.ResourceAssembly.GetName().Version;
 
             InputData();
-            // Nodes是我已经获得的一组节点
-            TreeNodes = GetChildNodes(0, Nodes);
+            TreeNodes = GetChildNodes(0, Nodes);// Nodes是我已经获得的一组节点
 
             CloseTabCommand = new RelayCommand(o => CloseTab(o), o => CanCloseTab(o));
-            SelectedTreeItemChangedCommand= new RelayCommand(o => SelectedTreeItemChanged(o), o => CanSelectedTreeItemChanged(o));
-            
+            SelectedTreeItemChangedCommand = new RelayCommand(o => SelectedTreeItemChanged(o), o => CanSelectedTreeItemChanged(o));
+
+            var tabItem = new TabItemModel("主页", "/Pages/Home.xaml", CloseTabCommand, Visibility.Hidden);
+            TabItems.Add(tabItem);
+            SelectedTabItem = tabItem;
+
             //_timer = new DispatcherTimer();
             //_timer.Tick += OnTimerTick;
             //_timer.Interval = new TimeSpan(0, 0, 1);
@@ -236,7 +238,7 @@ namespace FirstFloor.ModernUI.App
             var tabItem = TabItems.FirstOrDefault(a => a.Header == treeNode.Name);
             if (tabItem == null)
             {
-                tabItem = new TabItemModel(treeNode.Name, treeNode.Source, CloseTabCommand);
+                tabItem = new TabItemModel(treeNode.Name, treeNode.Source, CloseTabCommand,Visibility.Visible);
                 TabItems.Add(tabItem);
                 SelectedTabItem = tabItem;
             }
@@ -309,9 +311,27 @@ namespace FirstFloor.ModernUI.App
         private void OnTimerTick(object sender, EventArgs e)
         {
             CurrentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        } 
-        #endregion
+        }
 
+        /// <summary>
+        /// 获取本地的IP地址
+        /// </summary>
+        /// <returns></returns>
+        string GetIp()
+        {
+            ///获取本地的IP地址
+            string ip = string.Empty;
+            foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+            {
+                if (_IPAddress.AddressFamily.ToString() == "InterNetwork")
+                {
+                    ip = _IPAddress.ToString();
+                    break;
+                }
+            }
+            return ip;
+        }
+        #endregion
 
     }
 }
