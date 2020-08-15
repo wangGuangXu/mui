@@ -23,8 +23,8 @@ namespace FirstFloor.ModernUI.App
         /// <param name="e">A <see cref="T:System.Windows.StartupEventArgs"/> that contains the event data.</param>
         protected override void OnStartup(StartupEventArgs e)
         {
-            var reader = new SpeechSynthesizer();
-            reader.SpeakAsync("现代WPFUI框架启动 ");
+            //var reader = new SpeechSynthesizer();
+            //reader.SpeakAsync("现代WPFUI框架启动 ");
 
             DispatcherUnhandledException += App_DispatcherUnhandledException;               //UI线程异常
             Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;

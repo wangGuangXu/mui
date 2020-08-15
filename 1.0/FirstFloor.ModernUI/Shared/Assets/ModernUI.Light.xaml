@@ -138,6 +138,8 @@
     <SolidColorBrush x:Key="TabControlForegroundSelected" Color="White" />
     <SolidColorBrush x:Key="TabControlBackgroundHover" Color="#dddddd" />
     <SolidColorBrush x:Key="TabControlForegroundHover" Color="#333333" />
+    <!--图表-->
+    <SolidColorBrush x:Key="ChartBackgound" Color="Transparent" />
   
     <!--窗口背景内容-->
     <Rectangle x:Key="WindowBackgroundContent" x:Shared="false" Height="36" Fill="{StaticResource WindowHeaderGradient}" VerticalAlignment="Top"/>

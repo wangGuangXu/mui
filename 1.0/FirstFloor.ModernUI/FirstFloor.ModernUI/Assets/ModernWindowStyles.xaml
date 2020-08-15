@@ -479,26 +479,22 @@
                                         </Border>
 
                                         <Border Grid.Column="1" Grid.RowSpan="2" Margin="4,0,0,0" BorderBrush="{DynamicResource Accent}"  BorderThickness="1,1,1,1"  Background="Transparent"  >
-                                            <StackPanel>
-                                                <TabControl x:Name="tabControlMenu" Grid.Column="1"  BorderBrush="{DynamicResource Accent}"  Background="Transparent" 
-                                                        BorderThickness="0,1,0,0"   
-                                                        ItemsSource="{Binding TabItems}"  
-                                                        SelectedItem="{Binding SelectedTabItem,Mode=TwoWay}">
+                                            <TabControl x:Name="tabControlMenu" Grid.Column="1"  BorderBrush="{DynamicResource Accent}"  Background="Transparent" 
+                                                    BorderThickness="0,1,0,0"   
+                                                    ItemsSource="{Binding TabItems}"  
+                                                    SelectedItem="{Binding SelectedTabItem,Mode=TwoWay}">
 
-                                                    <TabControl.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <TextBlock Text="{Binding Header}" Cursor="Hand" />
-                                                        </DataTemplate>
-                                                    </TabControl.ItemTemplate>
-                                                    <TabControl.ContentTemplate>
-                                                        <DataTemplate>
-                                                            <Frame Source="{Binding Source}" NavigationUIVisibility="Hidden" BorderThickness="0"/>
-                                                        </DataTemplate>
-                                                    </TabControl.ContentTemplate>
-                                                </TabControl>
-                                                <Frame Source="{Binding Source}" NavigationUIVisibility="Hidden" BorderThickness="0"/>
-                                            </StackPanel>
-                                            
+                                                <TabControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Header}" Cursor="Hand" />
+                                                    </DataTemplate>
+                                                </TabControl.ItemTemplate>
+                                                <TabControl.ContentTemplate>
+                                                    <DataTemplate>
+                                                        <Frame Source="{Binding Source}" NavigationUIVisibility="Hidden" BorderThickness="0"/>
+                                                    </DataTemplate>
+                                                </TabControl.ContentTemplate>
+                                            </TabControl>
                                         </Border>
                                     </Grid>
 

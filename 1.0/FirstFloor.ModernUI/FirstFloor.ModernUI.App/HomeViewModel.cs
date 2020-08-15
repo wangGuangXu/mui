@@ -12,7 +12,7 @@ namespace FirstFloor.ModernUI.App
     /// <summary>
     /// 首页视图模型
     /// </summary>
-    public class HomeViewModel : NotifyPropertyChanged
+    public class HomeViewModel : INotifyPropertyChanged //NotifyPropertyChanged
     {
         public HomeViewModel()
         {
@@ -21,23 +21,37 @@ namespace FirstFloor.ModernUI.App
             Errors = new ObservableCollection<TestClass>();
             Warnings = new ObservableCollection<TestClass>();
 
-            Errors.Add(new TestClass() { Category = "Globalization", Number = 66 });
-            Errors.Add(new TestClass() { Category = "Features", Number = 23 });
-            Errors.Add(new TestClass() { Category = "Content Types", Number = 12 });
-            Errors.Add(new TestClass() { Category = "Correctness", Number = 94 });
-            Errors.Add(new TestClass() { Category = "Naming", Number = 45 });
-            Errors.Add(new TestClass() { Category = "Best Practices", Number = 29 });
+            Errors.Add(new TestClass() { Category = "全球化", Number = 66 });
+            Errors.Add(new TestClass() { Category = "特征", Number = 23 });
+            Errors.Add(new TestClass() { Category = "内容类型", Number = 12 });
+            Errors.Add(new TestClass() { Category = "正确性", Number = 94 });
+            Errors.Add(new TestClass() { Category = "命名", Number = 45 });
+            Errors.Add(new TestClass() { Category = "最佳实践", Number = 29 });
 
-            Warnings.Add(new TestClass() { Category = "Globalization", Number = 34 });
-            Warnings.Add(new TestClass() { Category = "Features", Number = 23 });
-            Warnings.Add(new TestClass() { Category = "Content Types", Number = 15 });
-            Warnings.Add(new TestClass() { Category = "Correctness", Number = 66 });
-            Warnings.Add(new TestClass() { Category = "Naming", Number = 56 });
-            Warnings.Add(new TestClass() { Category = "Best Practices", Number = 34 });
+            Warnings.Add(new TestClass() { Category = "全球化", Number = 34 });
+            Warnings.Add(new TestClass() { Category = "特征", Number = 23 });
+            Warnings.Add(new TestClass() { Category = "内容类型", Number = 15 });
+            Warnings.Add(new TestClass() { Category = "正确性", Number = 66 });
+            Warnings.Add(new TestClass() { Category = "命名", Number = 56 });
+            Warnings.Add(new TestClass() { Category = "最佳实践", Number = 34 });
 
             Series.Add(new SeriesData() { DisplayName = "错误", Items = Errors });
             Series.Add(new SeriesData() { DisplayName = "警告", Items = Warnings });
         }
+
+        //private object selectedItem = null;
+        //public object SelectedItem
+        //{
+        //    get
+        //    {
+        //        return selectedItem;
+        //    }
+        //    set
+        //    {
+        //        selectedItem = value;
+        //        OnPropertyChanged(()=>this.SelectedItem);
+        //    }
+        //}
 
         private object selectedItem = null;
         public object SelectedItem
@@ -49,7 +63,7 @@ namespace FirstFloor.ModernUI.App
             set
             {
                 selectedItem = value;
-                OnPropertyChanged(()=>this.SelectedItem);
+                NotifyPropertyChanged("SelectedItem");
             }
         }
 
@@ -70,5 +84,15 @@ namespace FirstFloor.ModernUI.App
             get;
             set;
         }
+
+        private void NotifyPropertyChanged(string property)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(property));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

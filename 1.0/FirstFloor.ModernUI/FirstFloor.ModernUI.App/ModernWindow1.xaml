@@ -7,13 +7,20 @@
                   xmlns:xly="clr-namespace:FirstFloor.ModernUI.Windows.Controls;assembly=FirstFloor.ModernUI"
                   mc:Ignorable="d" 
                   d:DesignHeight="300" d:DesignWidth="300" Width="600" Height="100"
-                  Title="ModernWindow" Background="#5656CA"
-                  Style="{StaticResource LoginWindow}" WindowStartupLocation="CenterScreen">
+                  Title="ModernWindow"     Style="{StaticResource BlankWindow}"
+                  WindowState="Maximized">
 
-    <Grid >
+    <Grid x:Name="mainGrid">
+        <ContentControl Content="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ContentTemplate="{StaticResource PageContent}" />
+        <Grid.LayoutTransform>
+            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.0" ScaleY="1.0" />
+        </Grid.LayoutTransform>
+    </Grid>
+    
+    <!--<Grid >
         <StackPanel Orientation="Vertical" >
 
-            <!--<TextBox Width="280" Height="30" Margin="0, 10, 0, 10" xly:ControlAttachProperty.Watermark="请输入姓名" 
+            --><!--<TextBox Width="280" Height="30" Margin="0, 10, 0, 10" xly:ControlAttachProperty.Watermark="请输入姓名" 
                       Style="{StaticResource LabelTextBox}"    xly:ControlAttachProperty.Label="姓   名："/>
 
             <TextBox Width="280" Height="30" Margin="0, 10, 0, 10" xly:ControlAttachProperty.Watermark="请输如密码" 
@@ -22,15 +29,14 @@
             <!--<TextBox Width="280" Height="30" Margin="0, 10, 0, 10" xly:ControlAttachProperty.Watermark="请输如确认密码" 
                       Style="{StaticResource LabelTextBox}"    xly:ControlAttachProperty.Label="确认密码："/>-->
 
-            <!--<TextBox x:Name="Name2" Width="280" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输如确认密码" />-->
+            <!--<TextBox x:Name="Name2" Width="280" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输如确认密码" />--><!--
 
             <TextBox x:Name="Name" Width="280" Height="30" Margin="0, 10, 0, 10" />
 
-            <!--<mui:FButton FIcon="&#xe64f;" Margin="5,0,0,0" CornerRadius="16,0,0,16" AllowsAnimation="True" >Info</mui:FButton>
+            --><!--<mui:FButton FIcon="&#xe64f;" Margin="5,0,0,0" CornerRadius="16,0,0,16" AllowsAnimation="True" >Info</mui:FButton>
                 <mui:FButton FIcon="&#xe628;" CornerRadius="0" >Question</mui:FButton>
                 <mui:FButton FIcon="&#xe628;" CornerRadius="0" >Warining</mui:FButton>
-                <mui:FButton FIcon="&#xe629;" CornerRadius="0,16,16,0" AllowsAnimation="True" >Error</mui:FButton>-->
+                <mui:FButton FIcon="&#xe629;" CornerRadius="0,16,16,0" AllowsAnimation="True" >Error</mui:FButton>--><!--
         </StackPanel>
-    </Grid>
-
+    </Grid>-->
 </mui:ModernWindow>

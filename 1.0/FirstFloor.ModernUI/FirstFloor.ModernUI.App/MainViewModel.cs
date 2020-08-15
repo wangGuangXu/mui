@@ -295,8 +295,8 @@ namespace FirstFloor.ModernUI.App
                 new TreeNode(){ParentId=1, Id=4, Name="百度搜索", Source="https://www.baidu.com/"},
                 new TreeNode(){ParentId=1, Id=5, Name="百度百科", Source="https://baike.baidu.com/"},
                 new TreeNode(){ParentId=2, Id=6, Name="Oracle"},
-                new TreeNode(){ParentId=3, Id=7, Name="Section3.1",Source="/Pages/Main.xaml"},
-                new TreeNode(){ParentId=6, Id=8, Name="oracle 9.2 ",Source="/Pages/LayoutBasic.xaml"},
+                new TreeNode(){ParentId=3, Id=7, Name="Section3.1",Source="/Pages/Home.xaml"},
+                new TreeNode(){ParentId=6, Id=8, Name="oracle 9.2 ",Source="/Content/ControlsStylesDataGrid.xaml"},
                 new TreeNode(){ParentId=6, Id=9, Name="SubSection2.1.2",Source="/Pages/ControlsModern.xaml"},
                 new TreeNode(){ParentId=2, Id=10,Name="SQL Server",Source="/Pages/Settings.xaml"},
                 new TreeNode(){ParentId=3, Id=11, Name="Section3.2",Source="/Pages/LayoutList.xaml"}

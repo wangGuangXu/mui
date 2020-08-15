@@ -1,11 +1,6 @@
 ﻿using FirstFloor.ModernUI.Presentation;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FirstFloor.ModernUI.App
 {
@@ -19,9 +14,23 @@ namespace FirstFloor.ModernUI.App
         public string Description { get; set; }
 
         public ObservableCollection<TestClass> Items { get; set; }
+
+        //private ObservableCollection<TestClass> items;
+        //public ObservableCollection<TestClass> Items
+        //{
+        //    get
+        //    {
+        //        return items;
+        //    }
+        //    set
+        //    {
+        //        items = value;
+        //        OnPropertyChanged(() => this.Items);
+        //    }
+        //}
     }
 
-    public class TestClass : NotifyPropertyChanged
+    public class TestClass : INotifyPropertyChanged //NotifyPropertyChanged
     {
         /// <summary>
         /// 分类
@@ -29,7 +38,7 @@ namespace FirstFloor.ModernUI.App
         public string Category { get; set; }
 
         private float _number = 0;
-        public float Number 
+        public float Number
         {
             get
             {
@@ -38,9 +47,25 @@ namespace FirstFloor.ModernUI.App
             set
             {
                 _number = value;
-                OnPropertyChanged(() => this.Number);
+                if (PropertyChanged != null)
+                {
+                    this.PropertyChanged(this, new PropertyChangedEventArgs("Number"));
+                }
             }
         }
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        //public float Number
+        //{
+        //    get
+        //    {
+        //        return _number;
+        //    }
+        //    set
+        //    {
+        //        _number = value;
+        //        OnPropertyChanged(() => this.Number);
+        //    }
+        //}
     }
 }
