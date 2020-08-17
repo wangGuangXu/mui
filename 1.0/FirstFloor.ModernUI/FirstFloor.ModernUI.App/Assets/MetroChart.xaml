@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
                     xmlns:chart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart">
 
     <SolidColorBrush x:Key="BackgroundBrush" Color="#FFEFEFEF"/>
@@ -53,14 +54,13 @@
         <Setter Property="FontSize" Value="18" />
     </Style>
 
-    <Style x:Key="BackButtonStyle" TargetType="Button">
+    <!--<Style x:Key="BackButtonStyle" TargetType="Button">
         <Setter Property="MinWidth" Value="0"/>
         <Setter Property="Width" Value="48"/>
         <Setter Property="Height" Value="48"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <!--Segoe UI Symbol-->
         <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="FontSize" Value="56"/>
@@ -187,7 +187,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 
     <Style x:Key="ChartStyle" TargetType="chart:ChartBase">
         <Setter Property="Margin" Value="0 0 10 10"/>
@@ -222,13 +222,13 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     </Style>
 
-    <DataTemplate x:Key="PageContent">
+    <DataTemplate x:Key="PageContent"  >
         <!--{DynamicResource ChartBackgound}-->
         <Grid x:Name="maingrid" Background="{StaticResource BackgroundBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ScrollViewer Grid.Row="0"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="0 0 10 0">
+            <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="0 0 10 0">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Width="350" Margin="0 0 10 0">
                         <TextBlock Text="测试数据" Style="{StaticResource SectionHeaderTextStyle}" />
@@ -284,28 +284,25 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
+                            
                             <!--柱状图-->
-                            <chart:ClusteredColumnChart                                
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                Style="{StaticResource ChartStyle}"
+                            <chart:ClusteredColumnChart Grid.Column="0" Grid.Row="0" Style="{StaticResource ChartStyle}"
                                 ChartTitle="柱状图"
                                 ChartSubTitle="哪种类型的错误和警告最多"                  
                                 Palette="{StaticResource CustomPalette}"
                                 SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}"
-                                SeriesSource="{Binding Series}">
+                                SeriesSource="{Binding  Path=Series}">
                                 <chart:ClusteredColumnChart.SeriesTemplate>
                                     <DataTemplate>
-                                        <chart:ChartSeries
-			                                Caption="{Binding Path=DisplayName}"
-                                            DisplayMember="Category"
-                                            ValueMember="Number"
+                                        <chart:ChartSeries 
+                                            Caption="{Binding Path=DisplayName}" 
+                                            DisplayMember="Category" 
+                                            ValueMember="Number" 
                                             ItemsSource="{Binding Path=Items}" />
                                     </DataTemplate>
                                 </chart:ClusteredColumnChart.SeriesTemplate>
                             </chart:ClusteredColumnChart>
                             
-                            <!--堆积柱形图 Stacked Column Chart /Which types of errors and warnings appears most-->
                             <chart:StackedColumnChart
                                 Grid.Column="1"
                                 Grid.Row="0"
@@ -325,7 +322,6 @@
                                 </chart:StackedColumnChart.SeriesTemplate>
                             </chart:StackedColumnChart>
                             
-                            <!--100%堆积柱形图 100% Stacked Column-->
                             <chart:StackedColumn100Chart
                                 Grid.Column="0"
                                 Grid.Row="1"
@@ -345,7 +341,6 @@
                                 </chart:StackedColumn100Chart.SeriesTemplate>
                             </chart:StackedColumn100Chart>
                             
-                            <!-- 固定系列柱形图 Column Chart with fixed series-->
                             <chart:ClusteredColumnChart                                
                                 Grid.Column="1"
                                 Grid.Row="1"
@@ -355,12 +350,12 @@
                                 SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
                                 <chart:ClusteredColumnChart.Series>
                                     <chart:ChartSeries
-                                        Caption="Errors"
+                                        Caption="错误"
                                         DisplayMember="Category"
                                         ValueMember="Number"
                                         ItemsSource="{Binding Path=Errors}" />
                                     <chart:ChartSeries
-                                        Caption="Warnings"
+                                        Caption="警告"
                                         DisplayMember="Category"
                                         ValueMember="Number"
                                         ItemsSource="{Binding Path=Warnings}" />
@@ -387,7 +382,6 @@
                         </chart:PieChart>
                     </StackPanel>
                     
-                    <!--条形图 Bar Chart -->
                     <StackPanel MinWidth="350">
                         <TextBlock Text="条形图" Style="{StaticResource SectionHeaderTextStyle}" />
                         <Grid>

@@ -1,4 +1,5 @@
-﻿using FirstFloor.ModernUI.Presentation;
+﻿using FirstFloor.ModernUI.App.Content;
+using FirstFloor.ModernUI.Presentation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,12 +13,11 @@ namespace FirstFloor.ModernUI.App
     /// <summary>
     /// 首页视图模型
     /// </summary>
-    public class HomeViewModel : INotifyPropertyChanged //NotifyPropertyChanged
+    public class HomeViewModel
     {
         public HomeViewModel()
         {
             Series = new List<SeriesData>();
-
             Errors = new ObservableCollection<TestClass>();
             Warnings = new ObservableCollection<TestClass>();
 
@@ -38,20 +38,6 @@ namespace FirstFloor.ModernUI.App
             Series.Add(new SeriesData() { DisplayName = "错误", Items = Errors });
             Series.Add(new SeriesData() { DisplayName = "警告", Items = Warnings });
         }
-
-        //private object selectedItem = null;
-        //public object SelectedItem
-        //{
-        //    get
-        //    {
-        //        return selectedItem;
-        //    }
-        //    set
-        //    {
-        //        selectedItem = value;
-        //        OnPropertyChanged(()=>this.SelectedItem);
-        //    }
-        //}
 
         private object selectedItem = null;
         public object SelectedItem
@@ -94,5 +80,6 @@ namespace FirstFloor.ModernUI.App
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
     }
 }

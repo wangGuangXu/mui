@@ -26,10 +26,11 @@ namespace FirstFloor.ModernUI.Presentation
         protected virtual void OnPropertyChanged(string propertyName)
         {
             var handler = this.PropertyChanged;
-            if (handler != null)
+            if (handler == null)
             {
-                handler(this, new PropertyChangedEventArgs(propertyName));
+                return;
             }
+            handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
         /// <summary>

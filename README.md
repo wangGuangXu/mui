@@ -68,3 +68,6 @@ Check out the **MUI 演示 app** 包括在 [MUI release](https://github.com/firs
 
 *     3.引用本项目的资源
 　　[/MyProject;component/Image/user.ico]或文件的相对路径
+
+##    Binding用法：
+ *     1. {Binding和Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext} 等价

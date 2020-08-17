@@ -14,23 +14,9 @@ namespace FirstFloor.ModernUI.App
         public string Description { get; set; }
 
         public ObservableCollection<TestClass> Items { get; set; }
-
-        //private ObservableCollection<TestClass> items;
-        //public ObservableCollection<TestClass> Items
-        //{
-        //    get
-        //    {
-        //        return items;
-        //    }
-        //    set
-        //    {
-        //        items = value;
-        //        OnPropertyChanged(() => this.Items);
-        //    }
-        //}
     }
 
-    public class TestClass : INotifyPropertyChanged //NotifyPropertyChanged
+    public class TestClass : NotifyPropertyChanged
     {
         /// <summary>
         /// 分类
@@ -47,25 +33,8 @@ namespace FirstFloor.ModernUI.App
             set
             {
                 _number = value;
-                if (PropertyChanged != null)
-                {
-                    this.PropertyChanged(this, new PropertyChangedEventArgs("Number"));
-                }
+                OnPropertyChanged(() => this.Number);
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        //public float Number
-        //{
-        //    get
-        //    {
-        //        return _number;
-        //    }
-        //    set
-        //    {
-        //        _number = value;
-        //        OnPropertyChanged(() => this.Number);
-        //    }
-        //}
     }
 }

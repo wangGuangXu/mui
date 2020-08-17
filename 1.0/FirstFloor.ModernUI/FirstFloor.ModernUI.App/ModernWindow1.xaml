@@ -7,11 +7,12 @@
                   xmlns:xly="clr-namespace:FirstFloor.ModernUI.Windows.Controls;assembly=FirstFloor.ModernUI"
                   mc:Ignorable="d" 
                   d:DesignHeight="300" d:DesignWidth="300" Width="600" Height="100"
+                  xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
                   Title="ModernWindow"     Style="{StaticResource BlankWindow}"
                   WindowState="Maximized">
 
     <Grid x:Name="mainGrid">
-        <ContentControl Content="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ContentTemplate="{StaticResource PageContent}" />
+        <ContentControl Content="{Binding diag:PresentationTraceSources.TraceLevel=High}"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ContentTemplate="{StaticResource PageContent}" />
         <Grid.LayoutTransform>
             <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.0" ScaleY="1.0" />
         </Grid.LayoutTransform>

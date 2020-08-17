@@ -1,16 +1,15 @@
 ﻿<Application x:Class="FirstFloor.ModernUI.App.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="ModernWindow1.xaml">
+             StartupUri="MainWindow.xaml">
     
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--字典的引用顺序也是有规则的，如果B字典引用A字典，那么A字典应该排在首位-->
+                <!--字典的引用顺序也是有规则的，如果B字典引用A字典，那么A字典应该排在首位 ModernWindow1  MainWindow -->
                 <ResourceDictionary Source="/Assets/MetroChart.xaml"/>
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.xaml" />
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.Light.xaml" />
-                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

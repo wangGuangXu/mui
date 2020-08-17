@@ -23,13 +23,13 @@ namespace FirstFloor.ModernUI.App.Pages
         public Home()
         {
             InitializeComponent();
-
-            this.DataContext = new HomeViewModel();
             this.Loaded += Home_Loaded;
         }
 
         private void Home_Loaded(object sender, RoutedEventArgs e)
         {
+            this.DataContext = new HomeViewModel();
+
             Matrix m = PresentationSource.FromVisual(Application.Current.MainWindow).CompositionTarget.TransformToDevice;
             double dx = m.M11;
             double dy = m.M22;
