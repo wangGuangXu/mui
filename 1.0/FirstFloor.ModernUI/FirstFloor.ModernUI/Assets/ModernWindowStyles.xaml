@@ -10,6 +10,7 @@
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Converters.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/TextBlock.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/FButton.xaml" />
+        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/TreeView.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!-- 附加窗口样式 additional ModernWindow styles -->
@@ -453,18 +454,32 @@
                                     <!-- 内容框架 content frame -->
                                     <Grid Grid.Row="1">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="180"/>
+                                            <ColumnDefinition Width="200"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        
-                                        <Border BorderBrush="{DynamicResource Accent}" BorderThickness="1" Margin="4,1,1,1">
-                                            <StackPanel  Grid.Column="0">
+
+                                        <Border Grid.Column="0" BorderBrush="{DynamicResource Accent}" BorderThickness="1" Margin="4,1,1,1">
+                                            <StackPanel  >
                                                 <Border BorderBrush="{DynamicResource Accent}" BorderThickness="0,0,0,1" >
                                                     <TextBlock Text="菜单" Style="{StaticResource Heading2}" VerticalAlignment="Center" HorizontalAlignment="Center"   />
                                                 </Border>
                                                 
                                                 <ScrollViewer>
-                                                    <TreeView x:Name="trees"  ItemsSource="{Binding TreeNodes,Mode=TwoWay}"   >
+                                                    <TreeView x:Name="trees" BorderThickness="0" 
+                                                        HorizontalAlignment="Left" 
+                                                        Margin="0,10,0,10" 
+                                                        Width="190"
+                                                        ItemTemplate="{StaticResource ItemNode}" 
+                                                        ItemsSource="{Binding TreeNodes,Mode=TwoWay}" 
+                                                        Style="{StaticResource DefaultTreeView}">
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="SelectedItemChanged">
+                                                                <i:InvokeCommandAction Command="{Binding Path=SelectedTreeItemChangedCommand}" 
+                                                                                       CommandParameter="{Binding ElementName=trees, Path=SelectedItem}"/>
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
+                                                    </TreeView>
+                                                    <!--<TreeView x:Name="trees"  ItemsSource="{Binding TreeNodes,Mode=TwoWay}"   >
                                                         <TreeView.ItemTemplate>
                                                             <HierarchicalDataTemplate  ItemsSource="{Binding Path=ChildNodes,Mode=TwoWay}">
                                                                 <TextBlock Text="{Binding Name}"/>
@@ -476,7 +491,7 @@
                                                                                        CommandParameter="{Binding ElementName=trees, Path=SelectedItem}"/>
                                                             </i:EventTrigger>
                                                         </i:Interaction.Triggers>
-                                                    </TreeView>
+                                                    </TreeView>-->
                                                 </ScrollViewer>
                                             </StackPanel>
                                         </Border>

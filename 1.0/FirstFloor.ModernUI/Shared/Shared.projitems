@@ -223,10 +223,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\TransitioningContentControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\BooleanToFontWeightConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\IndentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\NullOrEmptyStringToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\ToLowerConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\ToUpperConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\VisibleToReverseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\DefaultContentLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\IContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\IContentLoader.cs" />
