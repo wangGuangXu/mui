@@ -230,7 +230,7 @@
             </Grid.RowDefinitions>
             <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="0 0 10 0">
                 <StackPanel Orientation="Horizontal">
-                    <StackPanel Width="350" Margin="0 0 10 0">
+                    <!--<StackPanel Width="350" Margin="0 0 10 0">
                         <TextBlock Text="测试数据" Style="{StaticResource SectionHeaderTextStyle}" />
                         <StackPanel  Background="White">
                             <TextBlock Style="{StaticResource SeriesHeader}" TextWrapping="Wrap" Text="编辑以下系列的值以更改图表。目前只支持正值。" Margin="10" />
@@ -271,7 +271,7 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </StackPanel>
-                    </StackPanel>
+                    </StackPanel>-->
                     
                     <StackPanel MinWidth="350">
                         <TextBlock Text="柱状图" Style="{StaticResource SectionHeaderTextStyle}" />

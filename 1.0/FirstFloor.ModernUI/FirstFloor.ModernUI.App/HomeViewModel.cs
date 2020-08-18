@@ -28,15 +28,15 @@ namespace FirstFloor.ModernUI.App
             Errors.Add(new TestClass() { Category = "命名", Number = 45 });
             Errors.Add(new TestClass() { Category = "最佳实践", Number = 29 });
 
-            Warnings.Add(new TestClass() { Category = "全球化", Number = 34 });
-            Warnings.Add(new TestClass() { Category = "特征", Number = 23 });
-            Warnings.Add(new TestClass() { Category = "内容类型", Number = 15 });
-            Warnings.Add(new TestClass() { Category = "正确性", Number = 66 });
-            Warnings.Add(new TestClass() { Category = "命名", Number = 56 });
-            Warnings.Add(new TestClass() { Category = "最佳实践", Number = 34 });
+            //Warnings.Add(new TestClass() { Category = "全球化", Number = 34 });
+            //Warnings.Add(new TestClass() { Category = "特征", Number = 23 });
+            //Warnings.Add(new TestClass() { Category = "内容类型", Number = 15 });
+            //Warnings.Add(new TestClass() { Category = "正确性", Number = 66 });
+            //Warnings.Add(new TestClass() { Category = "命名", Number = 56 });
+            //Warnings.Add(new TestClass() { Category = "最佳实践", Number = 34 });
 
             Series.Add(new SeriesData() { DisplayName = "错误", Items = Errors });
-            Series.Add(new SeriesData() { DisplayName = "警告", Items = Warnings });
+            //Series.Add(new SeriesData() { DisplayName = "警告", Items = Warnings });
         }
 
         private object selectedItem = null;

@@ -242,6 +242,10 @@ namespace FirstFloor.ModernUI.App
                 TabItems.Add(tabItem);
                 SelectedTabItem = tabItem;
             }
+            else
+            {
+                SelectedTabItem = tabItem;
+            }
         }
 
         /// <summary>
