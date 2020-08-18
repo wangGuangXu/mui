@@ -89,8 +89,6 @@ namespace FirstFloor.ModernUI.App
             }
         }
 
-
-
         private TabItemCollection tabItems;
         /// <summary>
         /// 内容源
@@ -188,7 +186,7 @@ namespace FirstFloor.ModernUI.App
             Version = "主程序版本：" + Assembly.GetExecutingAssembly().GetName().Version; //Application.ResourceAssembly.GetName().Version;
 
             InputData();
-            TreeNodes = GetChildNodes(0, Nodes);// Nodes是我已经获得的一组节点
+            TreeNodes = GetChildNodes(Guid.Parse("D7AFCF4C-4DE4-4319-9C22-672569B4860F"), Nodes);// Nodes是我已经获得的一组节点
 
             CloseTabCommand = new RelayCommand(o => CloseTab(o), o => CanCloseTab(o));
             SelectedTreeItemChangedCommand = new RelayCommand(o => SelectedTreeItemChanged(o), o => CanSelectedTreeItemChanged(o));
@@ -274,7 +272,7 @@ namespace FirstFloor.ModernUI.App
         /// <param name="parentId"></param>
         /// <param name="nodes"></param>Name
         /// <returns></returns>
-        private List<TreeNode> GetChildNodes(int parentId, List<TreeNode> nodes)
+        private List<TreeNode> GetChildNodes(Guid? parentId, List<TreeNode> nodes)
         {
             List<TreeNode> mainNodes = nodes.Where(x => x.ParentId == parentId).ToList();
             List<TreeNode> otherNodes = nodes.Where(x => x.ParentId != parentId).ToList();
@@ -293,17 +291,17 @@ namespace FirstFloor.ModernUI.App
         {
             Nodes = new List<TreeNode>()
             {
-                new TreeNode(){ParentId=0, Id=1, Name = "百度" },
-                new TreeNode(){ParentId=0, Id=2, Name="数据库管理"},
-                new TreeNode(){ParentId=0,Id=3, Name="Chapter3"},
-                new TreeNode(){ParentId=1, Id=4, Name="百度搜索", Source="https://www.baidu.com/"},
-                new TreeNode(){ParentId=1, Id=5, Name="百度百科", Source="https://baike.baidu.com/"},
-                new TreeNode(){ParentId=2, Id=6, Name="Oracle"},
-                new TreeNode(){ParentId=3, Id=7, Name="Section3.1",Source="/Pages/Home.xaml"},
-                new TreeNode(){ParentId=6, Id=8, Name="oracle 9.2 ",Source="/Content/ControlsStylesDataGrid.xaml"},
-                new TreeNode(){ParentId=6, Id=9, Name="SubSection2.1.2",Source="/Pages/ControlsModern.xaml"},
-                new TreeNode(){ParentId=2, Id=10,Name="SQL Server",Source="/Pages/Settings.xaml"},
-                new TreeNode(){ParentId=3, Id=11, Name="Section3.2",Source="/Pages/LayoutList.xaml"}
+                new TreeNode(){ParentId=Guid.Parse("D7AFCF4C-4DE4-4319-9C22-672569B4860F"), Id=Guid.Parse("809D5CF4-145F-4BAF-B153-092D99490D34"), Name = "百度" },
+                new TreeNode(){ParentId=Guid.Parse("D7AFCF4C-4DE4-4319-9C22-672569B4860F"), Id=Guid.Parse("E5C4A895-82FF-4C48-A077-AD8672A06736"), Name="数据库管理"},
+                new TreeNode(){ParentId=Guid.Parse("D7AFCF4C-4DE4-4319-9C22-672569B4860F"),Id=Guid.Parse("87D7C1B9-F88E-4273-8240-E6CF4978E229"), Name="Chapter3"},
+                new TreeNode(){ParentId=Guid.Parse("809D5CF4-145F-4BAF-B153-092D99490D34"), Id=Guid.Parse("CCF76BC9-C3AA-4CE3-825A-D6D74ED0F7BD"), Name="百度搜索", Source="https://www.baidu.com/"},
+                new TreeNode(){ParentId=Guid.Parse("809D5CF4-145F-4BAF-B153-092D99490D34"), Id=Guid.Parse("3F92EC7A-B11D-47A6-9CFD-1AA0D001BA92"), Name="百度百科", Source="https://baike.baidu.com/"},
+                new TreeNode(){ParentId=Guid.Parse("E5C4A895-82FF-4C48-A077-AD8672A06736"), Id=Guid.Parse("E37F54AD-6A36-470A-BD71-FD28224EB49D"), Name="Oracle"},
+                new TreeNode(){ParentId=Guid.Parse("87D7C1B9-F88E-4273-8240-E6CF4978E229"), Id=Guid.Parse("41E36AE9-0532-40E2-ACFA-30952ED12D8A"), Name="Section3.1",Source="/Pages/Home.xaml"},
+                new TreeNode(){ParentId=Guid.Parse("E37F54AD-6A36-470A-BD71-FD28224EB49D"), Id=Guid.Parse("ECB57599-274B-4157-9BC5-C24DD198E201"), Name="oracle 9.2 ",Source="/Content/ControlsStylesDataGrid.xaml"},
+                new TreeNode(){ParentId=Guid.Parse("E37F54AD-6A36-470A-BD71-FD28224EB49D"), Id=Guid.Parse("E08A82C0-CA0E-46AC-B8CC-506FE4035F98"), Name="SubSection2.1.2",Source="/Pages/ControlsModern.xaml"},
+                new TreeNode(){ParentId=Guid.Parse("E5C4A895-82FF-4C48-A077-AD8672A06736"), Id=Guid.Parse("633CD3BF-C139-4CC8-9F6B-56E61088D473"),Name="SQL Server",Source="/Pages/Settings.xaml"},
+                new TreeNode(){ParentId=Guid.Parse("87D7C1B9-F88E-4273-8240-E6CF4978E229"), Id=Guid.Parse("A325B589-9D4C-4F03-8D9E-07AD0D79B201"), Name="Section3.2",Source="/Pages/LayoutList.xaml"}
             };
         }
 

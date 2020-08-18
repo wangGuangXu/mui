@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -72,7 +73,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
             this.Buttons = new Button[] { this.CloseButton };
 
             // 将默认所有者设置为应用程序主窗口（如果可能） set the default owner to the app main window (if possible)
-            if (Application.Current != null && Application.Current.MainWindow != this) {
+            if (Application.Current != null && Application.Current.MainWindow != this) 
+            {
                 this.Owner = Application.Current.MainWindow;
             }
         }
@@ -175,7 +177,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
             get
             {
                 if (this.closeButton == null) {
-                    this.closeButton = CreateCloseDialogButton(FirstFloor.ModernUI.Resources.Close, true, false, MessageBoxResult.None);
+                    this.closeButton = CreateCloseDialogButton(FirstFloor.ModernUI.Resources.Close, true, false, MessageBoxResult.OK);
                 }
                 return this.closeButton;
             }
@@ -223,7 +225,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
             var dlg = new ModernDialog
             {
                 Title = title,
-                Content = new BBCodeBlock { BBCode = text, Margin = new Thickness(0, 0, 0, 8), FontSize=14 },
+                Content = new BBCodeBlock { BBCode = text, Margin = new Thickness(0, 0, 0, 8), FontSize=12 },
             };
             //var dlg = new ModernDialog
             //{

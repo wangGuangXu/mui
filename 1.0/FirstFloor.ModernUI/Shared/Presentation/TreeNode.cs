@@ -13,7 +13,7 @@ namespace FirstFloor.ModernUI.Presentation
         /// <summary>
         /// ID
         /// </summary>
-        public int Id { get; set; }
+        public Guid? Id { get; set; }
         /// <summary>
         /// 名称
         /// </summary>
@@ -25,7 +25,7 @@ namespace FirstFloor.ModernUI.Presentation
         /// <summary>
         /// 父级的ID
         /// </summary>
-        public int ParentId { get; set; }
+        public Guid? ParentId { get; set; }
         /// <summary>
         /// 
         /// </summary>

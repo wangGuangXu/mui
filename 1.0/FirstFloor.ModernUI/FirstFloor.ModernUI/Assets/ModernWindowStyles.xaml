@@ -459,18 +459,21 @@
                                         
                                         <Border BorderBrush="{DynamicResource Accent}" BorderThickness="1" Margin="4,1,1,1">
                                             <StackPanel  Grid.Column="0">
-                                                <TextBlock Text="菜单" Style="{StaticResource Heading2}" Margin="10,0,0,8"/>
+                                                <Border BorderBrush="{DynamicResource Accent}" BorderThickness="0,0,0,1" >
+                                                    <TextBlock Text="菜单" Style="{StaticResource Heading2}" VerticalAlignment="Center" HorizontalAlignment="Center"   />
+                                                </Border>
+                                                
                                                 <ScrollViewer>
-                                                    <TreeView x:Name="trees"  ItemsSource="{Binding TreeNodes}"   >
+                                                    <TreeView x:Name="trees"  ItemsSource="{Binding TreeNodes,Mode=TwoWay}"   >
                                                         <TreeView.ItemTemplate>
-                                                            <HierarchicalDataTemplate  ItemsSource="{Binding Path=ChildNodes}">
+                                                            <HierarchicalDataTemplate  ItemsSource="{Binding Path=ChildNodes,Mode=TwoWay}">
                                                                 <TextBlock Text="{Binding Name}"/>
                                                             </HierarchicalDataTemplate>
                                                         </TreeView.ItemTemplate>
                                                         <i:Interaction.Triggers>
                                                             <i:EventTrigger EventName="SelectedItemChanged">
                                                                 <i:InvokeCommandAction Command="{Binding Path=SelectedTreeItemChangedCommand}" 
-                                                                                        CommandParameter="{Binding ElementName=trees, Path=SelectedItem}"/>
+                                                                                       CommandParameter="{Binding ElementName=trees, Path=SelectedItem}"/>
                                                             </i:EventTrigger>
                                                         </i:Interaction.Triggers>
                                                     </TreeView>
@@ -481,7 +484,7 @@
                                         <Border Grid.Column="1" Grid.RowSpan="2" Margin="4,0,0,0" BorderBrush="{DynamicResource Accent}"  BorderThickness="1,1,1,1"  Background="Transparent"  >
                                             <TabControl x:Name="tabControlMenu" Grid.Column="1"  BorderBrush="{DynamicResource Accent}"  Background="Transparent" 
                                                     BorderThickness="0,1,0,0"   
-                                                    ItemsSource="{Binding TabItems}"  
+                                                    ItemsSource="{Binding TabItems,Mode=TwoWay}"  
                                                     SelectedItem="{Binding SelectedTabItem,Mode=TwoWay}">
 
                                                 <TabControl.ItemTemplate>

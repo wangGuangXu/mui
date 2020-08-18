@@ -38,22 +38,24 @@ namespace FirstFloor.ModernUI.App
         #region 异常处理
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            ModernDialog.ShowMessage(string.Format("发生App_DispatcherUnhandledException异常，错误信息：{0}", e.Exception.ToString()), "提示", MessageBoxButton.OK);
+            e.Handled = true;
+            ModernDialog.ShowMessage(string.Format("发生应用程序调度程序未处理的异常，错误信息：{0}", e.Exception.ToString()), "提示", MessageBoxButton.OK);
         }
 
         private void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            ModernDialog.ShowMessage(string.Format("发生Current_DispatcherUnhandledException异常，错误信息：{0}", e.Exception.ToString()), "提示", MessageBoxButton.OK);
+            e.Handled = true;
+            ModernDialog.ShowMessage(string.Format("发生当前调度程序未处理的异常，错误信息：{0}", e.Exception.ToString()), "提示", MessageBoxButton.OK);
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            ModernDialog.ShowMessage(string.Format("发生CurrentDomain_UnhandledException异常，错误信息：{0}", e.ExceptionObject.ToString()), "提示", MessageBoxButton.OK);
+            ModernDialog.ShowMessage(string.Format("发生当前域未处理的异常，错误信息：{0}", e.ExceptionObject.ToString()), "提示", MessageBoxButton.OK);
         }
 
         private void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
         {
-            ModernDialog.ShowMessage(string.Format("发生TaskScheduler_UnobservedTaskException异常，错误信息：{0}", e.Exception.ToString()), "提示", MessageBoxButton.OK);
+            ModernDialog.ShowMessage(string.Format("发生任务计划程序未观察到的任务异常，错误信息：{0}", e.Exception.ToString()), "提示", MessageBoxButton.OK);
         }
         #endregion
 
