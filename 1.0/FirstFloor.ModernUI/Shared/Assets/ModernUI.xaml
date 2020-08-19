@@ -61,7 +61,10 @@
     <!--右上角系统按钮 System Button-->
     <sys:Double x:Key="SystemButtonHeight">32</sys:Double>
     <sys:Double x:Key="SystemButtonWidth">32</sys:Double>
-        
+    <!--按钮默认宽高-->
+    <sys:Double x:Key="ButtonWidth">66</sys:Double>
+    <sys:Double x:Key="ButtonHeight">28</sys:Double>
+
     <Style x:Key="ContentRoot" TargetType="FrameworkElement">
         <Setter Property="Margin" Value="{StaticResource ContentMargin}" />
     </Style>

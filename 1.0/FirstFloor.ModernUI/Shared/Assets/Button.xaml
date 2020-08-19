@@ -82,6 +82,25 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
+    <!--选项卡关闭按钮样式-->
+    <Style x:Key="TabItemCloseButton" TargetType="ButtonBase" BasedOn="{StaticResource SystemButton}">
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Background" Value="{DynamicResource CloseButtonBackground}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource CloseButtonBackgroundOnMoseOver}" />
+                <Setter Property="Foreground" Value="{DynamicResource CloseButtonForegroundOnMoseOver}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource CloseButtonBackgroundIsPressed}" />
+                <Setter Property="Foreground" Value="{DynamicResource CloseButtonForegroundIsPressed}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="{DynamicResource ButtonTextDisabled}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 
     <!--右上角链接按钮样式-->
     <Style x:Key="SystemButtonLink" TargetType="ButtonBase" BasedOn="{StaticResource SystemButtonBase}" >
@@ -265,6 +284,8 @@
         <Setter Property="Foreground"  Value="{DynamicResource ButtonText}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment"   Value="Center"/>
+        <Setter Property="MinWidth" Value="{DynamicResource ButtonWidth}" />
+        <Setter Property="MinHeight" Value="{DynamicResource ButtonHeight}" />
         <Setter Property="Padding" Value="16,3,16,5"/>
         <Setter Property="Template">
             <Setter.Value>
