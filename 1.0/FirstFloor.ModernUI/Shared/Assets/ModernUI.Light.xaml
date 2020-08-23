@@ -63,17 +63,32 @@
     <SolidColorBrush x:Key="MenuTextHover" Color="#bb000000" />
     <SolidColorBrush x:Key="MenuTextSelected" Color="#333333" />
     <!--现代按钮-->
-    <SolidColorBrush x:Key="ModernButtonBorder" Color="#919191" />
+    <!--<SolidColorBrush x:Key="ModernButtonBorder" Color="#919191" />
     <SolidColorBrush x:Key="ModernButtonBorderHover" Color="#333333" />
     <SolidColorBrush x:Key="ModernButtonBorderPressed" Color="#333333" />
-    <SolidColorBrush x:Key="ModernButtonBorderDisabled" Color="#919191" />
+    <SolidColorBrush x:Key="ModernButtonBorderDisabled" Color="#919191" />-->
     <SolidColorBrush x:Key="ModernButtonIconBackgroundPressed" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="ModernButtonIconForegroundPressed" Color="#ffffff" />
     <SolidColorBrush x:Key="ModernButtonText" Color="#333333" />
     <SolidColorBrush x:Key="ModernButtonTextHover" Color="#333333" />
     <SolidColorBrush x:Key="ModernButtonTextPressed" Color="#333333" />
     <SolidColorBrush x:Key="ModernButtonTextDisabled" Color="#a1a1a1" />
+    
+    <!--ModernButton 另一种样式开始-->
+    <SolidColorBrush x:Key="TextForeground" Color="White"/>
+    <SolidColorBrush x:Key="ModernButtonBorder" Color="#cccccc" />
+    <SolidColorBrush x:Key="ModernButtonBorderHover" Color="#cccccc" />
+    <SolidColorBrush x:Key="ModernButtonBorderPressed" Color="{DynamicResource AccentColor}" />
+    <SolidColorBrush x:Key="ModernButtonBorderDisabled" Color="#919191" />
+    <SolidColorBrush x:Key="ModernButtonBackground" Color="White"/>
+    <SolidColorBrush x:Key="ModernButtonForeground" Color="#333333"/>
+    <SolidColorBrush x:Key="ModernButtonMouseOverBackground" Color="#dddddd"/>
+    <SolidColorBrush x:Key="ModernButtonMouseOverForeground" Color="#333333"/>
+    <SolidColorBrush x:Key="ModernButtonPressedBackground" Color="{DynamicResource AccentColor}"/>
+    <SolidColorBrush x:Key="ModernButtonPressedForeground" Color="White"/>
+    <SolidColorBrush x:Key="ModernButtonLinkForeground" Color="#333333"/>
 
+    <!--弹出层样式-->
     <SolidColorBrush x:Key="PopupBackground" Color="#ffffff" />
     <!--进度条-->
     <SolidColorBrush x:Key="ProgressBackground" Color="#dddddd" />
@@ -143,32 +158,5 @@
   
     <!--窗口背景内容-->
     <Rectangle x:Key="WindowBackgroundContent" x:Shared="false" Height="36" Fill="{StaticResource WindowHeaderGradient}" VerticalAlignment="Top"/>
-  
-    <!--FButton 开始-->
-    <!--<SolidColorBrush x:Key="TextForeground" Color="White"></SolidColorBrush>
-    <SolidColorBrush x:Key="ButtonBackground" Color="#1D4A9A"></SolidColorBrush>
-    <SolidColorBrush x:Key="ButtonForeground" Color="White"></SolidColorBrush>
-    <SolidColorBrush x:Key="ButtonMouseOverBackground" Color="Orange"></SolidColorBrush>
-    <SolidColorBrush x:Key="ButtonMouseOverForeground" Color="White"></SolidColorBrush>
-    <SolidColorBrush x:Key="ButtonPressedBackground" Color="DarkOrange"></SolidColorBrush>
-    <SolidColorBrush x:Key="ButtonPressedForeground" Color="White"></SolidColorBrush>
-    <SolidColorBrush x:Key="MouseOverForeground" Color="Orange"></SolidColorBrush>
-    <SolidColorBrush x:Key="PressedForeground" Color="DarkOrange"></SolidColorBrush>
-    <SolidColorBrush x:Key="LinkForeground" Color="#0816BB"></SolidColorBrush>
-    <SolidColorBrush x:Key="WindowBackground" Color="#007ACB"></SolidColorBrush>-->
-
-    <!--水印文本框开始-->
-    <!--水印文本框透明度--><!--
-    <sys:Double x:Key="WatermarkOpacity">0.4</sys:Double>
-    --><!--TextBox默认Label颜色--><!--
-    <SolidColorBrush x:Key="TextLabelBackground" Color="{DynamicResource AccentColor}"></SolidColorBrush>
-    --><!--输入框--><!--
-    <SolidColorBrush x:Key="ControlBorderBrush" Color="#999C9F"></SolidColorBrush>
-    <SolidColorBrush x:Key="MouseOverBorderBrush" Color="#F6D1D1"></SolidColorBrush>
-    <SolidColorBrush x:Key="FocusBorderBrush" Color="{DynamicResource AccentColor}"></SolidColorBrush>
-    --><!--输入组件-->
-    <!--<SolidColorBrush x:Key="TextForeground" Color="Black"></SolidColorBrush>
-    <SolidColorBrush x:Key="TextBackground" Color="#0D234B"></SolidColorBrush>
-    <SolidColorBrush x:Key="TextSelectionBrush" Color="#8F8787"></SolidColorBrush>-->
     
 </ResourceDictionary>

@@ -49,8 +49,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Assets\Icon.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ModernIcon.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Assets\Label.xaml">
       <SubType>Designer</SubType>

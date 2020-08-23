@@ -10,6 +10,8 @@
                 <ResourceDictionary Source="/Assets/MetroChart.xaml"/>
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.xaml" />
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.Light.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernIcon.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

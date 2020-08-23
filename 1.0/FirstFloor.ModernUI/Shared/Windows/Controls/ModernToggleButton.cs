@@ -46,7 +46,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets or sets the ellipse diameter.
+        /// 获取或设置椭圆直径 Gets or sets the ellipse diameter.
         /// </summary>
         public double EllipseDiameter
         {
@@ -55,7 +55,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets or sets the ellipse stroke thickness.
+        /// 获取或设置椭圆笔划厚度 Gets or sets the ellipse stroke thickness.
         /// </summary>
         public double EllipseStrokeThickness
         {

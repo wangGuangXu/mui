@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace FirstFloor.ModernUI.Presentation
 {
     /// <summary>
+    /// 表示一组命名的链接
     /// Represents a named group of links.
     /// </summary>
     public class LinkGroup : Displayable

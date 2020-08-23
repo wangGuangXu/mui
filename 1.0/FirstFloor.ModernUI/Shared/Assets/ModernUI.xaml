@@ -28,9 +28,9 @@
         <ResourceDictionary Source="TextBox.xaml" />
         <ResourceDictionary Source="ToolTip.xaml" />
         <ResourceDictionary Source="TreeView.xaml" />
+        <ResourceDictionary  Source="/FirstFloor.ModernUI;component/Themes/ModernIcon.xaml"/>
         <ResourceDictionary  Source="/FirstFloor.ModernUI;component/Themes/FButton.xaml"/>
         <ResourceDictionary  Source="TabControl.xaml"/>
-        <!--<ResourceDictionary  Source="Icon.xaml"/>-->
     </ResourceDictionary.MergedDictionaries>
 
     <!-- 默认的强调色和笔刷 default accent colors and brushes -->

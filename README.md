@@ -71,3 +71,10 @@ Check out the **MUI 演示 app** 包括在 [MUI release](https://github.com/firs
 
 ##    Binding用法：
  *     1. {Binding和Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext} 等价
+## 1.样式引用地址：https://www.cnblogs.com/beimeng/p/7843427.html
+* 1.如果将 x:Key 值显式设置为 {x:Type TextBlock} 之外的任何值，如设置为 x:key="cc"，Style 就不会自动应用于所有 TextBlock 元素。此时，必须通过使用 x:Key 值，将样式显式应用于 TextBlock 元素
+* 2.样式位于资源部分，并且未设置样式的 TargetType 属性，则必须提供 x:Key。
+* 3.将 TargetType 属性设置为 TextBlock 而不为样式分配 x:Key，样式就会应用于所有 TextBlock 元素。这种情况下，x:Key 隐式设置为 {x:Type TextBlock}。　
+<Style x:Key="{x:Type TextBlock}" TargetType="TextBlock">
+   <Setter Property="FontSize" Value="28"/>
+</Style>

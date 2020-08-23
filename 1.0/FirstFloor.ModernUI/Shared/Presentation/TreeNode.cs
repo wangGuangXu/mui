@@ -13,7 +13,7 @@ namespace FirstFloor.ModernUI.Presentation
         /// <summary>
         /// ID
         /// </summary>
-        public Guid? Id { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
         /// 名称
         /// </summary>

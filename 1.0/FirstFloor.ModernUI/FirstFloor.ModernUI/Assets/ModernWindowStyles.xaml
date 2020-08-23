@@ -148,7 +148,7 @@
     </Style>
 
     <!-- 编辑窗口样式，没有后退按钮，菜单和标题链接 empty window style, no backbutton, menu and title links -->
-    <Style x:Key="EditWindow" TargetType="controls:ModernWindow" BasedOn="{StaticResource {x:Type controls:ModernWindow}}" >
+    <Style x:Key="EditWindow" TargetType="controls:ModernWindow" BasedOn="{StaticResource {x:Type controls:ModernWindow}}"  >
         <Setter Property="Padding" Value="0" />
         <Setter Property="IsTitleVisible" Value="True" />
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
@@ -208,14 +208,14 @@
                                         </StackPanel>
                                     </Grid>
 
-                                    <!-- 右下角调整控制 resize grip -->
+                                    <!-- 右下角调整控制 resize grip --><!--
                                     <Grid Grid.Row="2" x:Name="ResizeGrip" Background="Transparent" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Bottom" WindowChrome.ResizeGripDirection="BottomRight">
                                         <Path Width="12" Height="12" Margin="1" 
                                               Stroke="{DynamicResource WindowText}"
                                               StrokeThickness="1"
                                               Stretch="None"
                                               Data="F1 M1,10 L3,10 M5,10 L7,10 M9,10 L11,10 M2,9 L2,11 M6,9 L6,11 M10,9 L10,11 M5,6 L7,6 M9,6 L11,6 M6,5 L6,7 M10,5 L10,7 M9,2 L11,2 M10,1 L10,3" />
-                                    </Grid>
+                                    </Grid>-->
                                 </Grid>
                             </AdornerDecorator>
                         </Border>
@@ -225,13 +225,13 @@
                         <Trigger Property="IsActive" Value="True">
                             <Setter Property="BorderBrush" Value="{DynamicResource WindowBorderActive}" />
                         </Trigger>
-                        <MultiTrigger>
+                        <!--<MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="ResizeMode" Value="CanResizeWithGrip" />
                                 <Condition Property="WindowState" Value="Normal" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="ResizeGrip" Property="Visibility" Value="Visible" />
-                        </MultiTrigger>
+                        </MultiTrigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -539,23 +539,19 @@
                                                     <TextBlock x:Name="txtUser" Text="{Binding  StatusUser,Mode=TwoWay}" />
                                                 </StatusBarItem>
                                                 <Separator Grid.Column="1"  />
-                                                <!--<Line Grid.Column="1" X1=".5" Y1="3" X2=".5" Y2="12" Margin="0,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />-->
-
+                                                <!--<Line x:Name="Separator" Grid.Column="1" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" Stroke="{DynamicResource SeparatorBackground}" />-->
+                                                
                                                 <StatusBarItem Grid.Column="2">
                                                     <TextBlock x:Name="txtNetWork" Text="{Binding StatusNetWork,Mode=TwoWay}" />
                                                 </StatusBarItem>
                                                 <Separator Grid.Column="3"/>
-                                                <!--<Line  Grid.Column="3" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />-->
                                                 
                                                 <StatusBarItem Grid.Column="4">
-                                                    <!--c:\path\of\current\file.txt-->
                                                     <TextBlock Text="{Binding CurrentTime,Mode=TwoWay}" />
                                                 </StatusBarItem>
                                                 <Separator Grid.Column="5"   />
-                                                <!--<Line  Grid.Column="5"  Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Red" />-->
 
                                                 <StatusBarItem Grid.Column="6" >
-                                                    <!--<ProgressBar Value="50" Width="90" Height="16" />-->
                                                     <TextBlock Text="{Binding Version}" />
                                                 </StatusBarItem>
                                             </StatusBar>
