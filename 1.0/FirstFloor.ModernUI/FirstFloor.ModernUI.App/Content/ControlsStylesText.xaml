@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xly="clr-namespace:FirstFloor.ModernUI.Windows.Controls;assembly=FirstFloor.ModernUI"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"  
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
@@ -42,6 +42,7 @@
                     <TextBox Width="150" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入爱好" IsEnabled="False"
                          Style="{StaticResource LabelClearButtonTextBox}" xly:ControlAttachProperty.Label="爱好：">IsEnabled="False"</TextBox>
                 </StackPanel>
+                
                 <TextBlock Text="文件选择" Style="{StaticResource Heading2}" Margin="0,4,0,8"/>
                 <StackPanel Orientation="Vertical" >
                     <TextBox Width="300" Height="30" Margin="3" Style="{StaticResource LabelOpenFileTextBox}"/>
@@ -49,6 +50,38 @@
                     <TextBox Width="300" Height="30" Margin="3" Style="{StaticResource LabelSaveFileTextBox}"/>
                     <TextBox Width="300" Height="30" Margin="3" Style="{StaticResource LabelQuoteFileTextBox}"/>
                 </StackPanel>
+                
+                <TextBlock Text="自定义文本框字体图标" Style="{StaticResource Heading2}" Margin="0,4,0,8"/>
+                <StackPanel  Orientation="Horizontal">
+                    <TextBox  Width="250" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="查询关键词" 
+                              Style="{DynamicResource DefaultTextBox}" IsEnabled="True" Foreground="Black" >
+                        <xly:ControlAttachProperty.AttachContent>
+                            <ControlTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <xly:ModernButton IconCode="&#xe76d;"  Style="{DynamicResource ModernButtonTransparency}"  IsTabStop="False" IconMargin="0"
+                                            IconSize="22" Margin="1,1,2,3" Foreground="{StaticResource TextForeground}" Cursor="Arrow"/>
+                                    <xly:ModernButton IconCode="&#xeb9c;"  Style="{DynamicResource ModernButtonTransparency}" IsTabStop="False" IconMargin="0"
+                                            IconSize="22" Foreground="{DynamicResource TextForeground}" Cursor="Arrow"/>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </xly:ControlAttachProperty.AttachContent>
+                    </TextBox>
+
+                    <TextBox Width="250" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="查询关键词" 
+                             Style="{DynamicResource DefaultTextBox}" IsEnabled="False" Text="" >
+                        <xly:ControlAttachProperty.AttachContent>
+                            <ControlTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <xly:ModernButton IconCode="&#xe76d;"  Style="{StaticResource ModernButtonTransparency}" IsTabStop="False" IconMargin="0"
+                                            IconSize="22" Margin="1,1,2,3" Foreground="{StaticResource TextForeground}"  Cursor="Arrow"/>
+                                    <xly:ModernButton IconCode="&#xeb9c;"  Style="{StaticResource ModernButtonTransparency}" IsTabStop="False"  IconMargin="0"
+                                            IconSize="22" Foreground="{StaticResource TextForeground}" Cursor="Arrow"/>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </xly:ControlAttachProperty.AttachContent>
+                    </TextBox>
+                </StackPanel>
+
             </StackPanel>
         </ScrollViewer>
     </Grid>
