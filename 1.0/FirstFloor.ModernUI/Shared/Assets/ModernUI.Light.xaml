@@ -49,7 +49,7 @@
     <SolidColorBrush x:Key="InputFocusBorderBrush" Color="#EBCECE"/>
     <SolidColorBrush x:Key="InputMouseOverBorderBrush" Color="#F6D1D1"/>
     <!--TextBox默认Label颜色-->
-    <SolidColorBrush x:Key="InputLabelBackground" Color="#508AB6"/>
+    <SolidColorBrush x:Key="InputLabelBackground" Color="#cccccc"/>
     <sys:Double x:Key="DisableOpacity">0.5</sys:Double>
     <sys:Double x:Key="ReadonlyOpacity">0.88</sys:Double>
     <sys:Double x:Key="WatermarkOpacity">0.4</sys:Double>
@@ -94,6 +94,7 @@
     <SolidColorBrush x:Key="ModernButtonPressedBackground" Color="{DynamicResource AccentColor}"/>
     <SolidColorBrush x:Key="ModernButtonPressedForeground" Color="White"/>
     <SolidColorBrush x:Key="ModernButtonLinkForeground" Color="#333333"/>
+    <SolidColorBrush x:Key="ModernButtonLinkPressedForeground" Color="{DynamicResource AccentColor}" />
     <!--主要-->
     <LinearGradientBrush o:Freeze="True" x:Key="ModernButtonPrimaryBrush" EndPoint="1,0" StartPoint="0,0">
         <GradientStop o:Freeze="True" Color="{DynamicResource PrimaryColor}" Offset="0"/>

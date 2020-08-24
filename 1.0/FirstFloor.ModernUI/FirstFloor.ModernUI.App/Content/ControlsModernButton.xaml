@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="600">
     <Grid>
         <ScrollViewer>
             <StackPanel HorizontalAlignment="Left">
@@ -14,7 +14,7 @@
                 </StackPanel.Resources>
 
                 <TextBlock Text="现代按钮" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <mui:ModernButton IconCode="&#xe7f1;"  Margin="0,0,8,0" Content="标准按钮" Style="{DynamicResource DefaultModernButtonStyle}" />
                     <mui:ModernButton IconCode="&#xe637;"  Margin="0,0,8,0" Content="主要" Style="{DynamicResource ModernButtonPrimary}" />
                     <mui:ModernButton IconCode="&#xe660;"  Margin="0,0,8,0" Content="成功" Style="{DynamicResource ModernButtonSuccess}" />
@@ -23,18 +23,21 @@
                     <mui:ModernButton IconCode="&#xe62c;"  Margin="0,0,8,0" Content="危险" Style="{DynamicResource ModernButtonDanger}" />
                     <mui:ModernButton IconCode="&#xe602;"  Margin="0,0,8,0" IconAllowsAnimation="True" Content="图标带动画" Style="{DynamicResource ModernButtonPrimary}" />
                     <mui:ModernButton IconCode="&#xe66d;"  Margin="0,0,8,0" CornerRadius="4" Content="圆角按钮" Style="{DynamicResource ModernButtonPrimary}" />
+                    
                     <mui:ModernButton IconCode="&#xe621;"  Margin="0,0,8,0" Foreground="Black" Content="透明按钮" Style="{DynamicResource ModernButtonTransparency}" />
                     <mui:ModernButton IconCode="&#xe620;"  Margin="0,0,8,0" Content="图标超链接按钮" Style="{DynamicResource ModernButtonLinkButton}" />
                     <mui:ModernButton Margin="0,0,8,0"  Content="超链接按钮" Style="{DynamicResource ModernButtonLinkButton}" />
                     <mui:ModernButton IconCode="&#xe69a;"  Margin="0,0,8,0" CornerRadius="4" Style="{DynamicResource ModernButtonLinkButton}" />
                 </StackPanel>
                 
-                <mui:BBCodeBlock BBCode="Icons courtesy of [url=http://modernuiicons.com/]Modern UI Icons[/url]" Margin="0,0,0,16" />
-                <mui:ModernButton Content="现代按钮" IconData="{StaticResource HomeIconData}" Margin="0,0,0,8"    />
-                <mui:ModernToggleButton Content="现代切换按钮" IconData="{StaticResource HomeIconData}" Margin="0,0,0,8" IsChecked="true" />
-                <mui:ModernButton Content="禁用现代按钮"  IconData="F1 M 24,13C 27.1521,13 29.9945,14.3258 32,16.4501L 32,11L 35,14L 35,22L 27,22L 24,19L 29.5903,19C 28.217,17.4656 26.2212,16.5 24,16.5C 20.1969,16.5 17.055,19.3306 16.5661,23L 13.0448,23C 13.5501,17.3935 18.262,13 24,13 Z M 24,31.5C 27.8031,31.5 30.945,28.6694 31.4339,25L 34.9552,25C 34.4499,30.6065 29.738,35 24,35C 20.8479,35 18.0055,33.6742 16,31.5499L 16,37L 13,34L 13,26L 21,26L 24,29L 18.4097,29C 19.783,30.5344 21.7787,31.5 24,31.5 Z" IsEnabled="False" Margin="0,0,0,16" />
-
-                <WrapPanel x:Name="ButtonPanel" Margin="0,0,0,32" />
+                <TextBlock Text="可变大小" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+                <StackPanel Orientation="Horizontal"  Margin="0,0,0,10" >
+                    <mui:BBCodeBlock BBCode="[url=http://modernuiicons.com/]图标由现代图标提供 Modern UI Icons[/url]" Margin="0,0,0,0" VerticalAlignment="Center"/>
+                    <mui:ModernButton Content="现代按钮" IconData="{StaticResource HomeIconData}" Margin="10,0,0,0"  VerticalAlignment="Center"  />
+                    <mui:ModernToggleButton Content="现代切换按钮" IconData="{StaticResource HomeIconData}" Margin="10,0,0,0" IsChecked="true" VerticalAlignment="Center" />
+                    <mui:ModernButton Content="禁用现代按钮" VerticalAlignment="Center" IsEnabled="False" Margin="10,0,0,0" IconData="F1 M 24,13C 27.1521,13 29.9945,14.3258 32,16.4501L 32,11L 35,14L 35,22L 27,22L 24,19L 29.5903,19C 28.217,17.4656 26.2212,16.5 24,16.5C 20.1969,16.5 17.055,19.3306 16.5661,23L 13.0448,23C 13.5501,17.3935 18.262,13 24,13 Z M 24,31.5C 27.8031,31.5 30.945,28.6694 31.4339,25L 34.9552,25C 34.4499,30.6065 29.738,35 24,35C 20.8479,35 18.0055,33.6742 16,31.5499L 16,37L 13,34L 13,26L 21,26L 24,29L 18.4097,29C 19.783,30.5344 21.7787,31.5 24,31.5 Z"  />
+                </StackPanel>
+                <WrapPanel x:Name="ButtonPanel" Margin="0,0,0,10" />
 
                 <TextBlock Text="可变大小" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" >

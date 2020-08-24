@@ -38,7 +38,7 @@
         <ControlTemplate.Triggers>
             <!--设置鼠标进入时的背景、前景样式-->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MouseOverBackground}" TargetName="border" />
+                <!--<Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MouseOverBackground}" TargetName="border" />-->
                 <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MouseOverForeground}" TargetName="icon"/>
                 <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MouseOverForeground}" TargetName="txt"/>
             </Trigger>
@@ -67,7 +67,8 @@
 
             <!--鼠标按下时的前景、背景样式-->
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PressedBackground}" TargetName="border" />
+                <!--<Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PressedBackground}" TargetName="border" />-->
+                <Setter Property="Opacity" Value="0.5" TargetName="border" />
                 <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PressedForeground}" TargetName="icon"/>
                 <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PressedForeground}" TargetName="txt"/>
             </Trigger>
@@ -108,7 +109,7 @@
         <Setter Property="PressedBackground" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource ModernButtonTextForeground}" />
         <Setter Property="MouseOverForeground" Value="{DynamicResource ModernButtonMouseOverForeground}" />
-        <Setter Property="PressedForeground" Value="{DynamicResource ModernButtonPressedForeground}" />
+        <Setter Property="PressedForeground" Value="{DynamicResource Accent}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Height" Value="Auto" />
         <Setter Property="Width" Value="Auto" />
@@ -130,7 +131,7 @@
         <Setter Property="PressedBackground" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource ModernButtonLinkForeground}" />
         <Setter Property="MouseOverForeground" Value="{DynamicResource ModernButtonMouseOverForeground}" />
-        <Setter Property="PressedForeground" Value="{DynamicResource ModernButtonPressedForeground}" />
+        <Setter Property="PressedForeground" Value="{DynamicResource ModernButtonLinkPressedForeground}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Height" Value="Auto" />
         <Setter Property="Width" Value="Auto" />

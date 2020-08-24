@@ -5,61 +5,68 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xly="clr-namespace:FirstFloor.ModernUI.Windows.Controls;assembly=FirstFloor.ModernUI"
              mc:Ignorable="d"  
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="500" d:DesignWidth="800">
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel HorizontalAlignment="Left">
                 <TextBlock Text="文本造型" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
-
-                <TextBlock Text="标题1" Style="{StaticResource Heading1}" Margin="0,0,0,8" />
-                <TextBlock Text="标题2" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
-                <TextBlock Text="标题" Style="{StaticResource Title}" Margin="0,0,0,8"/>
-                <TextBlock Text="正常的" Margin="0,0,0,8"/>
-                <TextBlock Text="小的" Style="{StaticResource Small}" Margin="0,0,0,8"/>
-                <TextBlock Text="强调" Style="{StaticResource Emphasis}" Margin="0,0,0,8"/>
-                <TextBlock Text="固定的" Style="{StaticResource Fixed}" Margin="0,0,0,32"/>
-
-                <TextBlock Text="文本和密码框" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
-                <TextBox Text="文本框" Margin="0,0,0,8"/>
-                <TextBox Text="只读文本框" IsReadOnly="True" Margin="0,0,0,8"/>
-                <TextBox Text="禁用的文本框" IsEnabled="False" Margin="0,0,0,8"/>
-                <PasswordBox Password="12345" Margin="0,0,0,32"/>
-
-                <TextBlock Text="标签" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
-                <Label Content="标签" Margin="0,0,0,8"/>
-                <Label Content="禁用标签" IsEnabled="False" />
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20" VerticalAlignment="Center">
+                    <TextBlock Text="标题1" Style="{StaticResource Heading1}" Margin="0,0,0,0" />
+                    <TextBlock Text="标题2" Style="{StaticResource Heading2}" Margin="20,0,0,0" VerticalAlignment="Bottom"/>
+                    <TextBlock Text="标题" Style="{StaticResource Title}" Margin="20,0,0,0" VerticalAlignment="Bottom"/>
+                    <TextBlock Text="正常的" Margin="20,0,0,0" VerticalAlignment="Bottom"/>
+                    <TextBlock Text="小的" Style="{StaticResource Small}" Margin="20,0,0,0" VerticalAlignment="Bottom"/>
+                    <TextBlock Text="强调" Style="{StaticResource Emphasis}" Margin="20,0,0,0" VerticalAlignment="Bottom"/>
+                    <TextBlock Text="固定的" Style="{StaticResource Fixed}" Margin="20,0,0,0" VerticalAlignment="Bottom"/>
+                </StackPanel>
                 
-                <TextBlock Text="带水印的文本框" Style="{StaticResource Heading2}" Margin="0,4,0,8"/>
+                <TextBlock Text="文本和密码框" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,22">
+                    <TextBox Width="200" Text="文本框" Margin="0,0,0,0"/>
+                    <TextBox Width="200" Text="只读文本框" IsReadOnly="True" Margin="10,0,0,0"/>
+                    <TextBox Width="200" Text="禁用的文本框" IsEnabled="False" Margin="10,0,0,0"/>
+                    <PasswordBox Width="200" Password="12345" Margin="10,0,0,0" Height="28"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="标签" Style="{StaticResource Heading2}" Margin="0,0,0,0"/>
+                    <Label Content="标签" Margin="10,0,10,0"/>
+                    <Label Content="禁用标签" IsEnabled="False" />
+                </StackPanel>
+                
+                <TextBlock Text="带水印的文本框" Style="{StaticResource Heading2}" Margin="0,14,0,8"/>
                 <StackPanel  Orientation="Horizontal">
-                    <TextBox Width="150" Height="30" Margin="3" xly:ControlAttachProperty.IconCode="&#xe637;"  xly:ControlAttachProperty.Watermark="请选择图标" 
-                         Style="{StaticResource ClearButtonTextBox}" xly:ControlAttachProperty.Label="图标："/>
-                    <TextBox Width="150" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入姓名" 
+                    <TextBox Width="200" Margin="3" xly:ControlAttachProperty.IconCode="&#xe637;"  xly:ControlAttachProperty.Watermark="请选择图标" 
+                         Style="{StaticResource ClearButtonTextBox}" />
+
+                    <TextBox Width="200" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入姓名" 
                          Style="{StaticResource LabelTextBox}" xly:ControlAttachProperty.Label="姓名："/>
-                    <TextBox Width="150" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入爱好" 
+
+                    <TextBox Width="200" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入爱好" 
                          Style="{StaticResource LabelClearButtonTextBox}" xly:ControlAttachProperty.Label="爱好："/>
-                    <TextBox Width="150" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入爱好" IsReadOnly="True"
+                    <TextBox Width="200" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入爱好" IsReadOnly="True"
                          Style="{StaticResource LabelClearButtonTextBox}" xly:ControlAttachProperty.Label="爱好：">IsReadOnly="True"</TextBox>
-                    <TextBox Width="150" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入爱好" IsEnabled="False"
+                    <TextBox Width="200" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入爱好" IsEnabled="False"
                          Style="{StaticResource LabelClearButtonTextBox}" xly:ControlAttachProperty.Label="爱好：">IsEnabled="False"</TextBox>
                 </StackPanel>
                 
-                <TextBlock Text="文件选择" Style="{StaticResource Heading2}" Margin="0,4,0,8"/>
-                <StackPanel Orientation="Vertical" >
-                    <TextBox Width="300" Height="30" Margin="3" Style="{StaticResource LabelOpenFileTextBox}"/>
-                    <TextBox Width="300" Height="30" Margin="3" Style="{StaticResource LabelOpenFolderTextBox}"/>
-                    <TextBox Width="300" Height="30" Margin="3" Style="{StaticResource LabelSaveFileTextBox}"/>
-                    <TextBox Width="300" Height="30" Margin="3" Style="{StaticResource LabelQuoteFileTextBox}"/>
+                <TextBlock Text="文件选择" Style="{StaticResource Heading2}" Margin="0,14,0,8"/>
+                <StackPanel Orientation="Horizontal" >
+                    <TextBox Width="260" Height="30" Margin="3" Style="{StaticResource LabelOpenFileTextBox}"/>
+                    <TextBox Width="260" Height="30" Margin="3" Style="{StaticResource LabelOpenFolderTextBox}"/>
+                    <TextBox Width="260" Height="30" Margin="3" Style="{StaticResource LabelSaveFileTextBox}"/>
+                    <TextBox Width="260" Height="30" Margin="3" Style="{StaticResource LabelQuoteFileTextBox}"/>
                 </StackPanel>
                 
-                <TextBlock Text="自定义文本框字体图标" Style="{StaticResource Heading2}" Margin="0,4,0,8"/>
-                <StackPanel  Orientation="Horizontal">
+                <TextBlock Text="自定义文本框字体图标" Style="{StaticResource Heading2}" Margin="0,14,0,8"/>
+                <StackPanel  Orientation="Horizontal" Margin="0,0,0,28">
                     <TextBox  Width="250" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="查询关键词" 
-                              Style="{DynamicResource DefaultTextBox}" IsEnabled="True" Foreground="Black" >
+                              Style="{DynamicResource DefaultTextBox}" IsEnabled="True"  >
                         <xly:ControlAttachProperty.AttachContent>
                             <ControlTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <xly:ModernButton IconCode="&#xe76d;"  Style="{DynamicResource ModernButtonTransparency}"  IsTabStop="False" IconMargin="0"
-                                            IconSize="22" Margin="1,1,2,3" Foreground="{StaticResource TextForeground}" Cursor="Arrow"/>
+                                            IconSize="22" Margin="1,1,1,1" Foreground="{StaticResource TextForeground}" Cursor="Arrow"/>
                                     <xly:ModernButton IconCode="&#xeb9c;"  Style="{DynamicResource ModernButtonTransparency}" IsTabStop="False" IconMargin="0"
                                             IconSize="22" Foreground="{DynamicResource TextForeground}" Cursor="Arrow"/>
                                 </StackPanel>
@@ -73,7 +80,7 @@
                             <ControlTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <xly:ModernButton IconCode="&#xe76d;"  Style="{StaticResource ModernButtonTransparency}" IsTabStop="False" IconMargin="0"
-                                            IconSize="22" Margin="1,1,2,3" Foreground="{StaticResource TextForeground}"  Cursor="Arrow"/>
+                                            IconSize="22" Margin="1,1,0,1" Foreground="{StaticResource TextForeground}"  Cursor="Arrow"/>
                                     <xly:ModernButton IconCode="&#xeb9c;"  Style="{StaticResource ModernButtonTransparency}" IsTabStop="False"  IconMargin="0"
                                             IconSize="22" Foreground="{StaticResource TextForeground}" Cursor="Arrow"/>
                                 </StackPanel>
