@@ -43,7 +43,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <summary>
         /// 按钮字体图标大小
         /// </summary>
-        public static readonly DependencyProperty IconSizeProperty = DependencyProperty.Register("IconSize", typeof(int), typeof(ModernButton), new PropertyMetadata(14));
+        public static readonly DependencyProperty IconSizeProperty = DependencyProperty.Register("IconSize", typeof(int), typeof(ModernButton), new PropertyMetadata(20));
         /// <summary>
         /// 字体图标间距
         /// </summary>
@@ -75,7 +75,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <summary>
         /// 内容装饰
         /// </summary>
-        public static readonly DependencyProperty ContentDecorationsProperty = DependencyProperty.Register("ContentDecorations", typeof(TextDecorationCollection), typeof(ModernButton), new PropertyMetadata(null));
+        public static readonly DependencyProperty ContentDecorationsProperty = DependencyProperty.Register("ContentDecorations", typeof(TextDecorationCollection), typeof(ModernButton), new PropertyMetadata(new TextDecorationCollection()));
 
         /// <summary>
         /// 按钮字体图标编码

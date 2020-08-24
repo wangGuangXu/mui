@@ -52,11 +52,11 @@ using System;
 [assembly: XmlnsPrefix("http://firstfloorsoftware.com/ModernUI", "mui")]
 
 [assembly: ThemeInfo(
-    ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
-    //(used if a resource is not found in the page, 
-    // or application resource dictionaries)
-    ResourceDictionaryLocation.SourceAssembly //where the generic resource dictionary is located
-    //(used if a resource is not found in the page, 
-    // app, or any theme specific resource dictionaries)
+    ResourceDictionaryLocation.None, //主题特定资源词典的位置 where theme specific resource dictionaries are located
+                                     //(在页面中找不到资源时使用 used if a resource is not found in the page, 
+                                     // 或应用程序资源字典 or application resource dictionaries)
+    ResourceDictionaryLocation.SourceAssembly //通用资源字典的位置在页面中找不到资源时使用应用程序，或任何主题特定的资源词典 where the generic resource dictionary is located
+                                              //(used if a resource is not found in the page, 
+                                              // app, or any theme specific resource dictionaries)
 )]
 [assembly: NeutralResourcesLanguageAttribute("zh-CN")]

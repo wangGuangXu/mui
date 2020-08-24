@@ -3,7 +3,7 @@
                     xmlns:controls="clr-namespace:FirstFloor.ModernUI.Windows.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernIcon.xaml" />
+        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernIcon.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!--FButton模板-->

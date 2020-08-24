@@ -50,6 +50,9 @@ Check out the **MUI 演示 app** 包括在 [MUI release](https://github.com/firs
 *现代进程样式 https://github.com/nigel-sampson/spinkit-xaml
 * 示例应用程序中的现代按钮图标 http://modernuiicons.com/
 
+## 项目目录结构说明
+* 1.Themes 文件夹放控件的样式，也就是定义样式的生活不带key,只有TargetType属性
+* 2.Assets 文件夹放控件的模板及特殊定制化样式
 ## 改造
 * 1.汉化
   * 直接改项目Shared中的默认Resources.resx文件实现，（默认是英语）也可额外专门添加中文资源文件

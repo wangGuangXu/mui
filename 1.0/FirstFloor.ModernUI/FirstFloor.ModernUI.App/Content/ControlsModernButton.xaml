@@ -14,11 +14,17 @@
                 </StackPanel.Resources>
 
                 <TextBlock Text="现代按钮" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
-                <mui:ModernButton IconCode="&#xe621;" Background="Blue" Foreground="White"  Margin="0,0,0,8" Content="字体图标按钮" Style="{DynamicResource DefaultModernButtonStyle}" />
-                <mui:ModernButton IconCode="&#xe621;"  Margin="0,0,0,8" Content="字体图标按钮" Style="{DynamicResource DefaultModernButtonStyle}" />
-                <mui:ModernButton IconCode="&#xe621;"  Margin="0,0,0,8" Content="字体图标按钮" Style="{DynamicResource DefaultModernButtonStyle}" />
-                <mui:ModernButton IconCode="&#xe621;"  Margin="0,0,0,8" Content="字体图标按钮" Style="{DynamicResource DefaultModernButtonStyle}" />
-
+                <StackPanel Orientation="Horizontal">
+                    <mui:ModernButton IconCode="&#xe7f1;"  Margin="0,0,8,0" Content="标准按钮" Style="{DynamicResource DefaultModernButtonStyle}" />
+                    <mui:ModernButton IconCode="&#xe637;"  Margin="0,0,8,0" Content="主要" Style="{DynamicResource ModernButtonPrimary}" />
+                    <mui:ModernButton IconCode="&#xe660;"  Margin="0,0,8,0" Content="成功" Style="{DynamicResource ModernButtonSuccess}" />
+                    <mui:ModernButton IconCode="&#xe7d3;"  Margin="0,0,8,0" Content="信息" Style="{DynamicResource ModernButtonInfo}" />
+                    <mui:ModernButton IconCode="&#xe620;"  Margin="0,0,8,0" Content="警告" Style="{DynamicResource ModernButtonWarning}" />
+                    <mui:ModernButton IconCode="&#xe62c;"  Margin="0,0,8,0" Content="危险" Style="{DynamicResource ModernButtonDanger}" />
+                    <mui:ModernButton IconCode="&#xe602;"  Margin="0,0,8,0" IconAllowsAnimation="True" Content="图标带动画" Style="{DynamicResource ModernButtonPrimary}" />
+                    <mui:ModernButton IconCode="&#xe66d;"  Margin="0,0,8,0" IconAllowsAnimation="True" CornerRadius="4" Content="圆角按钮" Style="{DynamicResource ModernButtonPrimary}" />
+                </StackPanel>
+                
                 <mui:BBCodeBlock BBCode="Icons courtesy of [url=http://modernuiicons.com/]Modern UI Icons[/url]" Margin="0,0,0,16" />
                 <mui:ModernButton Content="现代按钮" IconData="{StaticResource HomeIconData}" Margin="0,0,0,8"    />
                 <mui:ModernToggleButton Content="现代切换按钮" IconData="{StaticResource HomeIconData}" Margin="0,0,0,8" IsChecked="true" />
