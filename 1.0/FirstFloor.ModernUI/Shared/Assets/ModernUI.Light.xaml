@@ -38,7 +38,7 @@
     <SolidColorBrush x:Key="Hyperlink" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="HyperlinkHover" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="HyperlinkDisabled" Color="#919191" />
-    
+    <!--文本框-->
     <SolidColorBrush x:Key="InputBackground" Color="#ffffff" />
     <SolidColorBrush x:Key="InputBackgroundHover" Color="#ffffff" />
     <SolidColorBrush x:Key="InputBorder" Color="#cccccc" />
@@ -46,6 +46,13 @@
     <SolidColorBrush x:Key="InputText" Color="#333333" />
     <SolidColorBrush x:Key="InputTextHover" Color="#333333" />
     <SolidColorBrush x:Key="InputTextDisabled" Color="#919191" />
+    <SolidColorBrush x:Key="InputFocusBorderBrush" Color="#EBCECE"/>
+    <SolidColorBrush x:Key="InputMouseOverBorderBrush" Color="#F6D1D1"/>
+    <!--TextBox默认Label颜色-->
+    <SolidColorBrush x:Key="InputLabelBackground" Color="#508AB6"/>
+    <sys:Double x:Key="DisableOpacity">0.5</sys:Double>
+    <sys:Double x:Key="ReadonlyOpacity">0.88</sys:Double>
+    <sys:Double x:Key="WatermarkOpacity">0.4</sys:Double>
     <!--项控件-->
     <SolidColorBrush x:Key="ItemBackgroundHover" Color="#dddddd" />
     <SolidColorBrush x:Key="ItemBackgroundSelected" Color="{DynamicResource AccentColor}" />
@@ -54,7 +61,7 @@
     <SolidColorBrush x:Key="ItemTextSelected" Color="#ffffff" />
     <SolidColorBrush x:Key="ItemTextHover" Color="#333333" />
     <SolidColorBrush x:Key="ItemTextDisabled" Color="#919191" />
-
+    <!--超链接按钮-->
     <SolidColorBrush x:Key="LinkButtonText" Color="#717171" />
     <SolidColorBrush x:Key="LinkButtonTextHover" Color="#333333" />
     <SolidColorBrush x:Key="LinkButtonTextPressed" Color="#919191" />
@@ -74,7 +81,6 @@
     <SolidColorBrush x:Key="ModernButtonTextHover" Color="#333333" />
     <SolidColorBrush x:Key="ModernButtonTextPressed" Color="#333333" />
     <SolidColorBrush x:Key="ModernButtonTextDisabled" Color="#a1a1a1" />
-    
     <!--ModernButton 另一种样式开始-->
     <SolidColorBrush x:Key="ModernButtonTextForeground" Color="White"/>
     <SolidColorBrush x:Key="ModernButtonBorder" Color="#cccccc" />
@@ -88,7 +94,6 @@
     <SolidColorBrush x:Key="ModernButtonPressedBackground" Color="{DynamicResource AccentColor}"/>
     <SolidColorBrush x:Key="ModernButtonPressedForeground" Color="White"/>
     <SolidColorBrush x:Key="ModernButtonLinkForeground" Color="#333333"/>
-
     <!--主要-->
     <LinearGradientBrush o:Freeze="True" x:Key="ModernButtonPrimaryBrush" EndPoint="1,0" StartPoint="0,0">
         <GradientStop o:Freeze="True" Color="{DynamicResource PrimaryColor}" Offset="0"/>
@@ -114,8 +119,6 @@
         <GradientStop o:Freeze="True" Color="{DynamicResource DangerColor}" Offset="0"/>
         <GradientStop o:Freeze="True" Color="{DynamicResource DarkDangerColor}" Offset="1"/>
     </LinearGradientBrush>
-
-
     <!--弹出层样式-->
     <SolidColorBrush x:Key="PopupBackground" Color="#ffffff" />
     <!--进度条-->
@@ -173,7 +176,6 @@
     <SolidColorBrush x:Key="SystemButtonForegroundOnMoseOver" Color="#333333" />
     <SolidColorBrush x:Key="SystemButtonBackgroundIsPressed" Color="{DynamicResource AccentColor}" />
     <SolidColorBrush x:Key="SystemButtonForegroundIsPressed" Color="#919191" />
-
     <!--选项卡-->
     <SolidColorBrush x:Key="TabControlBackgound" Color="White" />
     <SolidColorBrush x:Key="TabControlForeground" Color="#555558" />
@@ -183,7 +185,6 @@
     <SolidColorBrush x:Key="TabControlForegroundHover" Color="#333333" />
     <!--图表-->
     <SolidColorBrush x:Key="ChartBackgound" Color="Transparent" />
-  
     <!--窗口背景内容-->
     <Rectangle x:Key="WindowBackgroundContent" x:Shared="false" Height="36" Fill="{StaticResource WindowHeaderGradient}" VerticalAlignment="Top"/>
     

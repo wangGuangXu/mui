@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xly="clr-namespace:FirstFloor.ModernUI.Windows.Controls;assembly=FirstFloor.ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <ScrollViewer>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel HorizontalAlignment="Left">
                 <TextBlock Text="文本造型" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
 
@@ -27,6 +28,27 @@
                 <TextBlock Text="标签" Style="{StaticResource Heading2}" Margin="0,0,0,8"/>
                 <Label Content="标签" Margin="0,0,0,8"/>
                 <Label Content="禁用标签" IsEnabled="False" />
+                
+                <TextBlock Text="带水印的文本框" Style="{StaticResource Heading2}" Margin="0,4,0,8"/>
+                <StackPanel  Orientation="Horizontal">
+                    <TextBox Width="150" Height="30" Margin="3" xly:ControlAttachProperty.IconCode="&#xe637;"  xly:ControlAttachProperty.Watermark="请选择图标" 
+                         Style="{StaticResource ClearButtonTextBox}" xly:ControlAttachProperty.Label="图标："/>
+                    <TextBox Width="150" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入姓名" 
+                         Style="{StaticResource LabelTextBox}" xly:ControlAttachProperty.Label="姓名："/>
+                    <TextBox Width="150" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入爱好" 
+                         Style="{StaticResource LabelClearButtonTextBox}" xly:ControlAttachProperty.Label="爱好："/>
+                    <TextBox Width="150" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入爱好" IsReadOnly="True"
+                         Style="{StaticResource LabelClearButtonTextBox}" xly:ControlAttachProperty.Label="爱好：">IsReadOnly="True"</TextBox>
+                    <TextBox Width="150" Height="30" Margin="3" xly:ControlAttachProperty.Watermark="请输入爱好" IsEnabled="False"
+                         Style="{StaticResource LabelClearButtonTextBox}" xly:ControlAttachProperty.Label="爱好：">IsEnabled="False"</TextBox>
+                </StackPanel>
+                <TextBlock Text="文件选择" Style="{StaticResource Heading2}" Margin="0,4,0,8"/>
+                <StackPanel Orientation="Vertical" >
+                    <TextBox Width="300" Height="30" Margin="3" Style="{StaticResource LabelOpenFileTextBox}"/>
+                    <TextBox Width="300" Height="30" Margin="3" Style="{StaticResource LabelOpenFolderTextBox}"/>
+                    <TextBox Width="300" Height="30" Margin="3" Style="{StaticResource LabelSaveFileTextBox}"/>
+                    <TextBox Width="300" Height="30" Margin="3" Style="{StaticResource LabelQuoteFileTextBox}"/>
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>

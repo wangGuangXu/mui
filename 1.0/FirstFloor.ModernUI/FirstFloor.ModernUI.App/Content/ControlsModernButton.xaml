@@ -22,7 +22,11 @@
                     <mui:ModernButton IconCode="&#xe620;"  Margin="0,0,8,0" Content="警告" Style="{DynamicResource ModernButtonWarning}" />
                     <mui:ModernButton IconCode="&#xe62c;"  Margin="0,0,8,0" Content="危险" Style="{DynamicResource ModernButtonDanger}" />
                     <mui:ModernButton IconCode="&#xe602;"  Margin="0,0,8,0" IconAllowsAnimation="True" Content="图标带动画" Style="{DynamicResource ModernButtonPrimary}" />
-                    <mui:ModernButton IconCode="&#xe66d;"  Margin="0,0,8,0" IconAllowsAnimation="True" CornerRadius="4" Content="圆角按钮" Style="{DynamicResource ModernButtonPrimary}" />
+                    <mui:ModernButton IconCode="&#xe66d;"  Margin="0,0,8,0" CornerRadius="4" Content="圆角按钮" Style="{DynamicResource ModernButtonPrimary}" />
+                    <mui:ModernButton IconCode="&#xe621;"  Margin="0,0,8,0" Foreground="Black" Content="透明按钮" Style="{DynamicResource ModernButtonTransparency}" />
+                    <mui:ModernButton IconCode="&#xe620;"  Margin="0,0,8,0" Content="图标超链接按钮" Style="{DynamicResource ModernButtonLinkButton}" />
+                    <mui:ModernButton Margin="0,0,8,0"  Content="超链接按钮" Style="{DynamicResource ModernButtonLinkButton}" />
+                    <mui:ModernButton IconCode="&#xe69a;"  Margin="0,0,8,0" CornerRadius="4" Style="{DynamicResource ModernButtonLinkButton}" />
                 </StackPanel>
                 
                 <mui:BBCodeBlock BBCode="Icons courtesy of [url=http://modernuiicons.com/]Modern UI Icons[/url]" Margin="0,0,0,16" />

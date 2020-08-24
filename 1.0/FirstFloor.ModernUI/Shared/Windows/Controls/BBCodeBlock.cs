@@ -105,34 +105,44 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         private void Update()
         {
-            if (!this.IsLoaded || !this.dirty) 
+            try
             {
-                return;
-            }
-
-            var bbcode = this.BBCode;
-
-            this.Inlines.Clear();
-
-            if (!string.IsNullOrWhiteSpace(bbcode))
-            {
-                Inline inline;
-                try
+                if (!this.IsLoaded || !this.dirty)
                 {
-                    var parser = new BBCodeParser(bbcode, this)
+                    return;
+                }
+
+                var bbcode = this.BBCode;
+
+                if (this.Inlines.Count > 0)
+                {
+                    this.Inlines.Clear();
+                }
+
+                if (!string.IsNullOrWhiteSpace(bbcode))
+                {
+                    Inline inline;
+                    try
                     {
-                        Commands = this.LinkNavigator.Commands
-                    };
-                    inline = parser.Parse();
+                        var parser = new BBCodeParser(bbcode, this)
+                        {
+                            Commands = this.LinkNavigator.Commands
+                        };
+                        inline = parser.Parse();
+                    }
+                    catch (Exception)
+                    {
+                        // 分析失败，按原样显示BBCode值 parsing failed, display BBCode value as-is
+                        inline = new Run { Text = bbcode };
+                    }
+                    this.Inlines.Add(inline);
                 }
-                catch (Exception)
-                {
-                    // 分析失败，按原样显示BBCode值 parsing failed, display BBCode value as-is
-                    inline = new Run { Text = bbcode };
-                }
-                this.Inlines.Add(inline);
+                this.dirty = false;
             }
-            this.dirty = false;
+            catch (Exception error)
+            {
+                ModernDialog.ShowMessage(error.Message, ModernUI.Resources.NavigationFailed, MessageBoxButton.OK);
+            }
         }
 
         /// <summary>
