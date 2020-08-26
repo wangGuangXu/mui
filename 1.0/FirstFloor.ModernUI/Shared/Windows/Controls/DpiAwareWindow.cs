@@ -89,18 +89,25 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <param name="e"></param>
         private void OnSourceInitialized(object sender, EventArgs e)
         {
-            this.source = (HwndSource)HwndSource.FromVisual(this);
-
-            // 计算WPF使用的DPI；这与系统DPI相同 calculate the DPI used by WPF; this is the same as the system DPI
-            var matrix = source.CompositionTarget.TransformToDevice;
-
-            this.dpiInfo = new DpiInformation(96D * matrix.M11, 96D * matrix.M22);
-
-            if (this.isPerMonitorDpiAware) 
+            try
             {
-                this.source.AddHook(WndProc);
+                this.source = (HwndSource)HwndSource.FromVisual(this);
 
-                RefreshMonitorDpi();
+                // 计算WPF使用的DPI；这与系统DPI相同 calculate the DPI used by WPF; this is the same as the system DPI
+                var matrix = source.CompositionTarget.TransformToDevice;
+
+                this.dpiInfo = new DpiInformation(96D * matrix.M11, 96D * matrix.M22);
+
+                if (this.isPerMonitorDpiAware)
+                {
+                    this.source.AddHook(WndProc);
+
+                    RefreshMonitorDpi();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

@@ -24,18 +24,17 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         public static readonly DependencyProperty KeepAliveProperty = DependencyProperty.RegisterAttached("KeepAlive", typeof(bool?), typeof(ModernFrame), new PropertyMetadata(null));
         /// <summary>
-        /// 标识保活内容依赖属性 注意默认是保活，会导致也没内容切换链接后不能及时刷新。
+        /// 标识内容保活依赖属性 注意默认是保活，会导致页面内容切换链接后不能及时刷新。
         /// Identifies the KeepContentAlive dependency property.
         /// </summary>
         public static readonly DependencyProperty KeepContentAliveProperty = DependencyProperty.Register("KeepContentAlive", typeof(bool), typeof(ModernFrame), new PropertyMetadata(true, OnKeepContentAliveChanged));
-
         /// <summary>
         /// 标识内容加载器依赖属性
         /// Identifies the ContentLoader dependency property.
         /// </summary>
         public static readonly DependencyProperty ContentLoaderProperty = DependencyProperty.Register("ContentLoader", typeof(IContentLoader), typeof(ModernFrame), new PropertyMetadata(new DefaultContentLoader(), OnContentLoaderChanged));
         /// <summary>
-        /// 
+        /// 正在加载内容
         /// </summary>
         private static readonly DependencyPropertyKey IsLoadingContentPropertyKey = DependencyProperty.RegisterReadOnly("IsLoadingContent", typeof(bool), typeof(ModernFrame), new PropertyMetadata(false));
         /// <summary>

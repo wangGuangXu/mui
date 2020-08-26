@@ -277,7 +277,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
             if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out Uri uri, out string parameter, out string targetName))
             {
-                this.LinkNavigator.Navigate(uri, e.Source as FrameworkElement, parameter);
+                this.LinkNavigator.Navigate(uri, e.Source as FrameworkElement, parameter);//e.OriginalSource
             }
         }
 

@@ -817,7 +817,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private static readonly CommandBinding SaveFileCommandBinding;
 
         /// <summary>
-        /// 执行OpenFileCommand
+        /// 执行SaveFileCommand
         /// </summary>
         private static void SaveFileButtonClick(object sender, ExecutedRoutedEventArgs e)
         {

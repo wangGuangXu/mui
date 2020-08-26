@@ -81,7 +81,7 @@ namespace FirstFloor.ModernUI
         {
             var awareness = GetDpiAwareness();
 
-            // initial awareness must be DpiUnaware
+            // 最初的意识必须是dpi不感知 initial awareness must be DpiUnaware
             if (awareness == ProcessDpiAwareness.DpiUnaware)
             {
                 if (OSVersionHelper.IsWindows8Point1OrGreater)
