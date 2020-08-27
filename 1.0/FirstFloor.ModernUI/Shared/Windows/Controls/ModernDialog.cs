@@ -39,7 +39,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private MessageBoxResult messageBoxResult = MessageBoxResult.None;
 
         /// <summary>
-        /// 初始化类的新实例 Initializes a new instance of the <see cref="ModernDialog"/> class.
+        /// 现代对话框
         /// </summary>
         public ModernDialog()
         {
@@ -80,7 +80,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 创建关闭对话框按钮组
         /// </summary>
         /// <param name="content"></param>
         /// <param name="isDefault"></param>
@@ -103,7 +103,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets the close window command.
+        /// 关闭命令
         /// </summary>
         public ICommand CloseCommand
         {
@@ -111,7 +111,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets the Ok button.
+        /// 确定按钮
         /// </summary>
         public Button OkButton
         {
@@ -126,7 +126,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 获取“取消”按钮.
+        /// 获取取消按钮.
         /// </summary>
         public Button CancelButton
         {
@@ -141,7 +141,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets the Yes button.
+        /// 是按钮
         /// </summary>
         public Button YesButton
         {
@@ -156,7 +156,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets the No button.
+        /// 否按钮
         /// </summary>
         public Button NoButton
         {
@@ -170,7 +170,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets the Close button.
+        /// 关闭按钮
         /// </summary>
         public Button CloseButton
         {
@@ -184,7 +184,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Gets or sets the background content of this window instance.
+        /// 获取或设置此窗口实例的背景内容。
         /// </summary>
         public object BackgroundContent
         {
@@ -193,6 +193,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取或设置对话框按钮
         /// Gets or sets the dialog buttons.
         /// </summary>
         public IEnumerable<Button> Buttons
@@ -202,6 +203,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
+        /// 获取消息框结果
         /// Gets the message box result.
         /// </summary>
         /// <value>
@@ -213,7 +215,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// Displays a messagebox.
+        /// 显示消息框 Displays a messagebox.
         /// </summary>
         /// <param name="text">The text.</param>
         /// <param name="title">The title.</param>
@@ -247,6 +249,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
             return dlg.messageBoxResult;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="button"></param>
+        /// <returns></returns>
         private static IEnumerable<Button> GetButtons(ModernDialog owner, MessageBoxButton button)
         {
             if (button == MessageBoxButton.OK) 

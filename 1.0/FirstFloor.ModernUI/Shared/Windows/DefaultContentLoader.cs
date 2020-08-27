@@ -18,7 +18,7 @@ namespace FirstFloor.ModernUI.Windows
         /// </summary>
         /// <param name="uri">内容资源地址</param>
         /// <param name="cancellationToken">用于取消加载内容任务的令牌.</param>
-        /// <returns>The loaded content.</returns>
+        /// <returns>加载的内容</returns>
         public Task<object> LoadContentAsync(Uri uri, CancellationToken cancellationToken)
         {
             if (!Application.Current.Dispatcher.CheckAccess())
@@ -34,7 +34,7 @@ namespace FirstFloor.ModernUI.Windows
         /// <summary>
         /// 从指定的URI加载内容
         /// </summary>
-        /// <param name="uri">The content uri</param>
+        /// <param name="uri">内容资源地址</param>
         /// <returns>加载的内容</returns>
         protected virtual object LoadContent(Uri uri)
         {

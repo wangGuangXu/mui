@@ -74,12 +74,18 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <summary>
         /// 历史访问记录
         /// </summary>
-        private Stack<Uri> history = new Stack<Uri>();
-        private Dictionary<Uri, object> contentCache = new Dictionary<Uri, object>();
+        public Stack<Uri> history = new Stack<Uri>();
+        /// <summary>
+        /// 内容缓存
+        /// </summary>
+        public Dictionary<Uri, object> contentCache = new Dictionary<Uri, object>();
 #if NET4
         private List<WeakReference> childFrames = new List<WeakReference>();        // list of registered frames in sub tree
 #else
-        private List<WeakReference<ModernFrame>> childFrames = new List<WeakReference<ModernFrame>>();        // list of registered frames in sub tree
+        /// <summary>
+        /// 子框架集合
+        /// </summary>
+        public List<WeakReference<ModernFrame>> childFrames = new List<WeakReference<ModernFrame>>();        // list of registered frames in sub tree
 #endif
         private CancellationTokenSource tokenSource;
         private bool isNavigatingHistory;
@@ -334,12 +340,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 设置内容
         /// </summary>
-        /// <param name="newSource"></param>
-        /// <param name="navigationType"></param>
-        /// <param name="newContent"></param>
-        /// <param name="contentIsError"></param>
+        /// <param name="newSource">新源地址</param>
+        /// <param name="navigationType">导航类型</param>
+        /// <param name="newContent">新内容</param>
+        /// <param name="contentIsError">内容是否错误</param>
         private void SetContent(Uri newSource, NavigationType navigationType, object newContent, bool contentIsError)
         {
             var oldContent = this.Content as IContent;
@@ -350,33 +356,27 @@ namespace FirstFloor.ModernUI.Windows.Controls
             // 错误时不引发导航事件 do not raise navigated event when error
             if (!contentIsError)
             {
-                var args = new NavigationEventArgs
-                {
-                    Frame = this,
-                    Source = newSource,
-                    Content = newContent,
-                    NavigationType = navigationType
-                };
+                var args = new NavigationEventArgs { Frame = this, Source = newSource, Content = newContent, NavigationType = navigationType };
 
                 OnNavigated(oldContent, newContent as IContent, args);
             }
 
-            // set IsLoadingContent to false
+            // 正在将内容加载为false set IsLoadingContent to false
             SetValue(IsLoadingContentPropertyKey, false);
 
             if (!contentIsError)
             {
-                // and raise optional fragment navigation events
-                string fragment;
-                NavigationHelper.RemoveFragment(newSource, out fragment);
-                if (fragment != null) {
-                    // fragment navigation
-                    var fragmentArgs = new FragmentNavigationEventArgs {
-                        Fragment = fragment
-                    };
-
-                    OnFragmentNavigation(newContent as IContent, fragmentArgs);
+                // 并引发可选的片段导航事件 and raise optional fragment navigation events
+                NavigationHelper.RemoveFragment(newSource, out string fragment);
+                if (fragment == null)
+                {
+                    return;
                 }
+
+                // 片段导航 fragment navigation
+                var fragmentArgs = new FragmentNavigationEventArgs { Fragment = fragment };
+
+                OnFragmentNavigation(newContent as IContent, fragmentArgs);
             }
         }
 
@@ -400,6 +400,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 if (r.TryGetTarget(out frame)) 
                     {
 #endif
+                    //检查frame是否仍然是一个实际的子级（不是移除子级时的情况，而是尚未进行垃圾回收）
                     // check if frame is still an actual child (not the case when child is removed, but not yet garbage collected)
                     if (NavigationHelper.FindFrame(null, frame) == this)
                     {
@@ -471,7 +472,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <param name="e"></param>
         private void OnNavigated(IContent oldContent, IContent newContent, NavigationEventArgs e)
         {
-            // invoke IContent.OnNavigatedFrom and OnNavigatedTo
+            // 在被导航到和被导航到时调用IContent invoke IContent.OnNavigatedFrom and OnNavigatedTo
             if (oldContent != null)
             {
                 oldContent.OnNavigatedFrom(e);
@@ -495,10 +496,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <param name="e"></param>
         private void OnNavigationFailed(NavigationFailedEventArgs e)
         {
-            if (NavigationFailed != null)
+            if (NavigationFailed == null)
             {
-                NavigationFailed(this, e);
+                return;
             }
+            NavigationFailed(this, e);
         }
 
         /// <summary>

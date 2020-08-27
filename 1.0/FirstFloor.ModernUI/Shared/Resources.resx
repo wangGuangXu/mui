@@ -154,7 +154,7 @@
     <value>向下还原</value>
   </data>
   <data name="UIThreadRequired" xml:space="preserve">
-    <value>操作需要的UI线程</value>
+    <value>操作需要UI线程</value>
   </data>
   <data name="UnexpectedToken" xml:space="preserve">
     <value>意外的标记</value>

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,7 +19,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
     /// <summary>
     /// 表示一个现代UI样式的窗口
     /// </summary>
-    public class ModernWindow  : DpiAwareWindow
+    public class ModernWindow : DpiAwareWindow
     {
         #region 依赖属性
         /// <summary>
@@ -54,15 +55,15 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         public static DependencyProperty LinkNavigatorProperty = DependencyProperty.Register("LinkNavigator", typeof(ILinkNavigator), typeof(ModernWindow), new PropertyMetadata(new DefaultLinkNavigator()));
         /// <summary>
-        /// 关闭窗口附加属性
-        /// Window窗体的DialogResult属性不是依赖属性，所以没法绑定，所以此处添加附加属性解决此问题。
+        /// 关闭窗口依赖属性
+        /// 此方式目前暂时废弃，新开窗体关闭后,再次打开窗体在当前框架下会报异常
         /// </summary>
         public static readonly DependencyProperty DialogResultProperty = DependencyProperty.Register("DialogResult", typeof(bool), typeof(ModernWindow), new PropertyMetadata(DialogResultChanged));
         /// <summary>
         /// 背景动画
         /// </summary>
-        private Storyboard backgroundAnimation; 
-        
+        private Storyboard backgroundAnimation;
+
         #endregion
 
         #region 属性
@@ -244,21 +245,19 @@ namespace FirstFloor.ModernUI.Windows.Controls
             // 默认为True
             e.CanExecute = true;
 
-            if (this.LinkNavigator != null && this.LinkNavigator.Commands != null)
+            if (LinkNavigator == null || LinkNavigator.Commands == null)
             {
-                // 如果是命令uri，请检查icommand.canexecute是否为true
-                Uri uri;
-                string parameter;
-                string targetName;
+                return;
+            }
 
-                // Todo: cannavigate被大量调用，这意味着需要大量解析。需要改进??
-                if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out uri, out parameter, out targetName))
+            // 如果是命令uri，请检查icommand.canexecute是否为true
+            // Todo: cannavigate被大量调用，这意味着需要大量解析。需要改进??
+            if (NavigationHelper.TryParseUriWithParameters(e.Parameter, out Uri uri, out string parameter, out string targetName))
+            {
+                ICommand command;
+                if (this.LinkNavigator.Commands.TryGetValue(uri, out command))
                 {
-                    ICommand command;
-                    if (this.LinkNavigator.Commands.TryGetValue(uri, out command))
-                    {
-                        e.CanExecute = command.CanExecute(parameter);
-                    }
+                    e.CanExecute = command.CanExecute(parameter);
                 }
             }
         }
@@ -350,7 +349,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         {
             if (o == null)
             {
-                throw new ArgumentNullException("o");
+                throw new ArgumentNullException("目标依赖对象为空");
             }
             o.SetValue(DialogResultProperty, value);
         }
@@ -367,6 +366,45 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 window.DialogResult = true;
             }
         }
+
+        /// <summary>
+        /// 关闭窗体
+        /// </summary>
+        /// <param name="msg"></param>
+        protected void CloseWindow(string msg)
+        {
+            Close();
+        }
+
+        /// <summary>
+        /// 显示提示消息
+        /// </summary>
+        /// <param name="message">提示信息</param>
+        protected void ShowMessage(string message)
+        {
+            //ModernDialog.ShowMessage(message, "提示：", MessageBoxButton.OK);
+            if (System.Windows.Threading.Dispatcher.CurrentDispatcher.CheckAccess())
+            {
+                ModernDialog.ShowMessage(message, "提示：", MessageBoxButton.OK);
+                return;
+            }
+
+            System.Windows.Threading.Dispatcher.CurrentDispatcher.BeginInvoke((Action)delegate ()
+            {
+                ModernDialog.ShowMessage(message, "提示：", MessageBoxButton.OK);
+            });
+        }
+
+        /// <summary>
+        /// 显示提示消息
+        /// </summary>
+        /// <param name="message">提示信息</param>
+        /// <param name="title">标题</param>
+        protected void ShowMessage(string message, string title = "提示：")
+        {
+            ModernDialog.ShowMessage(message, title, MessageBoxButton.OK);
+        }
+
         #endregion
 
     }

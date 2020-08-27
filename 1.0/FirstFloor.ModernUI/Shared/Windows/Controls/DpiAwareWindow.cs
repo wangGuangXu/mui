@@ -25,9 +25,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// 窗口句柄源
         /// </summary>
         private HwndSource source;
+        /// <summary>
+        /// 
+        /// </summary>
         private DpiInformation dpiInfo;
         /// <summary>
-        /// 每个监视器的Dpi是否知道
+        /// 是否每个监视器的Dpi感知
         /// </summary>
         private bool isPerMonitorDpiAware;
 
@@ -114,7 +117,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="hwnd"></param>
+        /// <param name="hwnd">句柄</param>
         /// <param name="msg"></param>
         /// <param name="wParam"></param>
         /// <param name="lParam"></param>

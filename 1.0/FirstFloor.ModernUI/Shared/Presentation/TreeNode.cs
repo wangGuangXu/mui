@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 
 namespace FirstFloor.ModernUI.Presentation
@@ -8,12 +9,12 @@ namespace FirstFloor.ModernUI.Presentation
     /// <summary>
     /// 树节点对象
     /// </summary>
-    public class TreeNode
+    public class TreeNode : INotifyPropertyChanged
     {
         /// <summary>
         /// ID
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         /// <summary>
         /// 名称
         /// </summary>
@@ -27,11 +28,11 @@ namespace FirstFloor.ModernUI.Presentation
         /// </summary>
         public Guid? ParentId { get; set; }
         /// <summary>
-        /// 
+        /// 地址
         /// </summary>
         public string Source { get; set; }
         /// <summary>
-        /// 
+        /// 子节点
         /// </summary>
         public List<TreeNode> ChildNodes { get; set; }
         /// <summary>
@@ -53,6 +54,24 @@ namespace FirstFloor.ModernUI.Presentation
         public TreeNode()
         {
             ChildNodes = new List<TreeNode>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="propertyName"></param>
+        protected virtual void RaisePropertyChanged(string propertyName)
+        {
+            if (PropertyChanged == null)
+            {
+                return;
+            }
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

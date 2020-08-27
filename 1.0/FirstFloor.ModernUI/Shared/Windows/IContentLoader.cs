@@ -13,11 +13,11 @@ namespace FirstFloor.ModernUI.Windows
     public interface IContentLoader
     {
         /// <summary>
-        /// Asynchronously loads content from specified uri.
+        /// 从指定的uri异步加载内容 Asynchronously loads content from specified uri
         /// </summary>
-        /// <param name="uri">The content uri.</param>
-        /// <param name="cancellationToken">The token used to cancel the load content task.</param>
-        /// <returns>The loaded content.</returns>
+        /// <param name="uri">内容uri</param>
+        /// <param name="cancellationToken">用于取消加载内容任务的令牌</param>
+        /// <returns>加载的内容</returns>
         Task<object> LoadContentAsync(Uri uri, CancellationToken cancellationToken);
     }
 }
