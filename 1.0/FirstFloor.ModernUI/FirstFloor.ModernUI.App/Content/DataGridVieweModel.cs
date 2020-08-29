@@ -53,7 +53,7 @@ namespace FirstFloor.ModernUI.App.Content
                 if (_pageSize != value)
                 {
                     _pageSize = value;
-                    OnPropertyChanged(() => this.PageSize);
+                    PropertyChangedCallerMemberName();
                 }
             }
         }
