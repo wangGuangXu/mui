@@ -290,6 +290,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             e.CanExecute = this.ResizeMode != ResizeMode.NoResize;
         }
 
+        /// <summary>
+        /// 关闭窗口
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="e"></param>
         private void OnCloseWindow(object target, ExecutedRoutedEventArgs e)
         {
 #if NET4

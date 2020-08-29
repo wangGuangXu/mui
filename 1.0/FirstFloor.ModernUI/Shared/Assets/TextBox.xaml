@@ -10,12 +10,12 @@
     
     <!--TextBox默认样式 {TemplateBinding Padding}-->
     <Style x:Key="{x:Type TextBoxBase}" TargetType="{x:Type TextBoxBase}" BasedOn="{x:Null}">
-        <Setter Property="Foreground" Value="{DynamicResource InputText}"/>
+        <!--<Setter Property="Foreground" Value="{DynamicResource InputText}"/>
         <Setter Property="Background" Value="{DynamicResource InputBackground}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}"/>-->
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="2,1,1,1"/>
-        <Setter Property="MinHeight" Value="26"/>
+        <Setter Property="MinHeight" Value="24"/>
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="ScrollViewer.PanningMode" Value="HorizontalFirst"/>
@@ -26,48 +26,66 @@
             <Setter.Value>
                 <ControlTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <!--文本框红色边框 -->
-                        <Border BorderThickness="1" BorderBrush="#FFdc000c" VerticalAlignment="Center">
+                        <!--文本框红色边框 设置边框颜色会默认加载后文本框就红色边框提醒 BorderBrush="#FFdc000c" -->
+                        <Border BorderThickness="1" BorderBrush="#FFdc000c"  VerticalAlignment="Top" x:Name="adornerborder">
                             <Grid>
                                 <AdornedElementPlaceholder x:Name="adorner" Margin="-1"/>
                             </Grid>
                         </Border>
                         <!--用Popup包装可以浮动显示，不至于被边框覆盖-->
-                        <Popup Name="popup" AllowsTransparency="True" Placement="Right"  >
-                            <Border x:Name="errorBorder" Background="#FFdc000c" Opacity="0" CornerRadius="0" IsHitTestVisible="False" MinHeight="26" >
-                                <TextBlock Text="{Binding ElementName=adorner,
-                                        Path=AdornedElement.(Validation.Errors)[0].ErrorContent }"
+                        <Popup x:Name="popup" AllowsTransparency="True" Margin="8,0,0,0" Placement="Right" HorizontalOffset="3"  >
+                            <Border x:Name="errorBorder" Background="#FFdc000c" Opacity="0" CornerRadius="3" IsHitTestVisible="False" MinHeight="24"  >
+                                <TextBlock Text="{Binding ElementName=adorner,Path=AdornedElement.(Validation.Errors).CurrentItem.ErrorContent }"
                                         Foreground="White" Margin="8,2,8,3" TextWrapping="Wrap" VerticalAlignment="Center"/>
                             </Border>
                         </Popup>
                     </StackPanel>
                     <ControlTemplate.Triggers>
+                        <!--全局验证-->
+                        <DataTrigger Value="True">
+                            <DataTrigger.Binding>
+                                <Binding ElementName="adorner" Path="AdornedElement.Tag" />
+                            </DataTrigger.Binding>
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard x:Name="fadeInStoryboardTag">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="00:00:00.15" Storyboard.TargetName="errorBorder" Storyboard.TargetProperty="Opacity" To="1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.Setters>
+                                <Setter Property="IsOpen" TargetName="popup" Value="true"  />
+                            </DataTrigger.Setters>
+                        </DataTrigger>
+                        
                         <DataTrigger Value="True">
                             <DataTrigger.Binding>
                                 <!--获得焦点显示错误信息-->
                                 <Binding ElementName="adorner" Path="AdornedElement.IsKeyboardFocused" />
                             </DataTrigger.Binding>
-                            <DataTrigger.Setters>
-                                <Setter Property="IsOpen" TargetName="popup" Value="true"  />
-                                
-                            </DataTrigger.Setters>
+
+                            <!--淡入故事板 获取要在触发器对象变为活动状态时应用的-->
                             <DataTrigger.EnterActions>
-                                <!--淡入故事板-->
                                 <BeginStoryboard x:Name="fadeInStoryboard">
                                     <Storyboard>
                                         <DoubleAnimation Duration="00:00:00.15"  Storyboard.TargetName="errorBorder" Storyboard.TargetProperty="Opacity" To="1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </DataTrigger.EnterActions>
-                            <DataTrigger.ExitActions>
+
+                            <!--淡出故事板 获取要在触发器对象变为非活动状态时应用的 是否保留异常直到数据正常:如果不需要则放开下列验证-->
+                            <!--<DataTrigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="fadeInStoryboard"/>
-                                <!--淡出故事板-->
                                 <BeginStoryboard x:Name="fadeOutStoryBoard">
                                     <Storyboard>
                                         <DoubleAnimation Duration="00:00:00" Storyboard.TargetName="errorBorder" Storyboard.TargetProperty="Opacity" To="0"/>
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </DataTrigger.ExitActions>
+                            </DataTrigger.ExitActions>-->
+
+                            <DataTrigger.Setters>
+                                <Setter Property="IsOpen" TargetName="popup" Value="true"  />
+                            </DataTrigger.Setters>
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

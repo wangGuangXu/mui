@@ -22,12 +22,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// 标识保活附件依赖属性
         /// Identifies the KeepAlive attached dependency property.
         /// </summary>
-        public static readonly DependencyProperty KeepAliveProperty = DependencyProperty.RegisterAttached("KeepAlive", typeof(bool?), typeof(ModernFrame), new PropertyMetadata(null));
+        public static readonly DependencyProperty KeepAliveProperty = DependencyProperty.RegisterAttached("KeepAlive", typeof(bool?), typeof(ModernFrame), new PropertyMetadata(false));
         /// <summary>
         /// 标识内容保活依赖属性 注意默认是保活，会导致页面内容切换链接后不能及时刷新。
         /// Identifies the KeepContentAlive dependency property.
         /// </summary>
-        public static readonly DependencyProperty KeepContentAliveProperty = DependencyProperty.Register("KeepContentAlive", typeof(bool), typeof(ModernFrame), new PropertyMetadata(true, OnKeepContentAliveChanged));
+        public static readonly DependencyProperty KeepContentAliveProperty = DependencyProperty.Register("KeepContentAlive", typeof(bool), typeof(ModernFrame), new PropertyMetadata(false, OnKeepContentAliveChanged));
         /// <summary>
         /// 标识内容加载器依赖属性
         /// Identifies the ContentLoader dependency property.
@@ -273,7 +273,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
                 // 内容缓存在没有片段的URI上 content is cached on uri without fragment
                 var newValueNoFragment = NavigationHelper.RemoveFragment(newValue);
 
-                if (navigationType == NavigationType.Refresh || !this.contentCache.TryGetValue(newValueNoFragment, out newContent))
+                if (navigationType == NavigationType.Refresh || !contentCache.TryGetValue(newValueNoFragment, out newContent))
                 {
                     var localTokenSource = new CancellationTokenSource();
                     this.tokenSource = localTokenSource;
@@ -311,11 +311,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
                             else
                             {
                                 newContent = t.Result;
-                                if (ShouldKeepContentAlive(newContent))
-                                {
-                                    // 将新内容保存在内存中 keep the new content in memory
-                                    this.contentCache[newValueNoFragment] = newContent;
-                                }
+                                //if (ShouldKeepContentAlive(newContent))
+                                //{
+                                //    // 将新内容保存在内存中 keep the new content in memory
+                                //    this.contentCache[newValueNoFragment] = newContent;
+                                //}
                                 SetContent(newValue, navigationType, newContent, false);
                             }
                         }
@@ -408,6 +408,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
                         yield return frame;
                     }
                 }
+
+                Debug.Write(string.Format("确定是否要移除子框架",valid.ToString()));
 
                 if (!valid)
                 {
@@ -669,6 +671,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
                     return result.Value;
                 }
             }
+            Debug.Write(string.Format("内容保活状态：{0}", KeepContentAlive.ToString()));
             // 否则就让现代框架来决定 otherwise let the ModernFrame decide
             return this.KeepContentAlive;
         }

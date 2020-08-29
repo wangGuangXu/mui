@@ -43,10 +43,22 @@ namespace FirstFloor.ModernUI.Presentation
         /// 节点是否选中
         /// </summary>
         public bool IsSelected { get; set; }
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //public bool IsGrouping { get { return ChildNodes != null && ChildNodes.Count > 0; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsGrouping { get { return ChildNodes != null && ChildNodes.Count > 0; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string SurName { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Count { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Info { get; set; }
 
         /// <summary>
         /// 树节点对象

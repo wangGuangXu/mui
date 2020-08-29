@@ -91,11 +91,11 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         /// Removes the fragment from specified uri and return it.
         /// </summary>
         /// <param name="uri">The uri</param>
-        /// <returns>The uri without the fragment, or the uri itself if no fragment is found</returns>
+        /// <returns>没有片段的uri，或者如果找不到片段，则返回uri本身 The uri without the fragment, or the uri itself if no fragment is found</returns>
         public static Uri RemoveFragment(Uri uri)
         {
-            string fragment;
-            return RemoveFragment(uri, out fragment);
+            //string fragment;
+            return RemoveFragment(uri, out string fragment);
         }
 
         /// <summary>
@@ -109,16 +109,17 @@ namespace FirstFloor.ModernUI.Windows.Navigation
         {
             fragment = null;
 
-            if (uri != null)
+            if (uri == null)
             {
-                var value = uri.OriginalString;
+                return uri;
+            }
 
-                var i = value.IndexOf('#');
-                if (i != -1)
-                {
-                    fragment = value.Substring(i + 1);
-                    uri = new Uri(value.Substring(0, i), uri.IsAbsoluteUri ? UriKind.Absolute : UriKind.Relative);
-                }
+            var value = uri.OriginalString;
+            var i = value.IndexOf('#');
+            if (i != -1)
+            {
+                fragment = value.Substring(i + 1);
+                uri = new Uri(value.Substring(0, i), uri.IsAbsoluteUri ? UriKind.Absolute : UriKind.Relative);
             }
 
             return uri;
@@ -183,7 +184,8 @@ namespace FirstFloor.ModernUI.Windows.Navigation
             parameter = null;
             targetName = null;
 
-            if (value == null) {
+            if (value == null) 
+            {
                 return false;
             }
 
