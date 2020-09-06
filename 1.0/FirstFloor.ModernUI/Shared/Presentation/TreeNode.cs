@@ -35,16 +35,40 @@ namespace FirstFloor.ModernUI.Presentation
         /// 子节点
         /// </summary>
         public List<TreeNode> ChildNodes { get; set; }
+        private bool isExpanded;
         /// <summary>
         /// 节点是否展开
         /// </summary>
-        public bool IsExpanded { get; set; }
+        public bool IsExpanded
+        {
+            get
+            {
+                return isExpanded;
+            }
+            set
+            {
+                isExpanded = value;
+                RaisePropertyChanged("IsExpanded");
+            }
+        }
+        private bool isSelected;
         /// <summary>
         /// 节点是否选中
         /// </summary>
-        public bool IsSelected { get; set; }
+        public bool IsSelected 
+        {
+            get
+            {
+                return isSelected;
+            }
+            set
+            {
+                isSelected = value;
+                RaisePropertyChanged("IsSelected");
+            }
+        }
         /// <summary>
-        /// 
+        /// 是否分组
         /// </summary>
         public bool IsGrouping { get { return ChildNodes != null && ChildNodes.Count > 0; } }
         /// <summary>
@@ -52,7 +76,7 @@ namespace FirstFloor.ModernUI.Presentation
         /// </summary>
         public string SurName { get; set; }
         /// <summary>
-        /// 
+        /// 人数
         /// </summary>
         public int Count { get; set; }
         /// <summary>

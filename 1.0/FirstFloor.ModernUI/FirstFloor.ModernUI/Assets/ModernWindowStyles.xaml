@@ -477,6 +477,11 @@
                                                                 <i:InvokeCommandAction Command="{Binding Path=SelectedTreeItemChangedCommand}" 
                                                                                        CommandParameter="{Binding ElementName=trees, Path=SelectedItem}"/>
                                                             </i:EventTrigger>
+
+                                                            <i:EventTrigger EventName="MouseDoubleClick">
+                                                                <i:InvokeCommandAction Command="{Binding Path=MouseDoubleClickTreeItemCommand}" 
+                                                                                       CommandParameter="{Binding ElementName=trees, Path=SelectedItem}"/>
+                                                            </i:EventTrigger>
                                                         </i:Interaction.Triggers>
                                                     </TreeView>
                                                     <!--<TreeView x:Name="trees"  ItemsSource="{Binding TreeNodes,Mode=TwoWay}"   >

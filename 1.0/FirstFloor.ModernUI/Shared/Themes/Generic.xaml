@@ -14,7 +14,8 @@
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernTab.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernWindow.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/TransitioningContentControl.xaml" />
-        
+        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernGrowlNotification.xaml"/>
+
     </ResourceDictionary.MergedDictionaries>
  
 </ResourceDictionary>

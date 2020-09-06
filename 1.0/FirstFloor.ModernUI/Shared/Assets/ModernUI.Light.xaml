@@ -120,6 +120,25 @@
         <GradientStop o:Freeze="True" Color="{DynamicResource DangerColor}" Offset="0"/>
         <GradientStop o:Freeze="True" Color="{DynamicResource DarkDangerColor}" Offset="1"/>
     </LinearGradientBrush>
+
+    <!--ModernGrowlNotification-->
+    <SolidColorBrush x:Key="NormalBorderBrush" Color="Black" />
+    <SolidColorBrush x:Key="DefaultedBorderBrush" Color="Black" />
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
+    <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
+    <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />
+    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#FFF" />
+    <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="#DDD" />
+    <LinearGradientBrush x:Key="CloseNormal" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Color="#394452" Offset="0.0"/>
+        <GradientStop Color="#343e4a" Offset="1.0"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="CloseOver" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Color="#515a6b" Offset="0.0"/>
+        <GradientStop Color="#474f5d" Offset="1.0"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="ClosePressed" Color="#090909" />
+
     <!--弹出层样式-->
     <SolidColorBrush x:Key="PopupBackground" Color="#ffffff" />
     <!--进度条-->

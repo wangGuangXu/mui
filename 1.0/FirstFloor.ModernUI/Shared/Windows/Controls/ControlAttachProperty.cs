@@ -696,7 +696,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private static void ClearButtonClick(object sender, ExecutedRoutedEventArgs e)
         {
             var tbox = e.Parameter as FrameworkElement;
-            if (tbox == null) return;
+            if (tbox == null)
+            {
+                return;
+            }
+
             if (tbox is TextBox)
             {
                 ((TextBox)tbox).Clear();

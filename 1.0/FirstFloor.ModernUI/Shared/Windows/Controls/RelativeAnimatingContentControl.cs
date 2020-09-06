@@ -82,61 +82,82 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         private void UpdateAnyAnimationValues()
         {
-            if (_knownHeight > 0 && _knownWidth > 0) {
-                // Initially, before any special animations have been found,
-                // the visual state groups of the control must be explored. 
-                // By definition they must be at the implementation root of the
-                // control.
-                if (_specialAnimations == null) {
-                    _specialAnimations = new List<AnimationValueAdapter>();
+            if (_knownHeight <= 0 || _knownWidth <= 0)
+            {
+                return;
+            }
 
-                    foreach (VisualStateGroup group in VisualStateManager.GetVisualStateGroups(this)) {
-                        if (group == null) {
+            // Initially, before any special animations have been found,
+            // the visual state groups of the control must be explored. 
+            // By definition they must be at the implementation root of the
+            // control.
+            if (_specialAnimations == null)
+            {
+                _specialAnimations = new List<AnimationValueAdapter>();
+
+                foreach (VisualStateGroup group in VisualStateManager.GetVisualStateGroups(this))
+                {
+                    if (group == null)
+                    {
+                        continue;
+                    }
+                    foreach (VisualState state in group.States)
+                    {
+                        if (state == null)
+                        {
                             continue;
                         }
-                        foreach (VisualState state in group.States) {
-                            if (state != null) {
-                                Storyboard sb = state.Storyboard;
 
-                                if (sb != null) {
-                                    // Examine all children of the storyboards,
-                                    // looking for either type of double
-                                    // animation.
-                                    foreach (Timeline timeline in sb.Children) {
-                                        DoubleAnimation da = timeline as DoubleAnimation;
-                                        DoubleAnimationUsingKeyFrames dakeys = timeline as DoubleAnimationUsingKeyFrames;
-                                        if (da != null) {
-                                            ProcessDoubleAnimation(da);
-                                        }
-                                        else if (dakeys != null) {
-                                            ProcessDoubleAnimationWithKeys(dakeys);
-                                        }
-                                    }
-                                }
+                        Storyboard sb = state.Storyboard;
+                        if (sb == null)
+                        {
+                            continue;
+                        }
+                        // Examine all children of the storyboards,
+                        // looking for either type of double
+                        // animation.
+                        foreach (Timeline timeline in sb.Children)
+                        {
+                            DoubleAnimation da = timeline as DoubleAnimation;
+                            DoubleAnimationUsingKeyFrames dakeys = timeline as DoubleAnimationUsingKeyFrames;
+                            if (da != null)
+                            {
+                                ProcessDoubleAnimation(da);
+                            }
+                            else if (dakeys != null)
+                            {
+                                ProcessDoubleAnimationWithKeys(dakeys);
                             }
                         }
                     }
                 }
+            }
 
-                // Update special animation values relative to the current size.
-                UpdateKnownAnimations();
+            // Update special animation values relative to the current size.
+            UpdateKnownAnimations();
 
-                // HACK: force storyboard to use new values
-                foreach (VisualStateGroup group in VisualStateManager.GetVisualStateGroups(this)) {
-                    if (group == null) {
+            // HACK: force storyboard to use new values
+            foreach (VisualStateGroup group in VisualStateManager.GetVisualStateGroups(this))
+            {
+                if (group == null)
+                {
+                    continue;
+                }
+                foreach (VisualState state in group.States)
+                {
+                    if (state == null)
+                    {
                         continue;
                     }
-                    foreach (VisualState state in group.States) {
-                        if (state != null) {
-                            Storyboard sb = state.Storyboard;
 
-                            if (sb != null) {
-                                // need to kick the storyboard, otherwise new values are not taken into account.
-                                // it's sad, really don't want to start storyboards in vsm, but I see no other option
-                                sb.Begin(this);     
-                            }
-                        }
+                    Storyboard sb = state.Storyboard;
+                    if (sb == null)
+                    {
+                        continue;
                     }
+                    // need to kick the storyboard, otherwise new values are not taken into account.
+                    // it's sad, really don't want to start storyboards in vsm, but I see no other option
+                    sb.Begin(this);
                 }
             }
         }
@@ -147,7 +168,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// </summary>
         private void UpdateKnownAnimations()
         {
-            foreach (AnimationValueAdapter adapter in _specialAnimations) {
+            foreach (AnimationValueAdapter adapter in _specialAnimations) 
+            {
                 adapter.UpdateWithNewDimension(_knownWidth, _knownHeight);
             }
         }
@@ -160,9 +182,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private void ProcessDoubleAnimationWithKeys(DoubleAnimationUsingKeyFrames da)
         {
             // Look through all keyframes in the instance.
-            foreach (DoubleKeyFrame frame in da.KeyFrames) {
+            foreach (DoubleKeyFrame frame in da.KeyFrames) 
+            {
                 var d = DoubleAnimationFrameAdapter.GetDimensionFromIdentifyingValue(frame.Value);
-                if (d.HasValue) {
+                if (d.HasValue) 
+                {
                     _specialAnimations.Add(new DoubleAnimationFrameAdapter(d.Value, frame));
                 }
             }
@@ -175,15 +199,18 @@ namespace FirstFloor.ModernUI.Windows.Controls
         private void ProcessDoubleAnimation(DoubleAnimation da)
         {
             // Look for a special value in the To property.
-            if (da.To.HasValue) {
+            if (da.To.HasValue) 
+            {
                 var d = DoubleAnimationToAdapter.GetDimensionFromIdentifyingValue(da.To.Value);
-                if (d.HasValue) {
+                if (d.HasValue) 
+                {
                     _specialAnimations.Add(new DoubleAnimationToAdapter(d.Value, da));
                 }
             }
 
             // Look for a special value in the From property.
-            if (da.From.HasValue) {
+            if (da.From.HasValue) 
+            {
                 var d = DoubleAnimationFromAdapter.GetDimensionFromIdentifyingValue(da.To.Value);
                 if (d.HasValue) {
                     _specialAnimations.Add(new DoubleAnimationFromAdapter(d.Value, da));

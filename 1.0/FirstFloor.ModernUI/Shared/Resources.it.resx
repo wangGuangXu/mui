@@ -168,4 +168,7 @@
   <data name="Yes" xml:space="preserve">
     <value>Si</value>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Libero</value>
+  </data>
 </root>

@@ -16,6 +16,7 @@
                 <mui:Link DisplayName="现代菜单" Source="/Content/ControlsModernMenu.xaml" />
                 <mui:Link DisplayName="现代进度环" Source="/Content/ControlsModernProgressRing.xaml" />
                 <mui:Link DisplayName="现代窗体" Source="/Content/ControlsModernWindow.xaml" />
+                <mui:Link DisplayName="现代信息通知" Source="/Content/ControlsModernGrowlNotification.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>
