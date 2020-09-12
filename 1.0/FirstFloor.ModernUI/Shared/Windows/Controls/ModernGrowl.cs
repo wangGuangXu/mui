@@ -579,12 +579,12 @@ namespace FirstFloor.ModernUI.Windows.Controls
                     {
                         growlInfo.IconKey = "&#xe604;";
                         growlInfo.IconBrushKey = "#212121";
-                        growlInfo.StaysOpen = true;
-                        growlInfo.ShowCloseButton = false;
-                        if (GrowlPanel.ContextMenu != null)
-                        {
-                            GrowlPanel.ContextMenu.Opacity = 0;
-                        }
+                        //growlInfo.StaysOpen = true;
+                        //growlInfo.ShowCloseButton = false;
+                        //if (GrowlPanel.ContextMenu != null)
+                        //{
+                        //    GrowlPanel.ContextMenu.Opacity = 0;
+                        //}
                     }
                     else
                     {

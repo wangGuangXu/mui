@@ -519,6 +519,11 @@
                                                 </TabControl.ContentTemplate>
                                             </TabControl>
                                         </Border>
+                                        
+                                        <!--信息提示显示区域-->
+                                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" >
+                                            <StackPanel controls:ModernGrowl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+                                        </ScrollViewer>
                                     </Grid>
 
                                     <!--状态栏-->

@@ -294,6 +294,7 @@ namespace FirstFloor.ModernUI.App
                 new TreeNode(){ParentId=Guid.Parse("D7AFCF4C-4DE4-4319-9C22-672569B4860F"), Id=Guid.Parse("809D5CF4-145F-4BAF-B153-092D99490D34"), Name = "百度" },
                 new TreeNode(){ParentId=Guid.Parse("D7AFCF4C-4DE4-4319-9C22-672569B4860F"), Id=Guid.Parse("E5C4A895-82FF-4C48-A077-AD8672A06736"), Name="数据库管理"},
                 new TreeNode(){ParentId=Guid.Parse("D7AFCF4C-4DE4-4319-9C22-672569B4860F"),Id=Guid.Parse("87D7C1B9-F88E-4273-8240-E6CF4978E229"), Name="Chapter3"},
+                new TreeNode(){ParentId=Guid.Parse("809D5CF4-145F-4BAF-B153-092D99490D34"), Id=Guid.Parse("CF62D1A6-1758-4150-9232-5757738BBD94"), Name="现代信息通知", Source="/Content/ControlsModernGrowlNotification.xaml"},
                 new TreeNode(){ParentId=Guid.Parse("809D5CF4-145F-4BAF-B153-092D99490D34"), Id=Guid.Parse("CCF76BC9-C3AA-4CE3-825A-D6D74ED0F7BD"), Name="百度搜索", Source="https://www.baidu.com/"},
                 new TreeNode(){ParentId=Guid.Parse("809D5CF4-145F-4BAF-B153-092D99490D34"), Id=Guid.Parse("3F92EC7A-B11D-47A6-9CFD-1AA0D001BA92"), Name="百度百科", Source="https://baike.baidu.com/"},
                 new TreeNode(){ParentId=Guid.Parse("E5C4A895-82FF-4C48-A077-AD8672A06736"), Id=Guid.Parse("E37F54AD-6A36-470A-BD71-FD28224EB49D"), Name="Oracle"},

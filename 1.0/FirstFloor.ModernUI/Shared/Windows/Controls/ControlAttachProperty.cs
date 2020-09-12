@@ -591,9 +591,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
             {
                 e.Handled = true;
             }
-        } 
+        }
         #endregion
-
 
         /************************************ RoutedUICommand Behavior enable **************************************/
         #region IsClearTextButtonBehaviorEnabledProperty 清除输入框Text值按钮行为开关（设为ture时才会绑定事件）
