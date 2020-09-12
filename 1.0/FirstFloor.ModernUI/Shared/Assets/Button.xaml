@@ -323,8 +323,8 @@
         </Setter>
     </Style>
 
-    <!--信息通知关闭按钮-->
-    <Style x:Key="GrowlNotificationButtonFocusVisual">
+    <!--现代信息提示关闭按钮获取角度可视化样式-->
+    <Style x:Key="ModernGrowlButtonFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -335,11 +335,12 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <Style x:Key="GrowlNotificationCloseButton" TargetType="{x:Type Button}">
+    
+    <!--现代信息提示关闭按钮-->
+    <Style x:Key="ModernGrowlCloseButton" TargetType="{x:Type Button}">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
-        <Setter Property="FocusVisualStyle" Value="{StaticResource GrowlNotificationButtonFocusVisual}"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ModernGrowlButtonFocusVisual}"/>
         <Setter Property="MinHeight" Value="16"/>
         <Setter Property="MinWidth" Value="16"/>
         <Setter Property="Cursor" Value="Hand"/>

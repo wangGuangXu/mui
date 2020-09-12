@@ -16,7 +16,7 @@ using System.Net;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
-    /// 现代淡入淡出信息提示信息控件
+    /// 现代提示信息控件
     /// </summary>
     [TemplatePart(Name = ElementPanelMore, Type = typeof(Panel))]
     [TemplatePart(Name = ElementGridMain, Type = typeof(Grid))]
@@ -32,13 +32,21 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// 消息容器
         /// </summary>
         public static Panel GrowlPanel { get; set; }
-
+        /// <summary>
+        /// 确定和取消按钮面板
+        /// </summary>
         private Panel _panelMore;
-
+        /// <summary>
+        /// 主面板
+        /// </summary>
         private Grid _gridMain;
-
+        /// <summary>
+        /// 关闭按钮
+        /// </summary>
         private Button _buttonClose;
-
+        /// <summary>
+        /// 显示关闭按钮
+        /// </summary>
         private bool _showCloseButton;
         /// <summary>
         /// 保持打开状态
@@ -56,46 +64,48 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// 关闭计时器
         /// </summary>
         private DispatcherTimer _timerClose;
-
+        /// <summary>
+        /// 面板字典
+        /// </summary>
         private static readonly Dictionary<string, Panel> PanelDic = new Dictionary<string, Panel>();
         /// <summary>
-        /// 
+        /// 关闭前的操作
         /// </summary>
         private Func<bool, bool> ActionBeforeClose { get; set; }
         /// <summary>
-        /// 
+        /// 取消
         /// </summary>
         internal static readonly DependencyProperty CancelStrProperty = DependencyProperty.Register("CancelStr", typeof(string), typeof(ModernGrowl), new PropertyMetadata(default(string)));
         /// <summary>
-        /// 
+        /// 确认
         /// </summary>
         internal static readonly DependencyProperty ConfirmStrProperty = DependencyProperty.Register("ConfirmStr", typeof(string), typeof(ModernGrowl), new PropertyMetadata(default(string)));
         /// <summary>
-        /// 
+        /// 显示时间
         /// </summary>
         public static readonly DependencyProperty ShowDateTimeProperty = DependencyProperty.Register("ShowDateTime", typeof(bool), typeof(ModernGrowl), new PropertyMetadata(true));
         /// <summary>
-        /// 
+        /// 消息
         /// </summary>
         public static readonly DependencyProperty MessageProperty = DependencyProperty.Register("Message", typeof(string), typeof(ModernGrowl), new PropertyMetadata(default(string)));
         /// <summary>
-        /// 
+        /// 时间
         /// </summary>
         public static readonly DependencyProperty TimeProperty = DependencyProperty.Register("Time", typeof(DateTime), typeof(ModernGrowl), new PropertyMetadata(default(DateTime)));
         /// <summary>
-        /// 
+        /// 图标
         /// </summary>
         public static readonly DependencyProperty IconProperty = DependencyProperty.Register("Icon", typeof(string), typeof(ModernGrowl), new PropertyMetadata("\ue604"));
         /// <summary>
-        /// 
+        /// 图标色画刷
         /// </summary>
         public static readonly DependencyProperty IconBrushProperty = DependencyProperty.Register("IconBrush", typeof(Brush), typeof(ModernGrowl), new PropertyMetadata(default(Brush)));
         /// <summary>
-        /// 
+        /// 信息类型
         /// </summary>
         public static readonly DependencyProperty TypeProperty = DependencyProperty.Register("Type", typeof(ModernInfoType), typeof(ModernGrowl), new PropertyMetadata(default(ModernInfoType)));
         /// <summary>
-        /// 
+        /// 消息容器
         /// </summary>
         public static readonly DependencyProperty GrowlParentProperty = DependencyProperty.RegisterAttached("GrowlParent", typeof(bool), typeof(ModernGrowl), new PropertyMetadata(false, OnGrowlParentChanged));
 
@@ -108,7 +118,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 令牌
         /// </summary>
         public static readonly DependencyProperty TokenProperty = DependencyProperty.RegisterAttached("Token", typeof(string), typeof(ModernGrowl), new PropertyMetadata(default(string), OnTokenChanged));
 
@@ -255,16 +265,31 @@ namespace FirstFloor.ModernUI.Windows.Controls
             CommandBindings.Add(new CommandBinding(ControlAttachProperty.ConfirmGrowlCommand, OnButtonOk));
         }
 
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnButtonClose(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnButtonCancel(object sender, RoutedEventArgs e)
         {
             Close(true,false);
         }
 
+        /// <summary>
+        /// 确认
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnButtonOk(object sender, RoutedEventArgs e)
         {
             Close(true);
@@ -273,6 +298,8 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <summary>
         /// 关闭
         /// </summary>
+        /// <param name="invokeActionBeforeClose">关闭前的操作</param>
+        /// <param name="invokeParam">调用参数</param>
         private void Close(bool invokeActionBeforeClose = false, bool invokeParam = true)
         {
             if (invokeActionBeforeClose)
@@ -321,6 +348,9 @@ namespace FirstFloor.ModernUI.Windows.Controls
             Update();
         }
 
+        /// <summary>
+        /// 检测控件中组件是否为空
+        /// </summary>
         private void CheckNull()
         {
             if (_panelMore == null || _gridMain == null || _buttonClose == null)
@@ -418,7 +448,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        ///     消息容器
+        /// 消息容器
         /// </summary>
         /// <param name="panel"></param>
         private static void SetGrowlPanel(Panel panel)
@@ -428,7 +458,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 初始化信息提示容器面板
         /// </summary>
         /// <param name="panel"></param>
         private static void InitGrowlPanel(Panel panel)
@@ -480,7 +510,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 初始化提示信息
         /// </summary>
         /// <param name="growlInfo"></param>
         /// <param name="infoType"></param>

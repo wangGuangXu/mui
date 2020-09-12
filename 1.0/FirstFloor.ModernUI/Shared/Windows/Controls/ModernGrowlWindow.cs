@@ -8,31 +8,20 @@ using System.Windows.Media;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
-    /// 
+    /// 现代信息提示窗口
     /// </summary>
     public sealed class ModernGrowlWindow:Window
     {
         /// <summary>
-        /// 
+        /// 提示信息容器
         /// </summary>
         internal Panel GrowlPanel { get; set; }
 
         /// <summary>
-        /// 
+        /// 现代信息提示窗口
         /// </summary>
         internal ModernGrowlWindow()
         {
-            //ShowActivated = false;
-            //AllowsTransparency = true;
-            //WindowStyle = WindowStyle.None;
-            //ShowInTaskbar = false;
-            //Background = Brushes.Transparent;
-            //Topmost = true;
-            //UseLayoutRounding = true;
-
-            WindowStyle = WindowStyle.None;
-            AllowsTransparency = true;
-
             GrowlPanel = new StackPanel
             {
                 VerticalAlignment = VerticalAlignment.Top,

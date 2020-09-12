@@ -156,6 +156,8 @@
     </LinearGradientBrush>
     <Color x:Key="SecondaryTextColor">#757575</Color>
     <SolidColorBrush o:Freeze="True" x:Key="SecondaryTextBrush" Color="{StaticResource SecondaryTextColor}"/>
+    <Color x:Key="PrimaryTextColor">#212121</Color>
+    <SolidColorBrush o:Freeze="True" x:Key="PrimaryTextBrush" Color="{StaticResource PrimaryTextColor}"/>
 
     <!--弹出层样式-->
     <SolidColorBrush x:Key="PopupBackground" Color="#ffffff" />

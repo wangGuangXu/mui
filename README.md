@@ -76,7 +76,8 @@ Check out the **MUI 演示 app** 包括在 [MUI release](https://github.com/firs
 　　[/MyProject;component/Image/user.ico]或文件的相对路径
 
 ##    Binding用法：
- *     1. {Binding和Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext} 等价
+*     1. {Binding和Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext} 等价
+*      2.ItemsSource="{Binding .}" .路径可用于绑定到当前源。
 ## 1.样式引用地址：https://www.cnblogs.com/beimeng/p/7843427.html
 * 1.如果将 x:Key 值显式设置为 {x:Type TextBlock} 之外的任何值，如设置为 x:key="cc"，Style 就不会自动应用于所有 TextBlock 元素。此时，必须通过使用 x:Key 值，将样式显式应用于 TextBlock 元素
 * 2.样式位于资源部分，并且未设置样式的 TargetType 属性，则必须提供 x:Key。
@@ -84,3 +85,17 @@ Check out the **MUI 演示 app** 包括在 [MUI release](https://github.com/firs
 <Style x:Key="{x:Type TextBlock}" TargetType="TextBlock">
    <Setter Property="FontSize" Value="28"/>
 </Style>
+## WPF之UseLayoutRounding和SnapsToDevicePixels的区别 ：
+参考资料：https://blog.csdn.net/catshitone/article/details/77454465
+* UserLayoutRounding为False，导致控件布局相对屏幕若不是整数则不会四舍五入，导致边缘模糊
+* SnapsToDevicePixels默认为false， 为true可以让元素像素级对齐
+* UIElement.UseLayoutRounding 属性
+获取或设置一个值，该值确定对象及其可视化子树的呈现是否应使用将呈现与整像素对齐的舍入行为。（一般在容器元素上设置， 发生在Measure&Arrange期间）
+* UIElement.SnapsToDevicePixels 属性
+获取或设置一个值，该值决定呈现元素期间是否应使用设备特定的像素设置。这是一个依赖项属性。（一般在根元素设置， 发生在Render， 不是容器元素）
+* 共同点：
+1. 默认值都是false，如果设置到root元素上，则child元素也自动使用同样设置
+2. 都是为了解决wpf元素边缘模糊的问题
+* 不同点：
+UseLayoutRounding是在during layout的时候生效的，而SnapsToDevicePixels是在during rendering的时候生效的
+

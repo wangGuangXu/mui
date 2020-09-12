@@ -6,7 +6,7 @@ using System.Text;
 namespace FirstFloor.ModernUI.Presentation
 {
     /// <summary>
-    /// 
+    /// 现代提示信息实体
     /// </summary>
     public class GrowlInfo
     {
@@ -31,7 +31,7 @@ namespace FirstFloor.ModernUI.Presentation
         /// </summary>
         public string ConfirmStr { get; set; } ="确认";
         /// <summary>
-        /// 
+        /// 关闭前的操作
         /// </summary>
         public Func<bool, bool> ActionBeforeClose { get; set; }
         /// <summary>
@@ -39,27 +39,27 @@ namespace FirstFloor.ModernUI.Presentation
         /// </summary>
         public bool StaysOpen { get; set; }
         /// <summary>
-        /// 
+        /// 是否自定义
         /// </summary>
         public bool IsCustom { get; set; }
         /// <summary>
-        /// 
+        /// 通知信息类型
         /// </summary>
         public ModernInfoType Type { get; set; }
         /// <summary>
-        /// 
+        /// 图标编码
         /// </summary>
         public string IconKey { get; set; }
         /// <summary>
-        /// 
+        /// 图标背景色
         /// </summary>
         public string IconBrushKey { get; set; }
         /// <summary>
-        /// 
+        /// 显示关闭按钮
         /// </summary>
         public bool ShowCloseButton { get; set; } = true;
         /// <summary>
-        /// 
+        /// 令牌
         /// </summary>
         public string Token { get; set; }
     }

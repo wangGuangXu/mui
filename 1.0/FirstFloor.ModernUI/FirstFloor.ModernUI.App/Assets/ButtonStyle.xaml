@@ -9,6 +9,7 @@
     <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#FFF" />
     <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="#DDD" />
 
+    <!--现代信息提示窗口方式的关闭按钮样式-->
     <Style x:Key="ButtonFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>

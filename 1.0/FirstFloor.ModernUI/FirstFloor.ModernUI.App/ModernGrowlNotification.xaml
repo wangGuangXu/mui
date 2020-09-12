@@ -83,6 +83,5 @@
             </DataTemplate.Triggers>
         </DataTemplate>
     </Window.Resources>
-    <!--ItemsSource="{Binding .}"-->
     <ItemsControl x:Name="NotificationsControl" FocusVisualStyle="{x:Null}" ItemsSource="{Binding .}" ItemTemplate="{StaticResource MessageTemplate}" />
 </Window>

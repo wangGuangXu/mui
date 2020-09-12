@@ -154,7 +154,7 @@
     <Compile Include="Content\ModernFrame\Sample.xaml.cs">
       <DependentUpon>Sample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ModernGrowlNotification.xaml.cs">
       <DependentUpon>ModernGrowlNotification.xaml</DependentUpon>
     </Compile>
@@ -168,13 +168,13 @@
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SampleFormViewModel.cs" />
+    <Compile Include="ViewModels\SampleFormViewModel.cs" />
     <Compile Include="FlickrImageLoader.cs" />
     <Compile Include="LoremIpsumLoader.cs" />
     <Compile Include="SampleDisabledCommand.cs" />
     <Compile Include="SampleParameterCommand.cs" />
     <Compile Include="SampleMsgBoxCommand.cs" />
-    <Compile Include="HomeViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="ViewModels\ModernGrowlViewModel.cs" />
   </ItemGroup>
@@ -552,10 +552,6 @@
   <ItemGroup>
     <Content Include="Lib\De.TorstenMandelkow.MetroChart.dll" />
     <Resource Include="Resources\close.png" />
-    <Resource Include="Resources\facebook-button.png" />
-    <Resource Include="Resources\microsoft-windows-8-logo.png" />
-    <Resource Include="Resources\notification-icon.png" />
-    <Resource Include="Resources\Radiation_warning_symbol.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

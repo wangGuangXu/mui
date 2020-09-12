@@ -39,11 +39,6 @@ namespace FirstFloor.ModernUI.App.Content
             positionLeft = SystemParameters.WorkArea.Left + SystemParameters.WorkArea.Width - leftOffset;
             displayHeight = SystemParameters.WorkArea.Height - 20;
 
-            ////在系统区域内弹出位置计算
-            //positionTop = Application.Current.MainWindow.Top + topOffset;
-            //positionLeft = Application.Current.MainWindow.Left + Application.Current.MainWindow.Width - leftOffset;
-            //displayHeight = Application.Current.MainWindow.Height - 20;
-
             growlNotifications.Height = displayHeight;
             growlNotifications.Top = positionTop;
             growlNotifications.Left = positionLeft;
