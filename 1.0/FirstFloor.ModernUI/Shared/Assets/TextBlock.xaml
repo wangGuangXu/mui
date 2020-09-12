@@ -48,7 +48,6 @@
 
     <!--FIcon-->
     <Style x:Key="FIcon" TargetType="TextBlock">
-        <!--<Setter Property="FontFamily" Value="pack://application:,,,/FirstFloor.ModernUI;component/Resources/#SF2015iconfont"></Setter>-->
         <Setter Property="FontFamily" Value="/FirstFloor.ModernUI;component/#iconfont"></Setter>
         <Setter Property="Foreground" Value="Red"/>
         <Setter Property="TextAlignment" Value="Center"/>
@@ -56,4 +55,13 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="20"/>
     </Style>
+
+    <!--<Color x:Key="PrimaryTextColor">#212121</Color>
+    <SolidColorBrush o:Freeze="True" x:Key="PrimaryTextBrush" Color="{StaticResource PrimaryTextColor}"/>
+    <Style x:Key="TextBlockBaseStyle" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}"/>
+    </Style>
+    <Style x:Key="TextBlockDefault" BasedOn="{StaticResource TextBlockBaseStyle}" TargetType="TextBlock"/>-->
 </ResourceDictionary>

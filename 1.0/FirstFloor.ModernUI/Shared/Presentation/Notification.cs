@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Linq;
+using System.Windows.Media;
+using System.Net;
+using System.Windows.Input;
+using FirstFloor.ModernUI.Windows.Interactivity;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace FirstFloor.ModernUI.Presentation
 {
@@ -23,6 +29,20 @@ namespace FirstFloor.ModernUI.Presentation
             {
                 icon = value;
                 OnPropertyChanged(()=>this.Icon);
+            }
+        }
+
+        private Brush iconBackgroundBrush;
+        /// <summary>
+        /// 字体图标背景色画刷
+        /// </summary>
+        public Brush IconBackgroundBrush
+        {
+            get { return iconBackgroundBrush; }
+            set
+            {
+                iconBackgroundBrush = value;
+                OnPropertyChanged(() => this.IconBackgroundBrush);
             }
         }
 
@@ -133,9 +153,51 @@ namespace FirstFloor.ModernUI.Presentation
         /// <summary>
         /// 
         /// </summary>
-        public Notification()
+        public ICommand SizeChangedCommand { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Notification(string icon, string title, string iconBackgroundBrush, string message)
         {
             Token = Guid.NewGuid().ToString();
+
+            Icon = WebUtility.HtmlDecode(icon) ;
+            IconBackgroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(iconBackgroundBrush));
+            Title = title;
+            Message = message;
+
+            SizeChangedCommand = new RelayCommand<ExCommandParameter>(o => ModernGrowlNotificationSizeChanged(o), o => CanModernGrowlNotificationSizeChanged(o));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter"></param>
+        private void ModernGrowlNotificationSizeChanged(ExCommandParameter parameter)
+        {
+            SizeChangedEventArgs changedEventArgs = parameter.EventArgs as SizeChangedEventArgs;
+            if (changedEventArgs.NewSize.Height != 0.0)
+            {
+                return;
+            }
+
+            var element = parameter.Sender as Grid;
+            if (element == null || element.Tag == null)
+            {
+                return;
+            }
+
+            //RemoveNotify(notifications.First(n => n.Token == element.Tag.ToString()));
+        }
+
+        private bool CanModernGrowlNotificationSizeChanged(ExCommandParameter parameter)
+        {
+            if (parameter == null || parameter.EventArgs == null)
+            {
+                return false;
+            }
+            return true;
         }
 
     }

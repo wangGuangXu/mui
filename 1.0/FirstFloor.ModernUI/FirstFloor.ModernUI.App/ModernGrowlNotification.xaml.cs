@@ -16,14 +16,14 @@ using System.Windows.Shapes;
 namespace FirstFloor.ModernUI.App
 {
     /// <summary>
-    /// ModernGrowlNotification.xaml 的交互逻辑
+    /// 现代信息通知窗体示例
     /// </summary>
     public partial class ModernGrowlNotification : Window
     {
         /// <summary>
         /// 屏幕最大显示4个通知
         /// </summary>
-        private const int maxNotifications = 4;
+        private const int maxNotifications = 6;
         /// <summary>
         /// 通知集合
         /// </summary>

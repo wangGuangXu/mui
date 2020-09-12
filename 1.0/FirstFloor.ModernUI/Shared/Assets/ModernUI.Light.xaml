@@ -121,7 +121,7 @@
         <GradientStop o:Freeze="True" Color="{DynamicResource DarkDangerColor}" Offset="1"/>
     </LinearGradientBrush>
 
-    <!--ModernGrowlNotification-->
+    <!--现代通知窗口样式ModernGrowlNotification-->
     <SolidColorBrush x:Key="NormalBorderBrush" Color="Black" />
     <SolidColorBrush x:Key="DefaultedBorderBrush" Color="Black" />
     <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
@@ -138,6 +138,24 @@
         <GradientStop Color="#474f5d" Offset="1.0"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="ClosePressed" Color="#090909" />
+
+    <!--现代通知自定义控件样式ModernGrowl-->
+    <Color x:Key="EffectShadowColor">#AA000000</Color>
+    <DropShadowEffect x:Key="EffectShadow2" BlurRadius="8" ShadowDepth="1.5" Direction="270" Color="{StaticResource EffectShadowColor}" Opacity=".2" RenderingBias="Performance" o:Freeze="True" />
+    <Color x:Key="DangerColor">#db3340</Color>
+    <Color x:Key="DarkDangerColor">#db3340</Color>
+    <LinearGradientBrush o:Freeze="True" x:Key="DangerBrush" EndPoint="1,0" StartPoint="0,0">
+        <GradientStop o:Freeze="True" Color="{StaticResource DangerColor}" Offset="0"/>
+        <GradientStop o:Freeze="True" Color="{StaticResource DarkDangerColor}" Offset="1"/>
+    </LinearGradientBrush>
+    <Color x:Key="PrimaryColor">#326cf3</Color>
+    <Color x:Key="DarkPrimaryColor">#326cf3</Color>
+    <LinearGradientBrush o:Freeze="True" x:Key="PrimaryBrush" EndPoint="1,0" StartPoint="0,0">
+        <GradientStop o:Freeze="True" Color="{StaticResource PrimaryColor}" Offset="0"/>
+        <GradientStop o:Freeze="True" Color="{StaticResource DarkPrimaryColor}" Offset="1"/>
+    </LinearGradientBrush>
+    <Color x:Key="SecondaryTextColor">#757575</Color>
+    <SolidColorBrush o:Freeze="True" x:Key="SecondaryTextBrush" Color="{StaticResource SecondaryTextColor}"/>
 
     <!--弹出层样式-->
     <SolidColorBrush x:Key="PopupBackground" Color="#ffffff" />

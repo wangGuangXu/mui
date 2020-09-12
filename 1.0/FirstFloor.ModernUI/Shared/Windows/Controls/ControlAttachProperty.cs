@@ -11,6 +11,8 @@ using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using ComboBox = System.Windows.Controls.ComboBox;
 using TextBox = System.Windows.Controls.TextBox;
 using System.Windows.Media.Animation;
+using System.Windows.Interop;
+using System.Runtime.InteropServices;
 //using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
@@ -469,6 +471,129 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
         #endregion
 
+        #region 现代通知弹出框
+        /// <summary>
+        /// 在任务管理器中显示
+        /// </summary>
+        public static readonly DependencyProperty ShowInTaskManagerProperty = DependencyProperty.RegisterAttached("ShowInTaskManager", typeof(bool), typeof(ControlAttachProperty), new PropertyMetadata(true, OnShowInTaskManagerChanged));
+
+        /// <summary>
+        /// 设置在任务管理器中显示
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="value"></param>
+        public static void SetShowInTaskManager(DependencyObject element, bool value)
+        {
+            element.SetValue(ShowInTaskManagerProperty, value);
+        }
+
+        /// <summary>
+        /// 获取在任务管理器中显示
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public static bool GetShowInTaskManager(DependencyObject element)
+        {
+            return (bool)element.GetValue(ShowInTaskManagerProperty);
+        }
+
+        /// <summary>
+        /// 在任务管理器中显示改变事件
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="e"></param>
+        private static void OnShowInTaskManagerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is System.Windows.Window window)
+            {
+                var v = (bool)e.NewValue;
+                window.SetCurrentValue(System.Windows.Window.ShowInTaskbarProperty, v);
+
+                if (v)
+                {
+                    window.SourceInitialized -= Window_SourceInitialized;
+                }
+                else
+                {
+                    window.SourceInitialized += Window_SourceInitialized;
+                }
+            }
+        }
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr GetDesktopWindow();
+
+        private static void Window_SourceInitialized(object sender, EventArgs e)
+        {
+            if (sender is System.Windows.Window window)
+            {
+                var _ = new WindowInteropHelper(window)
+                {
+                    Owner = GetDesktopWindow()
+                };
+            }
+        }
+
+
+        /// <summary>
+        /// 忽略Alt+F4关闭窗口快捷键
+        /// </summary>
+        public static readonly DependencyProperty IgnoreAltF4Property = DependencyProperty.RegisterAttached("IgnoreAltF4", typeof(bool), typeof(ControlAttachProperty), new PropertyMetadata(true, OnIgnoreAltF4Changed));
+
+        /// <summary>
+        /// 设置忽略Alt+F4关闭窗口快捷键
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="value"></param>
+        public static void SetIgnoreAltF4(DependencyObject element, bool value)
+        {
+            element.SetValue(IgnoreAltF4Property, value);
+        }
+
+        /// <summary>
+        /// 获取忽略Alt+F4关闭窗口快捷键
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public static bool GetIgnoreAltF4(DependencyObject element)
+        {
+            return (bool)element.GetValue(IgnoreAltF4Property);
+        }
+
+        /// <summary>
+        /// 忽略Alt+F4关闭窗口快捷键设置改变事件
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="e"></param>
+        private static void OnIgnoreAltF4Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is System.Windows.Window window)
+            {
+                if ((bool)e.NewValue)
+                {
+                    window.PreviewKeyDown += Window_PreviewKeyDown;
+                }
+                else
+                {
+                    window.PreviewKeyDown -= Window_PreviewKeyDown;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 键盘按下事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void Window_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.System && e.SystemKey == Key.F4)
+            {
+                e.Handled = true;
+            }
+        } 
+        #endregion
+
 
         /************************************ RoutedUICommand Behavior enable **************************************/
         #region IsClearTextButtonBehaviorEnabledProperty 清除输入框Text值按钮行为开关（设为ture时才会绑定事件）
@@ -880,6 +1005,30 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         #endregion
 
+        /// <summary>
+        /// 现代弹出框关闭命令
+        /// </summary>
+        public static RoutedCommand CloseGrowlCommand { get; private set; }
+        ///// <summary>
+        ///// 现代弹出框关闭命令绑定
+        ///// </summary>
+        //private static readonly CommandBinding CloseGrowlCommandBinding;
+        /// <summary>
+        /// 现代弹出框取消命令
+        /// </summary>
+        public static RoutedCommand CancelGrowlCommand { get; private set; }
+        ///// <summary>
+        ///// 现代弹出框取消命令绑定
+        ///// </summary>
+        //private static readonly CommandBinding CancelGrowlCommandBinding;
+        /// <summary>
+        /// 现代弹出框确认命令
+        /// </summary>
+        public static RoutedCommand ConfirmGrowlCommand { get; private set; }
+        /////// <summary>
+        /////// 现代弹出框确认命令绑定
+        /////// </summary>
+        ////private static readonly CommandBinding ConfirmGrowlCommandBinding;
 
         /// <summary>
         /// 静态构造函数
@@ -906,6 +1055,11 @@ namespace FirstFloor.ModernUI.Windows.Controls
             QuoteFileCommand = new RoutedUICommand();
             QuoteFileCommandBinding = new CommandBinding(QuoteFileCommand);
             QuoteFileCommandBinding.Executed += QuoteFileButtonClick;
+
+            CloseGrowlCommand = new RoutedCommand(nameof(CloseGrowlCommand), typeof(ControlAttachProperty));
+            CancelGrowlCommand = new RoutedCommand(nameof(CancelGrowlCommand),typeof(ControlAttachProperty));
+            ConfirmGrowlCommand = new RoutedCommand(nameof(ConfirmGrowlCommand),typeof(ControlAttachProperty));
+
         }
     }
 }

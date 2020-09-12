@@ -33,6 +33,7 @@
         <ResourceDictionary Source="ModernButtonStyle.xaml"/>
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/FButton.xaml"/>
         <ResourceDictionary Source="TabControl.xaml"/>
+        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernGrowl.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <!-- 默认的强调色和笔刷 default accent colors and brushes -->

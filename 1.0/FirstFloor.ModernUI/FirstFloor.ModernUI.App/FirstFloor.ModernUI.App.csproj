@@ -176,6 +176,7 @@
     <Compile Include="SampleMsgBoxCommand.cs" />
     <Compile Include="HomeViewModel.cs" />
     <Compile Include="TestClass.cs" />
+    <Compile Include="ViewModels\ModernGrowlViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Content\ControlsStylesProgressBar.xaml.cs">
