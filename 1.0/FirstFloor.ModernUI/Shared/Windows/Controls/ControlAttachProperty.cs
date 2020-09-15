@@ -198,8 +198,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <summary>
         /// 附加组件模板
         /// </summary>
-        public static readonly DependencyProperty AttachContentProperty = DependencyProperty.RegisterAttached(
-            "AttachContent", typeof(ControlTemplate), typeof(ControlAttachProperty), new FrameworkPropertyMetadata(null));
+        public static readonly DependencyProperty AttachContentProperty = DependencyProperty.RegisterAttached("AttachContent", typeof(ControlTemplate), typeof(ControlAttachProperty), new FrameworkPropertyMetadata(null));
         /// <summary>
         /// 
         /// </summary>
@@ -225,8 +224,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <summary>
         /// 水印
         /// </summary>
-        public static readonly DependencyProperty WatermarkProperty = DependencyProperty.RegisterAttached(
-            "Watermark", typeof(string), typeof(ControlAttachProperty), new FrameworkPropertyMetadata(""));
+        public static readonly DependencyProperty WatermarkProperty = DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(ControlAttachProperty), new FrameworkPropertyMetadata(""));
 
         /// <summary>
         /// 
@@ -419,8 +417,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <summary>
         /// TextBox的头部Label模板
         /// </summary>
-        public static readonly DependencyProperty LabelTemplateProperty = DependencyProperty.RegisterAttached(
-            "LabelTemplate", typeof(ControlTemplate), typeof(ControlAttachProperty), new FrameworkPropertyMetadata(null));
+        public static readonly DependencyProperty LabelTemplateProperty = DependencyProperty.RegisterAttached("LabelTemplate", typeof(ControlTemplate), typeof(ControlAttachProperty), new FrameworkPropertyMetadata(null));
 
         /// <summary>
         /// 
@@ -447,8 +444,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <summary>
         /// TextBox的头部Label
         /// </summary>
-        public static readonly DependencyProperty LabelProperty = DependencyProperty.RegisterAttached(
-            "Label", typeof(string), typeof(ControlAttachProperty), new FrameworkPropertyMetadata(null));
+        public static readonly DependencyProperty LabelProperty = DependencyProperty.RegisterAttached("Label", typeof(string), typeof(ControlAttachProperty), new FrameworkPropertyMetadata(null));
 
         /// <summary>
         /// 
@@ -468,6 +464,33 @@ namespace FirstFloor.ModernUI.Windows.Controls
         public static void SetLabel(DependencyObject obj, string value)
         {
             obj.SetValue(LabelProperty, value);
+        }
+        #endregion
+
+        #region LabelIconProperty TextBox的显示区域左侧的字体图标
+        /// <summary>
+        /// TextBox的显示区域左侧的字体图标
+        /// </summary>
+        public static readonly DependencyProperty LabelIconProperty = DependencyProperty.RegisterAttached("LabelIcon", typeof(string), typeof(ControlAttachProperty), new FrameworkPropertyMetadata("\ue604"));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        [AttachedPropertyBrowsableForType(typeof(TextBox))]
+        public static string GetLabelIcon(DependencyObject d)
+        {
+            return (string)d.GetValue(LabelIconProperty);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
+        public static void SetLabelIcon(DependencyObject obj, string value)
+        {
+            obj.SetValue(LabelIconProperty, value);
         }
         #endregion
 
@@ -1004,30 +1027,20 @@ namespace FirstFloor.ModernUI.Windows.Controls
 
         #endregion
 
+        #region 现代消息提示命令
         /// <summary>
         /// 现代弹出框关闭命令
         /// </summary>
         public static RoutedCommand CloseGrowlCommand { get; private set; }
-        ///// <summary>
-        ///// 现代弹出框关闭命令绑定
-        ///// </summary>
-        //private static readonly CommandBinding CloseGrowlCommandBinding;
         /// <summary>
         /// 现代弹出框取消命令
         /// </summary>
         public static RoutedCommand CancelGrowlCommand { get; private set; }
-        ///// <summary>
-        ///// 现代弹出框取消命令绑定
-        ///// </summary>
-        //private static readonly CommandBinding CancelGrowlCommandBinding;
         /// <summary>
         /// 现代弹出框确认命令
         /// </summary>
-        public static RoutedCommand ConfirmGrowlCommand { get; private set; }
-        /////// <summary>
-        /////// 现代弹出框确认命令绑定
-        /////// </summary>
-        ////private static readonly CommandBinding ConfirmGrowlCommandBinding;
+        public static RoutedCommand ConfirmGrowlCommand { get; private set; } 
+        #endregion
 
         /// <summary>
         /// 静态构造函数

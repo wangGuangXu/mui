@@ -176,11 +176,9 @@
                                 <ColumnDefinition  Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <!--Label区域-->
-                            <ContentControl x:Name="Label" Margin="1" Template="{TemplateBinding local:ControlAttachProperty.LabelTemplate}"
-                                            Content="{TemplateBinding local:ControlAttachProperty.Label}"/>
+                            <ContentControl x:Name="Label" Margin="1" Template="{TemplateBinding local:ControlAttachProperty.LabelTemplate}" Content="{TemplateBinding local:ControlAttachProperty.Label}"/>
                             <!--内容区域-->
-                            <ScrollViewer x:Name="PART_ContentHost" BorderThickness="1" Grid.Column="1" IsTabStop="False" Margin="2"
-                                          VerticalAlignment="Stretch" Background="{x:Null}" />
+                            <ScrollViewer x:Name="PART_ContentHost" BorderThickness="1" Grid.Column="1" IsTabStop="False" Margin="2" VerticalAlignment="Stretch" Background="{x:Null}" />
                             <!--水印-->
                             <TextBlock x:Name="Message"  Padding="{TemplateBinding Padding}" Visibility="Collapsed"
                                        Text="{TemplateBinding local:ControlAttachProperty.Watermark}" Grid.Column="1"
@@ -189,6 +187,99 @@
                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="5,2,5,2" />
                             <!--附加内容区域-->
                             <Border x:Name="PART_AttachContent" Grid.Column="2" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <ContentControl VerticalAlignment="Top" VerticalContentAlignment="Top" Template="{TemplateBinding local:ControlAttachProperty.AttachContent}" />
+                            </Border>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--显示水印-->
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Text}" Value="">
+                            <Setter TargetName="Message" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{Binding Path=(local:ControlAttachProperty.MouseOverBorderBrush),RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter  Property="BorderBrush" Value="{Binding Path=(local:ControlAttachProperty.FocusBorderBrush),RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                        <!--不可用-->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="PART_Root" Property="Opacity" Value="{DynamicResource DisableOpacity}" />
+                        </Trigger>
+                        <!--只读时，禁用PART_AttachContent-->
+                        <Trigger Property="IsReadOnly" Value="True">
+                            <Setter TargetName="PART_AttachContent" Property="IsEnabled" Value="False" />
+                            <Setter TargetName="Bg" Property="Opacity" Value="{DynamicResource ReadonlyOpacity}" />
+                            <Setter TargetName="PART_ContentHost" Property="Opacity" Value="{DynamicResource ReadonlyOpacity}" />
+                            <Setter TargetName="Label" Property="Opacity" Value="{DynamicResource ReadonlyOpacity}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--带图标呈现的文本框样式-->
+    <Style x:Key="DefaultIconTextBox" TargetType="{x:Type TextBox}" >
+        <Setter Property="SelectionBrush" Value="{DynamicResource Accent}" />
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="MinHeight" Value="28" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Background" Value="{DynamicResource InputBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource InputText}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}" />
+        <Setter Property="local:ControlAttachProperty.FocusBorderBrush" Value="{DynamicResource Accent}" />
+        <Setter Property="local:ControlAttachProperty.MouseOverBorderBrush" Value="{DynamicResource  Accent}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <!--将SnapsToDevicePixels更改为True以查看更好的边界和验证错误 change SnapsToDevicePixels to True to view a better border and validation error-->
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <!--英 ['kærət]  美 ['kærət]  插入(光标)符号-->
+        <Setter Property="CaretBrush" Value="{DynamicResource TextForeground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid x:Name="PART_Root">
+                        <Border x:Name="Bg" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                CornerRadius="{TemplateBinding local:ControlAttachProperty.CornerRadius}"
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" />
+                        <Grid x:Name="PART_InnerGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="Auto" />
+                                <ColumnDefinition  Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition  Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <!--Label区域-->
+                            <ContentControl x:Name="Label" Margin="1" Template="{TemplateBinding local:ControlAttachProperty.LabelTemplate}" Content="{TemplateBinding local:ControlAttachProperty.Label}"/>
+
+                            <!--字体图标-->
+                            <TextBlock x:Name="Icon"  Margin="1,4,5,0" 
+                                RenderTransformOrigin="0.5,0.5" Style="{StaticResource ModernIcon}"
+                                Text="{TemplateBinding local:ControlAttachProperty.LabelIcon}" 
+                                FontSize="20" Grid.Column="1" Width="26" Height="26" Background="Transparent"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Foreground="{DynamicResource  Accent}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform x:Name="transIcon" Angle="0"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+
+                            <!--内容区域-->
+                            <ScrollViewer x:Name="PART_ContentHost" BorderThickness="1" Grid.Column="2" IsTabStop="False"  Margin="2" VerticalAlignment="Stretch" Background="{x:Null}" />
+                            
+                            <!--水印-->
+                            <TextBlock x:Name="Message"  Padding="{TemplateBinding Padding}" Visibility="Collapsed"
+                                       Text="{TemplateBinding local:ControlAttachProperty.Watermark}" Grid.Column="2"
+                                       Foreground="{TemplateBinding Foreground}" IsHitTestVisible="False" Opacity="{DynamicResource WatermarkOpacity}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="5,2,5,2" />
+
+                            <!--右侧附加内容区域-->
+                            <Border x:Name="PART_AttachContent" Grid.Column="3" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <ContentControl VerticalAlignment="Top" VerticalContentAlignment="Top" Template="{TemplateBinding local:ControlAttachProperty.AttachContent}" />
                             </Border>
                         </Grid>
@@ -323,6 +414,32 @@
     <Style TargetType="{x:Type TextBox}" x:Key="LabelQuoteFileTextBox" BasedOn="{StaticResource LabelClearButtonTextBox}">
         <Setter Property="local:ControlAttachProperty.Label" Value="引用路径"/>
         <Setter Property="local:ControlAttachProperty.Watermark" Value="选择引用路径"/>
+        <Setter Property="local:ControlAttachProperty.AttachContent">
+            <Setter.Value>
+                <ControlTemplate>
+                    <local:ModernButton IconCode="&#xe637;" Style="{StaticResource ModernButtonTransparency}" IsTabStop="False" IconMargin="0"
+                               local:ControlAttachProperty.IsQuoteFileButtonBehaviorEnabled="True" Command="local:ControlAttachProperty.QuoteFileCommand" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type TextBox}}}"
+                               Margin="0,1,0,2"  IconSize="18" Foreground="{DynamicResource TextForeground}" Cursor="Arrow"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--带字体图标效果呈现的引用文本样式-->
+    <Style TargetType="{x:Type TextBox}" x:Key="LabelQuoteIconButtonTextBox" BasedOn="{StaticResource DefaultIconTextBox}">
+        <!--<Setter Property="local:ControlAttachProperty.Label" Value="引用路径"/>-->
+        <Setter Property="local:ControlAttachProperty.LabelIcon" Value="&#xe637;"/>
+        <!--<Setter Property="local:ControlAttachProperty.Watermark" Value=""/>-->
+        <!--<Setter Property="local:ControlAttachProperty.LabelTemplate" >
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Border Width="60" Background="{DynamicResource InputLabelBackground}">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="3" Text="{TemplateBinding Content}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>-->
         <Setter Property="local:ControlAttachProperty.AttachContent">
             <Setter.Value>
                 <ControlTemplate>

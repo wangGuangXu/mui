@@ -87,6 +87,8 @@
                             </ControlTemplate>
                         </xly:ControlAttachProperty.AttachContent>
                     </TextBox>
+
+                    <TextBox Width="260" Height="30" Margin="3" Style="{StaticResource LabelQuoteIconButtonTextBox}" IsReadOnly="True" />
                 </StackPanel>
 
             </StackPanel>
