@@ -20,7 +20,7 @@
                                 <ColumnDefinition Width="25"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock x:Name="HeadTxt" TextAlignment="Center" Text="{Binding Header}" Grid.Column="0" Margin="8,0,3,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            
+
                             <Button Grid.Column="1" Visibility="{Binding BtnStatus,Mode=TwoWay}"
                                 Command="{Binding CloseTabCommand}"
                                 Margin="0,0,0,0" 
@@ -28,11 +28,11 @@
                                 Height="16" 
                                 Tag="{Binding Header}"
                                 VerticalAlignment="Center"
-                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TabControl}},Path=SelectedItem }"
+                                CommandParameter="{Binding ElementName=HeadTxt, Path=Text }"
                                 ToolTip="关闭" 
                                 Style="{DynamicResource TabItemCloseButton}" >
                                 <Button.Content>
-                                    <Grid   >
+                                    <Grid >
                                         <Path Data="M0,0 L8,7 M8,0 L0,7 Z" 
                                             Width="8" Height="8" VerticalAlignment="Center" HorizontalAlignment="Center"
                                             Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" 

@@ -27,7 +27,7 @@ namespace FirstFloor.ModernUI.App
         public MainWindow()
         {
             InitializeComponent();
-            //this.DataContext = new MainViewModel();
+            this.DataContext = new MainViewModel();
         }
     }
 }

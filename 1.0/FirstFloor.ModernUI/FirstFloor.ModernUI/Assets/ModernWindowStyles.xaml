@@ -455,21 +455,22 @@
                                     <Grid Grid.Row="1">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="2"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Border Grid.Column="0" BorderBrush="{DynamicResource Accent}" BorderThickness="1" Margin="4,1,1,1">
+                                        <Border Grid.Column="0" BorderBrush="{DynamicResource Accent}" BorderThickness="1,1,1,0" Margin="1,0,0,0">
                                             <StackPanel  >
                                                 <Border BorderBrush="{DynamicResource Accent}" BorderThickness="0,0,0,1" >
-                                                    <TextBlock Text="菜单" Style="{StaticResource Heading2}" VerticalAlignment="Center" HorizontalAlignment="Center"   />
+                                                    <TextBlock Text="菜单" Style="{StaticResource Heading2}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3"   />
                                                 </Border>
                                                 
                                                 <ScrollViewer>
                                                     <TreeView x:Name="trees" BorderThickness="0" 
                                                         HorizontalAlignment="Left" 
                                                         Margin="0,10,0,10" 
-                                                        Width="190"
-                                                        ItemTemplate="{StaticResource ItemNode}" 
+                                                        Width="200"
+                                                        ItemTemplate="{StaticResource ItemNode}"
                                                         ItemsSource="{Binding TreeNodes,Mode=TwoWay}" 
                                                         Style="{StaticResource DefaultTreeView}">
                                                         <i:Interaction.Triggers>
@@ -501,8 +502,10 @@
                                             </StackPanel>
                                         </Border>
 
-                                        <Border Grid.Column="1" Grid.RowSpan="2" Margin="4,0,0,0" BorderBrush="{DynamicResource Accent}"  BorderThickness="1,1,1,1"  Background="Transparent"  >
-                                            <TabControl x:Name="tabControlMenu" Grid.Column="1"  BorderBrush="{DynamicResource Accent}"  Background="Transparent" 
+                                        <GridSplitter Grid.Column="1"  HorizontalAlignment="Stretch" />
+                                        
+                                        <Border Grid.Column="2" Margin="0,0,0,0" BorderBrush="{DynamicResource Accent}"  BorderThickness="1,1,1,0"  Background="Transparent"  >
+                                            <TabControl x:Name="tabControlMenu" BorderBrush="{DynamicResource Accent}"  Background="Transparent" 
                                                     BorderThickness="0,1,0,0"   
                                                     ItemsSource="{Binding TabItems,Mode=TwoWay}"  
                                                     SelectedItem="{Binding SelectedTabItem,Mode=TwoWay}">
@@ -521,7 +524,7 @@
                                         </Border>
                                         
                                         <!--信息提示显示区域-->
-                                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" >
+                                        <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" >
                                             <StackPanel controls:ModernGrowl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
                                         </ScrollViewer>
                                     </Grid>

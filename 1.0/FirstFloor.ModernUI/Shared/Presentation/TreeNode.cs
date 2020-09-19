@@ -9,7 +9,7 @@ namespace FirstFloor.ModernUI.Presentation
     /// <summary>
     /// 树节点对象
     /// </summary>
-    public class TreeNode : INotifyPropertyChanged
+    public class TreeNode : NotifyPropertyChanged
     {
         /// <summary>
         /// ID
@@ -48,7 +48,7 @@ namespace FirstFloor.ModernUI.Presentation
             set
             {
                 isExpanded = value;
-                RaisePropertyChanged("IsExpanded");
+                OnPropertyChanged(()=>this.IsExpanded);
             }
         }
         private bool isSelected;
@@ -64,7 +64,7 @@ namespace FirstFloor.ModernUI.Presentation
             set
             {
                 isSelected = value;
-                RaisePropertyChanged("IsSelected");
+                OnPropertyChanged(()=>this.IsSelected);
             }
         }
         /// <summary>
@@ -90,24 +90,6 @@ namespace FirstFloor.ModernUI.Presentation
         public TreeNode()
         {
             ChildNodes = new List<TreeNode>();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="propertyName"></param>
-        protected virtual void RaisePropertyChanged(string propertyName)
-        {
-            if (PropertyChanged == null)
-            {
-                return;
-            }
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

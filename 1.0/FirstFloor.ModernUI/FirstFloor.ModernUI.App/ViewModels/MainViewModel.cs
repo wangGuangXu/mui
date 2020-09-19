@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace FirstFloor.ModernUI.App
@@ -188,8 +189,8 @@ namespace FirstFloor.ModernUI.App
             InputData();
             TreeNodes = GetChildNodes(Guid.Parse("D7AFCF4C-4DE4-4319-9C22-672569B4860F"), Nodes);// Nodes是我已经获得的一组节点
 
-            CloseTabCommand = new RelayCommand(o => CloseTab(o), o => CanCloseTab(o));
-            SelectedTreeItemChangedCommand = new RelayCommand(o => SelectedTreeItemChanged(o), o => CanSelectedTreeItemChanged(o));
+            CloseTabCommand = new RelayCommand<string>(o => CloseTab(o), o => CanCloseTab(o));
+            SelectedTreeItemChangedCommand = new RelayCommand<TreeNode>(o => SelectedTreeItemChanged(o), o => CanSelectedTreeItemChanged(o));
 
             var tabItem = new TabItemModel("主页", "/Pages/Home.xaml", CloseTabCommand, Visibility.Hidden);
             TabItems.Add(tabItem);
@@ -205,10 +206,10 @@ namespace FirstFloor.ModernUI.App
         /// <summary>
         /// 关闭选项卡
         /// </summary>
-        /// <param name="para"></param>
-        private void CloseTab(object para)
+        /// <param name="header"></param>
+        private void CloseTab(string header)
         {
-            var tabItem = para as TabItemModel;
+            var tabItem=tabItems.FirstOrDefault(a=>a.Header.Equals(header));
             if (tabItem == null)
             {
                 return;
@@ -219,51 +220,36 @@ namespace FirstFloor.ModernUI.App
         /// <summary>
         /// 是否允许关闭选项卡
         /// </summary>
-        /// <param name="para"></param>
+        /// <param name="header"></param>
         /// <returns></returns>
-        private bool CanCloseTab(object para)
+        private bool CanCloseTab(string header)
         {
-            return (para == null) ? false : true;
+            return !string.IsNullOrEmpty(header);
         }
 
         /// <summary>
         /// 树选择
         /// </summary>
-        /// <param name="para"></param>
-        private void SelectedTreeItemChanged(object para)
+        /// <param name="treeNode"></param>
+        private void SelectedTreeItemChanged(TreeNode treeNode)
         {
-            var treeNode = para as TreeNode;
             var tabItem = TabItems.FirstOrDefault(a => a.Header == treeNode.Name);
             if (tabItem == null)
             {
-                tabItem = new TabItemModel(treeNode.Name, treeNode.Source, CloseTabCommand,Visibility.Visible);
+                tabItem = new TabItemModel(treeNode.Name, treeNode.Source, CloseTabCommand, Visibility.Visible);
                 TabItems.Add(tabItem);
-                SelectedTabItem = tabItem;
             }
-            else
-            {
-                SelectedTabItem = tabItem;
-            }
+            SelectedTabItem = tabItem;
         }
 
         /// <summary>
         /// 根据选择的树节点判断是否可添加选项卡
         /// </summary>
-        /// <param name="para"></param>
+        /// <param name="treeNode"></param>
         /// <returns></returns>
-        private bool CanSelectedTreeItemChanged(object para)
+        private bool CanSelectedTreeItemChanged(TreeNode treeNode)
         {
-            if (para == null)
-            {
-                return false;
-            }
-
-            var treeNode = para as TreeNode;
-            if (treeNode == null || treeNode.ChildNodes.Count > 0)
-            {
-                return false;
-            }
-            return true;
+            return treeNode != null && treeNode.ChildNodes.Count <= 0;
         }
 
         /// <summary>
