@@ -216,7 +216,7 @@
         <Setter Property="BorderBrush">
             <Setter.Value>
                 <!--色刷，Opacity：透明度-->
-                <SolidColorBrush Color="#333" Opacity="0.1"></SolidColorBrush>
+                <SolidColorBrush Color="#333" Opacity="0.1"/>
             </Setter.Value>
         </Setter>
         <Setter Property="Template">

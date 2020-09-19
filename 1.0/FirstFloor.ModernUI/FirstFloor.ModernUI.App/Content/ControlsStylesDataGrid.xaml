@@ -46,10 +46,9 @@
 
             </locals:Paging>
 
-            <DataGrid Name="DG1" ItemsSource="{Binding Customers}" AutoGenerateColumns="False" CanUserAddRows="False" AlternationCount="2" >
+            <DataGrid Name="DG1" ItemsSource="{Binding Customers}" AutoGenerateColumns="False" CanUserAddRows="False" AlternationCount="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" >
                 <DataGrid.Columns>
                     <!--全选-->
-
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.Header>
                             <CheckBox Margin="6,0,-14,0"  IsChecked="{Binding DataContext.IsSelectAll,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=1 }}">
@@ -89,8 +88,8 @@
                     </DataGridCheckBoxColumn>-->
 
                     <mui:DataGridTextColumn Header="序号"  Binding="{Binding Code}"/>
-                    <mui:DataGridTextColumn Header="名字"  Binding="{Binding FirstName}" Width="50"/>
-                    <mui:DataGridTextColumn Header="姓" Binding="{Binding LastName}" />
+                    <mui:DataGridTextColumn Header="名字"  Binding="{Binding FirstName}" Width="150" />
+                    <mui:DataGridTextColumn Header="姓" Binding="{Binding LastName}" Width="100" />
                     <mui:DataGridTextColumn Header="邮箱" Binding="{Binding Email}"/>
                     <mui:DataGridCheckBoxColumn Header="成员" Binding="{Binding IsMember}" />
                     <mui:DataGridComboBoxColumn Header="订单状态" SelectedItemBinding="{Binding Status}" ItemsSource="{Binding Source={StaticResource myEnum}}" />

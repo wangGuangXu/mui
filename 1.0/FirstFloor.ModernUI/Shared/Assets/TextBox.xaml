@@ -134,11 +134,13 @@
     <!-- 数据表格中的文本 text-in-datagrid styles-->
     <Style x:Key="DataGridTextStyle" TargetType="TextBlock" >
         <Setter Property="Margin" Value="2,0" />
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="DataGridEditingTextStyle" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Padding" Value="0" />
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
 
     <!--带水印的文本框默认样式-->

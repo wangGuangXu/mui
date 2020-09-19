@@ -467,7 +467,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
         #endregion
 
-        #region LabelIconProperty TextBox的显示区域左侧的字体图标
+        #region LabelIconProperty TextBox的显示区域左侧的字体图标呈现
         /// <summary>
         /// TextBox的显示区域左侧的字体图标
         /// </summary>
