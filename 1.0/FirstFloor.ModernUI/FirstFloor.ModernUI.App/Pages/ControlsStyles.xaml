@@ -11,6 +11,7 @@
             <mui:ModernTab.Links>
                 <mui:Link DisplayName="按钮" Source="/Content/ControlsStylesButton.xaml" />
                 <mui:Link DisplayName="数据表格" Source="/Content/ControlsStylesDataGrid.xaml" />
+                <mui:Link DisplayName="树型表格" Source="/Content/ControlsStylesTreeGrid.xaml" />
                 <mui:Link DisplayName="日期" Source="/Content/ControlsStylesDate.xaml" />
                 <mui:Link DisplayName="项控件" Source="/Content/ControlsStylesItemsControl.xaml"/>
                 <mui:Link DisplayName="进度条" Source="/Content/ControlsStylesProgressBar.xaml"/>

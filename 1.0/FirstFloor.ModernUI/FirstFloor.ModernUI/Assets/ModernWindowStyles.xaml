@@ -152,6 +152,7 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="IsTitleVisible" Value="True" />
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <Setter Property="ResizeMode" Value="NoResize"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:ModernWindow">

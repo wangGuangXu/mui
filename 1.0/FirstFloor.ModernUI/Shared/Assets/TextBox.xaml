@@ -264,7 +264,7 @@
                                 FontSize="20" Grid.Column="1" Width="26" Height="26" Background="Transparent"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Foreground="{DynamicResource  Accent}">
+                                Foreground="{TemplateBinding SelectionBrush}">
                                 <TextBlock.RenderTransform>
                                     <RotateTransform x:Name="transIcon" Angle="0"/>
                                 </TextBlock.RenderTransform>

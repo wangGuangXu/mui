@@ -244,10 +244,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\BooleanToFontWeightConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\IndentConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\LevelConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\NullOrEmptyStringToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\ToLowerConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\ToUpperConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\VisibleHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Converters\VisibleToReverseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\DefaultContentLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\IContent.cs" />
@@ -285,6 +287,9 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\TreeGrid\TreeGridElement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\TreeGrid\TreeGridFlatModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\TreeGrid\TreeGridModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources.fr.resx">

@@ -144,6 +144,9 @@
     <Compile Include="Content\ControlsStylesDate.xaml.cs">
       <DependentUpon>ControlsStylesDate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\ControlsStylesTreeGrid.xaml.cs">
+      <DependentUpon>ControlsStylesTreeGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Content\DataGridVieweModel.cs" />
     <Compile Include="Content\ModernFrame\CancelNavigateSample.xaml.cs">
       <DependentUpon>CancelNavigateSample.xaml</DependentUpon>
@@ -154,6 +157,7 @@
     <Compile Include="Content\ModernFrame\Sample.xaml.cs">
       <DependentUpon>Sample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Item.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ModernGrowlNotification.xaml.cs">
       <DependentUpon>ModernGrowlNotification.xaml</DependentUpon>
@@ -411,6 +415,10 @@
     <Page Include="Content\ControlsStylesDate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Content\ControlsStylesTreeGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Content\ModernFrame\CancelNavigateSample.xaml">
       <SubType>Designer</SubType>
