@@ -87,10 +87,10 @@ namespace FirstFloor.ModernUI.Windows.TreeGrid
         /// <param name="count"></param>
         internal void PrivateRemoveRange(int index, int count)
         {
-            // Set the modification flag
+            //设置修改标志 Set the modification flag
             modification = true;
 
-            // Iterate through all of the items to remove from the model
+            // 迭代所有要从模型中删除的项 Iterate through all of the items to remove from the model
             for (int itemIndex = 0; itemIndex < count; itemIndex++)
             {
                 // Remove the item from the keys

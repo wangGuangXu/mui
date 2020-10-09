@@ -2,6 +2,7 @@
 using FirstFloor.ModernUI.Windows.TreeGrid;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -106,54 +107,44 @@ namespace FirstFloor.ModernUI.App.Content
         //全部展开
         private void btnExpanderAll_Click(object sender, RoutedEventArgs e)
         {
-            //Expander(model.,true);
+            Expander(model.FlatModel, true);
         }
 
         //全部收缩
         private void btnCollapsedAll_Click(object sender, RoutedEventArgs e)
         {
-            //Expander(model,false);
+            Expander(model.FlatModel, false);
         }
 
         /// <summary>
-        /// 
+        /// 展开或者收缩
         /// </summary>
-        /// <param name="expand"></param>
-        private void Expander(TreeGridModel model,bool expand)
+        /// <param name="nodes"></param>
+        /// <param name="expand">展开</param>
+        private void Expander(ObservableCollection<TreeGridElement> nodes,bool expand)
         {
+            if (nodes == null || nodes.Count < 1)
+            {
+                return;
+            }
             try
             {
-                if (model.Children==null || model.Children.Count<1)
+                for (int i = 0; i < nodes.Count; i++)
                 {
-                    return;
-                }
-
-                for (int i = 0; i < model.Children.Count; i++)
-                {
-                    var item = model.FlatModel[i];
+                    var item = nodes[i];
                     if (item==null)
                     {
                         break;
                     }
                     item.IsExpanded = expand;
 
-                    Expander(item, expand);
+                    Expander(item.Children, expand);
                 }
             }
             catch (Exception ex)
             {
                 throw;
             }
-            
-            //foreach (var item in model.FlatModel)
-            //{
-            //    item.IsExpanded = expand;
-            //    //if (item.Children!=null && item.Children.Count>0)
-            //    //{
-            //    //    item.IsExpanded = expand;
-            //    //}
-            //    ////Demo(item.Model,expand);
-            //}
         }
     }
 }
