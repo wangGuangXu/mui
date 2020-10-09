@@ -35,12 +35,11 @@ namespace FirstFloor.ModernUI.Windows.TreeGrid
         /// <param name="args"></param>
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs args)
         {
-            // Process the event
+            // 处理事件 Process the event
             switch (args.Action)
             {
                 case NotifyCollectionChangedAction.Add:
-
-                    // Process added item
+                    // 处理添加项 Process added item
                     OnRootAdded(args.NewItems[0]);
                     break;
             }
@@ -66,7 +65,7 @@ namespace FirstFloor.ModernUI.Windows.TreeGrid
             CacheFlatChildren(item);
 
             // 获取项的插入索引 Get the insertion index for the item
-            int index = (FlatModel.IndexOf(item) + 1);
+            int index = FlatModel.IndexOf(item) + 1;
 
             // 将平面子元素添加到平面模型中 Add the flat children to the flat model
             FlatModel.PrivateInsertRange(index, itemCache);
@@ -86,7 +85,7 @@ namespace FirstFloor.ModernUI.Windows.TreeGrid
             }
 
             // 获取折叠信息 Get the collapse information
-            int index = (FlatModel.IndexOf(item) + 1);
+            int index = FlatModel.IndexOf(item) + 1;
             int count = CountFlatChildren(item);
 
             // 从平面模型中删除项目以折叠它们 Remove the items from the flat model to collapse them
@@ -208,9 +207,9 @@ namespace FirstFloor.ModernUI.Windows.TreeGrid
         {
             // 获取搜索信息 Get the search information
             TreeGridElement parent = item.Parent;
-            IList<TreeGridElement> items = ((parent != null) ? parent.Children : this);
+            IList<TreeGridElement> items = (parent != null) ? parent.Children : this;
             int index = items.IndexOf(item);
-            int lastIndex = (items.Count - 1);
+            int lastIndex = items.Count - 1;
 
             //确定该项是否为项中的最后一项 Determine if the item is the last item in the items
             if (index < lastIndex)

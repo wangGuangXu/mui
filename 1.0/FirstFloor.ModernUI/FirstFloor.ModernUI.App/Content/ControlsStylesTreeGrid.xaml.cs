@@ -22,10 +22,21 @@ namespace FirstFloor.ModernUI.App.Content
     /// </summary>
     public partial class ControlsStylesTreeGrid : UserControl
     {
+        /// <summary>
+        /// 级别
+        /// </summary>
         private const int Levels = 3;
-        private const int Roots = 100;
+        /// <summary>
+        /// 
+        /// </summary>
+        private const int Roots = 10;
+        /// <summary>
+        /// 项目级别
+        /// </summary>
         private const int ItemsPerLevel = 5;
-
+        /// <summary>
+        /// 
+        /// </summary>
         private int value;
         private TreeGridModel model;
 
@@ -40,6 +51,9 @@ namespace FirstFloor.ModernUI.App.Content
             grid.ItemsSource = model.FlatModel;
         }
 
+        /// <summary>
+        /// 初始化模型
+        /// </summary>
         private void InitModel()
         {
             // Create the model
@@ -92,20 +106,20 @@ namespace FirstFloor.ModernUI.App.Content
         //全部展开
         private void btnExpanderAll_Click(object sender, RoutedEventArgs e)
         {
-            Demo(model,true);
+            //Expander(model.,true);
         }
 
         //全部收缩
         private void btnCollapsedAll_Click(object sender, RoutedEventArgs e)
         {
-            Demo(model,false);
+            //Expander(model,false);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="expand"></param>
-        private void Demo(TreeGridElement model,bool expand)
+        private void Expander(TreeGridModel model,bool expand)
         {
             try
             {
@@ -114,7 +128,7 @@ namespace FirstFloor.ModernUI.App.Content
                     return;
                 }
 
-                for (int i = 0; i < model.FlatModel.Count; i++)
+                for (int i = 0; i < model.Children.Count; i++)
                 {
                     var item = model.FlatModel[i];
                     if (item==null)
@@ -123,7 +137,7 @@ namespace FirstFloor.ModernUI.App.Content
                     }
                     item.IsExpanded = expand;
 
-                    Demo(item, expand);
+                    Expander(item, expand);
                 }
             }
             catch (Exception ex)
@@ -141,6 +155,5 @@ namespace FirstFloor.ModernUI.App.Content
             //    ////Demo(item.Model,expand);
             //}
         }
-
     }
 }

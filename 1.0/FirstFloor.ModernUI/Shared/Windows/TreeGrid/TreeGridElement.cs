@@ -134,7 +134,6 @@ namespace FirstFloor.ModernUI.Windows.TreeGrid
             LevelProperty = DependencyProperty.Register("Level", typeof(int), typeof(TreeGridElement), new FrameworkPropertyMetadata() { DefaultValue = 0 });
 
             //注册路由事件
-
             ExpandingEvent= EventManager.RegisterRoutedEvent(nameof(Expanding), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TreeGridElement));
             ExpandedEvent = EventManager.RegisterRoutedEvent(nameof(ExpandedEvent), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TreeGridElement));
             CollapsingEvent = EventManager.RegisterRoutedEvent(nameof(CollapsingEvent), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TreeGridElement));
@@ -160,7 +159,7 @@ namespace FirstFloor.ModernUI.Windows.TreeGrid
         /// <param name="args"></param>
         private static void OnIsExpandedChanged(DependencyObject element, DependencyPropertyChangedEventArgs args)
         {
-            // Get the tree item
+            // 获取树项 Get the tree item
             TreeGridElement item = (TreeGridElement)element;
 
             // Is the item being expanded?
@@ -247,6 +246,12 @@ namespace FirstFloor.ModernUI.Windows.TreeGrid
             Model?.OnChildAdded(child);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="oldChild"></param>
+        /// <param name="item"></param>
+        /// <param name="index"></param>
         private void OnChildReplaced(TreeGridElement oldChild, object item, int index)
         {
             // Verify the new child
@@ -270,27 +275,30 @@ namespace FirstFloor.ModernUI.Windows.TreeGrid
 
         private void OnChildrenCleared(IList children)
         {
-            // Iterate through all of the children
+            // 遍历所有子项 Iterate through all of the children
             foreach (TreeGridElement child in children)
             {
-                // Clear the model for the child
+                // 为孩子清除模型  Clear the model for the child
                 child.SetModel(null);
             }
 
-            // Notify the model that all of the children were removed from the item
+            // 通知模型已从项中删除所有子项   Notify the model that all of the children were removed from the item
             Model?.OnChildrenRemoved(this, children);
         }
 
+        /// <summary>
+        /// 验证项目
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         internal static TreeGridElement VerifyItem(object item)
         {
-            // Is the item valid?
             if (item == null)
             {
-                // The item is not valid
                 throw new ArgumentNullException(nameof(item), NullItemError);
             }
 
-            // Return the element
+            // 返回元素
             return (TreeGridElement)item;
         }
 
@@ -301,15 +309,15 @@ namespace FirstFloor.ModernUI.Windows.TreeGrid
         /// <param name="parent"></param>
         internal void SetModel(TreeGridModel model, TreeGridElement parent = null)
         {
-            // Set the element information
+            // 设置元素信息 Set the element information
             Model = model;
             Parent = parent;
-            Level = ((parent != null) ? parent.Level + 1 : 0);
+            Level = (parent != null) ? parent.Level + 1 : 0;
 
-            // Iterate through all child elements
+            // 遍历所有子元素
             foreach (TreeGridElement child in Children)
             {
-                // Set the model for the child
+                // 为孩子设定模型 Set the model for the child
                 child.SetModel(model, this);
             }
         }

@@ -11,7 +11,7 @@ namespace FirstFloor.ModernUI.Windows.TreeGrid
     /// </summary>
     public class TreeGridFlatModel : ObservableCollection<TreeGridElement>
     {
-        private const string ModificationError = "The collection cannot be modified by the user.";
+        private const string ModificationError = "用户无法修改集合.";//The collection cannot be modified by the user
 
         private bool modification;
         private HashSet<TreeGridElement> keys;
