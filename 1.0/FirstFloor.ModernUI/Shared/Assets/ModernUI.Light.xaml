@@ -61,6 +61,10 @@
     <SolidColorBrush x:Key="ItemTextSelected" Color="#ffffff" />
     <SolidColorBrush x:Key="ItemTextHover" Color="#333333" />
     <SolidColorBrush x:Key="ItemTextDisabled" Color="#919191" />
+
+    <!--<SolidColorBrush x:Key="ItemSelectedText" Color="#ffffff" />-->
+    <SolidColorBrush x:Key="ItemSelectedBackground" Color="#ff5d5b" />
+    
     <!--超链接按钮-->
     <SolidColorBrush x:Key="LinkButtonText" Color="#717171" />
     <SolidColorBrush x:Key="LinkButtonTextHover" Color="#333333" />
