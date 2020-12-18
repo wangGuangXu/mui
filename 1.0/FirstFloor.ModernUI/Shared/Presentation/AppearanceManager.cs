@@ -54,10 +54,12 @@ namespace FirstFloor.ModernUI.Presentation
             SetThemeCommand = new RelayCommand(o => 
             {
                 var uri = NavigationHelper.ToUri(o);
-                if (uri != null) {
+                if (uri != null) 
+                {
                     ThemeSource = uri;
                 }
             }, o => o is Uri || o is string);
+
             LargeFontSizeCommand = new RelayCommand(o => FontSize = FontSize.Large);
             SmallFontSizeCommand = new RelayCommand(o => FontSize = FontSize.Small);
             AccentColorCommand = new RelayCommand(o => 
@@ -68,9 +70,10 @@ namespace FirstFloor.ModernUI.Presentation
                 }
                 else
                 {
-                    // parse color from string
+                    // 从字符串分析颜色 parse color from string
                     var str = o as string;
-                    if (str != null) {
+                    if (str != null) 
+                    {
                         AccentColor = (Color)ColorConverter.ConvertFromString(str);
                     }
                 }

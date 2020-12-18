@@ -12,5 +12,6 @@ namespace FirstFloor.ModernUI.Windows
     /// </summary>
     public class CommandDictionary: Dictionary<Uri, ICommand>
     {
+
     }
 }
