@@ -25,7 +25,7 @@ namespace FirstFloor.ModernUI.Windows.Adorners
         public ListBoxItemAdorner(UIElement adornedElement):base(adornedElement)
         {
             _visuals = new VisualCollection(this);
-            _image = new Image() { Source = new BitmapImage(new Uri("demo.png", UriKind.RelativeOrAbsolute)), Width = 45, Height = 45 };
+            _image = new Image() { Source = new BitmapImage(new Uri("duihao.png", UriKind.RelativeOrAbsolute)), Width = 45, Height = 45 };
             _grid = new Canvas();
             _grid.Children.Add(_image);
 

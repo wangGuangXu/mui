@@ -209,7 +209,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Win32\RECT.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Adorners\ListBoxItemAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\CommandDictionary.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\AttachProperty\AdornerAttachProperty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\AttachPropertys\AdornerAttachProperty.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\BBCodeBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\BBCode\BBCodeLexer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\BBCode\BBCodeParser.cs" />

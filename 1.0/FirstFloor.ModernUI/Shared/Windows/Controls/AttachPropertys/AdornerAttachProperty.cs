@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
 
-namespace FirstFloor.ModernUI.Windows.Controls.AttachProperty
+namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
 {
     /// <summary>
     /// 装饰附加属性
@@ -92,7 +92,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachProperty
             DependencyProperty.RegisterAttached("IsShowAdorner", typeof(bool), typeof(AdornerAttachProperty), new PropertyMetadata(false,IsShowChangedCallBack));
 
         /// <summary>
-        /// 
+        /// 是否显示改变回调函数
         /// </summary>
         /// <param name="d"></param>
         /// <param name="e"></param>
@@ -116,7 +116,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachProperty
                 return;
             }
 
-            var adorner = adorners.FirstOrDefault() as NotifyAdorner;
+            var adorner = adorners.FirstOrDefault() as ListBoxItemAdorner;
             if (adorner == null)
             {
                 return;
@@ -131,8 +131,6 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachProperty
                 adorner.HideAdorner();
             }
         }
-
-
 
     }
 }
