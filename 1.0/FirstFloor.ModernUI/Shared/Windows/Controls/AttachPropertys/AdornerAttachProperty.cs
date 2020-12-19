@@ -50,13 +50,13 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
             if ((bool)e.NewValue)
             {
                 var element = d as Visual;
-                if (element==null)
+                if (element == null)
                 {
                     return;
                 }
 
                 var adornerLayer = AdornerLayer.GetAdornerLayer(element);
-                if (adornerLayer==null)
+                if (adornerLayer == null)
                 {
                     return;
                 }
@@ -89,7 +89,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
         /// 是否显示装饰器
         /// </summary>
         public static readonly DependencyProperty IsShowAdornerProperty =
-            DependencyProperty.RegisterAttached("IsShowAdorner", typeof(bool), typeof(AdornerAttachProperty), new PropertyMetadata(false,IsShowChangedCallBack));
+            DependencyProperty.RegisterAttached("IsShowAdorner", typeof(bool), typeof(AdornerAttachProperty), new PropertyMetadata(false, IsShowChangedCallBack));
 
         /// <summary>
         /// 是否显示改变回调函数
@@ -111,12 +111,12 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
             }
 
             var adorners = adornerLayer.GetAdorners(element);
-            if (adorners == null || adorners.Count() == 0)
+            if (adorners == null || adorners.Length == 0)
             {
                 return;
             }
 
-            var adorner = adorners.FirstOrDefault() as ListBoxItemAdorner;
+            var adorner = adorners[0] as ListBoxItemAdorner;
             if (adorner == null)
             {
                 return;

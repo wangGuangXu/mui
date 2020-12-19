@@ -14,6 +14,7 @@
                 <mui:Link DisplayName="树型表格" Source="/Content/ControlsStylesTreeGrid.xaml" />
                 <mui:Link DisplayName="日期" Source="/Content/ControlsStylesDate.xaml" />
                 <mui:Link DisplayName="项控件" Source="/Content/ControlsStylesItemsControl.xaml"/>
+                <mui:Link DisplayName="带装饰的项控件" Source="/Content/ControlsStylesAdornerItemsControl.xaml"/>
                 <mui:Link DisplayName="进度条" Source="/Content/ControlsStylesProgressBar.xaml"/>
                 <mui:Link DisplayName="滑块" Source="/Content/ControlsStylesSlider.xaml"/>
                 <mui:Link DisplayName="文本" Source="/Content/ControlsStylesText.xaml" />

@@ -132,6 +132,9 @@
     <Compile Include="Content\ControlsModernWindow.xaml.cs">
       <DependentUpon>ControlsModernWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\ControlsStylesAdornerItemsControl.xaml.cs">
+      <DependentUpon>ControlsStylesAdornerItemsControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Content\ControlsStylesDataGrid.xaml.cs">
       <DependentUpon>ControlsStylesDataGrid.xaml</DependentUpon>
     </Compile>
@@ -396,6 +399,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Content\ControlsStylesAdornerItemsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Content\ControlsStylesDataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -559,6 +566,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lib\De.TorstenMandelkow.MetroChart.dll" />
+    <Resource Include="Resources\UserCard01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\duihao.png" />
     <Resource Include="Resources\close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

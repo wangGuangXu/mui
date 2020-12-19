@@ -1,5 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FirstFloor.ModernUI.Windows.Controls.AttachPropertys"
+                    >
 
     <Style TargetType="ListBoxItem">
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -67,6 +69,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
                     <Border Name="Bd"
+                            local:AdornerAttachProperty.IsShowAdorner="True"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
@@ -86,6 +89,7 @@
                             <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource ItemSelectedBackground}"/>
                             <Setter TargetName="Bd" Property="BorderThickness" Value="2"/>
                             <Setter TargetName="Bd" Property="CornerRadius" Value="5"/>
+                            <Setter TargetName="Bd" Property="local:AdornerAttachProperty.IsShowAdorner" Value="True"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource ItemTextDisabled}"/>

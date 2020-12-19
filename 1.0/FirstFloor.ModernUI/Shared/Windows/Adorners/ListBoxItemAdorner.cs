@@ -12,7 +12,7 @@ namespace FirstFloor.ModernUI.Windows.Adorners
     /// <summary>
     /// 列表项装饰器
     /// </summary>
-    public class ListBoxItemAdorner : Adorner
+    public class ListBoxItemAdorner:Adorner
     {
         private VisualCollection _visuals;
         private Canvas _grid;
@@ -22,10 +22,10 @@ namespace FirstFloor.ModernUI.Windows.Adorners
         /// 
         /// </summary>
         /// <param name="adornedElement"></param>
-        public ListBoxItemAdorner(UIElement adornedElement):base(adornedElement)
+        public ListBoxItemAdorner(UIElement adornedElement) : base(adornedElement)
         {
             _visuals = new VisualCollection(this);
-            _image = new Image() { Source = new BitmapImage(new Uri("duihao.png", UriKind.RelativeOrAbsolute)), Width = 45, Height = 45 };
+            _image = new Image() { Source = new BitmapImage(new Uri(@"Resources\Images\duihao.png", UriKind.RelativeOrAbsolute)), Width = 19, Height = 19 };
             _grid = new Canvas();
             _grid.Children.Add(_image);
 
@@ -84,7 +84,7 @@ namespace FirstFloor.ModernUI.Windows.Adorners
 
             _image.Margin = new Thickness(finalSize.Width - 12.5, -12.5, 0, 0);
 
-            return base.ArrangeOverride(finalSize); 
+            return base.ArrangeOverride(finalSize);
         }
 
     }
