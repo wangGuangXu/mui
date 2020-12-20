@@ -14,7 +14,7 @@
             <ListBox.Template>
                 <ControlTemplate TargetType="{x:Type ListBox}">
                     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                        <WrapPanel Orientation="Horizontal" IsItemsHost="True" ScrollViewer.CanContentScroll="True" Margin="5"/>
+                        <WrapPanel Orientation="Horizontal" IsItemsHost="True" ScrollViewer.CanContentScroll="True" Margin="5" />
                     </ScrollViewer>
                 </ControlTemplate>
             </ListBox.Template>

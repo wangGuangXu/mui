@@ -19,9 +19,9 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static int GetHasAdorner(DependencyObject obj)
+        public static bool GetHasAdorner(DependencyObject obj)
         {
-            return (int)obj.GetValue(HasAdornerProperty);
+            return (bool)obj.GetValue(HasAdornerProperty);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="value"></param>
-        public static void SetHasAdorner(DependencyObject obj, int value)
+        public static void SetHasAdorner(DependencyObject obj, bool value)
         {
             obj.SetValue(HasAdornerProperty, value);
         }
