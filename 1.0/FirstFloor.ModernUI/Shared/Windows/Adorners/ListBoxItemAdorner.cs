@@ -81,9 +81,7 @@ namespace FirstFloor.ModernUI.Windows.Adorners
         protected override Size ArrangeOverride(Size finalSize)
         {
             _grid.Arrange(new Rect(finalSize));
-
-            //_image.Margin = new Thickness(finalSize.Width - 12.5, -12.5, 0, 0);
-            _image.Margin = new Thickness(finalSize.Width - 18, 0, 0, 0);
+            _image.Margin = new Thickness(finalSize.Width - 21, 0, 0, 0);//_image.Margin = new Thickness(finalSize.Width - 12.5, -12.5, 0, 0);
 
             return base.ArrangeOverride(finalSize);
         }

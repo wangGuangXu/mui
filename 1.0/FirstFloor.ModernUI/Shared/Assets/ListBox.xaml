@@ -51,7 +51,7 @@
         </Setter>
     </Style>
 
-    <!--自定义项样式-->
+    <!--选中带打勾的项样式-->
     <Style x:Key="ListBoxItemCustomer" TargetType="ListBoxItem">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -86,10 +86,6 @@
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ItemBackgroundHover}"/>
                             <Setter Property="Foreground" Value="{DynamicResource ItemTextHover}" />
                         </Trigger>
-                        <!--<Trigger Property="IsMouseOver" Value="False">
-                            <Setter TargetName="Bd" Property="local:AdornerAttachProperty.HasAdorner" Value="False"/>
-                            <Setter TargetName="Bd" Property="local:AdornerAttachProperty.IsShowAdorner" Value="False"/>
-                        </Trigger>-->
                         <Trigger Property="IsSelected" Value="true">
                             <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource ItemSelectedBackground}"/>
                             <Setter TargetName="Bd" Property="BorderThickness" Value="2"/>
