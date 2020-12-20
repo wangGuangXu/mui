@@ -47,23 +47,29 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
         /// <param name="e"></param>
         private static void PropertyChangedCallBack(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if ((bool)e.NewValue)
+            if ((bool)e.NewValue == false)
             {
-                var element = d as Visual;
-                if (element == null)
-                {
-                    return;
-                }
+                return;
+            }
 
-                var adornerLayer = AdornerLayer.GetAdornerLayer(element);
-                if (adornerLayer == null)
-                {
-                    return;
-                }
+            var element = d as Visual;
+            if (element == null)
+            {
+                return;
+            }
+
+            var adornerLayer = AdornerLayer.GetAdornerLayer(element);
+            if (adornerLayer == null)
+            {
+                return;
+            }
+
+            var adorners = adornerLayer.GetAdorners(element as UIElement);
+            if (adorners == null || adorners.Length < 1)
+            {
                 adornerLayer.Add(new ListBoxItemAdorner(element as UIElement));
             }
         }
-
 
         /// <summary>
         /// 获取是否显示装饰器
@@ -111,7 +117,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
             }
 
             var adorners = adornerLayer.GetAdorners(element);
-            if (adorners == null || adorners.Length == 0)
+            if (adorners == null || adorners.Length < 1)
             {
                 return;
             }

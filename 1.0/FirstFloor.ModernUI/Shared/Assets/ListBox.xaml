@@ -74,7 +74,7 @@
                             Padding="{TemplateBinding Padding}"
                             CornerRadius="2"
                             local:AdornerAttachProperty.HasAdorner="False"
-                            local:AdornerAttachProperty.IsShowAdorner="True"
+                            local:AdornerAttachProperty.IsShowAdorner="False"
                             SnapsToDevicePixels="true">
                         
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -86,6 +86,10 @@
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ItemBackgroundHover}"/>
                             <Setter Property="Foreground" Value="{DynamicResource ItemTextHover}" />
                         </Trigger>
+                        <!--<Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="Bd" Property="local:AdornerAttachProperty.HasAdorner" Value="False"/>
+                            <Setter TargetName="Bd" Property="local:AdornerAttachProperty.IsShowAdorner" Value="False"/>
+                        </Trigger>-->
                         <Trigger Property="IsSelected" Value="true">
                             <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource ItemSelectedBackground}"/>
                             <Setter TargetName="Bd" Property="BorderThickness" Value="2"/>
