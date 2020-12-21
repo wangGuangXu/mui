@@ -15,6 +15,7 @@
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernWindow.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/TransitioningContentControl.xaml" />
         <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernGrowl.xaml"/>
+        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Themes/ModernStepBar.xaml"/>
 
     </ResourceDictionary.MergedDictionaries>
  

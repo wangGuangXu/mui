@@ -38,7 +38,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
         /// <summary>
         /// 步骤状态
         /// </summary>
-        public static readonly DependencyProperty StatusProperty =DependencyProperty.Register("Status", typeof(ModernStepStatus), typeof(ModernStepBarItem), new PropertyMetadata(0));
+        public static readonly DependencyProperty StatusProperty =DependencyProperty.Register("Status", typeof(ModernStepStatus), typeof(ModernStepBarItem), new PropertyMetadata(ModernStepStatus.Waiting));
 
     }
 }

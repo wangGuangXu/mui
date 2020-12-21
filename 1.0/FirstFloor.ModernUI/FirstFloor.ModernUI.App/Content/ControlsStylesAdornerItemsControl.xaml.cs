@@ -27,14 +27,6 @@ namespace FirstFloor.ModernUI.App.Content
         {
             InitializeComponent();
             this.DataContext = new AdornerItemViewModel();
-
-            //this.Loaded += ControlsStylesAdornerItemsControl_Loaded;
-        }
-
-        private void ControlsStylesAdornerItemsControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            //AdornerAttachProperty.SetHasAdorner(Btn, true);
-            //AdornerAttachProperty.SetHasAdorner(TxtBox, true);
         }
     }
 

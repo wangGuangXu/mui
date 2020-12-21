@@ -163,6 +163,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ModernStepBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\ModernTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -237,6 +241,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\ModernMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\ModernProgressRing.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\ModernScrollViewer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\SimplePanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\StepBar\FunctionEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\StepBar\ModernStepBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\StepBar\ModernStepBarItem.cs" />

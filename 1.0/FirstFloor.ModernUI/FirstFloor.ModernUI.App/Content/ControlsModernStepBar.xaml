@@ -3,37 +3,115 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI" 
+             xmlns:hc="clr-namespace:FirstFloor.ModernUI.Windows.Controls.StepBar;assembly=FirstFloor.ModernUI"
+             xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
              mc:Ignorable="d" 
+             FocusManager.FocusedElement="{Binding RelativeSource={x:Static RelativeSource.Self}, Mode=OneTime}"
              d:DesignHeight="300" d:DesignWidth="300">
-    
-    <Grid Style="{StaticResource ContentRoot}">
+    <!--Style="{StaticResource ContentRoot}"-->
+    <Grid  x:Name="PanelMain">
+
+        <Grid.Resources>
+            <!--<SolidColorBrush o:Freeze="True" x:Key="SecondaryBorderBrush" Color="{DynamicResource SecondaryBorderColor}"/>
+                <LinearGradientBrush o:Freeze="True" x:Key="PrimaryBrush" EndPoint="1,0" StartPoint="0,0">
+                    <GradientStop o:Freeze="True" Color="{DynamicResource PrimaryColor}" Offset="0"/>
+                    <GradientStop o:Freeze="True" Color="{DynamicResource DarkPrimaryColor}" Offset="1"/>
+                </LinearGradientBrush>
+                <Style x:Key="RectangleFocusVisual" TargetType="Rectangle">
+                    <Setter Property="Margin" Value="-2"/>
+                    <Setter Property="Opacity" Value=".6"/>
+                    <Setter Property="SnapsToDevicePixels" Value="True"/>
+                    <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                    <Setter Property="StrokeThickness" Value="2"/>
+                    <Setter Property="StrokeDashArray" Value="1 1"/>
+                </Style>
+                <Style x:Key="FocusVisual">
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Rectangle Style="{DynamicResource RectangleFocusVisual}" RadiusX="4" RadiusY="4"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style x:Key="BaseStyle" TargetType="Control">
+                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                </Style>
+                <Style x:Key="ButtonBaseBaseStyle" BasedOn="{StaticResource BaseStyle}" TargetType="ButtonBase">
+                    <Setter Property="Height" Value="{StaticResource DefaultControlHeight}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                    <Setter Property="Padding" Value="{StaticResource DefaultControlPadding}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+                <Style x:Key="ButtonPrimary" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="Button">
+                    <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+                </Style>-->
+        </Grid.Resources>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"  />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto"  />
+            <RowDefinition Height="Auto"  />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition  />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Margin="0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"  />
-                <RowDefinition Height="9*" />
-            </Grid.RowDefinitions>
+        <hc:ModernStepBar Grid.ColumnSpan="2" StepIndex="{Binding StepIndex}">
+            <hc:ModernStepBarItem Content="注册"/>
+            <hc:ModernStepBarItem Content="填写基本信息"/>
+            <hc:ModernStepBarItem Content="上传文件"/>
+            <hc:ModernStepBarItem Content="完成"/>
+        </hc:ModernStepBar>
+        <StackPanel Margin="0,32" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  HorizontalAlignment="Center">
+            <!--Style="{StaticResource ButtonPrimary}"  Style="{StaticResource ButtonPrimary}" -->
+            <Button Command="{Binding PrevCmd}" CommandParameter="{Binding ElementName=PanelMain}" Width="180" Content="上一步" />
+            <Button Command="{Binding NextCmd}" CommandParameter="{Binding ElementName=PanelMain}" Width="180" Margin="0,16,0,0" Content="下一步" />
+        </StackPanel>
+        
+        <hc:ModernStepBar Margin="0,0,0,32" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Dock="Bottom">
+            <hc:ModernStepBarItem Content="注册"/>
+            <hc:ModernStepBarItem Content="填写基本信息"/>
+            <hc:ModernStepBarItem Content="上传文件"/>
+            <hc:ModernStepBarItem Content="完成"/>
+        </hc:ModernStepBar>
+        
+        <hc:ModernStepBar Grid.Column="0" Grid.Row="3" ItemsSource="{Binding DataList}" Dock="Left">
+            <hc:ModernStepBar.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Left">
+                            <Run Text="Binding Header}"/>
+                            <Run Text="{Binding Index,RelativeSource={RelativeSource AncestorType=hc:ModernStepBarItem}}"/>
+                        </TextBlock>
+                        <TextBlock Margin="0,4,0,0" Text="{Binding Content}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </hc:ModernStepBar.ItemTemplate>
+        </hc:ModernStepBar>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <TextBox Grid.Row="0" Grid.Column="0" mui:ControlAttachProperty.Watermark="请输入要查询关键字" VerticalAlignment="Top"   />
-        </Grid>
-
-        <Border Grid.Row="1"  Background="#dddddd" Margin="0,0,0,0" >
-            <StackPanel  Orientation="Horizontal"   VerticalAlignment="Center" HorizontalAlignment="Right"   >
-                <Button  Content="确认" Command="{Binding SaveCommand}"   HorizontalAlignment="Center" Width="66" Height="28"   />
-                <Button  Content="关闭" Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}" Width="66" Height="28"  Margin="15,0,15,0"  HorizontalAlignment="Center" />
-            </StackPanel>
-        </Border>
+        <hc:ModernStepBar Grid.Column="1" Grid.Row="3" ItemsSource="{Binding DataList}" Dock="Right">
+            <hc:ModernStepBar.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Left">
+                                <Run Text="{Binding Header}"/>
+                                <Run Text="{Binding Index,RelativeSource={RelativeSource AncestorType=hc:ModernStepBarItem}}"/>
+                        </TextBlock>
+                        <TextBlock Margin="0,4,0,0" Text="{Binding Content}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </hc:ModernStepBar.ItemTemplate>
+        </hc:ModernStepBar>
     </Grid>
 </UserControl>
