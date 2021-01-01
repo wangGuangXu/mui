@@ -74,18 +74,18 @@
             <hc:ModernStepBarItem Content="完成"/>
         </hc:ModernStepBar>
         <StackPanel Margin="0,32" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  HorizontalAlignment="Center">
-            <!--Style="{StaticResource ButtonPrimary}"  Style="{StaticResource ButtonPrimary}" -->
+            <!--Style="{StaticResource ButtonPrimary}" -->
             <Button Command="{Binding PrevCmd}" CommandParameter="{Binding ElementName=PanelMain}" Width="180" Content="上一步" />
             <Button Command="{Binding NextCmd}" CommandParameter="{Binding ElementName=PanelMain}" Width="180" Margin="0,16,0,0" Content="下一步" />
         </StackPanel>
-        
+
         <hc:ModernStepBar Margin="0,0,0,32" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Dock="Bottom">
             <hc:ModernStepBarItem Content="注册"/>
             <hc:ModernStepBarItem Content="填写基本信息"/>
             <hc:ModernStepBarItem Content="上传文件"/>
             <hc:ModernStepBarItem Content="完成"/>
         </hc:ModernStepBar>
-        
+
         <hc:ModernStepBar Grid.Column="0" Grid.Row="3" ItemsSource="{Binding DataList}" Dock="Left">
             <hc:ModernStepBar.ItemTemplate>
                 <DataTemplate>

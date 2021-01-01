@@ -65,8 +65,6 @@ namespace FirstFloor.ModernUI.App.Content
 #endif       
         }
 
-
-
         /// <summary>
         /// 下一步
         /// </summary>
@@ -95,23 +93,23 @@ namespace FirstFloor.ModernUI.App.Content
             {
                 new StepBarModel
                 {
-                    Header = "Step",
-                    Content = "Register"
+                    Header = "步骤",
+                    Content = "注册"
                 },
                 new StepBarModel
                 {
-                    Header = "Step",
-                    Content = "BasicInfo"
+                    Header = "步骤",
+                    Content = "基础信息"
                 },
                 new StepBarModel
                 {
-                    Header = "Step",
-                    Content = "UploadFile"
+                    Header = "步骤",
+                    Content = "上传文件"
                 },
                 new StepBarModel
                 {
-                    Header = "Step",
-                    Content = "Complete"
+                    Header = "步骤",
+                    Content = "完成"
                 }
             };
         }

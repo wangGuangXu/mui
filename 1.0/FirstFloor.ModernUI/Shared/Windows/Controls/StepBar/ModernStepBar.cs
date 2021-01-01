@@ -33,7 +33,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
 
         private const string ElementProgressBarBack = "PART_ProgressBarBack";
 
-        #endregion Constants
+        #endregion
 
         /// <summary>
         /// 上一步
@@ -77,7 +77,6 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
         /// </summary>
         public static readonly DependencyProperty DockProperty = DependencyProperty.Register("Dock", typeof(Dock), typeof(ModernStepBar), new PropertyMetadata(Dock.Top));
 
-
         /// <summary>
         /// 现代步骤条
         /// </summary>
@@ -97,31 +96,27 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
         /// <param name="e"></param>
         private void ItemContainerGenerator_StatusChanged(object sender, EventArgs e)
         {
-            if (ItemContainerGenerator.Status == GeneratorStatus.ContainersGenerated)
+            if (ItemContainerGenerator.Status != GeneratorStatus.ContainersGenerated || Items.Count < 1)
             {
-                var count = Items.Count;
-                if (count <= 0)
-                {
-                    return;
-                }
+                return;
+            }
 
-                for (var i = 0; i < count; i++)
+            for (var i = 0; i < Items.Count; i++)
+            {
+                if (ItemContainerGenerator.ContainerFromIndex(i) is ModernStepBarItem stepBarItem)
                 {
-                    if (ItemContainerGenerator.ContainerFromIndex(i) is ModernStepBarItem stepBarItem)
-                    {
-                        stepBarItem.Index = i + 1;
-                    }
+                    stepBarItem.Index = i + 1;
                 }
+            }
 
-                if (_originStepIndex > 0)
-                {
-                    StepIndex = _originStepIndex;
-                    _originStepIndex = -1;
-                }
-                else
-                {
-                    OnStepIndexChanged(StepIndex);
-                }
+            if (_originStepIndex > 0)
+            {
+                StepIndex = _originStepIndex;
+                _originStepIndex = -1;
+            }
+            else
+            {
+                OnStepIndexChanged(StepIndex);
             }
         }
 
@@ -153,29 +148,26 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
         {
             for (int i = 0; i < stepIndex; i++)
             {
-#if NET45
                 if (ItemContainerGenerator.ContainerFromIndex(i) is ModernStepBarItem stepItemFinished)
                 {
                     stepItemFinished.Status = ModernStepStatus.Complete;
                 }
-
-                for (var i = stepIndex + 1; i < Items.Count; i++)
-                {
-                    if (ItemContainerGenerator.ContainerFromIndex(i) is ModernStepBarItem stepItemFinished)
-                    {
-                        stepItemFinished.Status = ModernStepStatus.Waiting;
-                    }
-                }
-
-                if (ItemContainerGenerator.ContainerFromIndex(stepIndex) is ModernStepBarItem stepItemSelected)
-                {
-                    stepItemSelected.Status = ModernStepStatus.UnderWay;    
-                }
-
-                _progressBarBack?.BeginAnimation(RangeBase.ValueProperty, AnimationHelper.CreateAnimation(stepIndex));
-#endif
-
             }
+
+            for (var i = stepIndex + 1; i < Items.Count; i++)
+            {
+                if (ItemContainerGenerator.ContainerFromIndex(i) is ModernStepBarItem stepItemFinished)
+                {
+                    stepItemFinished.Status = ModernStepStatus.Waiting;
+                }
+            }
+
+            if (ItemContainerGenerator.ContainerFromIndex(stepIndex) is ModernStepBarItem stepItemSelected)
+            {
+                stepItemSelected.Status = ModernStepStatus.UnderWay;
+            }
+
+            _progressBarBack?.BeginAnimation(RangeBase.ValueProperty, AnimationHelper.CreateAnimation(stepIndex));
         }
 
         /// <summary>
@@ -241,6 +233,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
 
             _progressBarBack.Maximum = colCount - 1;
             _progressBarBack.Value = StepIndex;
+
             if (Dock == Dock.Top || Dock==Dock.Bottom)
             {
                 _progressBarBack.Width = (colCount - 1) * (ActualWidth / colCount);
