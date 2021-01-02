@@ -186,7 +186,11 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
                 return 0;
             }
 
-            return stepIndex < 0 ? 0 : stepIndex >= ctl.Items.Count ? ctl.Items.Count == 0 ? 0 : ctl.Items.Count - 1 : baseValue;
+            return stepIndex < 0 
+                ? 0 
+                : stepIndex >= ctl.Items.Count 
+                ? ctl.Items.Count == 0 ? 0 : ctl.Items.Count - 1 
+                : baseValue;
         }
 
         /// <summary>
@@ -196,7 +200,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
         /// <returns></returns>
         protected override bool IsItemItsOwnContainerOverride(object item)
         {
-            return item is ModernStepBar;
+            return item is ModernStepBarItem;
         }
 
         /// <summary>
@@ -205,7 +209,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
         /// <returns></returns>
         protected override DependencyObject GetContainerForItemOverride()
         {
-            return new ModernStepBar();
+            return new ModernStepBarItem();
         }
 
         /// <summary>

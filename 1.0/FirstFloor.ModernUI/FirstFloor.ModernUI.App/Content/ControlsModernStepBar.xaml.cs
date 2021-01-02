@@ -91,7 +91,7 @@ namespace FirstFloor.ModernUI.App.Content
         {
             return new List<StepBarModel>
             {
-                new StepBarModel
+                new StepBarModel 
                 {
                     Header = "步骤",
                     Content = "注册"

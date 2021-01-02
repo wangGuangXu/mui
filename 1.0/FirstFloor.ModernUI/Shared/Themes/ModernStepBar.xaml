@@ -11,6 +11,13 @@
         <ResourceDictionary Source="pack://application:,,,/FirstFloor.ModernUI;component/Assets/ProgressBar.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Color x:Key="PrimaryTextColor">#212121</Color>
+    <Color x:Key="ThirdlyTextColor">#bdbdbd</Color>
+    <Color x:Key="PrimaryColor">#326cf3</Color>
+    <Color x:Key="DarkPrimaryColor">#326cf3</Color>
+    <Color x:Key="RegionColor">#ffffff</Color>
+    <Color x:Key="SecondaryRegionColor">#eeeeee</Color>
+    
     <SolidColorBrush o:Freeze="True" x:Key="ThirdlyTextBrush" Color="{DynamicResource ThirdlyTextColor}" />
     <SolidColorBrush o:Freeze="True" x:Key="PrimaryTextBrush" Color="{DynamicResource PrimaryTextColor}" />
     <LinearGradientBrush o:Freeze="True" x:Key="PrimaryBrush" EndPoint="1,0" StartPoint="0,0">
@@ -21,7 +28,9 @@
         <Setter Property="Foreground" Value="{DynamicResource ThirdlyTextBrush}"/>
     </Style>
 
+    <SolidColorBrush o:Freeze="True" x:Key="RegionBrush" Color="{DynamicResource RegionColor}" />
     <SolidColorBrush o:Freeze="True" x:Key="SecondaryRegionBrush" Color="{DynamicResource SecondaryRegionColor}" />
+    
 
     <!--进度条-->
     <Style x:Key="ProgressBarFlat" TargetType="ProgressBar">
@@ -206,5 +215,5 @@
     </Style>
     
     <Style BasedOn="{StaticResource StepBarBaseStyle}" TargetType="hc:ModernStepBar"/>
-    
+
 </ResourceDictionary>

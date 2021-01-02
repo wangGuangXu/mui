@@ -77,5 +77,13 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
     </Style>
+
+    <!--ModernStepBar-->
+    <Style x:Key="TextBlockBaseStyle" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+    </Style>
+
     <Style x:Key="ModernGrowlTextBlockDefault" BasedOn="{StaticResource ModernGrowlTextBlockBaseStyle}" TargetType="TextBlock"/>
 </ResourceDictionary>
