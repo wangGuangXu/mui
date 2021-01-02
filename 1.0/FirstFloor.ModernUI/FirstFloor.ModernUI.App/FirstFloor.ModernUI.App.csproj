@@ -164,6 +164,7 @@
       <DependentUpon>Sample.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\StepBarModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ModernGrowlNotification.xaml.cs">
       <DependentUpon>ModernGrowlNotification.xaml</DependentUpon>
@@ -178,6 +179,7 @@
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ModernStepBarViewModel.cs" />
     <Compile Include="ViewModels\SampleFormViewModel.cs" />
     <Compile Include="FlickrImageLoader.cs" />
     <Compile Include="LoremIpsumLoader.cs" />

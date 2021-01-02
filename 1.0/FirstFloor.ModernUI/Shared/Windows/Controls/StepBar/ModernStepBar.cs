@@ -35,6 +35,8 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
 
         #endregion
 
+        #region 路由和事件
+
         /// <summary>
         /// 上一步
         /// </summary>
@@ -56,8 +58,10 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
         {
             add => AddHandler(StepChangedEvent, value);
             remove => RemoveHandler(StepChangedEvent, value);
-        }
+        } 
+        #endregion
 
+        #region 依赖属性
         /// <summary>
         /// 步骤索引
         /// </summary>
@@ -76,7 +80,9 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
         /// 停靠
         /// </summary>
         public static readonly DependencyProperty DockProperty = DependencyProperty.Register("Dock", typeof(Dock), typeof(ModernStepBar), new PropertyMetadata(Dock.Top));
+        #endregion
 
+        #region 构造函数
         /// <summary>
         /// 现代步骤条
         /// </summary>
@@ -87,7 +93,8 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
             CommandBindings.Add(new CommandBinding(PrevCommand, (s, e) => Prev()));
 
             ItemContainerGenerator.StatusChanged += ItemContainerGenerator_StatusChanged;
-        }
+        } 
+        #endregion
 
         /// <summary>
         /// 项容器生成状态改变事件

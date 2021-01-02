@@ -13,7 +13,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
     public class SimplePanel:Panel
     {
         /// <summary>
-        /// 
+        /// 重写测量
         /// </summary>
         /// <param name="constraint"></param>
         /// <returns></returns>
@@ -35,7 +35,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         }
 
         /// <summary>
-        /// 
+        /// 重写排列
         /// </summary>
         /// <param name="arrangeSize"></param>
         /// <returns></returns>
