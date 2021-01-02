@@ -1,5 +1,6 @@
 ﻿using FirstFloor.ModernUI.App.Model;
 using FirstFloor.ModernUI.Presentation;
+using FirstFloor.ModernUI.Windows.Controls.StepBar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
