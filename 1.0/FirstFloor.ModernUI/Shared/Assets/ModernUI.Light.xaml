@@ -163,6 +163,18 @@
     <Color x:Key="PrimaryTextColor">#212121</Color>
     <SolidColorBrush o:Freeze="True" x:Key="PrimaryTextBrush" Color="{StaticResource PrimaryTextColor}"/>
 
+    <!--现代步骤条样式 ModernStepBar-->
+    <Color x:Key="ThirdlyTextColor">#bdbdbd</Color>
+    <Color x:Key="RegionColor">#ffffff</Color>
+    <Color x:Key="SecondaryRegionColor">#eeeeee</Color>
+    <SolidColorBrush o:Freeze="True" x:Key="ThirdlyTextBrush" Color="{DynamicResource ThirdlyTextColor}" />
+    <LinearGradientBrush o:Freeze="True" x:Key="StepBarPrimaryBrush" EndPoint="1,0" StartPoint="0,0">
+        <GradientStop o:Freeze="True" Color="{DynamicResource AccentColor}" Offset="0" />
+        <GradientStop o:Freeze="True" Color="{DynamicResource AccentColor}" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush o:Freeze="True" x:Key="RegionBrush" Color="{DynamicResource RegionColor}" />
+    <SolidColorBrush o:Freeze="True" x:Key="SecondaryRegionBrush" Color="{DynamicResource SecondaryRegionColor}" />
+
     <!--弹出层样式-->
     <SolidColorBrush x:Key="PopupBackground" Color="#ffffff" />
     <!--进度条-->
