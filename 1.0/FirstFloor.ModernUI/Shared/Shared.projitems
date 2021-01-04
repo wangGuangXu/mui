@@ -250,6 +250,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\ModernWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\RelativeAnimatingContentControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\SourceEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\StepBar\ModernStepBarModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\TabItemClose.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\TabLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\TransitioningContentControl.cs" />

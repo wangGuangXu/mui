@@ -31,12 +31,12 @@ namespace FirstFloor.ModernUI.App.ViewModels
         /// <summary>
         /// 数据列表
         /// </summary>
-        private IList<StepBarModel> _dataList;
+        private IList<ModernStepBarModel> _dataList;
 
         /// <summary>
         /// 数据列表
         /// </summary>
-        public IList<StepBarModel> DataList
+        public IList<ModernStepBarModel> DataList
         {
             get
             {
@@ -78,26 +78,26 @@ namespace FirstFloor.ModernUI.App.ViewModels
         /// 获取步骤列表
         /// </summary>
         /// <returns></returns>
-        private List<StepBarModel> GetStepBars()
+        private List<ModernStepBarModel> GetStepBars()
         {
-            return new List<StepBarModel>
+            return new List<ModernStepBarModel>
             {
-                new StepBarModel
+                new ModernStepBarModel
                 {
                     Header = "步骤",
                     Content = "注册"
                 },
-                new StepBarModel
+                new ModernStepBarModel
                 {
                     Header = "步骤",
                     Content = "基础信息"
                 },
-                new StepBarModel
+                new ModernStepBarModel
                 {
                     Header = "步骤",
                     Content = "上传文件"
                 },
-                new StepBarModel
+                new ModernStepBarModel
                 {
                     Header = "步骤",
                     Content = "完成"

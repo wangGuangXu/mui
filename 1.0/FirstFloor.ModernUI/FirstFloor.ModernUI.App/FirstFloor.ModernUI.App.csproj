@@ -164,7 +164,6 @@
       <DependentUpon>Sample.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Item.cs" />
-    <Compile Include="Model\StepBarModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ModernGrowlNotification.xaml.cs">
       <DependentUpon>ModernGrowlNotification.xaml</DependentUpon>
