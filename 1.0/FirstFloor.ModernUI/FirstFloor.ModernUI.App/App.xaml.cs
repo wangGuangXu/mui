@@ -14,6 +14,7 @@ namespace FirstFloor.ModernUI.App
 {
     /// <summary>
     /// Interaction logic for App.xaml
+    /// WPF图表库：https://gitee.com/mirrors/Live-Charts
     /// </summary>
     public partial class App : Application
     {

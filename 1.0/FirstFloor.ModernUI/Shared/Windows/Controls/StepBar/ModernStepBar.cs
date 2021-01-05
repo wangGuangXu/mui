@@ -63,12 +63,12 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
 
         #region 依赖属性
         /// <summary>
-        /// 步骤索引
+        /// 当前步骤序号
         /// </summary>
         public static readonly DependencyProperty StepIndexProperty = DependencyProperty.Register("StepIndex", typeof(int), typeof(ModernStepBar), new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnStepIndexChangedCallBack, CoerceStepIndexCallBack));
 
         /// <summary>
-        /// 停靠
+        /// 步骤条停靠方式
         /// </summary>
         public Dock Dock
         {
@@ -77,7 +77,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
         }
 
         /// <summary>
-        /// 停靠
+        /// 步骤条停靠方式
         /// </summary>
         public static readonly DependencyProperty DockProperty = DependencyProperty.Register("Dock", typeof(Dock), typeof(ModernStepBar), new PropertyMetadata(Dock.Top));
         #endregion
