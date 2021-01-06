@@ -14,6 +14,11 @@ namespace FirstFloor.ModernUI.Windows.Controls.StepBar
 {
     /// <summary>
     /// 现代步骤条
+    /// 相关案例文章：https://www.cnblogs.com/zhidanfeng/p/6648327.html
+    /// https://www.cnblogs.com/king10086/p/11883304.html
+    /// https://www.cnblogs.com/isaboy/p/winform_step_control.html
+    /// https://doc.mini.talelin.com/component/view/steps.html
+    /// 思路和原理：https://blog.csdn.net/u010924834/article/details/48209237/
     /// </summary>
     [StyleTypedProperty(Property = "ItemContainerStyle", StyleTargetType = typeof(ModernStepBarItem))]
     [DefaultEvent("StepChanged")]

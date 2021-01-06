@@ -9,7 +9,8 @@
         <ResourceDictionary Source="pack://application:,,,/FirstFloor.ModernUI;component/Assets/TextBlock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/FirstFloor.ModernUI;component/Assets/ProgressBar.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
+    
+    <!--步骤条状态样式-->
     <Style x:Key="StepBarItemBaseStyle" TargetType="hc:ModernStepBarItem">
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Foreground" Value="{DynamicResource ThirdlyTextBrush}"/>

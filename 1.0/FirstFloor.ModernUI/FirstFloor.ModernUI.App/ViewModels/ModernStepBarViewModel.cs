@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace FirstFloor.ModernUI.App.ViewModels
@@ -26,6 +27,62 @@ namespace FirstFloor.ModernUI.App.ViewModels
 #else
             set => Set(ref _stepIndex, value);
 #endif
+        }
+
+        private Visibility spOne;
+        /// <summary>
+        /// 当前步骤值
+        /// </summary>
+        public Visibility SpOne
+        {
+            get { return spOne; }
+            set
+            {
+                spOne = value;
+                PropertyChangedCallerMemberName();
+            }
+        }
+
+        private Visibility spTwo;
+        /// <summary>
+        /// 当前步骤值
+        /// </summary>
+        public Visibility SpTwo
+        {
+            get { return spTwo; }
+            set
+            {
+                spTwo = value;
+                PropertyChangedCallerMemberName();
+            }
+        }
+
+        private Visibility spThree;
+        /// <summary>
+        /// 当前步骤值
+        /// </summary>
+        public Visibility SpThree
+        {
+            get { return spThree; }
+            set
+            {
+                spThree = value;
+                PropertyChangedCallerMemberName();
+            }
+        }
+
+        private Visibility spFour;
+        /// <summary>
+        /// 当前步骤值
+        /// </summary>
+        public Visibility SpFour
+        {
+            get { return spFour; }
+            set
+            {
+                spFour = value;
+                PropertyChangedCallerMemberName();
+            }
         }
 
         /// <summary>
@@ -69,6 +126,11 @@ namespace FirstFloor.ModernUI.App.ViewModels
         /// </summary>
         public ModernStepBarViewModel()
         {
+            SpOne = Visibility.Visible;
+            SpTwo = Visibility.Hidden;
+            spThree = Visibility.Hidden;
+            spFour = Visibility.Hidden;
+
             DataList = GetStepBars();
         }
         #endregion
@@ -114,6 +176,47 @@ namespace FirstFloor.ModernUI.App.ViewModels
             foreach (var stepBar in panel.Children.OfType<ModernStepBar>())
             {
                 stepBar.Next();
+                SetChildViewVisibility(stepBar, true);
+            }
+        }
+
+        private void SetChildViewVisibility(ModernStepBar stepBar,bool isAdd)
+        {
+            int stepIndex = stepBar.StepIndex;
+            if (isAdd)
+            {
+                stepIndex += 1;
+            }
+            else
+            {
+                stepIndex -= 1;
+            }
+            switch (stepIndex)
+            {
+                case 4:
+                    SpOne = Visibility.Hidden;
+                    SpTwo = Visibility.Hidden;
+                    spThree = Visibility.Hidden;
+                    spFour = Visibility.Visible;
+                    break;
+                case 2:
+                    SpOne = Visibility.Hidden;
+                    SpTwo = Visibility.Visible;
+                    spThree = Visibility.Hidden;
+                    spFour = Visibility.Hidden;
+                    break;
+                case 3:
+                    SpOne = Visibility.Hidden;
+                    SpTwo = Visibility.Hidden;
+                    spThree = Visibility.Visible;
+                    spFour = Visibility.Hidden;
+                    break;
+                case 1:
+                    SpOne = Visibility.Visible;
+                    SpTwo = Visibility.Hidden;
+                    spThree = Visibility.Hidden;
+                    spFour = Visibility.Hidden;
+                    break;
             }
         }
 
@@ -125,6 +228,7 @@ namespace FirstFloor.ModernUI.App.ViewModels
         {
             foreach (var stepBar in panel.Children.OfType<ModernStepBar>())
             {
+                SetChildViewVisibility(stepBar, false);
                 stepBar.Prev();
             }
         } 
