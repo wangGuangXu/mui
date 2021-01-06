@@ -128,8 +128,8 @@ namespace FirstFloor.ModernUI.App.ViewModels
         {
             SpOne = Visibility.Visible;
             SpTwo = Visibility.Hidden;
-            spThree = Visibility.Hidden;
-            spFour = Visibility.Hidden;
+            SpThree = Visibility.Hidden;
+            SpFour = Visibility.Hidden;
 
             DataList = GetStepBars();
         }
@@ -176,46 +176,37 @@ namespace FirstFloor.ModernUI.App.ViewModels
             foreach (var stepBar in panel.Children.OfType<ModernStepBar>())
             {
                 stepBar.Next();
-                SetChildViewVisibility(stepBar, true);
+                SetChildViewVisibility(stepBar);
             }
         }
 
-        private void SetChildViewVisibility(ModernStepBar stepBar,bool isAdd)
+        private void SetChildViewVisibility(ModernStepBar stepBar)
         {
-            int stepIndex = stepBar.StepIndex;
-            if (isAdd)
+            switch (stepBar.StepIndex)
             {
-                stepIndex += 1;
-            }
-            else
-            {
-                stepIndex -= 1;
-            }
-            switch (stepIndex)
-            {
-                case 4:
-                    SpOne = Visibility.Hidden;
+                case 0:
+                    SpOne = Visibility.Visible;
                     SpTwo = Visibility.Hidden;
-                    spThree = Visibility.Hidden;
-                    spFour = Visibility.Visible;
+                    SpThree = Visibility.Hidden;
+                    SpFour = Visibility.Hidden;
+                    break;
+                case 1:
+                    SpOne = Visibility.Hidden;
+                    SpTwo = Visibility.Visible;
+                    SpThree = Visibility.Hidden;
+                    SpFour = Visibility.Hidden;
                     break;
                 case 2:
                     SpOne = Visibility.Hidden;
-                    SpTwo = Visibility.Visible;
-                    spThree = Visibility.Hidden;
-                    spFour = Visibility.Hidden;
+                    SpTwo = Visibility.Hidden;
+                    SpThree = Visibility.Visible;
+                    SpFour = Visibility.Hidden;
                     break;
                 case 3:
                     SpOne = Visibility.Hidden;
                     SpTwo = Visibility.Hidden;
-                    spThree = Visibility.Visible;
-                    spFour = Visibility.Hidden;
-                    break;
-                case 1:
-                    SpOne = Visibility.Visible;
-                    SpTwo = Visibility.Hidden;
-                    spThree = Visibility.Hidden;
-                    spFour = Visibility.Hidden;
+                    SpThree = Visibility.Hidden;
+                    SpFour = Visibility.Visible;
                     break;
             }
         }
@@ -228,8 +219,8 @@ namespace FirstFloor.ModernUI.App.ViewModels
         {
             foreach (var stepBar in panel.Children.OfType<ModernStepBar>())
             {
-                SetChildViewVisibility(stepBar, false);
                 stepBar.Prev();
+                SetChildViewVisibility(stepBar);
             }
         } 
         #endregion
