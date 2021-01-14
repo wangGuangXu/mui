@@ -58,7 +58,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// 关闭窗口依赖属性
         /// 此方式目前暂时废弃，新开窗体关闭后,再次打开窗体在当前框架下会报异常
         /// </summary>
-        public static readonly DependencyProperty DialogResultProperty = DependencyProperty.Register("DialogResult", typeof(bool), typeof(ModernWindow), new PropertyMetadata(DialogResultChanged));
+        public static readonly DependencyProperty DialogResultProperty = DependencyProperty.Register("DialogResult", typeof(bool?), typeof(ModernWindow), new PropertyMetadata(DialogResultChanged));
         /// <summary>
         /// 背景动画
         /// </summary>
@@ -366,9 +366,10 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <param name="e"></param>
         private static void DialogResultChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is Window window)
+            var window = d as Window;
+            if (window!=null)
             {
-                window.DialogResult = true;
+                window.DialogResult = e.NewValue as bool?;
             }
         }
 
