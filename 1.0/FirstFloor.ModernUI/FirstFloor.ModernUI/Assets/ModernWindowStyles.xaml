@@ -460,7 +460,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Border Grid.Column="0" BorderBrush="{DynamicResource Accent}" BorderThickness="1,1,1,0" Margin="1,0,0,0">
+                                        <Border Grid.Column="0" x:Name="leftBoder" BorderBrush="{DynamicResource Accent}" BorderThickness="1,1,1,0" Margin="1,0,0,0">
                                             <StackPanel  >
                                                 <Border BorderBrush="{DynamicResource Accent}" BorderThickness="0,0,0,1" >
                                                     <TextBlock Text="菜单" Style="{StaticResource Heading2}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3"   />
@@ -470,7 +470,7 @@
                                                     <TreeView x:Name="trees" BorderThickness="0" 
                                                         HorizontalAlignment="Left" 
                                                         Margin="0,10,0,10" 
-                                                        Width="200"
+                                                        Width="{Binding RelativeSource={RelativeSource AncestorType=Border,AncestorLevel=1},Path=ActualWidth}"
                                                         ItemTemplate="{StaticResource ItemNode}"
                                                         ItemsSource="{Binding TreeNodes,Mode=TwoWay}" 
                                                         Style="{StaticResource DefaultTreeView}">

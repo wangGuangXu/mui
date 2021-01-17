@@ -67,12 +67,27 @@ namespace FirstFloor.ModernUI.Presentation
                 OnPropertyChanged(()=>this.IsSelected);
             }
         }
+
+        private bool isChecked;
+        /// <summary>
+        /// 是否选中复选框
+        /// </summary>
+        public bool IsChecked
+        {
+            get { return isChecked; }
+            set
+            {
+                isChecked = value;
+                OnPropertyChanged(() => this.IsChecked);
+            }
+        }
+
         /// <summary>
         /// 是否分组
         /// </summary>
         public bool IsGrouping { get { return ChildNodes != null && ChildNodes.Count > 0; } }
         /// <summary>
-        /// 
+        /// 名称
         /// </summary>
         public string SurName { get; set; }
         /// <summary>
@@ -80,7 +95,7 @@ namespace FirstFloor.ModernUI.Presentation
         /// </summary>
         public int Count { get; set; }
         /// <summary>
-        /// 
+        /// 信息
         /// </summary>
         public string Info { get; set; }
 

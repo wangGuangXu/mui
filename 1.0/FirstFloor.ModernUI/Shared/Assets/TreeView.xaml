@@ -156,6 +156,54 @@
             </StackPanel>
         </Grid>
     </HierarchicalDataTemplate>
+    
+    <!--带复选框的TreeView-->
+    <HierarchicalDataTemplate x:Key="ItemCheckboxNode" ItemsSource="{Binding ChildNodes,Mode=TwoWay}">
+        <Grid  Background="Transparent">
+            <Grid.Resources>
+                <convers:BooleanToVisibilityConverter x:Key="boolToVisible"/>
+                <convers:VisibleToReverseConverter x:Key="visibleToReverse" />
+                <sys:String x:Key="sysInverse">inverse</sys:String>
+            </Grid.Resources>
+            <Grid MinHeight="30" x:Name="userinfo" Background="Transparent" Margin="-5 0 0 0" Visibility="{Binding Visibility,ElementName=groupinginfo,Converter={StaticResource visibleToReverse},ConverterParameter={StaticResource sysInverse}}">
+                <Grid Height="30" x:Name="grid">
+                    <CheckBox IsChecked="{Binding IsChecked}" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding Name}" Margin="32 0 0 0" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <StackPanel MinHeight="25" x:Name="groupinginfo" Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Left" Visibility="{Binding IsGrouping,Converter={StaticResource boolToVisible}}">
+                <CheckBox IsChecked="{Binding IsChecked}"  Margin="3,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Text="{Binding Name}" Margin="3 0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </Grid>
+    </HierarchicalDataTemplate>
+    
+    <!--带复选框并且子集右侧也带复选框TreeView-->
+    <HierarchicalDataTemplate x:Key="ItemRightCheckboxNode" ItemsSource="{Binding ChildNodes,Mode=TwoWay}">
+        <Grid  Background="Transparent">
+            <Grid.Resources>
+                <convers:BooleanToVisibilityConverter x:Key="boolToVisible"/>
+                <convers:VisibleToReverseConverter x:Key="visibleToReverse" />
+                <sys:String x:Key="sysInverse">inverse</sys:String>
+            </Grid.Resources>
+            <Grid MinHeight="30" x:Name="userinfo" Background="Transparent" Margin="-5 0 0 0" Visibility="{Binding Visibility,ElementName=groupinginfo,Converter={StaticResource visibleToReverse},ConverterParameter={StaticResource sysInverse}}">
+                <Grid Height="30" x:Name="grid">
+                    <CheckBox IsChecked="{Binding IsChecked}" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding Name}" Margin="32 0 0 0" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <CheckBox IsChecked="{Binding IsChecked}"  HorizontalAlignment="Right" Width="16" Height="16" VerticalAlignment="Center" Margin="0 0 40 0"   />
+                    <TextBlock Text="只读" FontSize="12" Foreground="#808080" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 15 0"/>
+                </Grid>
+            </Grid>
+            <StackPanel MinHeight="25" x:Name="groupinginfo" Orientation="Horizontal" Background="Transparent"  HorizontalAlignment="Left" Visibility="{Binding IsGrouping,Converter={StaticResource boolToVisible}}">
+                <CheckBox IsChecked="{Binding IsChecked}"  Margin="3,0" VerticalAlignment="Center" Width="16" Height="16" HorizontalAlignment="Left" />
+                <TextBlock Text="{Binding Name}" Margin="3 0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <StackPanel MinHeight="25" x:Name="groupinginfoRight" Orientation="Horizontal" HorizontalAlignment="Right" Background="Transparent"  Visibility="{Binding IsGrouping,Converter={StaticResource boolToVisible}}">
+                <CheckBox IsChecked="{Binding IsChecked}"  HorizontalAlignment="Right" VerticalAlignment="Center" Width="16" Height="16" Margin="0 0 2 0"  />
+                <TextBlock Text="只读" FontSize="12" Foreground="#808080" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 15 0"/>
+            </StackPanel>
+        </Grid>
+    </HierarchicalDataTemplate>
 
     <Style  x:Key="DefaultTreeViewItem" TargetType="{x:Type TreeViewItem}">
         <Setter Property="MinHeight" Value="25" />
