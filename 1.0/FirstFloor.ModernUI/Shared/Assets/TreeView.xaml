@@ -190,16 +190,16 @@
                 <Grid Height="30" x:Name="grid">
                     <CheckBox IsChecked="{Binding IsChecked}" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" />
                     <TextBlock Text="{Binding Name}" Margin="32 0 0 0" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <CheckBox IsChecked="{Binding IsChecked}"  HorizontalAlignment="Right" Width="16" Height="16" VerticalAlignment="Center" Margin="0 0 40 0"   />
+                    <CheckBox IsChecked="{Binding IsChecked}"  HorizontalAlignment="Right" Width="14" Height="14" VerticalAlignment="Center" Margin="0 0 40 0"   />
                     <TextBlock Text="只读" FontSize="12" Foreground="#808080" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 15 0"/>
                 </Grid>
             </Grid>
             <StackPanel MinHeight="25" x:Name="groupinginfo" Orientation="Horizontal" Background="Transparent"  HorizontalAlignment="Left" Visibility="{Binding IsGrouping,Converter={StaticResource boolToVisible}}">
-                <CheckBox IsChecked="{Binding IsChecked}"  Margin="3,0" VerticalAlignment="Center" Width="16" Height="16" HorizontalAlignment="Left" />
+                <CheckBox IsChecked="{Binding IsChecked}"  Margin="3,0" VerticalAlignment="Center"  HorizontalAlignment="Left" />
                 <TextBlock Text="{Binding Name}" Margin="3 0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             </StackPanel>
             <StackPanel MinHeight="25" x:Name="groupinginfoRight" Orientation="Horizontal" HorizontalAlignment="Right" Background="Transparent"  Visibility="{Binding IsGrouping,Converter={StaticResource boolToVisible}}">
-                <CheckBox IsChecked="{Binding IsChecked}"  HorizontalAlignment="Right" VerticalAlignment="Center" Width="16" Height="16" Margin="0 0 2 0"  />
+                <CheckBox IsChecked="{Binding IsChecked}"  HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="0 0 2 0"  />
                 <TextBlock Text="只读" FontSize="12" Foreground="#808080" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 15 0"/>
             </StackPanel>
         </Grid>
