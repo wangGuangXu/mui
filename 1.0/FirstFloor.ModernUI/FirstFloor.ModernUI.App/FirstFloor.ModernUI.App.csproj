@@ -359,6 +359,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Assets\ModernUI.QiangDaGeLanYunTian.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Assets\ModernUI.Snowflakes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -573,6 +577,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\background.qdglyt.bmp" />
     <Content Include="Lib\De.TorstenMandelkow.MetroChart.dll" />
     <Resource Include="Resources\UserCard01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

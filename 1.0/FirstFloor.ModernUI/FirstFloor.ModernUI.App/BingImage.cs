@@ -15,6 +15,7 @@ using System.Xml.XPath;
 namespace FirstFloor.ModernUI.App
 {
     /// <summary>
+    /// 提供确定当前Bing图像并将其指定给图像或imagebrush的附加属性
     /// Provides an attached property determining the current Bing image and assigning it to an image or imagebrush.
     /// </summary>
     public static class BingImage

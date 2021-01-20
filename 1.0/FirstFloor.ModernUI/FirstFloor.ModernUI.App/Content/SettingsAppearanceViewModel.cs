@@ -73,6 +73,7 @@ namespace FirstFloor.ModernUI.App.Content
             this.themes.Add(new Link { DisplayName = "light", Source = AppearanceManager.LightThemeSource });
 
             // 添加额外的主题
+            this.themes.Add(new Link { DisplayName = "QiangDaGeLanYunTian", Source = new Uri("/ModernUIDemo;component/Assets/ModernUI.QiangDaGeLanYunTian.xaml", UriKind.Relative) });
             this.themes.Add(new Link { DisplayName = "bing image", Source = new Uri("/ModernUIDemo;component/Assets/ModernUI.BingImage.xaml", UriKind.Relative) });
             this.themes.Add(new Link { DisplayName = "hello kitty", Source = new Uri("/ModernUIDemo;component/Assets/ModernUI.HelloKitty.xaml", UriKind.Relative) });
             this.themes.Add(new Link { DisplayName = "love", Source = new Uri("/ModernUIDemo;component/Assets/ModernUI.Love.xaml", UriKind.Relative) });
