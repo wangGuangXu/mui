@@ -331,10 +331,10 @@
         <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
         <Setter Property="Foreground" Value="{DynamicResource WindowText}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WindowBorder}" />
-        <Setter Property="Width" Value="800" />
-        <Setter Property="Height" Value="640" />
-        <Setter Property="MinWidth" Value="320" />
-        <Setter Property="MinHeight" Value="320" />
+        <Setter Property="Width" Value="1024" />
+        <Setter Property="Height" Value="768" />
+        <Setter Property="MinWidth" Value="1024" />
+        <Setter Property="MinHeight" Value="768" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
@@ -452,13 +452,16 @@
                                         </StackPanel>
                                     </Grid>
 
-                                    <!-- 内容框架 content frame -->
+                                    <!-- 内容框架 content frame {Binding  ElementName=leftBoder,Path=ActualHeight} -->
                                     <Grid Grid.Row="1">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="220"/>
                                             <ColumnDefinition Width="2"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
 
                                         <Border Grid.Column="0" x:Name="leftBoder" BorderBrush="{DynamicResource Accent}" BorderThickness="1,1,1,0" Margin="1,0,0,0">
                                             <StackPanel  >
@@ -466,7 +469,7 @@
                                                     <TextBlock Text="菜单" Style="{StaticResource Heading2}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3"   />
                                                 </Border>
 
-                                                <ScrollViewer Height="{Binding ElementName=leftBoder,Path=ActualHeight}" VerticalScrollBarVisibility="Visible"    >
+                                                <ScrollViewer Height="200"  VerticalScrollBarVisibility="Auto" Padding="0,0,20,0"    >
                                                     <TreeView x:Name="trees" BorderThickness="0" 
                                                         HorizontalAlignment="Left" 
                                                         Margin="0,10,0,40" 
@@ -479,7 +482,6 @@
                                                                 <i:InvokeCommandAction Command="{Binding Path=SelectedTreeItemChangedCommand}" 
                                                                                        CommandParameter="{Binding ElementName=trees, Path=SelectedItem}"/>
                                                             </i:EventTrigger>
-
                                                             <i:EventTrigger EventName="MouseDoubleClick">
                                                                 <i:InvokeCommandAction Command="{Binding Path=MouseDoubleClickTreeItemCommand}" 
                                                                                        CommandParameter="{Binding ElementName=trees, Path=SelectedItem}"/>
@@ -500,7 +502,7 @@
 
                                                 <TabControl.ItemTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="{Binding Header}" Cursor="Hand" />
+                                                        <TextBlock Text="{Binding Header}" HorizontalAlignment="Center"  Cursor="Hand" />
                                                     </DataTemplate>
                                                 </TabControl.ItemTemplate>
                                                 <TabControl.ContentTemplate>
