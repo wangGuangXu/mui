@@ -10,7 +10,7 @@
     <Grid Style="{StaticResource ContentRoot}"  >
         <!--<ScrollViewer x:Name="de" Grid.Column="1" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" >
             <StackPanel hc:ModernGrowl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
-        </ScrollViewer>--> 
+        </ScrollViewer>-->
         <mui:ModernTab SelectedSource="/Content/ControlsModernBBCodeBlock.xaml" Layout="List">
             <mui:ModernTab.Links>
                 <mui:Link DisplayName="BBCodeBlock" Source="/Content/ControlsModernBBCodeBlock.xaml"/>
@@ -22,6 +22,7 @@
                 <mui:Link DisplayName="现代窗体" Source="/Content/ControlsModernWindow.xaml" />
                 <mui:Link DisplayName="现代信息通知" Source="/Content/ControlsModernGrowlNotification.xaml" />
                 <mui:Link DisplayName="现代步骤条" Source="/Content/ControlsModernStepBar.xaml" />
+                <mui:Link DisplayName="现代DNS输入框" Source="/Content/ControlsModernDns.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

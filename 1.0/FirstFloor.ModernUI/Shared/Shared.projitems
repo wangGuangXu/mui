@@ -216,6 +216,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Animations\AnimationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\CommandDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\AttachPropertys\AdornerAttachProperty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\AttachPropertys\DnsAttachProperty.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\BBCodeBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\BBCode\BBCodeLexer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Controls\BBCode\BBCodeParser.cs" />
@@ -303,6 +304,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Windows\TreeGrid\TreeGridElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\TreeGrid\TreeGridFlatModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\TreeGrid\TreeGridModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\ValidationRules\DnsRangeValidationRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources.fr.resx">
