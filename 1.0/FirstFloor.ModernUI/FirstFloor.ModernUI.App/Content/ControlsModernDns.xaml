@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FirstFloor.ModernUI.App.Content" 
-             xmlns:mui="clr-namespace:FirstFloor.ModernUI.Windows.ValidationRules"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:mui="clr-namespace:FirstFloor.ModernUI.Windows.ValidationRules;assembly=FirstFloor.ModernUI"
+             xmlns:ctrl="clr-namespace:FirstFloor.ModernUI.Windows.Controls;assembly=FirstFloor.ModernUI"
+             mc:Ignorable="d"
+             Margin="10,0"
+             d:DesignHeight="50" d:DesignWidth="800" >
     <UserControl.Resources>
         <ControlTemplate x:Key="validationTemplate">
             <DockPanel>
@@ -17,7 +19,10 @@
         <Style x:Key="CustomTextBoxTextStyle" TargetType="TextBox">
             <Setter Property="MaxLength" Value="3" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="True">
                     <Trigger.Setters>
@@ -40,10 +45,9 @@
             <ColumnDefinition MinWidth="10" />
             <ColumnDefinition MinWidth="30" />
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Column="0" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center" x:Name="part1" Style="{StaticResource CustomTextBoxTextStyle}" 
-                 PreviewKeyDown="part1_PreviewKeyDown"
-                 mui:DnsAttachProperty.IsFocused="{Binding IsPart1Focused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}"
+        
+        <TextBox Grid.Column="0" x:Name="part1" Style="{StaticResource CustomTextBoxTextStyle}" PreviewKeyDown="part1_PreviewKeyDown"
+                 ctrl:DnsAttachProperty.IsFocused="{Binding IsPartOneFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}"
                  Validation.ErrorTemplate="{StaticResource validationTemplate}">
             <TextBox.Text>
                 <Binding Path="Part1" UpdateSourceTrigger="PropertyChanged">
@@ -54,5 +58,44 @@
             </TextBox.Text>
         </TextBox>
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontSize="15" Text="." VerticalAlignment="Center" />
+
+        <TextBox Grid.Column="2" x:Name="part2" Style="{StaticResource CustomTextBoxTextStyle}" PreviewKeyDown="part2_PreviewKeyDown"
+                 ctrl:DnsAttachProperty.IsFocused="{Binding IsPartTwoFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}"
+                 Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="Part2" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <mui:DnsRangeValidationRule Max="255" Min="0" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="15" Text="." VerticalAlignment="Center" />
+
+        <TextBox Grid.Column="4" x:Name="part3" Style="{StaticResource CustomTextBoxTextStyle}" PreviewKeyDown="part3_PreviewKeyDown"
+                 ctrl:DnsAttachProperty.IsFocused="{Binding IsPartThreeFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}"
+                 Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="Part3" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <mui:DnsRangeValidationRule Max="255" Min="0" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBlock Grid.Column="5" HorizontalAlignment="Center" FontSize="15" Text="." VerticalAlignment="Center" />
+
+        <TextBox Grid.Column="6" x:Name="part4" Style="{StaticResource CustomTextBoxTextStyle}" PreviewKeyDown="part4_PreviewKeyDown"
+                 ctrl:DnsAttachProperty.IsFocused="{Binding IsPartFourFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}"
+                 Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="Part4" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <mui:DnsRangeValidationRule Max="255" Min="0" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <!--<TextBlock Grid.Column="7" HorizontalAlignment="Center" FontSize="15" Text="." VerticalAlignment="Center" />-->
     </Grid>
 </UserControl>

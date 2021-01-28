@@ -22,7 +22,7 @@
                 <mui:Link DisplayName="现代窗体" Source="/Content/ControlsModernWindow.xaml" />
                 <mui:Link DisplayName="现代信息通知" Source="/Content/ControlsModernGrowlNotification.xaml" />
                 <mui:Link DisplayName="现代步骤条" Source="/Content/ControlsModernStepBar.xaml" />
-                <mui:Link DisplayName="现代DNS输入框" Source="/Content/ControlsModernDns.xaml" />
+                <mui:Link DisplayName="现代DNS输入框" Source="/Content/ControlsModernDnsSimple.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

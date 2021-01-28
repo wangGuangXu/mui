@@ -120,6 +120,9 @@
     <Compile Include="Content\ControlsModernDns.xaml.cs">
       <DependentUpon>ControlsModernDns.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\ControlsModernDnsSimple.xaml.cs">
+      <DependentUpon>ControlsModernDnsSimple.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Content\ControlsModernFrame.xaml.cs">
       <DependentUpon>ControlsModernFrame.xaml</DependentUpon>
     </Compile>
@@ -392,6 +395,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Content\ControlsModernDns.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\ControlsModernDnsSimple.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

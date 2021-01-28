@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 
-namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
+namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
     /// 
@@ -11,7 +11,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
     public static class DnsAttachProperty
     {
         /// <summary>
-        /// 获取有装饰器
+        /// 获取是否获取焦点
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -21,7 +21,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
         }
 
         /// <summary>
-        /// 设置有装饰器
+        /// 设置是否获取焦点
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="value"></param>
@@ -31,7 +31,7 @@ namespace FirstFloor.ModernUI.Windows.Controls.AttachPropertys
         }
 
         /// <summary>
-        /// 有装饰器
+        /// 是否获取焦点
         /// </summary>
         public static readonly DependencyProperty IsFocusedProperty =
             DependencyProperty.RegisterAttached("IsFocused", typeof(bool), typeof(DnsAttachProperty), new UIPropertyMetadata(false, OnIsFocusedPropertyChangedCallBack));
