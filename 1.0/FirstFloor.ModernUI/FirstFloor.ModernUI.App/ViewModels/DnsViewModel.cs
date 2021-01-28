@@ -64,7 +64,7 @@ namespace FirstFloor.ModernUI.App.ViewModels
 
         private string _part1;
         /// <summary>
-        /// 第一部分
+        /// 第1部分
         /// </summary>
         public string Part1
         {
@@ -86,7 +86,7 @@ namespace FirstFloor.ModernUI.App.ViewModels
 
         private string _part2;
         /// <summary>
-        /// 第二部分
+        /// 第2部分
         /// </summary>
         public string Part2
         {
@@ -108,7 +108,7 @@ namespace FirstFloor.ModernUI.App.ViewModels
 
         private string _part3;
         /// <summary>
-        /// 第二部分
+        /// 第3部分
         /// </summary>
         public string Part3
         {
@@ -130,7 +130,7 @@ namespace FirstFloor.ModernUI.App.ViewModels
 
         private string _part4;
         /// <summary>
-        /// 第二部分
+        /// 第4部分
         /// </summary>
         public string Part4
         {
@@ -138,12 +138,11 @@ namespace FirstFloor.ModernUI.App.ViewModels
             set
             {
                 _part4 = value;
-                SetFocus(false, true, false, false);
+                SetFocus(false, false, false, true);
                 var moveNext = CanMoveNext(ref _part4);
                 OnPropertyChanged(() => this.Part4);
                 OnPropertyChanged(nameof(DnsText));
                 DnsChanged?.Invoke(this, EventArgs.Empty);
-                
             }
         }
 

@@ -6,7 +6,7 @@ using System.Windows;
 namespace FirstFloor.ModernUI.Windows.Controls
 {
     /// <summary>
-    /// 
+    /// DNS输入框附加属性
     /// </summary>
     public static class DnsAttachProperty
     {

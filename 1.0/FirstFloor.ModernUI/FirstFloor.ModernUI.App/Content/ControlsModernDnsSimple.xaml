@@ -5,13 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FirstFloor.ModernUI.App.Content"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="150" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <local:ControlsModernDns BorderThickness="1" BorderBrush="#666" Grid.Row="0" DataContext="{Binding DnsViewModel, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Width="150" Height="25"/>
+        <local:ControlsModernDns BorderThickness="0" BorderBrush="#666" Grid.Row="0" DataContext="{Binding DnsViewModel, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Width="150" Height="25"/>
         <local:ControlsModernDns BorderThickness="1" BorderBrush="#666" Grid.Row="1" DataContext="{Binding DnsViewModel, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Width="150" Height="25"/>
     </Grid>
 </UserControl>
