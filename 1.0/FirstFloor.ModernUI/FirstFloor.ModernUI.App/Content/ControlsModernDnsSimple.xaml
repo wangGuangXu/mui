@@ -11,7 +11,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <local:ControlsModernDns BorderThickness="0" BorderBrush="#666" Grid.Row="0" DataContext="{Binding DnsViewModel, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Width="150" Height="25"/>
+        <local:ControlsModernDns BorderThickness="1" BorderBrush="#666" Grid.Row="0" DataContext="{Binding DnsViewModel, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Width="150" Height="25"/>
         <local:ControlsModernDns BorderThickness="1" BorderBrush="#666" Grid.Row="1" DataContext="{Binding DnsViewModel, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Width="150" Height="25"/>
     </Grid>
 </UserControl>
