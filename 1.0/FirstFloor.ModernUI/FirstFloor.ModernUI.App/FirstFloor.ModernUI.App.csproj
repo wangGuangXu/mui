@@ -295,6 +295,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Resources\文档1.btw">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\标签模板.btw">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
