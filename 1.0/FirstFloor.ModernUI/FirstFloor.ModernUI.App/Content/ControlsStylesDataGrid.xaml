@@ -72,25 +72,11 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <!--<DataGridCheckBoxColumn Binding="{Binding IsSelected}" ElementStyle="{StaticResource DataGridCheckBoxStyle}"
-                                            EditingElementStyle="{StaticResource DataGridEditingCheckBoxStyle}"  >
-                        <DataGridCheckBoxColumn.Header>
-                            -->
-                    <!--填充以允许命中测试通过进行排序-->
-                    <!--<Border Background="Transparent" Margin="3 0 -14 0" HorizontalAlignment="Right" Width="30">-->
-                    <!--
-                                <CheckBox HorizontalAlignment="Center" DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}},Path=DataContext}"
-                                          IsChecked="{Binding IsAllItemsSelected}" />
-                            -->
-                    <!--</Border>-->
-                    <!--
-                        </DataGridCheckBoxColumn.Header>
-                    </DataGridCheckBoxColumn>-->
-
-                    <mui:DataGridTextColumn Header="序号"  Binding="{Binding Code}"/>
-                    <mui:DataGridTextColumn Header="名字"  Binding="{Binding FirstName}" Width="150" />
-                    <mui:DataGridTextColumn Header="姓" Binding="{Binding LastName}" Width="100" />
-                    <mui:DataGridTextColumn Header="邮箱" Binding="{Binding Email}"/>
+                    <mui:DataGridTextColumn Header="类别"  Binding="{Binding Code}"/>
+                    <mui:DataGridTextColumn Header="大类"  Binding="{Binding FirstName}" Width="150" />
+                    <mui:DataGridTextColumn Header="子类" Binding="{Binding LastName}" Width="100" />
+                    <mui:DataGridTextColumn Header="代码" Binding="{Binding Email}"/>
+                    <mui:DataGridTextColumn Header="描述" Binding="{Binding Email}"/>
                     <mui:DataGridCheckBoxColumn Header="成员" Binding="{Binding IsMember}" />
                     <mui:DataGridComboBoxColumn Header="订单状态" SelectedItemBinding="{Binding Status}" ItemsSource="{Binding Source={StaticResource myEnum}}" />
                 </DataGrid.Columns>
