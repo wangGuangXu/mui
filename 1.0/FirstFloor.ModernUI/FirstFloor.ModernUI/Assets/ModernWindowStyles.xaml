@@ -324,7 +324,7 @@
         </Setter>
     </Style>
 
-    <!--系统主界面框架布局样式-->
+    <!--测试系统主界面框架布局样式-->
     <Style x:Key="ShellWindow" TargetType="controls:ModernWindow" BasedOn="{StaticResource {x:Type controls:ModernWindow}}">
         <Setter Property="BackgroundContent" Value="{DynamicResource WindowBackgroundContent}" />
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
@@ -469,7 +469,7 @@
                                                     <TextBlock Text="菜单" Style="{StaticResource Heading2}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3"   />
                                                 </Border>
 
-                                                <ScrollViewer Height="200"  VerticalScrollBarVisibility="Auto" Padding="0,0,20,0"    >
+                                                <ScrollViewer Height="{Binding  ElementName=leftBoder,Path=ActualHeight}"  VerticalScrollBarVisibility="Auto" Padding="0,0,20,0"    >
                                                     <TreeView x:Name="trees" BorderThickness="0" 
                                                         HorizontalAlignment="Left" 
                                                         Margin="0,10,0,40" 
