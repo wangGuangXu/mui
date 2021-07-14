@@ -138,9 +138,6 @@
     <Compile Include="Content\ControlsModernStepBar.xaml.cs">
       <DependentUpon>ControlsModernStepBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\ControlsModernTagPrint.xaml.cs">
-      <DependentUpon>ControlsModernTagPrint.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Content\ControlsModernWindow.xaml.cs">
       <DependentUpon>ControlsModernWindow.xaml</DependentUpon>
     </Compile>
@@ -189,7 +186,6 @@
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ModernStepBarViewModel.cs" />
-    <Compile Include="ViewModels\ModernTagPrintViewModel.cs" />
     <Compile Include="ViewModels\SampleFormViewModel.cs" />
     <Compile Include="FlickrImageLoader.cs" />
     <Compile Include="LoremIpsumLoader.cs" />
@@ -295,12 +291,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Resources\文档1.btw">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\标签模板.btw">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -429,10 +419,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Content\ControlsModernStepBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Content\ControlsModernTagPrint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -615,17 +601,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="BarTender">
-      <Guid>{D58562C1-E51B-11CF-8941-00A024A9083F}</Guid>
-      <VersionMajor>11</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
