@@ -851,11 +851,10 @@
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="30" />
-                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
 
                                     <!-- 窗口背景内容 window background content -->
-                                    <ContentControl Grid.RowSpan="4" Content="{TemplateBinding BackgroundContent}" />
+                                    <ContentControl Grid.RowSpan="3" Content="{TemplateBinding BackgroundContent}" />
 
                                     <!-- 标题栏 title bar -->
                                     <Grid Grid.Row="0">
@@ -946,50 +945,6 @@
 
                                     <!-- 内容框架 content frame -->
                                     <controls:ModernFrame x:Name="ContentFrame" Grid.Row="1" Grid.RowSpan="2" Margin="10,0,10,10" Source="{Binding ContentSource, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ContentLoader="{TemplateBinding ContentLoader}"/>
-
-                                    <!--状态栏-->
-                                    <Grid Grid.Row="3"   >
-                                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,1,0,0">
-                                            <StatusBar  >
-                                                <StatusBar.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <Grid>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="150" />
-                                                                <ColumnDefinition Width="auto" />
-                                                                <ColumnDefinition Width="150" />
-                                                                <ColumnDefinition Width="auto" />
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="auto" />
-                                                                <ColumnDefinition Width="150" />
-                                                            </Grid.ColumnDefinitions>
-                                                        </Grid>
-                                                    </ItemsPanelTemplate>
-                                                </StatusBar.ItemsPanel>
-                                                <StatusBarItem Margin="5,0" Grid.Column="0"  >
-                                                    <TextBlock x:Name="txtUser" Text="{Binding StatusUser,RelativeSource={RelativeSource TemplatedParent },Mode=TwoWay}" />
-                                                </StatusBarItem>
-                                                <Separator Grid.Column="1"  />
-                                                <!--<Line  Grid.Column="1" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="{DynamicResource SeparatorBackground}" />-->
-
-                                                <StatusBarItem Grid.Column="2">
-                                                    <TextBlock x:Name="txtNetWork" Text="{Binding StatusNetWork,RelativeSource={RelativeSource TemplatedParent },Mode=TwoWay}" />
-                                                </StatusBarItem>
-                                                <Separator Grid.Column="3"/>
-                                                <!--<Line Grid.Column="3" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="{DynamicResource SeparatorBackground}" />-->
-
-                                                <StatusBarItem Grid.Column="4">
-                                                    <!--<TextBlock Text="c:\path\of\current\file.txt" />-->
-                                                </StatusBarItem>
-                                                <Separator Grid.Column="5"   />
-                                                <!--<Line Grid.Column="5" X1=".5" Y1="3" X2=".5" Y2="12" Margin="5,0" VerticalAlignment="Center" StrokeThickness="1" Stroke="{DynamicResource SeparatorBackground}" />-->
-
-                                                <StatusBarItem Grid.Column="6" >
-                                                    <!--<ProgressBar Value="50" Width="90" Height="16" />-->
-                                                </StatusBarItem>
-                                            </StatusBar>
-                                        </Border>
-                                    </Grid>
                                 </Grid>
                             </AdornerDecorator>
                         </Border>
