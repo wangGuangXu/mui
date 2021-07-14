@@ -30,22 +30,28 @@ namespace FirstFloor.ModernUI.App
             var image = o as Image;
             var imageBrush = o as ImageBrush;
 
-            if (!newValue || (image == null && imageBrush == null)) {
+            if (!newValue || (image == null && imageBrush == null)) 
+            {
                 return;
             }
 
-            if (cachedBingImage == null) {
+            if (cachedBingImage == null) 
+            {
                 var url = await GetCurrentBingImageUrl();
-                if (url != null) {
+                if (url != null) 
+                {
                     cachedBingImage = new BitmapImage(url);
                 }
             }
 
-            if (cachedBingImage != null){
-                if (image != null) {
+            if (cachedBingImage != null)
+            {
+                if (image != null) 
+                {
                     image.Source = cachedBingImage;
                 }
-                else if (imageBrush != null) {
+                else if (imageBrush != null) 
+                {
                     imageBrush.ImageSource = cachedBingImage;
                 }
             }
